@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fashion 404 | Designer Portfolio</title>
+        <!-- Montserrat 폰트 적용 (세련된 고딕체) -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+    <!-- Swiper CSS 추가 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- 1. 상단 영역 -->
+    <header>
+        <div class="container header-inner">
+                        <div class="logo">
+                <a href="#">FASHION <span class="pink">4</span><span class="blue">0</span><span class="pink">4</span></a>
+            </div>
+            <nav>
+                <ul class="menu-list">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Show</a></li>
+                    <li><a href="#">Gallery</a></li>
+                    <li><a href="#">Community</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+        <!-- 2. 메인 영역 -->
+    <main>
+        <!-- 메인 슬라이드 배너 -->
+        <section class="main-slider">
+            <div class="swiper mySwiper">
+                <div class="swiper-wrapper">
+                    <!-- 슬라이드 1 -->
+                    <div class="swiper-slide" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=1600&q=80');">
+                        <div class="slide-content">
+                            <h2>UNIDENTIFIED <br><span class="pink">FUTURE</span></h2>
+                            <p>규정되지 않은 미래, Fashion 404의 새로운 시각</p>
+                            <a href="#" class="btn-outline">View Collection</a>
+                        </div>
+                    </div>
+                    <!-- 슬라이드 2 -->
+                    <div class="swiper-slide" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=1600&q=80');">
+                        <div class="slide-content">
+                            <h2>GLITCH IN <br><span class="blue">REALITY</span></h2>
+                            <p>현실의 균열 속에서 발견한 진정한 아름다움</p>
+                            <a href="#" class="btn-outline">Show Room</a>
+                        </div>
+                    </div>
+                    <!-- 슬라이드 3 -->
+                    <div class="swiper-slide" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=1600&q=80');">
+                        <div class="slide-content">
+                            <h2>ERROR <span class="pink">4</span><span class="blue">0</span><span class="pink">4</span>: <br>STYLE FOUND</h2>
+                            <p>창의적인 오류가 빚어낸 독보적인 실루엣</p>
+                            <a href="#" class="btn-outline">Shop Now</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- 페이지 네이션 -->
+                <div class="swiper-pagination"></div>
+            </div>
+        </section>
+
+        <section class="event-section container">
+            <h3 class="section-title">New Events</h3>
+            <div class="card-grid">
+                <!-- 카드 1 -->
+                <div class="card">
+                    <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="card-body">
+                        <span class="badge blue">2024 SHOW</span>
+                        <h4>The Neon Silence</h4>
+                        <p>도시의 어둠 속에서 빛나는 현대적 실루엣을 경험하세요.</p>
+                        <a href="#" class="more-btn">Explore</a>
+                    </div>
+                </div>
+                <!-- 카드 2 -->
+                <div class="card">
+                    <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="card-body">
+                        <span class="badge pink">NEW ARRIVAL</span>
+                        <h4>Pink Glitch Line</h4>
+                        <p>에러 메시지에서 영감을 받은 Fashion 404의 시그니처 라인업.</p>
+                        <a href="#" class="more-btn">Explore</a>
+                    </div>
+                </div>
+                <!-- 카드 3 -->
+                <div class="card">
+                    <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1558769132-cb1aea458c5e?auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="card-body">
+                        <span class="badge">COLLAB</span>
+                        <h4>Artist 'X' Collab</h4>
+                        <p>디지털 미디어 아티스트와의 특별한 협업 갤러리 공개.</p>
+                        <a href="#" class="more-btn">Explore</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 3. 하단 영역 -->
+    <footer>
+        <div class="container footer-inner">
+            <div class="footer-logo">FASHION 404</div>
+            <div class="company-info">
+                <p>Designer. Kim 404 | Business License. 123-45-67890</p>
+                <p>Address. 404 Fashion St, Gangnam-gu, Seoul, Korea</p>
+                <p>Email. contact@fashion404.com</p>
+                <p class="copyright">&copy; 2024 Fashion 404. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Swiper JS 라이브러리 -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    
+    <script>
+        let autoPlayTimer;
+        
+        const swiper = new Swiper(".mySwiper", {
+            loop: true,
+            speed: 1000,
+            autoplay: {
+                delay: 3000,
+                disableOnInteraction: true, // 유저 조작 시 정지
+            },
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+            on: {
+                // 유저의 터치/스와이프가 끝났을 때
+                touchEnd: function() {
+                    resumeAutoplay();
+                },
+                // 유저가 페이지네이션 등을 클릭하여 슬라이드가 바뀌었을 때
+                slideChange: function() {
+                    resumeAutoplay();
+                }
+            }
+        });
+
+        // 5초 후 자동 재생을 재개하는 함수
+        function resumeAutoplay() {
+            clearTimeout(autoPlayTimer);
+            autoPlayTimer = setTimeout(() => {
+                if (!swiper.autoplay.running) {
+                    swiper.autoplay.start();
+                }
+            }, 5000); // 5초 대기
+        }
+    </script>
+</body>
+</html>

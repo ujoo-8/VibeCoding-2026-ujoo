@@ -1,0 +1,262 @@
+/* 기본 설정 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #0a0a0a; /* 딥 블랙 */
+    color: #ffffff;
+    font-family: 'Montserrat', sans-serif;
+    line-height: 1.6;
+}
+
+a { text-decoration: none; color: inherit; }
+ul { list-style: none; }
+.container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+/* 포인트 컬러 변수 */
+:root {
+    --hotpink: #ff69b4;
+    --darkblue: #00008b;
+    --dark-gray: #1a1a1a;
+}
+
+/* 1. 상단 영역 */
+header {
+    height: 90px;
+    background-color: rgba(0, 0, 0, 0.95);
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #222;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.header-inner {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo a {
+    font-size: 26px;
+    font-weight: 900;
+    letter-spacing: -1px;
+}
+
+.logo .pink { color: var(--hotpink); }
+.logo .blue { color: var(--darkblue); }
+
+.menu-list {
+    display: flex;
+    gap: 40px;
+}
+
+.menu-list li a {
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    transition: 0.3s;
+}
+
+.menu-list li a:hover {
+    color: var(--hotpink);
+}
+
+/* 히어로 배너 제거 (슬라이더로 대체) */
+.hero-banner {
+    display: none;
+}
+
+/* 메인 슬라이더 스타일 */
+.main-slider {
+    width: 100%;
+    height: 100vh; /* 화면의 85% 차지 */
+    overflow: hidden;
+}
+
+.swiper {
+    width: 100%;
+    height: 100%;
+}
+
+.swiper-slide {
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.slide-content {
+    z-index: 10;
+}
+
+.slide-content h2 {
+    font-size: 5rem;
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    letter-spacing: -2px;
+}
+
+.slide-content p {
+    font-size: 1.2rem;
+    margin-bottom: 35px;
+    font-weight: 400;
+    letter-spacing: 2px;
+}
+
+.btn-outline {
+    display: inline-block;
+    padding: 15px 40px;
+    border: 1px solid #fff;
+    color: #fff;
+    font-weight: 700;
+    font-size: 14px;
+    text-transform: uppercase;
+    transition: 0.3s;
+}
+
+.btn-outline:hover {
+    background-color: var(--hotpink);
+    border-color: var(--hotpink);
+}
+
+/* 스와이프 도트 커스텀 */
+.swiper-pagination-bullet {
+    background: #fff !important;
+    opacity: 0.5;
+}
+
+.swiper-pagination-bullet-active {
+    background: var(--hotpink) !important;
+    opacity: 1;
+    width: 30px;
+    border-radius: 5px;
+}
+
+/* 2. 메인 영역 - 카드 섹션 */
+.event-section { padding: 60px 0 100px; }
+
+.section-title {
+    font-size: 22px;
+    margin-bottom: 40px;
+    text-transform: uppercase;
+    border-left: 4px solid var(--hotpink);
+    padding-left: 15px;
+}
+
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.card {
+    background-color: var(--dark-gray);
+    border: 1px solid #333;
+    transition: 0.4s;
+    overflow: hidden;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    border-color: var(--hotpink);
+}
+
+.card-img {
+    height: 350px;
+    background-size: cover;
+    background-position: center;
+    filter: grayscale(80%);
+    transition: 0.5s;
+}
+
+.card:hover .card-img {
+    filter: grayscale(0%);
+}
+
+.card-body {
+    padding: 25px;
+}
+
+.badge {
+    display: inline-block;
+    font-size: 10px;
+    padding: 3px 8px;
+    background: #444;
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+.badge.pink { background: var(--hotpink); }
+.badge.blue { background: var(--darkblue); }
+
+.card h4 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.card p {
+    font-size: 14px;
+    color: #aaa;
+    margin-bottom: 20px;
+}
+
+.more-btn {
+    font-size: 12px;
+    font-weight: 900;
+    text-transform: uppercase;
+    color: var(--hotpink);
+    border-bottom: 2px solid var(--hotpink);
+    padding-bottom: 2px;
+}
+
+/* 3. 하단 영역 */
+footer {
+    background-color: #000;
+    padding: 80px 0;
+    border-top: 1px solid #222;
+}
+
+.footer-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.footer-logo {
+    font-size: 20px;
+    font-weight: 900;
+    color: #444; /* 하단 로고는 차분하게 처리 */
+}
+
+.company-info {
+    text-align: right;
+    font-size: 13px;
+    color: #666;
+}
+
+.company-info p { margin-bottom: 5px; }
+
+.copyright {
+    margin-top: 20px;
+    font-size: 11px;
+    color: #444;
+}
+
+/* 반응형 */
+@media (max-width: 900px) {
+    .main-slider { height: 60vh; }
+    .slide-content h2 { font-size: 2.5rem; }
+    .slide-content p { font-size: 1rem; }
+    .card-grid { grid-template-columns: 1fr; }
+    .footer-inner { flex-direction: column; gap: 40px; }
+    .company-info { text-align: left; }
+}
