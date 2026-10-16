@@ -53,7 +53,7 @@ a { text-decoration: none; color: inherit; }
 
 /* 상단영역 */
 header {
-    min-height: 80px;
+    height: 80px;
     background-color: var(--header-bg);
     border-bottom: 1px solid var(--border-color);
     position: sticky;
