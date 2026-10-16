@@ -1,4 +1,32 @@
-/* 기본 설정 */
+:root {
+    --bg-color: #000000;
+    --text-color: #ffffff;
+    --header-bg: rgba(0, 0, 0, 0.95);
+    --border-color: #222;
+    --card-bg: #111;
+    --card-text: #ccc;
+    --footer-bg: #111;
+    --btn-border: #fff;
+    --btn-text: #fff;
+    --btn-hover-bg: #fff;
+    --btn-hover-text: #000;
+}
+
+body.light-mode {
+    --bg-color: #ffffff;
+    --text-color: #111111;
+    --header-bg: rgba(255, 255, 255, 0.95);
+    --border-color: #ddd;
+    --card-bg: #f9f9f9;
+    --card-text: #444;
+    --footer-bg: #f1f1f1;
+    --btn-border: #111;
+    --btn-text: #111;
+    --btn-hover-bg: #111;
+    --btn-hover-text: #fff;
+}
+
+/* 기본 초기화 */
 * {
     margin: 0;
     padding: 0;
@@ -6,82 +34,157 @@
 }
 
 body {
-    background-color: #0a0a0a; /* 딥 블랙 */
-    color: #ffffff;
     font-family: 'Montserrat', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
     line-height: 1.6;
+    transition: background-color 0.3s, color 0.3s;
 }
 
-a { text-decoration: none; color: inherit; }
+
 ul { list-style: none; }
-.container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+a { text-decoration: none; color: inherit; }
 
-/* 포인트 컬러 변수 */
-:root {
-    --hotpink: #ff69b4;
-    --darkblue: #00008b;
-    --dark-gray: #1a1a1a;
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
 }
 
-/* 1. 상단 영역 */
+/* 상단영역 */
 header {
-    height: 90px;
-    background-color: rgba(0, 0, 0, 0.95);
-    display: flex;
-    align-items: center;
-    border-bottom: 1px solid #222;
+    min-height: 80px;
+    background-color: var(--header-bg);
+    border-bottom: 1px solid var(--border-color);
     position: sticky;
     top: 0;
     z-index: 1000;
+    isolation: isolate;
 }
 
+
 .header-inner {
-    width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    height: 100%;
 }
 
-.logo a {
-    font-size: 26px;
+.logo {
+    font-size: 1.8rem;
     font-weight: 900;
     letter-spacing: -1px;
 }
 
-.logo .pink { color: var(--hotpink); }
-.logo .blue { color: var(--darkblue); }
+.logo span {
+    color: #ff69b4; /* Hotpink */
+}
 
-.menu-list {
+.nav-menu {
+    display: grid;
+    grid-template-columns: repeat(4, 105px);
+    gap: 16px;
+}
+
+.nav-menu a {
+    font-weight: 500;
+    color: #aaa;
+    transition: color 0.2s;
+}
+
+.nav-menu a:hover,
+.nav-menu a:focus-visible {
+    color: #fff;
+}
+
+.primary-nav {
     display: flex;
-    gap: 40px;
+    align-items: center;
 }
 
-.menu-list li a {
-    font-size: 14px;
+.mega-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    background: #1a1a1a;
+    transition: max-height 0.35s ease-out, opacity 0.3s ease-out, visibility 0s linear 0.35s;
+}
+
+.mega-menu-inner {
+    display: grid;
+    grid-template-columns: repeat(4, 105px);
+    gap: 16px;
+    justify-content: end;
+    padding-top: 32px;
+    padding-right: 110px;
+    padding-bottom: 36px;
+}
+
+.mega-menu-column {
+    opacity: 0;
+    transform: translateY(-6px);
+    transition: opacity 0.25s ease-out, transform 0.25s ease-out;
+    transition-delay: 0s;
+}
+
+.mega-menu-column h2 {
+    margin-bottom: 12px;
+    font-size: 0.95rem;
     font-weight: 700;
-    text-transform: uppercase;
-    transition: 0.3s;
 }
 
-.menu-list li a:hover {
-    color: var(--hotpink);
+.mega-menu-column ul {
+    display: grid;
+    gap: 8px;
 }
 
-/* 히어로 배너 제거 (슬라이더로 대체) */
-.hero-banner {
+.mega-menu a {
+    color: #aaa;
+    transition: color 0.2s;
+}
+
+.mega-menu a:hover,
+.mega-menu a:focus-visible {
+    color: #fff;
+}
+
+.mobile-menu-toggle {
     display: none;
 }
 
-/* 메인 슬라이더 스타일 */
-.main-slider {
-    width: 100%;
-    height: 100vh; /* 화면의 85% 차지 */
-    overflow: hidden;
+@media (min-width: 769px) {
+    header:has(.nav-menu:hover) .mega-menu,
+    header:has(.mega-menu:hover) .mega-menu,
+    header:has(.nav-menu:focus-within) .mega-menu,
+    header:has(.mega-menu:focus-within) .mega-menu {
+        max-height: 320px;
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+        transition-delay: 0s;
+    }
+
+    header:has(.nav-menu:hover) .mega-menu-column,
+    header:has(.mega-menu:hover) .mega-menu-column,
+    header:has(.nav-menu:focus-within) .mega-menu-column,
+    header:has(.mega-menu:focus-within) .mega-menu-column {
+        opacity: 1;
+        transform: translateY(0);
+        transition-delay: 0.1s;
+    }
 }
 
-.swiper {
+/* 메인영역 */
+.main-banner {
     width: 100%;
-    height: 100%;
+    height: 80vh; /* 화면 높이의 80% */
+    background-color: #000;
 }
 
 .swiper-slide {
@@ -89,174 +192,315 @@ header {
     background-position: center;
     display: flex;
     align-items: center;
-    justify-content: center;
-    text-align: center;
+    padding-left: 10%;
 }
 
-.slide-content {
-    z-index: 10;
+.banner-content {
+    max-width: 600px;
 }
 
-.slide-content h2 {
-    font-size: 5rem;
-    font-weight: 900;
-    line-height: 1.1;
-    margin-bottom: 20px;
-    letter-spacing: -2px;
-}
-
-.slide-content p {
-    font-size: 1.2rem;
-    margin-bottom: 35px;
-    font-weight: 400;
+.banner-content .category {
+    font-size: 0.9rem;
+    font-weight: 700;
     letter-spacing: 2px;
+    display: block;
+    margin-bottom: 15px;
 }
 
-.btn-outline {
+.banner-content .category.blue { color: #00008b; }
+.banner-content .category.pink { color: #ff69b4; }
+
+.banner-content h2 {
+    font-size: 5rem;
+    line-height: 1.1;
+    font-weight: 900;
+    margin-bottom: 20px;
+}
+
+.banner-content h2 span {
+    color: #ff69b4;
+}
+
+.banner-content p {
+    font-size: 1.2rem;
+    color: var(--card-text);
+    margin-bottom: 40px;
+}
+
+.btn-shop {
     display: inline-block;
     padding: 15px 40px;
-    border: 1px solid #fff;
-    color: #fff;
+    border: 1px solid var(--btn-border);
+    color: var(--btn-text);
     font-weight: 700;
-    font-size: 14px;
-    text-transform: uppercase;
+    letter-spacing: 1px;
     transition: 0.3s;
 }
 
-.btn-outline:hover {
-    background-color: var(--hotpink);
-    border-color: var(--hotpink);
+.btn-shop:hover {
+    background-color: var(--btn-hover-bg);
+    color: var(--btn-hover-text);
 }
 
-/* 스와이프 도트 커스텀 */
+
+/* 스와이퍼 커스텀 */
 .swiper-pagination-bullet {
-    background: #fff !important;
+    background: #fff;
     opacity: 0.5;
 }
 
 .swiper-pagination-bullet-active {
-    background: var(--hotpink) !important;
+    background: #ff69b4 !important;
     opacity: 1;
-    width: 30px;
-    border-radius: 5px;
 }
 
-/* 2. 메인 영역 - 카드 섹션 */
-.event-section { padding: 60px 0 100px; }
+.hero {
 
-.section-title {
-    font-size: 22px;
-    margin-bottom: 40px;
-    text-transform: uppercase;
-    border-left: 4px solid var(--hotpink);
-    padding-left: 15px;
+    padding: 80px 0 40px;
+    text-align: center;
+}
+
+.hero h2 {
+    font-size: 3rem;
+    font-weight: 900;
+    margin-bottom: 10px;
+    background: linear-gradient(to right, #ff69b4, #00008b);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.event-section {
+    padding: 40px 0 100px;
 }
 
 .card-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, 1fr); /* 3단 구성 */
     gap: 30px;
 }
 
 .card {
-    background-color: var(--dark-gray);
-    border: 1px solid #333;
-    transition: 0.4s;
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
     overflow: hidden;
+    transition: transform 0.3s ease, border-color 0.3s;
 }
+
 
 .card:hover {
     transform: translateY(-10px);
-    border-color: var(--hotpink);
+    border-color: #ff69b4;
 }
 
 .card-img {
     height: 350px;
     background-size: cover;
     background-position: center;
-    filter: grayscale(80%);
-    transition: 0.5s;
-}
-
-.card:hover .card-img {
-    filter: grayscale(0%);
-}
-
-.card-body {
-    padding: 25px;
+    position: relative;
 }
 
 .badge {
-    display: inline-block;
-    font-size: 10px;
-    padding: 3px 8px;
-    background: #444;
-    margin-bottom: 15px;
-    font-weight: 700;
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    padding: 5px 12px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    border-radius: 20px;
 }
 
-.badge.pink { background: var(--hotpink); }
-.badge.blue { background: var(--darkblue); }
+.badge.pink { background-color: #ff69b4; color: white; }
+.badge.blue { background-color: #00008b; color: white; }
 
-.card h4 {
-    font-size: 18px;
+.card-content {
+    padding: 25px;
+}
+
+.card-content h3 {
+    font-size: 1.3rem;
     margin-bottom: 10px;
 }
 
-.card p {
-    font-size: 14px;
-    color: #aaa;
+.card-content p {
+    color: #888;
+    font-size: 0.95rem;
     margin-bottom: 20px;
 }
 
-.more-btn {
-    font-size: 12px;
-    font-weight: 900;
-    text-transform: uppercase;
-    color: var(--hotpink);
-    border-bottom: 2px solid var(--hotpink);
-    padding-bottom: 2px;
+.btn-more {
+    display: inline-block;
+    padding: 10px 20px;
+    border: 1px solid #00008b;
+    color: #00008b;
+    font-weight: bold;
+    transition: 0.3s;
 }
 
-/* 3. 하단 영역 */
-footer {
-    background-color: #000;
-    padding: 80px 0;
-    border-top: 1px solid #222;
+.btn-more:hover {
+    background-color: #00008b;
+    color: #fff;
 }
+
+/* 하단영역 */
+footer {
+    background-color: var(--footer-bg);
+    padding: 60px 0;
+    border-top: 2px solid #ff69b4;
+}
+
 
 .footer-inner {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
+    align-items: center;
 }
 
 .footer-logo {
-    font-size: 20px;
+    font-size: 1.5rem;
     font-weight: 900;
-    color: #444; /* 하단 로고는 차분하게 처리 */
 }
 
-.company-info {
+.footer-logo span { color: #ff69b4; }
+
+.footer-info {
     text-align: right;
-    font-size: 13px;
     color: #666;
+    font-size: 0.9rem;
 }
-
-.company-info p { margin-bottom: 5px; }
 
 .copyright {
-    margin-top: 20px;
-    font-size: 11px;
-    color: #444;
+    margin-top: 10px;
+    font-size: 0.8rem;
 }
 
-/* 반응형 */
-@media (max-width: 900px) {
-    .main-slider { height: 60vh; }
-    .slide-content h2 { font-size: 2.5rem; }
-    .slide-content p { font-size: 1rem; }
-    .card-grid { grid-template-columns: 1fr; }
-    .footer-inner { flex-direction: column; gap: 40px; }
-    .company-info { text-align: left; }
+/* 테마 토글 버튼 스타일 */
+.theme-toggle {
+    background: none;
+    border: 1px solid var(--text-color);
+    color: var(--text-color);
+    padding: 5px 12px;
+    cursor: pointer;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 700;
+    transition: 0.3s;
+    margin-left: 20px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.theme-toggle:hover {
+    background-color: var(--text-color);
+    color: var(--bg-color);
+}
+
+.theme-toggle i {
+    font-size: 1rem;
+}
+
+/* 반응형 모바일 */
+
+@media (max-width: 768px) {
+    .header-inner {
+        flex-direction: row;
+        gap: 12px;
+    }
+
+    .header-inner {
+        min-height: 80px;
+    }
+
+    .logo {
+        min-width: 0;
+        overflow: hidden;
+        font-size: 1rem;
+        text-align: left;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .primary-nav {
+        gap: 12px;
+    }
+
+    .nav-menu {
+        display: none;
+    }
+
+    .mobile-menu-toggle {
+        display: flex;
+        width: 40px;
+        height: 40px;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 5px;
+        border: 1px solid #666;
+        background: transparent;
+        cursor: pointer;
+    }
+
+    .mobile-menu-toggle span {
+        width: 18px;
+        height: 2px;
+        background: #fff;
+        transition: transform 0.2s, opacity 0.2s;
+    }
+
+    .mobile-menu-toggle[aria-expanded="true"] span:first-child {
+        transform: translateY(7px) rotate(45deg);
+    }
+
+    .mobile-menu-toggle[aria-expanded="true"] span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .mobile-menu-toggle[aria-expanded="true"] span:last-child {
+        transform: translateY(-7px) rotate(-45deg);
+    }
+
+    .theme-toggle {
+        margin-left: 0;
+    }
+
+    .mega-menu-inner {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 24px 16px;
+        padding: 24px 20px 28px;
+    }
+
+    header:has(.mobile-menu-toggle[aria-expanded="true"]) .mega-menu {
+        max-height: 75vh;
+        overflow-y: auto;
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+        transition-delay: 0s;
+    }
+
+    header:has(.mobile-menu-toggle[aria-expanded="true"]) .mega-menu-column {
+        opacity: 1;
+        transform: translateY(0);
+        transition-delay: 0.1s;
+    }
+
+    .main-banner {
+        height: 60vh;
+    }
+    .banner-content h2 {
+        font-size: 2.5rem;
+    }
+    .card-grid {
+
+        grid-template-columns: 1fr;
+    }
+    .footer-info { text-align: center; }
+    .footer-inner {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+    }
 }

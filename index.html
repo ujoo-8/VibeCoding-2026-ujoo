@@ -3,156 +3,251 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fashion 404 | Designer Portfolio</title>
-        <!-- Montserrat 폰트 적용 (세련된 고딕체) -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
-    <!-- Swiper CSS 추가 -->
+    <title>Fashion 404 | Designer Collection</title>
+        <link rel="stylesheet" href="style.css">
+    <!-- Swiper CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-    <link rel="stylesheet" href="style.css">
+    <!-- 구글 폰트 적용 (Montserrat) -->
+
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <!-- 1. 상단 영역 -->
+    <!-- 1. 상단영역 -->
     <header>
         <div class="container header-inner">
-                        <div class="logo">
-                <a href="#">FASHION <span class="pink">4</span><span class="blue">0</span><span class="pink">4</span></a>
-            </div>
-            <nav>
-                <ul class="menu-list">
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Show</a></li>
-                    <li><a href="#">Gallery</a></li>
-                    <li><a href="#">Community</a></li>
+            <h1 class="logo">GalleryGallery<span>404</span></h1>
+            <nav class="primary-nav" aria-label="Main navigation">
+                <ul class="nav-menu">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#show">Show</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#community">Community</a></li>
                 </ul>
+                <button class="mobile-menu-toggle" type="button" aria-label="Open menu" aria-controls="mega-menu" aria-expanded="false">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Dark/Light Mode">
+                    <span class="mode-text">LIGHT</span>
+                </button>
             </nav>
+        </div>
+        <div class="mega-menu" id="mega-menu" aria-label="Submenu">
+            <div class="container mega-menu-inner">
+                <section class="mega-menu-column">
+                    <h2><a href="#home">Home</a></h2>
+                    <ul>
+                        <li><a href="#home">Latest Stories</a></li>
+                        <li><a href="#home">Featured Picks</a></li>
+                        <li><a href="#home">About Fashion 404</a></li>
+                    </ul>
+                </section>
+                <section class="mega-menu-column">
+                    <h2><a href="#show">Show</a></h2>
+                    <ul>
+                        <li><a href="#show">Runway Schedule</a></li>
+                        <li><a href="#show">Designer Lineup</a></li>
+                        <li><a href="#show">Watch the Show</a></li>
+                    </ul>
+                </section>
+                <section class="mega-menu-column">
+                    <h2><a href="#gallery">Gallery</a></h2>
+                    <ul>
+                        <li><a href="#gallery">Photo Archive</a></li>
+                        <li><a href="#gallery">Street Style</a></li>
+                        <li><a href="#gallery">Behind the Scenes</a></li>
+                    </ul>
+                </section>
+                <section class="mega-menu-column">
+                    <h2><a href="#community">Community</a></h2>
+                    <ul>
+                        <li><a href="#community">Member Stories</a></li>
+                        <li><a href="#community">Events & Meetups</a></li>
+                        <li><a href="#community">Join the Community</a></li>
+                    </ul>
+                </section>
+            </div>
         </div>
     </header>
 
-        <!-- 2. 메인 영역 -->
+        <!-- 2. 메인영역 -->
     <main>
-        <!-- 메인 슬라이드 배너 -->
-        <section class="main-slider">
-            <div class="swiper mySwiper">
-                <div class="swiper-wrapper">
-                    <!-- 슬라이드 1 -->
-                    <div class="swiper-slide" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=1600&q=80');">
-                        <div class="slide-content">
-                            <h2>UNIDENTIFIED <br><span class="pink">FUTURE</span></h2>
-                            <p>규정되지 않은 미래, Fashion 404의 새로운 시각</p>
-                            <a href="#" class="btn-outline">View Collection</a>
-                        </div>
-                    </div>
-                    <!-- 슬라이드 2 -->
-                    <div class="swiper-slide" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=1600&q=80');">
-                        <div class="slide-content">
-                            <h2>GLITCH IN <br><span class="blue">REALITY</span></h2>
-                            <p>현실의 균열 속에서 발견한 진정한 아름다움</p>
-                            <a href="#" class="btn-outline">Show Room</a>
-                        </div>
-                    </div>
-                    <!-- 슬라이드 3 -->
-                    <div class="swiper-slide" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=1600&q=80');">
-                        <div class="slide-content">
-                            <h2>ERROR <span class="pink">4</span><span class="blue">0</span><span class="pink">4</span>: <br>STYLE FOUND</h2>
-                            <p>창의적인 오류가 빚어낸 독보적인 실루엣</p>
-                            <a href="#" class="btn-outline">Shop Now</a>
-                        </div>
+        <!-- 메인 배너 슬라이더 -->
+        <section class="main-banner swiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://picsum.photos/id/445/1920/1080');">
+                    <div class="banner-content">
+                        <span class="category blue">2024 WINTER EDITORIAL</span>
+                        <h2>ELEGANCE IN <br><span>404 ERROR</span></h2>
+                        <p>정의되지 않은 아름다움, 시스템 너머의 패션을 제안합니다.</p>
+                        <a href="#" class="btn-shop">DISCOVER MORE</a>
                     </div>
                 </div>
-                <!-- 페이지 네이션 -->
-                <div class="swiper-pagination"></div>
+                <div class="swiper-slide" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://picsum.photos/id/625/1920/1080');">
+                    <div class="banner-content">
+                        <span class="category pink">NEW ARRIVAL</span>
+                        <h2>NEON <br><span>PULSE</span></h2>
+                        <p>어둠 속에서 더욱 빛나는 핫핑크의 강렬한 에너지.</p>
+                        <a href="#" class="btn-shop">VIEW COLLECTION</a>
+                    </div>
+                </div>
+                <div class="swiper-slide" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://picsum.photos/id/658/1920/1080');">
+                    <div class="banner-content">
+                        <span class="category blue">EXCLUSIVE</span>
+                        <h2>URBAN <br><span>REDEFINED</span></h2>
+                        <p>도심의 소음을 실루엣으로 승화시킨 다크블루 시리즈.</p>
+                        <a href="#" class="btn-shop">GET TICKETS</a>
+                    </div>
+                </div>
+            </div>
+            <!-- 페이지네이션 -->
+            <div class="swiper-pagination"></div>
+        </section>
+
+        <section class="hero">
+
+            <div class="container">
+                <h2>NEW COLLECTION EVENT</h2>
+                <p>익숙함 속의 낯섦, Fashion 404의 새로운 시즌을 만나보세요.</p>
             </div>
         </section>
 
         <section class="event-section container">
-            <h3 class="section-title">New Events</h3>
             <div class="card-grid">
                 <!-- 카드 1 -->
                 <div class="card">
-                    <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=800&q=80');"></div>
-                    <div class="card-body">
-                        <span class="badge blue">2024 SHOW</span>
-                        <h4>The Neon Silence</h4>
-                        <p>도시의 어둠 속에서 빛나는 현대적 실루엣을 경험하세요.</p>
-                        <a href="#" class="more-btn">Explore</a>
+                    <div class="card-img" style="background-image: url('https://picsum.photos/id/157/800/1000');">
+                        <div class="badge pink">HOT</div>
+                    </div>
+                    <div class="card-content">
+                        <h3>2024 S/S Limited Edition</h3>
+                        <p>한정 수량으로 제작된 디자이너 시그니처 라인업</p>
+                        <a href="#" class="btn-more">View Detail</a>
                     </div>
                 </div>
                 <!-- 카드 2 -->
                 <div class="card">
-                    <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=800&q=80');"></div>
-                    <div class="card-body">
-                        <span class="badge pink">NEW ARRIVAL</span>
-                        <h4>Pink Glitch Line</h4>
-                        <p>에러 메시지에서 영감을 받은 Fashion 404의 시그니처 라인업.</p>
-                        <a href="#" class="more-btn">Explore</a>
+                    <div class="card-img" style="background-image: url('https://picsum.photos/id/158/800/1000');">
+                        <div class="badge blue">NEW</div>
+                    </div>
+                    <div class="card-content">
+                        <h3>Midnight Blue Show</h3>
+                        <p>다크블루 톤으로 재해석된 도시의 밤</p>
+                        <a href="#" class="btn-more">View Detail</a>
                     </div>
                 </div>
                 <!-- 카드 3 -->
                 <div class="card">
-                    <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1558769132-cb1aea458c5e?auto=format&fit=crop&w=800&q=80');"></div>
-                    <div class="card-body">
-                        <span class="badge">COLLAB</span>
-                        <h4>Artist 'X' Collab</h4>
-                        <p>디지털 미디어 아티스트와의 특별한 협업 갤러리 공개.</p>
-                        <a href="#" class="more-btn">Explore</a>
+                    <div class="card-img" style="background-image: url('https://picsum.photos/id/454/800/1000');">
+                        <div class="badge pink">EVENT</div>
+                    </div>
+                    <div class="card-content">
+                        <h3>Fashion 404 Community</h3>
+                        <p>팬들과 함께 소통하는 커뮤니티 런칭 이벤트</p>
+                        <a href="#" class="btn-more">Join Us</a>
                     </div>
                 </div>
             </div>
         </section>
     </main>
 
-    <!-- 3. 하단 영역 -->
+    <!-- 3. 하단영역 -->
     <footer>
         <div class="container footer-inner">
-            <div class="footer-logo">FASHION 404</div>
-            <div class="company-info">
-                <p>Designer. Kim 404 | Business License. 123-45-67890</p>
-                <p>Address. 404 Fashion St, Gangnam-gu, Seoul, Korea</p>
-                <p>Email. contact@fashion404.com</p>
+            <div class="footer-logo">Fashion <span>404</span></div>
+            <div class="footer-info">
+                <p>CEO. Fashion Designer Name | Email: info@fashion404.com</p>
+                <p>Address: 123 Fashion St, Seoul, Republic of Korea</p>
                 <p class="copyright">&copy; 2024 Fashion 404. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
-    <!-- Swiper JS 라이브러리 -->
+        <!-- Swiper JS -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    
     <script>
-        let autoPlayTimer;
-        
-        const swiper = new Swiper(".mySwiper", {
+        // 다크모드/라이트모드 토글 기능
+        const themeToggle = document.getElementById('theme-toggle');
+        const modeText = themeToggle.querySelector('.mode-text');
+        const body = document.body;
+        const menuToggle = document.querySelector('.mobile-menu-toggle');
+
+        menuToggle.addEventListener('click', () => {
+            const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
+            menuToggle.setAttribute('aria-expanded', String(!isExpanded));
+            menuToggle.setAttribute('aria-label', isExpanded ? 'Open menu' : 'Close menu');
+        });
+
+        document.addEventListener('click', (event) => {
+            if (!event.target.closest('header')) {
+                menuToggle.setAttribute('aria-expanded', 'false');
+                menuToggle.setAttribute('aria-label', 'Open menu');
+            }
+        });
+
+        document.querySelectorAll('.mega-menu a').forEach((link) => {
+            link.addEventListener('click', () => {
+                menuToggle.setAttribute('aria-expanded', 'false');
+                menuToggle.setAttribute('aria-label', 'Open menu');
+            });
+        });
+
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape') {
+                menuToggle.setAttribute('aria-expanded', 'false');
+                menuToggle.setAttribute('aria-label', 'Open menu');
+            }
+        });
+
+        // 로컬 스토리지에서 이전 설정 불러오기
+        const currentTheme = localStorage.getItem('theme');
+        if (currentTheme === 'light') {
+            body.classList.add('light-mode');
+            modeText.textContent = 'DARK';
+        }
+
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('light-mode');
+            
+            let theme = 'dark';
+            if (body.classList.contains('light-mode')) {
+                theme = 'light';
+                modeText.textContent = 'DARK';
+            } else {
+                modeText.textContent = 'LIGHT';
+            }
+            // 사용자 설정 저장
+            localStorage.setItem('theme', theme);
+        });
+
+        const swiper = new Swiper('.main-banner', {
+
             loop: true,
             speed: 1000,
             autoplay: {
                 delay: 3000,
-                disableOnInteraction: true, // 유저 조작 시 정지
+                disableOnInteraction: true, // 사용자 조작 시 멈춤
             },
             pagination: {
-                el: ".swiper-pagination",
+                el: '.swiper-pagination',
                 clickable: true,
             },
             on: {
-                // 유저의 터치/스와이프가 끝났을 때
+                // 사용자가 터치/스와이프를 끝냈을 때 실행
                 touchEnd: function() {
-                    resumeAutoplay();
-                },
-                // 유저가 페이지네이션 등을 클릭하여 슬라이드가 바뀌었을 때
-                slideChange: function() {
-                    resumeAutoplay();
+                    const self = this;
+                    // 5초 후 다시 자동재생 시작 (이미 실행 중이지 않을 때만)
+                    setTimeout(() => {
+                        if (!self.autoplay.running) {
+                            self.autoplay.start();
+                        }
+                    }, 5000);
                 }
             }
         });
-
-        // 5초 후 자동 재생을 재개하는 함수
-        function resumeAutoplay() {
-            clearTimeout(autoPlayTimer);
-            autoPlayTimer = setTimeout(() => {
-                if (!swiper.autoplay.running) {
-                    swiper.autoplay.start();
-                }
-            }, 5000); // 5초 대기
-        }
     </script>
 </body>
+
 </html>
