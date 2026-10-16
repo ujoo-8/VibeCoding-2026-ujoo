@@ -273,6 +273,101 @@ header {
     padding: 40px 0 100px;
 }
 
+.world-fashion-section {
+    padding: 56px 0 72px;
+    overflow: hidden;
+    background: var(--footer-bg);
+}
+
+.world-fashion-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    padding: 0 24px 24px;
+}
+
+.world-fashion-heading h2 {
+    font-size: 2rem;
+    font-weight: 900;
+}
+
+.world-fashion-controls {
+    display: flex;
+    gap: 10px;
+}
+
+.world-fashion-controls button {
+    width: 42px;
+    height: 42px;
+    border: 1px solid #666;
+    border-radius: 50%;
+    background: transparent;
+    color: var(--text-color);
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: color 0.2s, background-color 0.2s, border-color 0.2s;
+}
+
+.world-fashion-controls button:hover {
+    border-color: #ff69b4;
+    background: #ff69b4;
+    color: #fff;
+}
+
+.world-fashion-swiper {
+    padding: 12px 0 24px;
+}
+
+.world-fashion-swiper .swiper-slide {
+    display: flex;
+    height: auto;
+    align-items: stretch;
+    padding-left: 0;
+}
+
+.world-fashion-card {
+    width: 100%;
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    background: var(--card-bg);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.22);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.world-fashion-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 14px 30px rgba(0, 0, 0, 0.32);
+}
+
+.world-fashion-card img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+}
+
+.world-fashion-card-content {
+    padding: 20px;
+}
+
+.world-fashion-card-content h3 {
+    margin-bottom: 8px;
+    font-size: 1.15rem;
+}
+
+.world-fashion-card-content p {
+    margin-bottom: 12px;
+    color: var(--card-text);
+}
+
+.world-fashion-card-content span {
+    color: #ff69b4;
+    font-size: 0.9rem;
+    font-weight: 700;
+}
+
 .card-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr); /* 3단 구성 */
@@ -502,5 +597,14 @@ footer {
         flex-direction: column;
         gap: 20px;
         text-align: center;
+    }
+
+    .world-fashion-heading {
+        padding-right: 20px;
+        padding-left: 20px;
+    }
+
+    .world-fashion-heading h2 {
+        font-size: 1.5rem;
     }
 }
