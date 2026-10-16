@@ -29,15 +29,20 @@
                     <span></span>
                     <span></span>
                 </button>
-                <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Dark/Light Mode">
-                    <span class="mode-text">LIGHT</span>
+                <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Switch to light mode" title="Switch to light mode">
+                    <svg class="theme-icon theme-icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true">
+                        <circle cx="12" cy="12" r="4"></circle>
+                        <path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"></path>
+                    </svg>
+                    <svg class="theme-icon theme-icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M20.4 15.5A8.5 8.5 0 0 1 8.5 3.6 8.5 8.5 0 1 0 20.4 15.5Z"></path>
+                    </svg>
                 </button>
             </nav>
         </div>
         <div class="mega-menu" id="mega-menu" aria-label="Submenu">
             <div class="container mega-menu-inner">
                 <section class="mega-menu-column">
-                    <h2><a href="#home">Home</a></h2>
                     <ul>
                         <li><a href="#home">Latest Stories</a></li>
                         <li><a href="#home">Featured Picks</a></li>
@@ -45,7 +50,6 @@
                     </ul>
                 </section>
                 <section class="mega-menu-column">
-                    <h2><a href="#show">Show</a></h2>
                     <ul>
                         <li><a href="#show">Runway Schedule</a></li>
                         <li><a href="#show">Designer Lineup</a></li>
@@ -53,7 +57,6 @@
                     </ul>
                 </section>
                 <section class="mega-menu-column">
-                    <h2><a href="#gallery">Gallery</a></h2>
                     <ul>
                         <li><a href="#gallery">Photo Archive</a></li>
                         <li><a href="#gallery">Street Style</a></li>
@@ -61,7 +64,6 @@
                     </ul>
                 </section>
                 <section class="mega-menu-column">
-                    <h2><a href="#community">Community</a></h2>
                     <ul>
                         <li><a href="#community">Member Stories</a></li>
                         <li><a href="#community">Events & Meetups</a></li>
@@ -153,15 +155,22 @@
         </section>
 
         <section class="world-fashion-section" aria-labelledby="world-fashion-title">
-            <div class="world-fashion-heading">
-                <h2 id="world-fashion-title">세계의 패션쇼</h2>
+            <div class="world-fashion-container">
+                <div class="world-fashion-heading">
+                    <div class="world-fashion-copy">
+                        <h2 id="world-fashion-title">세계의 패션쇼</h2>
+                        <p>뉴욕부터 상하이까지, 런웨이를 빛내는 세계 주요 패션위크를 만나보세요.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="world-fashion-slider">
                 <div class="world-fashion-controls" aria-label="패션쇼 슬라이더 탐색">
                     <button class="world-fashion-prev" type="button" aria-label="이전 패션쇼">&#8592;</button>
                     <button class="world-fashion-next" type="button" aria-label="다음 패션쇼">&#8594;</button>
                 </div>
-            </div>
-            <div class="swiper world-fashion-swiper">
-                <div class="swiper-wrapper" id="world-fashion-slides"></div>
+                <div class="swiper world-fashion-swiper">
+                    <div class="swiper-wrapper" id="world-fashion-slides"></div>
+                </div>
             </div>
         </section>
     </main>
@@ -183,7 +192,6 @@
     <script>
         // 다크모드/라이트모드 토글 기능
         const themeToggle = document.getElementById('theme-toggle');
-        const modeText = themeToggle.querySelector('.mode-text');
         const body = document.body;
         const menuToggle = document.querySelector('.mobile-menu-toggle');
 
@@ -218,19 +226,16 @@
         const currentTheme = localStorage.getItem('theme');
         if (currentTheme === 'light') {
             body.classList.add('light-mode');
-            modeText.textContent = 'DARK';
+            themeToggle.setAttribute('aria-label', 'Switch to dark mode');
+            themeToggle.title = 'Switch to dark mode';
         }
 
         themeToggle.addEventListener('click', () => {
-            body.classList.toggle('light-mode');
-            
-            let theme = 'dark';
-            if (body.classList.contains('light-mode')) {
-                theme = 'light';
-                modeText.textContent = 'DARK';
-            } else {
-                modeText.textContent = 'LIGHT';
-            }
+            const isLightMode = body.classList.toggle('light-mode');
+            const theme = isLightMode ? 'light' : 'dark';
+            const nextThemeLabel = isLightMode ? 'Switch to dark mode' : 'Switch to light mode';
+            themeToggle.setAttribute('aria-label', nextThemeLabel);
+            themeToggle.title = nextThemeLabel;
             // 사용자 설정 저장
             localStorage.setItem('theme', theme);
         });

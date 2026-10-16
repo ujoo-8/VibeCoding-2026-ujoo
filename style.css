@@ -82,11 +82,13 @@ header {
 
 .nav-menu {
     display: grid;
-    grid-template-columns: repeat(4, 105px);
+    grid-template-columns: repeat(4, 145px);
     gap: 16px;
 }
 
 .nav-menu a {
+    display: block;
+    padding: 0 20px;
     font-weight: 500;
     color: #aaa;
     transition: color 0.2s;
@@ -112,13 +114,13 @@ header {
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
-    background: #1a1a1a;
+    background: var(--header-bg);
     transition: max-height 0.35s ease-out, opacity 0.3s ease-out, visibility 0s linear 0.35s;
 }
 
 .mega-menu-inner {
     display: grid;
-    grid-template-columns: repeat(4, 105px);
+    grid-template-columns: repeat(4, 145px);
     gap: 16px;
     justify-content: end;
     padding-top: 32px;
@@ -256,67 +258,92 @@ header {
 
 .hero {
 
-    padding: 80px 0 40px;
+    padding: 100px 0 0;
     text-align: center;
 }
 
-.hero h2 {
+.hero h2,
+.world-fashion-heading h2 {
     font-size: 3rem;
     font-weight: 900;
     margin-bottom: 10px;
     background: linear-gradient(to right, #ff69b4, #00008b);
+    background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
 .event-section {
-    padding: 40px 0 100px;
+    padding: 60px 0 100px;
 }
 
 .world-fashion-section {
-    padding: 56px 0 72px;
+    padding: 100px 0;
     overflow: hidden;
     background: var(--footer-bg);
 }
 
-.world-fashion-heading {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 20px;
-    padding: 0 24px 24px;
+.world-fashion-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 16px;
 }
 
-.world-fashion-heading h2 {
-    font-size: 2rem;
-    font-weight: 900;
+.world-fashion-heading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding: 0 0 40px;
+    text-align: center;
+}
+
+.world-fashion-copy p {
+    margin-top: 6px;
+    color: var(--card-text);
+    font-size: 0.95rem;
+}
+
+.world-fashion-slider {
+    position: relative;
 }
 
 .world-fashion-controls {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 10;
     display: flex;
-    gap: 10px;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1200px;
+    padding: 0 16px;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
 }
 
 .world-fashion-controls button {
-    width: 42px;
-    height: 42px;
-    border: 1px solid #666;
+    width: 44px;
+    height: 44px;
+    border: 1px solid rgba(255, 255, 255, 0.55);
     border-radius: 50%;
-    background: transparent;
-    color: var(--text-color);
+    background: rgba(255, 255, 255, 0.78);
+    color: #111;
     font-size: 1.1rem;
     cursor: pointer;
-    transition: color 0.2s, background-color 0.2s, border-color 0.2s;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.2s, border-color 0.2s;
+    pointer-events: auto;
 }
 
 .world-fashion-controls button:hover {
-    border-color: #ff69b4;
-    background: #ff69b4;
-    color: #fff;
+    border-color: #fff;
+    background: #fff;
 }
 
 .world-fashion-swiper {
-    padding: 12px 0 24px;
+    padding: 16px 0 28px;
 }
 
 .world-fashion-swiper .swiper-slide {
@@ -481,10 +508,10 @@ footer {
     font-weight: 700;
     transition: 0.3s;
     margin-left: 20px;
-    border-radius: 20px;
+    border-radius: 50%;
     display: flex;
     align-items: center;
-    gap: 5px;
+    justify-content: center;
 }
 
 .theme-toggle:hover {
@@ -492,11 +519,36 @@ footer {
     color: var(--bg-color);
 }
 
-.theme-toggle i {
-    font-size: 1rem;
+.theme-icon {
+    width: 20px;
+    height: 20px;
+}
+
+.theme-icon-moon {
+    display: none;
+}
+
+body.light-mode .theme-icon-sun {
+    display: none;
+}
+
+body.light-mode .theme-icon-moon {
+    display: block;
 }
 
 /* 반응형 모바일 */
+
+@media (min-width: 769px) and (max-width: 999px) {
+    .nav-menu,
+    .mega-menu-inner {
+        grid-template-columns: repeat(4, 105px);
+        gap: 16px;
+    }
+
+    .nav-menu a {
+        padding: 0 8px;
+    }
+}
 
 @media (max-width: 768px) {
     .header-inner {
@@ -600,11 +652,6 @@ footer {
     }
 
     .world-fashion-heading {
-        padding-right: 20px;
-        padding-left: 20px;
-    }
-
-    .world-fashion-heading h2 {
-        font-size: 1.5rem;
+        padding-bottom: 40px;
     }
 }
