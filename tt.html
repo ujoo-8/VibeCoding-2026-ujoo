@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fashion 404 | Portfolio</title>
+    <style>
+        /* --- 기본 설정 --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Pretendard', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: #0a0a0a;
+            color: #ffffff;
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: 0.3s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* --- 상단 영역 (Header) --- */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            background-color: rgba(0, 0, 0, 0.9);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid #222;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
+
+        .logo span.brand {
+            color: #fff;
+        }
+
+        .logo span.num {
+            background: linear-gradient(45deg, #FF69B4, #00008B);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-style: italic;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-menu a {
+            font-size: 15px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #bbb;
+        }
+
+        .nav-menu a:hover {
+            color: #FF69B4;
+        }
+
+        /* --- 메인 영역 (Main) --- */
+        .main-content {
+            padding: 80px 50px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 32px;
+            margin-bottom: 50px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        .section-title span {
+            color: #FF69B4;
+        }
+
+        /* 가로 3단 카드 구성 */
+        .event-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .card {
+            background-color: #151515;
+            border: 1px solid #222;
+            border-radius: 15px;
+            overflow: hidden;
+            transition: transform 0.3s, border-color 0.3s;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            border-color: #00008B;
+            box-shadow: 0 10px 30px rgba(0, 0, 139, 0.3);
+        }
+
+        .card-img {
+            width: 100%;
+            height: 300px;
+            background-color: #222;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            color: #444;
+            overflow: hidden;
+        }
+
+        /* 카드 이미지 대체용 색상 */
+        .card:nth-child(1) .card-img { background: linear-gradient(135deg, #1a1a1a, #00008B); }
+        .card:nth-child(2) .card-img { background: linear-gradient(135deg, #1a1a1a, #FF69B4); }
+        .card:nth-child(3) .card-img { background: linear-gradient(135deg, #1a1a1a, #333); }
+
+        .card-info {
+            padding: 25px;
+        }
+
+        .card-info h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+
+        .card-info p {
+            font-size: 14px;
+            color: #888;
+            margin-bottom: 20px;
+        }
+
+        .btn-more {
+            display: inline-block;
+            padding: 8px 20px;
+            border: 1px solid #FF69B4;
+            color: #FF69B4;
+            font-size: 12px;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+
+        .btn-more:hover {
+            background-color: #FF69B4;
+            color: #fff;
+        }
+
+        /* --- 하단 영역 (Footer) --- */
+        footer {
+            background-color: #050505;
+            padding: 60px 50px;
+            border-top: 1px solid #222;
+            text-align: center;
+        }
+
+        .footer-logo {
+            font-size: 20px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .footer-logo span.num {
+            color: #00008B;
+        }
+
+        .company-info {
+            font-size: 13px;
+            color: #666;
+            line-height: 2;
+        }
+
+        .copyright {
+            margin-top: 20px;
+            font-size: 12px;
+            color: #444;
+        }
+
+        /* 반응형 처리 */
+        @media (max-width: 992px) {
+            .event-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            header {
+                flex-direction: column;
+                gap: 20px;
+                padding: 20px;
+            }
+            .event-grid {
+                grid-template-columns: 1fr;
+            }
+            .main-content {
+                padding: 50px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 1. 상단 영역 -->
+    <header>
+        <div class="logo">
+            <span class="brand">FASHION</span> <span class="num">404</span>
+        </div>
+        <nav>
+            <ul class="nav-menu">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Show</a></li>
+                <li><a href="#">Gallery</a></li>
+                <li><a href="#">Community</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- 2. 메인 영역 -->
+    <main class="main-content">
+        <h2 class="section-title">Latest <span>Collection</span></h2>
+        
+        <div class="event-grid">
+            <!-- 카드 1 -->
+            <div class="card">
+                <div class="card-img">IMAGE 01</div>
+                <div class="card-info">
+                    <h3>Urban Glitch</h3>
+                    <p>도시의 불규칙함과 디지털 오류를 재해석한 2024 S/S 컬렉션입니다.</p>
+                    <a href="#" class="btn-more">VIEW MORE</a>
+                </div>
+            </div>
+            <!-- 카드 2 -->
+            <div class="card">
+                <div class="card-img">IMAGE 02</div>
+                <div class="card-info">
+                    <h3>Neo-Noir</h3>
+                    <p>다크 블루 톤의 깊이감과 핫핑크의 강렬한 대비가 돋보이는 라인입니다.</p>
+                    <a href="#" class="btn-more">VIEW MORE</a>
+                </div>
+            </div>
+            <!-- 카드 3 -->
+            <div class="card">
+                <div class="card-img">IMAGE 03</div>
+                <div class="card-info">
+                    <h3>Minimal 404</h3>
+                    <p>불필요한 요소를 모두 제거한 극강의 미니멀리즘 패션 작품입니다.</p>
+                    <a href="#" class="btn-more">VIEW MORE</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- 3. 하단 영역 -->
+    <footer>
+        <div class="footer-logo">
+            FASHION <span class="num">404</span>
+        </div>
+        <div class="company-info">
+            <p>Designer. Kim Fashion | Seoul, Korea</p>
+            <p>Email: contact@fashion404.com | Tel: 02-123-4567</p>
+            <p>Address: 서울특별시 강남구 패션거리 404번길</p>
+        </div>
+        <p class="copyright">&copy; 2024 Fashion 404. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>
