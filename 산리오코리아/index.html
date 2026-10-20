@@ -11,13 +11,36 @@
       @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Nanum+Gothic&display=swap");
       @import url('https://cdn.jsdelivr.net/font-nanum/1.0/nanumbarungothic/nanumbarungothic.css');
 
-      html,body {
+      /* 프롬프트 : html,body, h1 등 margin, padding 초기화가 필요한 모든 요소를 초기화하는 셋팅을해. */
+      /* 공통요소 초기화 기본 리셋 - html, body, h1 등 margin, padding을 모두 초기화 */
+      html, body, div, span, applet, object, iframe,
+      h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+      a, abbr, acronym, address, big, cite, code,
+      del, dfn, em, img, ins, kbd, q, s, samp,
+      small, strike, strong, sub, sup, tt, var,
+      b, u, i, center,
+      dl, dt, dd, ol, ul, li,
+      fieldset, form, label, legend,
+      table, caption, tbody, tfoot, thead, tr, th, td,
+      article, aside, canvas, details, embed,
+      figure, figcaption, footer, header, hgroup,
+      main, menu, nav, output, ruby, section, summary,
+      time, mark, audio, video {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html {
+        /* rem단위를 위한 Root 글자 크기 설정 */
+        font-size: 10px; /* 왜 10px인가? rem단위에 계산이 용이함! */
+      }
+      html, body {
         font-family: "Montserrat", 'NanumBarunGothic', "Nanum Gothic", sans-serif;
         font-optical-sizing: auto;
         font-weight: 400;
         font-style: normal;
-        padding: 0;
-        margin: 0;
+        width: 100%;
+        height: 100%;
       }
       p {
         font-family: 'NanumBarunGothic';
@@ -27,12 +50,12 @@
         padding: 0;
         vertical-align: middle;
       }
+ 
 
       .header-inner {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        min-height: 100px;
         padding: 20px 50px;
       }
 
@@ -54,21 +77,20 @@
 
       .header-menu a {
         display: inline-block;
-        font-size: 1.08rem;
+        font-size: 1.6rem;
         font-weight: 500;
         color: #2b2b2b;
         text-decoration: none;
         padding: 8px 10px;
-        border-radius: 3px;
-        transition:
-          background 0.18s,
-          color 0.18s;
+        text-transform: uppercase; /* 대문자 변환 */
+        /* border-radius: 3px;
+        transition: background 0.18s, color 0.18s; */
       }
 
-      .header-menu a:hover {
+      /* .header-menu a:hover {
         background: #faf1fb;
         color: #f06292;
-      }
+      } */
 
       .banner-area {
         padding: 100px;
@@ -125,10 +147,10 @@
           <!-- 메뉴 리스트 -->
           <nav class="header-menu">
             <ul>
-              <li><a href="#company">COMPANY</a></li>
-              <li><a href="#character">CHARACTER</a></li>
-              <li><a href="#place">PLACE</a></li>
-              <li><a href="#recruit">RECRUIT</a></li>
+              <li><a href="#company">company</a></li>
+              <li><a href="#character">character</a></li>
+              <li><a href="#place">place</a></li>
+              <li><a href="#recruit">recruit</a></li>
             </ul>
           </nav>
         </div>
@@ -147,9 +169,6 @@
           </div>
           <!-- SNS이동버튼 -->
           <div class="sns">
-            <a href="https://www.instagram.com/sanrio_kr/" target="_blank"
-              ><img src="./images/i_ins_pc_v3.png" alt="instargram"
-            /></a>
             <a href="https://www.instagram.com/sanrio_kr/" target="_blank"
               ><img src="./images/i_ins_pc_v3.png" alt="instargram"
             /></a>
