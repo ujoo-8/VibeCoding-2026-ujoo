@@ -1,148 +1,199 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>산리오 코리아</title>
     <!-- 1. 상단영역 -->
-     <!-- 인터널 스타일 시트(internal style sheet) -->
-     <style>
-        .header-area {
-            background: #fff;
-            /* border-bottom: 1px solid #ececec; */
-            padding: 0;
-        }
-        .header-inner {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            /* max-width: 1440px; */
-            height: 100%;
-            margin: 20px 40px;
-        }
-        .header-logo img {
-            height: 52px;
-            width: auto;
-            vertical-align: middle;
-        }
-        .header-menu ul {
-            display: flex;
-            gap: 36px;
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
-        }
-        .header-menu a {
-            display: inline-block;
-            font-size: 1.08rem;
-            font-weight: 700;
-            color: #2b2b2b;
-            text-decoration: none;
-            padding: 8px 10px;
-            border-radius: 3px;
-            transition: background 0.18s, color 0.18s;
-        }
-        .header-menu a:hover {
-            background: #faf1fb;
-            color: #f06292;
-        }
-        .banner-area {
-            padding: 100px;
-            background: url('./images/main_visual_bg.jpg') repeat 0 0 / 50px;
-        }
-        .main-visual-box {
-            text-align: center;
-        }.main-visual-img {
-            opacity: 0;
-            transform: translateY(-60px);
-            transition: opacity 0.9s cubic-bezier(.38,1.02,.38,1.06), transform 0.9s cubic-bezier(.38,1.02,.38,1.06);
-            max-width: 100%;
-            width: 984px;
-        }
-        .main-visual-img.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        .banner-area {
-            position: relative;
-        }
-        .sns {
-            display: flex;
-            flex-direction: column;
-            position: absolute;
-            right: 50px;
-            top: 150px;
-        }
+    <!-- 인터널 스타일 시트(internal style sheet) -->
+    <style>
+      /* CDN은 Content Delivery Networt 즉, 네트워크망으로 콘텐트를 배달 시켜 쓰는 방식 */
+
+      @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Nanum+Gothic&display=swap");
+      @import url('https://cdn.jsdelivr.net/font-nanum/1.0/nanumbarungothic/nanumbarungothic.css');
+
+      html,body {
+        font-family: "Montserrat", 'NanumBarunGothic', "Nanum Gothic", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: 400;
+        font-style: normal;
+        padding: 0;
+        margin: 0;
+      }
+      p {
+        font-family: 'NanumBarunGothic';
+      }
+      .header-area {
+        background: #fff;
+        padding: 0;
+        vertical-align: middle;
+      }
+
+      .header-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        min-height: 100px;
+        padding: 20px 50px;
+      }
+
+      .header-logo {
+        width: 180px;
+      }
+      .header-logo img {
+        height: 52px;
+        width: 100%;
+      }
+
+      .header-menu ul {
+        display: flex;
+        gap: 36px;
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      .header-menu a {
+        display: inline-block;
+        font-size: 1.08rem;
+        font-weight: 500;
+        color: #2b2b2b;
+        text-decoration: none;
+        padding: 8px 10px;
+        border-radius: 3px;
+        transition:
+          background 0.18s,
+          color 0.18s;
+      }
+
+      .header-menu a:hover {
+        background: #faf1fb;
+        color: #f06292;
+      }
+
+      .banner-area {
+        padding: 100px;
+        background: url("./images/main_visual_bg.jpg") repeat 0 0 / 50px;
+      }
+
+      .main-visual-box {
+        text-align: center;
+      }
+
+      .main-visual-img {
+        opacity: 0;
+        transform: translateY(-60px);
+        transition:
+          opacity 0.9s cubic-bezier(0.38, 1.02, 0.38, 1.06),
+          transform 0.9s cubic-bezier(0.38, 1.02, 0.38, 1.06);
+        max-width: 100%;
+        width: 984px;
+      }
+
+      .main-visual-img.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .banner-area {
+        position: relative;
+      }
+
+      .sns {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        right: 50px;
+        top: 50px;
+        z-index: 999;
+      }
+      .sns img {
+        width: 40px;
+        height: 40px;
+      }
     </style>
-</head>
-<body>
-<main class="wrapper">
-    
-    <header class="header-area">
+  </head>
+
+  <body>
+    <main class="wrapper">
+      <header class="header-area">
         <!-- 상단영역 -->
         <div class="header-inner">
-            <!-- 로고 이미지 박스 -->
-            <div class="header-logo">
-                <img src="./images/logo_2023.png" alt="산리오 코리아 로고">
-            </div>
-            <!-- 메뉴 리스트 -->
-            <nav class="header-menu">
-                <ul>
-                    <li><a href="#company">COMPANY</a></li>
-                    <li><a href="#character">CHARACTER</a></li>
-                    <li><a href="#place">PLACE</a></li>
-                    <li><a href="#recruit">RECRUIT</a></li>
-                </ul>
-            </nav>
+          <!-- 로고 이미지 박스 -->
+          <div class="header-logo">
+            <img src="./images/logo_2023.png" alt="산리오 코리아 로고" />
+          </div>
+          <!-- 메뉴 리스트 -->
+          <nav class="header-menu">
+            <ul>
+              <li><a href="#company">COMPANY</a></li>
+              <li><a href="#character">CHARACTER</a></li>
+              <li><a href="#place">PLACE</a></li>
+              <li><a href="#recruit">RECRUIT</a></li>
+            </ul>
+          </nav>
         </div>
-    </header>
-    <!-- 2. 메인영역 -->
-    <main class="main-area">
+      </header>
+      <!-- 2. 메인영역 -->
+      <main class="main-area">
         <!-- 2-1. 배너영역 -->
         <section class="banner-area">
-            
-            <div class="main-visual-box">
-                <img src="./images/main_visual_pc_v1.png" alt="메인 비주얼" class="main-visual-img" id="mainVisualImg">
-            </div>
-            <!-- SNS이동버튼 -->
-            <div class="sns" style="position:fixed; right:50px; top:150px; z-index:1000;">
-				<a href="https://www.instagram.com/sanrio_kr/" target="_blank"><img src="./images/i_ins_pc_v3.png" alt="instargram" style="width:40px; height:40px;"></a>
-				<a href="https://www.youtube.com/c/sanriokorea/featured" target="_blank"><img src="./images/i_you_pc_v3.png" alt="youtube" style="width:40px; height:40px;"></a>
-			</div>
-
-     
-            <script>
-                window.addEventListener('DOMContentLoaded', function () {
-                    setTimeout(function() {
-                        document.getElementById('mainVisualImg').classList.add('visible');
-                    }, 180); // a slight delay feels smooth
-                });
-            </script>
+          <div class="main-visual-box">
+            <img
+              src="./images/main_visual_pc_v1.png"
+              alt="메인 비주얼"
+              class="main-visual-img"
+              id="mainVisualImg"
+            />
+          </div>
+          <!-- SNS이동버튼 -->
+          <div class="sns">
+            <a href="https://www.instagram.com/sanrio_kr/" target="_blank"
+              ><img src="./images/i_ins_pc_v3.png" alt="instargram"
+            /></a>
+            <a
+              href="https://www.youtube.com/c/sanriokorea/featured"
+              target="_blank"
+              ><img src="./images/i_you_pc_v3.png"
+            /></a>
+          </div>
+          <!-- 스크롤 유도 애니박스 -->
+          <div class="scroll_btn">
+            <span class="mouse"><span></span></span>
+            <p>스크롤 유도scroll down</p>
+          </div>
         </section>
         <!-- 2-2. 캐릭터영역 -->
         <section class="character-area">
-            <!-- 캐릭터영역: 여기에 내용이 들어갑니다 -->
+          <!-- 캐릭터영역: 여기에 내용이 들어갑니다 -->
         </section>
         <!-- 2-3. 컴퍼니영역 -->
         <section class="company-area">
-            <!-- 컴퍼니영역: 여기에 내용이 들어갑니다 -->
+          <!-- 컴퍼니영역: 여기에 내용이 들어갑니다 -->
         </section>
         <!-- 2-4. 리쿠르트영역 -->
         <section class="recruit-area">
-            <!-- 리쿠르트영역: 여기에 내용이 들어갑니다 -->
+          <!-- 리쿠르트영역: 여기에 내용이 들어갑니다 -->
         </section>
         <!-- 2-5. 플레이스영역 -->
         <section class="place-area">
-            <!-- 플레이스영역: 여기에 내용이 들어갑니다 -->
+          <!-- 플레이스영역: 여기에 내용이 들어갑니다 -->
         </section>
         <!-- 2-6. 컨텍어스영역 -->
         <section class="contactus-area">
-            <!-- 컨텍어스영역: 여기에 내용이 들어갑니다 -->
+          <!-- 컨텍어스영역: 여기에 내용이 들어갑니다 -->
         </section>
-    </main>
-    <!-- 3. 하단영역 -->
-    <footer class="footer-area">
+      </main>
+      <!-- 3. 하단영역 -->
+      <footer class="footer-area">
         <!-- 하단영역: 여기에 내용이 들어갑니다 -->
-    </footer>
-</main>
-</body>
+      </footer>
+    </main>
+    <script>
+      window.addEventListener("DOMContentLoaded", function () {
+        setTimeout(function () {
+          document.getElementById("mainVisualImg").classList.add("visible");
+        }, 180); // a slight delay feels smooth
+      });
+    </script>
+  </body>
 </html>
