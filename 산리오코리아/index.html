@@ -169,11 +169,11 @@
       }
 
       .main-visual-img {
-        opacity: 0;
+        /* opacity: 0;
         transform: translateY(-60px);
         transition:
           opacity 0.9s cubic-bezier(0.38, 1.02, 0.38, 1.06),
-          transform 0.9s cubic-bezier(0.38, 1.02, 0.38, 1.06);
+          transform 0.9s cubic-bezier(0.38, 1.02, 0.38, 1.06); */
         max-width: 100%;
         width: 984px;
       }
@@ -322,7 +322,6 @@
   </head>
 
   <body>
-    <main class="wrapper">
       <header class="header-area">
         <!-- 상단영역 -->
         <div class="header-inner">
@@ -341,7 +340,8 @@
           </nav>
         </div>
       </header>
-      <!-- 2. 메인영역 -->
+      
+
       <main class="main-area">
         <!-- 2-1. 배너영역 -->
         <section class="banner-area">
@@ -366,6 +366,13 @@
             </a>
           </div>
           <!-- 스크롤 유도 애니박스 -->
+          <!-- 프롬프트 : span요소의 값 중 top값과 opacity값을 이용한 애니메이션을 구현할거야.
+          전체 애니시간은 1.5초로해.
+          처음엔 opacity값이 0에서 1로 변경되며 나타나
+          다음엔 top값이 27%에서 50%로 변경됨
+          다음엔 opacity값이 1에서 0으로 변경됨
+          다음엔 0.5초간 기다리는 시간이 필요해
+          그리고 애니메이션은 다시 처음부터 반복됨 -->
           <div class="scroll_btn">
             <span class="mouse">
               <span></span>
@@ -400,17 +407,19 @@
           <!-- 컨텍어스영역: 여기에 내용이 들어갑니다 -->
         </section>
       </main>
-      <!-- 3. 하단영역 -->
+      
+
+
       <footer class="footer-area">
         <!-- 하단영역: 여기에 내용이 들어갑니다 -->
       </footer>
     </main>
-    <script>
+    <!-- <script>
       window.addEventListener("DOMContentLoaded", function () {
         setTimeout(function () {
           document.getElementById("mainVisualImg").classList.add("visible");
         }, 180); // a slight delay feels smooth
       });
-    </script>
+    </script> -->
   </body>
 </html>
