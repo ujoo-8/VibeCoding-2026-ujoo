@@ -13,88 +13,8 @@
 
       /* 프롬프트 : html,body, h1 등 margin, padding 초기화가 필요한 모든 요소를 초기화하는 셋팅을해. */
       /* 공통요소 초기화 기본 리셋 - html, body, h1 등 margin, padding을 모두 초기화 */
-      html,
-      body,
-      div,
-      span,
-      applet,
-      object,
-      iframe,
-      h1,
-      h2,
-      h3,
-      h4,
-      h5,
-      h6,
-      p,
-      blockquote,
-      pre,
-      a,
-      abbr,
-      acronym,
-      address,
-      big,
-      cite,
-      code,
-      del,
-      dfn,
-      em,
-      img,
-      ins,
-      kbd,
-      q,
-      s,
-      samp,
-      small,
-      strike,
-      strong,
-      sub,
-      sup,
-      tt,
-      var,
-      b,
-      u,
-      i,
-      center,
-      dl,
-      dt,
-      dd,
-      ol,
-      ul,
-      li,
-      fieldset,
-      form,
-      label,
-      legend,
-      table,
-      caption,
-      tbody,
-      tfoot,
-      thead,
-      tr,
-      th,
-      td,
-      article,
-      aside,
-      canvas,
-      details,
-      embed,
-      figure,
-      figcaption,
-      footer,
-      header,
-      hgroup,
-      main,
-      menu,
-      nav,
-      output,
-      ruby,
-      section,
-      summary,
-      time,
-      mark,
-      audio,
-      video {
+      /* prettier-ignore */
+      html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,main,menu,nav,output,ruby,section,summary,time,mark,audio, video {
         margin: 0;
         padding: 0;
         box-sizing: border-box;
@@ -160,7 +80,7 @@
       .banner-area {
         position: relative;
         padding: 100px;
-        padding-bottom: 154px;
+        padding-bottom: 110px;
         background: url("./images/main_visual_bg.jpg") repeat 0 0 / 50px;
       }
 
@@ -287,12 +207,13 @@
 
       .character-area {
         height: 100vh;
+        padding: 80px 0;
       }
 
       .tit-box {
         max-width: 1200px;
         margin: 0 auto;
-        outline: 1px dashed blue;
+        /* outline: 1px dashed blue; */
       }
 
       .tit-box .part-tit {
@@ -306,7 +227,7 @@
       }
       .btn_box {
         text-align: center;
-        padding: 20px 0;
+        /* padding: 20px 0; */
       }
       
       .btn-view {
@@ -319,6 +240,8 @@
         padding: 16px 32px;
         border-radius: 50px;
         border: 1px solid #222;
+        /* 트랜지션 : 속시이지(속성, 시간, 이징, 지연) */
+        transition: .5s;
       }
       /* 버튼 가상요소로 이미지 넣기 */
       /* 앞은 ::before  뒤는 ::after */
@@ -331,6 +254,7 @@
       .btn-view:hover {
         background-color: #222;
         color: #fff;
+         /* transition: .5s; all 생략해도 됨  all .5s; / 트랜지션 양방향은 원본에 설정함! / 호버에 넣으면 오버시에만 나옴. */
       }
       .btn-view:hover::after {
         content: url('./images/ico_more2.png');
