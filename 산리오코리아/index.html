@@ -297,26 +297,43 @@
 
       .tit-box .part-tit {
         text-align: center;
-        padding: 40px 0 0;
+        /* padding: 40px 0 ; */
+        margin-bottom: 30px;
         font-size: 5rem;
         font-weight: 500;
         text-transform: uppercase;
+
       }
       .btn_box {
         text-align: center;
         padding: 20px 0;
       }
-
-      a.btn-view {
-        border: 1px solid #222;
-        padding: 10px 16px;
-        border-radius: 50px;
+      
+      .btn-view {
         display: inline-block;
         text-decoration: none;
         text-transform: uppercase;
         color: #222;
         font-size: 1.2rem;
         font-weight: 400;
+        padding: 16px 32px;
+        border-radius: 50px;
+        border: 1px solid #222;
+      }
+      /* 버튼 가상요소로 이미지 넣기 */
+      /* 앞은 ::before  뒤는 ::after */
+      .btn-view::after {
+        /* before, after 필수 속성 content '내용을 넣어주세요' */
+        content: url('./images/ico_more1.png');
+        padding-left: 20px;
+        vertical-align: 1px
+      }
+      .btn-view:hover {
+        background-color: #222;
+        color: #fff;
+      }
+      .btn-view:hover::after {
+        content: url('./images/ico_more2.png');
       }
     </style>
   </head>
