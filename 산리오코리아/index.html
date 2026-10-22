@@ -450,8 +450,16 @@
       }
       /* 박스 밖으로 이미지가 나올 수 있도록 overflow:hidden은 지도 쪽에만 적용 */
       .contact-map {
+        position: relative; 
         overflow: hidden;
         border-radius: 20px 0 0 20px;
+      }
+      .map-pin {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -100%);
+        pointer-events: none; /* 지도 드래그/클릭 방해 안 함 */
       }
       /* 키티카 이미지 */
       #kitty-car {
@@ -513,7 +521,7 @@
         justify-content: space-between;
         align-items: center;
         & img {
-          width: 197px;
+          height: 13px;
         }
         & .btn-box.simple {
           margin: 0;
@@ -886,6 +894,7 @@
                 referrerpolicy="no-referrer-when-downgrade"
                 allowfullscreen
               ></iframe>
+              <img src="./images/Pin.png" alt="산리오 코리아 위치 핀" class="map-pin" />
             </div>
             <div class="contact-info">
               <h3>서울시 강남구 테헤란로 509, 4층 (삼성동, 엔씨타워1)</h3>
