@@ -341,21 +341,21 @@ nav a:hover {
   .menu-list {
     flex-direction: column;
     align-items: center;
-    gap: 30px;
+    gap: 0;
     text-align: center;
     text-transform: uppercase;
-    font-size: 42px;
+    width: 80%;
   }
-  /* nav ul {
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 24px;
-    min-height: calc(100% - 20px);
-    text-align: center;
-  } */
+  .menu-list li {
+    width: 100%;
+    padding: 30px 0;
+    border-bottom: 1px solid #0000002c;
+  }
+  .menu-list li:last-child {
+    border-bottom: none;
+  }
   nav a {
-    font-size: 4.2rem; /* 2.625rem(16px 기준) ≒ 42px */
+    font-size: 2.2rem; /* 2.625rem(16px 기준) ≒ 42px */
   }
 }
 /* ---------- 1199px 이하 종료 ---------- */
@@ -364,7 +364,7 @@ nav a:hover {
 @media screen and (max-width: 1024px) {
   /* 헤더 로고 너비 30% */
   h1.header-logo {
-    width: 30%;
+    width: 24%;
   }
 }
 /* ---------- 1024px 이하 종료 ---------- */
@@ -411,7 +411,7 @@ nav a:hover {
   }
   .menu-list {
     font-size: 28px;
-    gap: 20px; /* 항목 간격 좁아짐 */
+     /* gap: 20px; */
   }
   /* .menu-btn span {
     height: 3px;
