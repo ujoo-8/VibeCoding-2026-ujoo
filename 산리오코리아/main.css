@@ -1,0 +1,518 @@
+/* main.css : 메인 페이지 전용 영역(배너 · character · company · recruit · place · contact us) */
+/* 로드 순서: reset.css → common.css → main.css */
+.banner-area {
+  position: relative;
+  padding: 100px;
+  padding-bottom: 110px;
+  background: url("./images/main_visual_bg.jpg") repeat 0 0 / 50px;
+}
+
+.main-visual-box {
+  text-align: center;
+}
+
+.main-visual-img {
+  /* opacity: 0;
+  transform: translateY(-60px);
+  transition:
+    opacity 0.9s cubic-bezier(0.38, 1.02, 0.38, 1.06),
+    transform 0.9s cubic-bezier(0.38, 1.02, 0.38, 1.06); */
+  max-width: 100%;
+  width: 984px;
+}
+
+.main-visual-img.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.scroll_btn {
+  position: absolute;
+  bottom: 50px;
+  left: 50%;
+  translate: -50%;
+  width: 79px;
+  height: 70px;
+  /* outline: 1px solid blue; */
+}
+
+.scroll_btn p {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 1rem;
+  font-family: "Montserrat";
+}
+/* 움직일 대상 마우스 */
+.scroll_btn .mouse {
+  position: absolute;
+  left: 50%;
+  translate: -50%;
+  top: 0;
+  display: block;
+  width: 26px;
+  height: 36px;
+  border: 2px solid #222;
+  background: #fff;
+  border-radius: 16px;
+  /* 애니메이션 호출 : 이시이지반방마 (이름 시간 이징 지연시간 반복 방향 마지막상태) */
+  animation: mouse-ani 0.9s ease-in-out infinite alternate; /* infinite를 반복횟수로 넣을 수 있음 (예:5) */
+}
+
+/* 마우스 애니메이션 키프레임 */
+@keyframes mouse-ani {
+  /* 시작값 from이 처음 셋팅값과 같으면 생략가능 */
+  from {
+    top: 0;
+  }
+  to {
+    top: 18px;
+  }
+}
+
+.scroll_btn .mouse span {
+  position: absolute;
+  top: 28%;
+  left: 50%;
+  translate: -50% -50%;
+  width: 4px;
+  height: 4px;
+  background-color: #222;
+  border-radius: 50%;
+  opacity: 0;
+  animation: span-ani 2s ease-in-out infinite;
+}
+/* 미우스휠 애니메이션 프롬프트
+  span요소의 값 중 top값과 opacity값을 이용한 애니메이션을 구현할거야.
+  전체 애니시간은 2초로해.
+  처음엔 opacity값이 0에서 1로 변경되며 나타나
+  다음엔 top값이 28%에서 50%로 변경됨
+  다음엔 opacity값이 1에서 0으로 변경됨
+  다음엔 0.5초간 기다리는 시간이 필요해
+  그리고 애니메이션은 다시 처음부터 반복됨 */
+@keyframes span-ani {
+  0% {
+    opacity: 0;
+    top: 28%;
+  }
+  10% {
+    opacity: 1;
+    top: 28%;
+  }
+  50% {
+    opacity: 1;
+    top: 50%;
+  }
+  60% {
+    opacity: 0;
+    top: 50%;
+  }
+  100% {
+    opacity: 0;
+    top: 50%;
+  }
+}
+
+.sns {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  right: 50px;
+  top: 50px;
+}
+/* 프롬프트 : .sns 박스 하위의 img 모두 가로,세로 크기를 40px적용해. */
+.sns img {
+  width: 40px;
+  height: 40px;
+}
+.character-area {
+  min-height: 100vh; /* 카드 4행이 잘리지 않도록 품위 유지를 위한 최소 높이값을 줌. */
+  padding: 80px 0;
+}
+/* 캐릭터 카드 박스 - 4열 줄바꿈 */
+.character-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.character-card {
+  width: calc(25% - 15px); /* calc(계산식) +,- 는 기호 앞뒤를 반드시 띄어서야함. *,/ 곱하기 나누기는 붙여써도 됨 */
+  box-sizing: border-box;
+  /* height: 285px; 높이값이 없으면 기본값 auto임.  의미는 내용물만큼 높이값이 생성됨.*/
+  border: 1px solid #e6e6e6;
+  /*box-shadow: 0 2px 8px 2px #0000000f;*/ /* inset(내부) hoff(X축) voff(Y축) blur(경계선 흐림) spread(그림자 크기) color(색)*/
+  border-radius: 20px;
+  /* display: flex;
+  flex-direction: column;
+  overflow: hidden; */
+  background: #fff;
+}
+
+.character-top {
+  /* 포지션을 준 이유 : 자식 요소 중 앱솔루트 기준 */
+  position: relative;
+  /* height: 204px; 내용물만큼 늘어나려면 높이값 주면 안됨.*/
+  /* display: flex   플렉스 모두 불필요;
+  gap: 4px;
+  justify-content: center;
+  align-items: center; */
+}
+/* 첫번째 이미지 셋팅 - 비율 크기 유지 역할 */
+.character-top img:first-child {
+  width: 100%;
+}
+/* 두번째 이미지 */
+.character-top img:last-child {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+/* 프롬프트 : character-top의 _ov.png이미지를 투명하게 하고 마우스 오버시 보이게 만들어. */
+.character-card:hover .character-top img:last-child {
+  opacity: 1;
+}
+
+.character-bottom {
+  flex: 1 1 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 12px 8px;
+  /* 비율유지 설정하기 (높이값 불필요) */
+  aspect-ratio: 1 / 0.3;
+}
+
+.character-bottom h3 {
+  font-size: 2.4rem;
+  font-weight: 500;
+  font-family: "NanumBarunGothic";
+  color: #444;
+}
+
+.character-bottom h4 {
+  font-size: 1.2rem;
+  font-family: "Montserrat";
+  font-weight: 500;
+  color: #ccc;
+  text-transform: uppercase;
+}
+
+.company-area {
+  background-color: #f5f5f5;
+}
+.card-list {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+/* 공통 모듈임(컴퍼니&리쿠르트) */
+.card-part {
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  text-align: center;
+}
+.card-title {
+  font-size: 2.4rem;
+  font-weight: 400;
+  color: #222;
+}
+.card-desc span {
+  display: block;
+  font-size: 1.8rem;
+  font-weight: 300;
+  color: #333;
+}
+.recruit-area {
+  background: url('./images/bg_recruit.png') no-repeat center 70px;
+}
+.place-area {
+  background: url('./images/bg_shop.jpg') no-repeat center;
+  /* height: 30vh; */
+  padding-bottom: 210px !important;
+}
+.contactus-area {
+  background-color: #4a679e;
+  color: #fff;
+}
+.contact-box {
+  display: flex;
+  max-width: 1200px;
+  margin: 0 auto;
+  background: #fff;
+  border-radius: 20px;
+  height: 350px;
+  position: relative; /* 자식 이미지(absolute)의 기준 */
+}
+.contact-map,
+.contact-info {
+  width: 50%;
+  height: 100%;
+}
+/* 박스 밖으로 이미지가 나올 수 있도록 overflow:hidden은 지도 쪽에만 적용 */
+.contact-map {
+  position: relative;
+  overflow: hidden;
+  border-radius: 20px 0 0 20px;
+}
+.map-pin {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -100%);
+  pointer-events: none; /* 지도 드래그 클릭 방해 안 함 */
+}
+#kitty-car {
+  position: absolute;
+  /* right: 30px;
+  bottom: -54px; */
+  right: 0;
+  bottom: 0;
+  transform: translate(-18%, 23%);
+}
+.contact-map iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 8px;
+  padding: 50px 150px 50px 60px;
+  color: #333;
+  font-family: "Montserrat";
+  box-sizing: border-box;
+}
+.contact-info h3 {
+  font-size: 2.5rem;
+  font-weight: 400;
+  /* font-family: "NanumBarunGothic"; */
+  color: #222;
+  /* margin-bottom: 14px; */
+}
+.contact-info h4 {
+  font-size: 1.2rem;
+  line-height: 1;
+  color: #aaa;
+  text-transform: uppercase;
+}
+.contact-info h4:nth-of-type(2) {
+  margin-bottom: 16px;
+}
+.contact-info h5 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #666;
+}
+.contact-info h5 span {
+  color: #4a679e;
+  font-style: italic;
+  font-weight: 700;
+}
+/* =====================================================
+   반응형 미디어쿼리 (메인 페이지 영역)
+   순서: 1199px → 1024px → 800px → 736px
+   ===================================================== */
+
+/* ---------- 1199px 이하 시작 ---------- */
+@media screen and (max-width: 1199px) {
+  /* 1. 공통 컨테이너: 고정 너비 → 가로 꽉 참 + 좌우 여백 14px */
+  .character-list,
+  .card-list {
+    max-width: none;
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+  .contact-box {
+    max-width: none;
+    margin-left: 6%;
+    margin-right: 6%;
+  }
+}
+/* ---------- 1199px 이하 종료 ---------- */
+
+/* ---------- 1024px 이하 시작 ---------- */
+@media screen and (max-width: 1024px) {
+  /* 3. SNS 아이콘: 고정 배치, 헤더 아래(top 112px) */
+  .sns {
+    position: fixed;
+    right: 20px;
+    top: 112px;
+    z-index: 2;
+  }
+
+  /* 4. 메인 비주얼: 좌우 여백 30px */
+  .banner-area {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+
+  /* 9. recruit: 좌우 여백 9% */
+  .main-area > section.recruit-area {
+    padding-left: 9%;
+    padding-right: 9%;
+  }
+
+  /* 11. contact us: 아래 여백 150px, 스티커 위치 */
+  .main-area > section.contactus-area {
+    padding-bottom: 150px;
+  }
+  #kitty-car {
+    right: 40px;
+    bottom: -120px;
+    transform: none;
+  }
+}
+/* ---------- 1024px 이하 종료 ---------- */
+
+/* ---------- 800px 이하 시작 ---------- */
+@media screen and (max-width: 800px) {
+  /* 5. 마지막 섹션(contact us) 상하 여백 75px
+     같은 우선순위인 1024px의 .contactus-area 규칙보다 뒤에 와야 원래 결과가 유지되므로
+     common.css가 아니라 main.css의 800px 블록에 둡니다. */
+  .main-area > section:last-child {
+    padding: 75px 0;
+  }
+  /* 6. character: 4열 → 2열 */
+  .character-card {
+    width: calc(50% - 10px);
+  }
+
+  /* 8. company: 3개 한 줄 유지, 박스 폭은 유동 */
+  .card-part {
+    margin: 0;
+  }
+  .company-area .card-list {
+    flex-wrap: nowrap;          /* 줄바꿈 금지 */
+    justify-content: space-between;
+    gap: 0;
+  }
+  .company-area .card-part {
+    flex: 1 1 0;                /* 3개가 남는 폭을 균등 분배 */
+    width: auto;
+    min-width: 0;               /* 내용 때문에 안 줄어드는 현상 방지 */
+    padding: 0 1%;
+    border-bottom: 0;
+    gap: 12px;
+  }
+  .company-area .card-part:last-child {
+    padding: 0 1%;
+    border-bottom: 0;
+  }
+  .company-area .img-box img {
+    width: 60%;
+    max-width: 100%;
+  }
+  .company-area .card-title {
+    font-size: clamp(1.4rem, 3.2vw, 2.4rem);
+  }
+  .company-area .card-desc span {
+    font-size: clamp(1.1rem, 2.3vw, 1.8rem);
+  }
+
+  /* 9. recruit: 세로로 쌓고 중앙 정렬 */
+  .recruit-area {
+    background-size: 90%;
+    background-position: center 30px;
+  }
+  .recruit-area .card-list {
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+  }
+  .recruit-area .card-part {
+    width: 100%;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  /* 10. place: 배경 cover */
+  .place-area {
+    background-size: cover;
+  }
+
+  /* 11. contact us: 지도 위/정보 아래로 쌓기, 지도 높이 280px + 위쪽 모서리 20px */
+  .contact-box {
+    flex-direction: column;
+    height: auto;
+  }
+  .contact-map,
+  .contact-info {
+    width: 100%;
+  }
+  .contact-map {
+    height: 280px;
+    border-radius: 20px 20px 0 0;
+  }
+  .contact-info {
+    height: auto;
+    padding: 30px 20px;
+  }
+  .contact-info h4 {
+    font-size: 1rem; /* 주소 글자 10px */
+  }
+}
+/* ---------- 800px 이하 종료 ---------- */
+
+/* ---------- 736px 이하 시작 ---------- */
+@media screen and (max-width: 736px) {
+  /* 3. SNS 아이콘: 위치를 화면 너비 기준(20vw), 크기 34px */
+  .sns {
+    top: 20vw;
+  }
+  .sns img {
+    width: 34px;
+    height: 34px;
+  }
+
+  /* 4. 메인 비주얼: 좌우 여백 20%, 스크롤 버튼 하단 20px */
+  .banner-area {
+    padding-left: 20%;
+    padding-right: 20%;
+  }
+  .scroll_btn {
+    bottom: 20px;
+  }
+  /* 6. character: 이름 영역 높이 축소 */
+  .character-bottom {
+    aspect-ratio: auto;
+    padding: 8px 6px;
+  }
+
+  /* 10. place: 상하 여백 55px */
+  .main-area > section.place-area {
+    padding: 55px 0 !important;
+  }
+
+  /* 11. contact us: 지도 높이 150px, 스티커 40%, 연락처 글자 축소 */
+  .contact-map {
+    height: 150px;
+  }
+  #kitty-car {
+    width: 33%;
+    right: 10px;
+    bottom: -40px;
+  }
+  .contact-info h5 {
+    font-size: 1.3rem; /* 0.9rem(14px 기준) ≒ 13px */
+  }
+}
+/* ---------- 736px 이하 종료 ---------- */
