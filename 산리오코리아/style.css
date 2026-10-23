@@ -1,0 +1,974 @@
+/* CDN은 Content Delivery Networt 즉, 네트워크망으로 콘텐트를 배달 시켜 쓰는 방식 */
+/* 주의: @import는 CSS 파일의 맨 위에 있어야 적용됨 */
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Nanum+Gothic&display=swap");
+@import url('https://hangeul.naver.com/font/nanum/NanumBarunGothic.css');
+
+/* 프롬프트 : html,body, h1 등 margin, padding 초기화가 필요한 모든 요소를 초기화하는 셋팅을해. */
+/* 공통요소 초기화 기본 리셋 - html, body, h1 등 margin, padding을 모두 초기화 */
+/* prettier-ignore */
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,main,menu,nav,output,ruby,section,summary,time,mark,audio, video {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-weight: normal;
+}
+html {
+  /* rem단위를 위한 Root 글자 크기 설정 */
+  font-size: 10px; /* 왜 10px인가? rem단위에 계산이 용이함! */
+}
+html,
+body {
+  font-family: "Montserrat", 'NanumBarunGothic', 'Nanum Barun Gothic', sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  width: 100%;
+  height: 100%;
+  color: #222;
+}
+/* 공통셋팅 */
+/* 직계자식 선택자(>) + 형제선택자(+) */
+/* section + section 은 앞에 section태그가 있는 section태그를 모두 선택하라. 즉, 첫번째 section을 제외한 모든 section선택 */
+.main-area > section + section {
+  padding: 86px 0;
+}
+.header-area {
+  background: #fff;
+  padding: 0;
+  vertical-align: middle;
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 40px;
+}
+
+.header-logo {
+  width: 10%;
+}
+.header-logo img {
+  max-width: 100%;
+}
+
+/* 햄버거 버튼: PC에서는 숨김 (1199px 이하에서 표시) */
+/* .menu-btn {
+  display: none;
+  position: relative;
+  z-index: 1001;
+  width: 34px;
+  height: 26px;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  flex-direction: column;
+  justify-content: space-between;
+} */
+
+.menu-btn span {
+  display: block;
+  width: 100%;
+  height: 4px;
+  background: #222;
+  border-radius: 2px;
+  transition: transform 0.3s, opacity 0.3s;
+}
+.menu-list {
+  flex: 0 0 auto; /* 크기 고정 */
+  display: flex; /* 가로로 나열 */
+  gap: 48px; /* 메뉴 아이템 간 간격 */
+  list-style: none; /* 기본 리스트 마커 제거 */
+  padding: 0; /* 패딩 제거 */
+  margin: 0; /* 마진 제거 */
+  font-size: 1.6rem; /* 폰트 크기 */
+}
+.menu-list li a {
+  color: inherit; /* 글자색 상속 */
+  text-decoration: none; /* 밑줄 제거 */
+  text-transform: uppercase; /* 대문자 변환 */
+}
+/* nav ul {
+  display: flex;
+  gap: 36px;
+  list-style-type: none;
+}
+
+nav a {
+  display: inline-block;
+  font-size: 1.6rem;
+  font-family: "Montserrat";
+  font-weight: 500;
+  color: #2b2b2b;
+  text-decoration: none;
+  padding: 8px 10px;
+  text-transform: uppercase;  대문자 변환
+} 
+
+nav a:hover {
+  color: #000;
+  font-weight: 500;
+}*/
+
+.banner-area {
+  position: relative;
+  padding: 100px;
+  padding-bottom: 110px;
+  background: url("./images/main_visual_bg.jpg") repeat 0 0 / 50px;
+}
+
+.main-visual-box {
+  text-align: center;
+}
+
+.main-visual-img {
+  /* opacity: 0;
+  transform: translateY(-60px);
+  transition:
+    opacity 0.9s cubic-bezier(0.38, 1.02, 0.38, 1.06),
+    transform 0.9s cubic-bezier(0.38, 1.02, 0.38, 1.06); */
+  max-width: 100%;
+  width: 984px;
+}
+
+.main-visual-img.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.scroll_btn {
+  position: absolute;
+  bottom: 50px;
+  left: 50%;
+  translate: -50%;
+  width: 79px;
+  height: 70px;
+  /* outline: 1px solid blue; */
+}
+
+.scroll_btn p {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 1rem;
+  font-family: "Montserrat";
+}
+/* 움직일 대상 마우스 */
+.scroll_btn .mouse {
+  position: absolute;
+  left: 50%;
+  translate: -50%;
+  top: 0;
+  display: block;
+  width: 26px;
+  height: 36px;
+  border: 2px solid #222;
+  background: #fff;
+  border-radius: 16px;
+  /* 애니메이션 호출 : 이시이지반방마 (이름 시간 이징 지연시간 반복 방향 마지막상태) */
+  animation: mouse-ani 0.9s ease-in-out infinite alternate; /* infinite를 반복횟수로 넣을 수 있음 (예:5) */
+}
+
+/* 마우스 애니메이션 키프레임 */
+@keyframes mouse-ani {
+  /* 시작값 from이 처음 셋팅값과 같으면 생략가능 */
+  from {
+    top: 0;
+  }
+  to {
+    top: 18px;
+  }
+}
+
+.scroll_btn .mouse span {
+  position: absolute;
+  top: 28%;
+  left: 50%;
+  translate: -50% -50%;
+  width: 4px;
+  height: 4px;
+  background-color: #222;
+  border-radius: 50%;
+  opacity: 0;
+  animation: span-ani 2s ease-in-out infinite;
+}
+/* 미우스휠 애니메이션 프롬프트
+  span요소의 값 중 top값과 opacity값을 이용한 애니메이션을 구현할거야.
+  전체 애니시간은 2초로해.
+  처음엔 opacity값이 0에서 1로 변경되며 나타나
+  다음엔 top값이 28%에서 50%로 변경됨
+  다음엔 opacity값이 1에서 0으로 변경됨
+  다음엔 0.5초간 기다리는 시간이 필요해
+  그리고 애니메이션은 다시 처음부터 반복됨 */
+@keyframes span-ani {
+  0% {
+    opacity: 0;
+    top: 28%;
+  }
+  10% {
+    opacity: 1;
+    top: 28%;
+  }
+  50% {
+    opacity: 1;
+    top: 50%;
+  }
+  60% {
+    opacity: 0;
+    top: 50%;
+  }
+  100% {
+    opacity: 0;
+    top: 50%;
+  }
+}
+
+.sns {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  right: 50px;
+  top: 50px;
+}
+/* 프롬프트 : .sns 박스 하위의 img 모두 가로,세로 크기를 40px적용해. */
+.sns img {
+  width: 40px;
+  height: 40px;
+}
+
+.character-area {
+  min-height: 100vh; /* 카드 4행이 잘리지 않도록 품위 유지를 위한 최소 높이값을 줌. */
+  padding: 80px 0;
+}
+
+.tit-box {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-transform: uppercase; /* 대문자 변환 */
+  /* outline: 1px dashed blue; */
+}
+
+.tit-box .part-tit {
+  text-align: center;
+  /* padding: 40px 0 ; */
+  margin-bottom: 30px;
+  font-size: 5rem;
+  font-weight: 500;
+  font-family: "Montserrat";
+}
+.btn-box {
+  text-align: center;
+  margin-bottom: 50px;
+  /* padding: 20px 0; */
+}
+
+.btn-box.off {
+  display: none;
+}
+
+.tit-box.white .logo-box {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.tit-box.white .btn-view {
+  color: #fff;
+  border: 1px solid #fff;
+}
+.tit-box.white .btn-view::after {
+  content: url('./images/ico_more2.png');
+  padding-left: 20px;
+  vertical-align: 1px;
+}
+.tit-box.white .btn-view:hover {
+  background-color: #fff;
+  color: #222;
+}
+.tit-box.white .btn-view:hover::after {
+  content: url('./images/ico_more1.png');
+}
+
+.btn-box.simple .btn-view::after {
+  display: none;
+}
+
+.btn-box.simple {
+  margin-top: 10px;
+}
+.btn-box.simple .btn-view {
+  padding: 11px 30px;
+}
+.btn-view {
+  display: inline-block;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #222;
+  font-size: 1.2rem;
+  font-weight: 400;
+  font-family: "Montserrat";
+  padding: 16px 32px;
+  border-radius: 50px;
+  border: 1px solid #222;
+  /* 트랜지션 : 속시이지(속성, 시간, 이징, 지연) */
+  transition: .5s;
+}
+/* 버튼 가상요소로 이미지 넣기 */
+/* 앞은 ::before  뒤는 ::after */
+.btn-view::after {
+  /* before, after 필수 속성 content '내용을 넣어주세요' */
+  content: url('./images/ico_more1.png');
+  padding-left: 20px;
+  vertical-align: 1px;
+}
+.btn-view:hover {
+  background-color: #222;
+  color: #fff;
+  /* transition: .5s; all 생략해도 됨  all .5s; / 트랜지션 양방향은 원본에 설정함! / 호버에 넣으면 오버시에만 나옴. */
+}
+.btn-view:hover::after {
+  content: url('./images/ico_more2.png');
+}
+/* 캐릭터 카드 박스 - 4열 줄바꿈 */
+.character-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.character-card {
+  width: calc(25% - 15px); /* calc(계산식) +,- 는 기호 앞뒤를 반드시 띄어서야함. *,/ 곱하기 나누기는 붙여써도 됨 */
+  box-sizing: border-box;
+  /* height: 285px; 높이값이 없으면 기본값 auto임.  의미는 내용물만큼 높이값이 생성됨.*/
+  border: 1px solid #e6e6e6;
+  /*box-shadow: 0 2px 8px 2px #0000000f;*/ /* inset(내부) hoff(X축) voff(Y축) blur(경계선 흐림) spread(그림자 크기) color(색)*/
+  border-radius: 20px;
+  /* display: flex;
+  flex-direction: column;
+  overflow: hidden; */
+  background: #fff;
+}
+
+.character-top {
+  /* 포지션을 준 이유 : 자식 요소 중 앱솔루트 기준 */
+  position: relative;
+  /* height: 204px; 내용물만큼 늘어나려면 높이값 주면 안됨.*/
+  /* display: flex   플렉스 모두 불필요;
+  gap: 4px;
+  justify-content: center;
+  align-items: center; */
+}
+/* 첫번째 이미지 셋팅 - 비율 크기 유지 역할 */
+.character-top img:first-child {
+  width: 100%;
+}
+/* 두번째 이미지 */
+.character-top img:last-child {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+/* 프롬프트 : character-top의 _ov.png이미지를 투명하게 하고 마우스 오버시 보이게 만들어. */
+.character-card:hover .character-top img:last-child {
+  opacity: 1;
+}
+
+.character-bottom {
+  flex: 1 1 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 12px 8px;
+  /* 비율유지 설정하기 (높이값 불필요) */
+  aspect-ratio: 1 / 0.3;
+}
+
+.character-bottom h3 {
+  font-size: 2.4rem;
+  font-weight: 500;
+  font-family: "NanumBarunGothic";
+  color: #444;
+}
+
+.character-bottom h4 {
+  font-size: 1.2rem;
+  font-family: "Montserrat";
+  font-weight: 500;
+  color: #ccc;
+  text-transform: uppercase;
+}
+
+.company-area {
+  background-color: #f5f5f5;
+}
+.card-list {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+/* 공통 모듈임(컴퍼니&리쿠르트) */
+.card-part {
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  text-align: center;
+}
+.card-title {
+  font-size: 2.4rem;
+  font-weight: 400;
+  color: #222;
+}
+.card-desc span {
+  display: block;
+  font-size: 1.8rem;
+  font-weight: 300;
+  color: #333;
+}
+.recruit-area {
+  background: url('./images/bg_recruit.png') no-repeat center 70px;
+}
+.place-area {
+  background: url('./images/bg_shop.jpg') no-repeat center;
+  /* height: 30vh; */
+  padding-bottom: 210px !important;
+}
+.contactus-area {
+  background-color: #4a679e;
+  color: #fff;
+}
+.contact-box {
+  display: flex;
+  max-width: 1200px;
+  margin: 0 auto;
+  background: #fff;
+  border-radius: 20px;
+  height: 350px;
+  position: relative; /* 자식 이미지(absolute)의 기준 */
+}
+.contact-map,
+.contact-info {
+  width: 50%;
+  height: 100%;
+}
+/* 박스 밖으로 이미지가 나올 수 있도록 overflow:hidden은 지도 쪽에만 적용 */
+.contact-map {
+  position: relative;
+  overflow: hidden;
+  border-radius: 20px 0 0 20px;
+}
+.map-pin {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -100%);
+  pointer-events: none; /* 지도 드래그 클릭 방해 안 함 */
+}
+#kitty-car {
+  position: absolute;
+  /* right: 30px;
+  bottom: -54px; */
+  right: 0;
+  bottom: 0;
+  transform: translate(-18%, 23%);
+}
+.contact-map iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 8px;
+  padding: 50px 150px 50px 60px;
+  color: #333;
+  font-family: "Montserrat";
+  box-sizing: border-box;
+}
+.contact-info h3 {
+  font-size: 2.5rem;
+  font-weight: 400;
+  /* font-family: "NanumBarunGothic"; */
+  color: #222;
+  /* margin-bottom: 14px; */
+}
+.contact-info h4 {
+  font-size: 1.2rem;
+  line-height: 1;
+  color: #aaa;
+  text-transform: uppercase;
+}
+.contact-info h4:nth-of-type(2) {
+  margin-bottom: 16px;
+}
+.contact-info h5 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #666;
+}
+.contact-info h5 span {
+  color: #4a679e;
+  font-style: italic;
+  font-weight: 700;
+}
+.footer-area {
+  background-color: #222;
+  padding: 50px;
+}
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  & img {
+    height: 13px;
+  }
+  & .btn-box.simple {
+    margin: 0;
+    & .btn-view {
+      border: 1px solid #fff;
+      color: #fff;
+    }
+  }
+}
+
+/* 모바일 메뉴 미리 세팅하기 */
+/* nav {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  padding-top: 100px;
+  background: #fff;
+  z-index: 1000;
+  transform: translateX(100%);
+  visibility: hidden;
+  transition: transform 0.4s ease, visibility 0.4s;
+  overflow-y: auto;
+} */
+/* 햄버거 버튼 (우측, 너비 34px) */
+.menu-btn {
+  display: none;
+}
+/* =====================================================
+   반응형 미디어쿼리 (PC 기본 CSS는 그대로, 아래에 큰 값 → 작은 값 순서로 추가)
+   순서: 1199px → 1024px → 800px → 767px → 736px
+   ===================================================== */
+
+/* ---------- 1199px 이하 시작 ---------- */
+@media screen and (max-width: 1199px) {
+  /* 1. 공통 컨테이너: 고정 너비 → 가로 꽉 참 + 좌우 여백 14px */
+  .tit-box,
+  .character-list,
+  .card-list {
+    max-width: none;
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+  .contact-box {
+    max-width: none;
+    margin-left: 14px;
+    margin-right: 14px;
+  }
+
+  /* 2. 헤더: 높이 100px + 회색 구분선, 햄버거 버튼 표시 */
+  .header-inner {
+    height: 100px;
+    padding: 0 14px;
+  }
+  .header-logo {
+    position: relative;
+    z-index: 3; /* 메뉴 패널 위로 */
+  }
+ /* 햄버거 버튼 (우측, 너비 34px) */
+ .menu-btn {
+  display: block;
+  position: relative;
+  z-index: 3; /* 메뉴패널 위에 버튼 표시 */
+  width: 34px;
+  height: 24px;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+  .menu-btn span {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: #222;
+    transition: all 0.3s;
+  }
+  .menu-btn span:nth-child(1) {
+    top: 0;
+  }
+  .menu-btn span:nth-child(2) {
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  .menu-btn span:nth-child(3) {
+    top: 100%;
+    transform: translateY(-100%);
+  }
+  /* 열림 상태: X 모양 */
+  .header-area.on .menu-btn span:nth-child(1) {
+    top: 50%;
+    transform: translateY(-50%) rotate(45deg);
+  }
+  .header-area.on .menu-btn span:nth-child(2) {
+    opacity: 0;
+  }
+  .header-area.on .menu-btn span:nth-child(3) {
+    top: 50%;
+    transform: translateY(-50%) rotate(-45deg);
+  }
+  /* 메뉴: 화면 전체를 덮는 흰색 패널, 오른쪽에서 슬라이드 */
+  .header-inner nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    padding-top: 100px;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 3;
+    /* 변경내용 : 위치이동, 투명도 */
+    translate: 100%;
+    opacity: 0;
+    transition: .4s;
+    /* translate속성값은 하나만 쓰면 X축, 두개 XY축 */;
+    /* transform: translateX(100%);  */
+    /* visibility와 opcity 투명도 0의 차이는 투명해진 후 이벤트 적용여부다 
+    opacity:0은 이벤트가 적용되고 visibility: hidden;은 이벤트 적용안됨 */
+    /* visibility: hidden; */
+    
+    /* 트랜지션을 처음부터 주면 메뉴변경시 화면한번 보이므로
+    처음엔 트랜지션을 주지 않는다. */
+    /* transition:
+    transform 0.4s ease,
+    visibility 0s 0.4s; */
+  }
+  /* 모바일용 메뉴를 위한 클래스 지정 : 트랜지션 넣기
+  -> mob클래스를 자바스크립트에서 작동 시 넣어주면 된다 */
+  
+  .header-area.on nav {/* 트랜스폼 보이게 설정 */
+    translate: 0;
+    opacity: 1;
+  }
+  /* .menu-open .header-area nav {
+    transform: translateX(0);
+    visibility: visible;
+    transition:
+      transform 0.4s ease,
+      visibility 0s;
+  }
+  body.menu-open {
+    overflow: hidden;  메뉴 열린 동안 배경 스크롤 방지 
+  } */
+  .menu-list {
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 42px;
+  }
+  /* nav ul {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    min-height: calc(100% - 20px);
+    text-align: center;
+  } */
+  nav a {
+    font-size: 4.2rem; /* 2.625rem(16px 기준) ≒ 42px */
+  }
+}
+/* ---------- 1199px 이하 종료 ---------- */
+
+/* ---------- 1024px 이하 시작 ---------- */
+@media screen and (max-width: 1024px) {
+  /* 헤더 로고 너비 30% */
+  h1.header-logo {
+    width: 30%;
+  }
+
+  /* 3. SNS 아이콘: 고정 배치, 헤더 아래(top 112px) */
+  .sns {
+    position: fixed;
+    right: 20px;
+    top: 112px;
+    z-index: 2;
+  }
+
+  /* 4. 메인 비주얼: 좌우 여백 30px */
+  .banner-area {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+
+  /* 9. recruit: 좌우 여백 9% */
+  .main-area > section.recruit-area {
+    padding-left: 9%;
+    padding-right: 9%;
+  }
+
+  /* 11. contact us: 아래 여백 150px, 스티커 위치 */
+  .main-area > section.contactus-area {
+    padding-bottom: 150px;
+  }
+  #kitty-car {
+    right: 40px;
+    bottom: -120px;
+    transform: none;
+  }
+}
+/* ---------- 1024px 이하 종료 ---------- */
+
+/* ---------- 800px 이하 시작 ---------- */
+@media screen and (max-width: 800px) {
+  /* 5. 섹션 상하 여백 75px */
+  .main-area > section + section {
+    padding: 75px 0;
+  }
+
+  /* 6. character: 4열 → 2열 */
+  .character-card {
+    width: calc(50% - 10px);
+  }
+
+  /* 8. company: 2열 배치 + 회색 구분선 (항목 3개) */
+  .card-part {
+    margin: 0;
+  }
+  .company-area .card-list {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .company-area .card-part {
+    width: 50%;
+    padding: 0 0 5%;
+    border-bottom: 1px solid #ccc;
+  }
+  .company-area .card-part:last-child {
+    padding: 5% 0 0;
+    border-bottom: 0;
+  }
+
+  /* 9. recruit: 배경 90% 크기 + 상단 30px, 항목 가로 배치(아이콘 + 텍스트) */
+  .recruit-area {
+    background-size: 90%;
+    background-position: center 30px;
+  }
+  .recruit-area .card-list {
+    flex-direction: column;
+    gap: 30px;
+  }
+  .recruit-area .card-part {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 57% 33%;
+    justify-content: space-between;
+    align-items: center;
+    column-gap: 0;
+    row-gap: 8px;
+    text-align: left;
+  }
+  .recruit-area .img-box {
+    grid-column: 1;
+    grid-row: 1 / 4;
+    text-align: center;
+  }
+  .recruit-area .img-box img {
+    max-width: 100%;
+  }
+  .recruit-area .card-title,
+  .recruit-area .card-desc,
+  .recruit-area .btn-box {
+    grid-column: 2;
+    margin: 0;
+    text-align: left;
+  }
+
+  /* 10. place: 배경 cover */
+  .place-area {
+    background-size: cover;
+  }
+
+  /* 11. contact us: 지도 위/정보 아래로 쌓기, 지도 높이 280px + 위쪽 모서리 20px */
+  .contact-box {
+    flex-direction: column;
+    height: auto;
+  }
+  .contact-map,
+  .contact-info {
+    width: 100%;
+  }
+  .contact-map {
+    height: 280px;
+    border-radius: 20px 20px 0 0;
+  }
+  .contact-info {
+    height: auto;
+    padding: 30px 20px;
+  }
+  .contact-info h4 {
+    font-size: 1rem; /* 주소 글자 10px */
+  }
+
+  /* 12. 푸터: 세로로 쌓기, 저작권 가운데 정렬 */
+  .footer-inner {
+    display: block;
+    text-align: center;
+  }
+  .footer-inner img {
+    display: block;
+    margin: 0 auto 20px;
+  }
+}
+/* ---------- 800px 이하 종료 ---------- */
+
+/* ---------- 767px 이하 시작 ---------- */
+@media screen and (max-width: 767px) {
+  /* 1. 기본 글자 크기 87.5% */
+  body {
+    font-size: 87.5%;
+  }
+}
+/* ---------- 767px 이하 종료 ---------- */
+
+/* ---------- 736px 이하 시작 ---------- */
+@media screen and (max-width: 736px) {
+  /* 2. 헤더 높이 50px, 햄버거 버튼 24px(선 3px), 메뉴 글자 28px */
+  .header-inner {
+    height: 50px;
+  }
+  .menu-btn {
+    width: 24px;
+    height: 18px;
+  }
+  .menu-btn span {
+    height: 3px;
+  }
+  .menu-list {
+    font-size: 28px;
+    gap: 20px; /* 항목 간격 좁아짐 */
+  }
+  /* .menu-btn span {
+    height: 3px;
+  }
+  .menu-btn.open span:nth-child(1) {
+    transform: translateY(7.5px) rotate(45deg);
+  }
+  .menu-btn.open span:nth-child(3) {
+    transform: translateY(-7.5px) rotate(-45deg);
+  }
+  nav {
+    padding-top: 50px;
+  }
+  nav ul {
+    gap: 12px;
+    min-height: calc(100% - 20px);
+  }
+  nav a {
+    font-size: 2.8rem;
+  } */
+
+  /* 3. SNS 아이콘: 위치를 화면 너비 기준(20vw), 크기 34px */
+  .sns {
+    top: 20vw;
+  }
+  .sns img {
+    width: 34px;
+    height: 34px;
+  }
+
+  /* 4. 메인 비주얼: 좌우 여백 제거, 스크롤 버튼 하단 20px */
+  .banner-area {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .scroll_btn {
+    bottom: 20px;
+  }
+
+  /* 5. 섹션 여백 50px, 제목 글자 축소 (2.33rem ≒ 32px) */
+  .main-area > section + section {
+    padding: 50px 0;
+  }
+  .tit-box .part-tit {
+    font-size: 3.3rem;
+  }
+
+  /* 6. character: 이름 영역 높이 축소 */
+  .character-bottom {
+    aspect-ratio: auto;
+    padding: 8px 6px;
+  }
+
+  /* 8. company: 항목 너비 50%, 아이콘 35% 크기 */
+  .company-area .card-part {
+    width: 50%;
+  }
+  .company-area .img-box img {
+    width: 35%;
+  }
+
+  /* 9. recruit: 아이콘 52% + 텍스트 48%, 더보기 버튼 최대 80px */
+  .recruit-area .card-part {
+    grid-template-columns: 52% 48%;
+  }
+  .recruit-area .btn-box.simple .btn-view {
+    max-width: 80px;
+    padding: 8px 14px;
+    font-size: 1rem;
+    white-space: nowrap;
+  }
+
+  /* 10. place: 상하 여백 55px */
+  .main-area > section.place-area {
+    padding: 55px 0 !important;
+  }
+
+  /* 11. contact us: 지도 높이 150px, 스티커 40%, 연락처 글자 축소 */
+  .contact-map {
+    height: 150px;
+  }
+  #kitty-car {
+    width: 40%;
+    right: 10px;
+    bottom: -40px;
+  }
+  .contact-info h5 {
+    font-size: 1.3rem; /* 0.9rem(14px 기준) ≒ 13px */
+  }
+
+  /* 12. 푸터: 여백 30px / 50px, 저작권 이미지 60% */
+  .footer-area {
+    padding: 30px 50px;
+  }
+  .footer-inner img {
+    width: 60%;
+    height: auto;
+  }
+}
+/* ---------- 736px 이하 종료 ---------- */

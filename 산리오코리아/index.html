@@ -1,562 +1,13 @@
 <!doctype html>
-<html>
+<html lang="ko">
   <head>
     <meta charset="UTF-8" />
     <title>산리오 코리아</title>
     <!-- 미디어쿼리를 위한 뷰포트 필수 !!! 줄여서 meta : vp-->
-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-
-     
-    <!-- 1. 상단영역 -->
-    <!-- 인터널 스타일 시트(internal style sheet) -->
-    <style>
-      /* CDN은 Content Delivery Networt 즉, 네트워크망으로 콘텐트를 배달 시켜 쓰는 방식 */
-
-      @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Nanum+Gothic&display=swap");
-      @import url('https://hangeul.naver.com/font/nanum/NanumBarunGothic.css');
-      
-
-
-
-      
-
-      /* 프롬프트 : html,body, h1 등 margin, padding 초기화가 필요한 모든 요소를 초기화하는 셋팅을해. */
-      /* 공통요소 초기화 기본 리셋 - html, body, h1 등 margin, padding을 모두 초기화 */
-      /* prettier-ignore */
-      html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,main,menu,nav,output,ruby,section,summary,time,mark,audio, video {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-weight: normal;
-      }
-      html {
-        /* rem단위를 위한 Root 글자 크기 설정 */
-        font-size: 10px; /* 왜 10px인가? rem단위에 계산이 용이함! */
-      }
-      html,
-      body {
-        font-family: "Montserrat", 'NanumBarunGothic', 'Nanum Barun Gothic' sans-serif;
-        font-optical-sizing: auto;
-        font-weight: 400;
-        font-style: normal;
-        width: 100%;
-        height: 100%;
-        color: #222;
-      }
-      /* 공통셋팅 */
-      /* 직계자식 선택자(>) + 형제선택자(+) */
-      /* section + section 은 앞에 section태그가 있는 section태그를 모두 선택하라. 즉, 첫번째 section을 제외한 모든 section선택 */
-      .main-area > section + section {
-        padding: 86px 0;
-      }
-      .header-area {
-        background: #fff;
-        padding: 0;
-        vertical-align: middle;
-      }
-
-      .header-inner {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 20px 40px;
-      }
-
-      h1.header-logo {
-        width: 10%;
-      }
-      .header-logo img {
-        max-width: 100%;
-      }
-      
-      /* 1024px 이하 미디어쿼리 시작 */
-      @media screen and (max-width:1024px){
-        /* 기존 선택자와 동일하게 사용함 */ 
-        h1.header-logo {
-          width: 30%;
-        }
-      }
-      
-      /* 1024px 이하 미디어쿼리 종료 */
-
- /* 800px 이하 미디어쿼리 시작 */
- @media screen and (max-width: 800px) {
-        html {
-          /* 타이틀 5rem = 50px → 32px 로 보이도록 (32 / 5 = 6.4px) */
-          font-size: 6.4px;
-        }
-        /* 카드 4열 → 2열 */
-        .character-card {
-          width: calc(50% - 10px);
-        }
-      }
-      /* 800px 이하 미디어쿼리 종료 */
-
-
-      .header-menu ul {
-        display: flex;
-        gap: 36px;
-        list-style-type: none;
-      }
-
-      .header-menu a {
-        display: inline-block;
-        font-size: 1.6rem;
-        font-family: "Montserrat";
-        font-weight: 500;
-        color: #2b2b2b;
-        text-decoration: none;
-        padding: 8px 10px;
-        text-transform: uppercase; /* 대문자 변환 */
-        /* border-radius: 3px;
-        transition: background 0.18s, color 0.18s; */
-      }
-
-      .header-menu a:hover {
-        /* background: #faf1fb; */
-        color: #f06292;
-      }
-
-      .banner-area {
-        position: relative;
-        padding: 100px;
-        padding-bottom: 110px;
-        background: url("./images/main_visual_bg.jpg") repeat 0 0 / 50px;
-      }
-
-      .main-visual-box {
-        text-align: center;
-      }
-
-      .main-visual-img {
-        /* opacity: 0;
-        transform: translateY(-60px);
-        transition:
-          opacity 0.9s cubic-bezier(0.38, 1.02, 0.38, 1.06),
-          transform 0.9s cubic-bezier(0.38, 1.02, 0.38, 1.06); */
-        max-width: 100%;
-        width: 984px;
-      }
-
-      .main-visual-img.visible {
-        opacity: 1;
-        transform: translateY(0);
-      }
-
-      .scroll_btn {
-        position: absolute;
-        bottom: 50px;
-        left: 50%;
-        translate: -50%;
-        width: 79px;
-        height: 70px;
-        /* outline: 1px solid blue; */
-      }
-
-      .scroll_btn p {
-        position: absolute;
-        bottom: 0;
-        width: 100%;
-        text-align: center;
-        text-transform: uppercase;
-        font-size: 1rem;
-        font-family: "Montserrat";
-      }
-      /* 움직일 대상 마우스 */
-      .scroll_btn .mouse {
-        position: absolute;
-        left: 50%;
-        translate: -50%;
-        top: 0;
-        display: block;
-        width: 26px;
-        height: 36px;
-        border: 2px solid #222;
-        background: #fff;
-        border-radius: 16px;
-        /* 애니메이션 호출 : 이시이지반방마 (이름 시간 이징 지연시간 반복 방향 마지막상태) */
-        animation: mouse-ani 0.9s ease-in-out infinite alternate; /* infinite를 반복횟수로 넣을 수 있음 (예:5) */
-      }
-
-      /* 마우스 애니메이션 키프레임 */
-      @keyframes mouse-ani {
-        /* 시작값 from이 처음 셋팅값과 같으면 생략가능 */
-        from {
-          top: 0;
-        }
-        to {
-          top: 18px;
-        }
-      }
-
-      .scroll_btn .mouse span {
-        position: absolute;
-        top: 28%;
-        left: 50%;
-        translate: -50% -50%;
-        width: 4px;
-        height: 4px;
-        background-color: #222;
-        border-radius: 50%;
-        opacity: 0;
-        animation: span-ani 2s ease-in-out infinite;
-      }
-      /* 미우스휠 애니메이션 프롬프트 
-        span요소의 값 중 top값과 opacity값을 이용한 애니메이션을 구현할거야.
-        전체 애니시간은 2초로해.
-        처음엔 opacity값이 0에서 1로 변경되며 나타나
-        다음엔 top값이 28%에서 50%로 변경됨
-        다음엔 opacity값이 1에서 0으로 변경됨
-        다음엔 0.5초간 기다리는 시간이 필요해
-        그리고 애니메이션은 다시 처음부터 반복됨 */
-      @keyframes span-ani {
-        0% {
-          opacity: 0;
-          top: 28%;
-        }
-        10% {
-          opacity: 1;
-          top: 28%;
-        }
-        50% {
-          opacity: 1;
-          top: 50%;
-        }
-        60% {
-          opacity: 0;
-          top: 50%;
-        }
-        100% {
-          opacity: 0;
-          top: 50%;
-        }
-      }
-
-      .sns {
-        display: flex;
-        flex-direction: column;
-        position: absolute;
-        right: 50px;
-        top: 50px;
-        z-index: 999;
-      }
-      /* 프롬프트 : .sns 박스 하위의 img 모두 가로,세로 크기를 40px적용해. */
-      .sns img {
-        width: 40px;
-        height: 40px;
-      }
-
-      .character-area {
-        min-height: 100vh; /* 카드 4행이 잘리지 않도록 품위 유지를 위한 최소 높이값을 줌. */
-        padding: 80px 0;
-      }
-
-      .tit-box {
-        max-width: 1200px;
-        margin: 0 auto;
-        text-transform: uppercase; /* 대문자 변환 */
-        /* outline: 1px dashed blue; */
-      }
-
-      .tit-box .part-tit {
-        text-align: center;
-        /* padding: 40px 0 ; */
-        margin-bottom: 30px;
-        font-size: 5rem;
-        font-weight: 500;
-        font-family: "Montserrat";
-
-      }
-      .btn-box {
-        text-align: center;
-        margin-bottom: 50px;
-        /* padding: 20px 0; */
-      }
-
-      .btn-box.off {
-        display: none;
-      }
-
-      .tit-box.white .logo-box {
-        text-align: center;
-        margin-bottom: 10px;
-      }
-
-      .tit-box.white .btn-view {
-        color: #fff;
-        border: 1px solid #fff;    
-      }
-      .tit-box.white .btn-view::after {
-        content: url('./images/ico_more2.png');
-        padding-left: 20px;
-        vertical-align: 1px
-      }
-      .tit-box.white .btn-view:hover {
-        background-color: #fff;
-        color: #222;
-      }
-      .tit-box.white .btn-view:hover::after {
-        content: url('./images/ico_more1.png');
-      }
-
-      .btn-box.simple .btn-view::after {
-        display: none;
-      }
-    
-      .btn-box.simple {
-        margin-top: 10px;
-      }
-      .btn-box.simple .btn-view {
-        padding: 11px 30px;
-      }
-      .btn-view {
-        display: inline-block;
-        text-decoration: none;
-        text-transform: uppercase;
-        color: #222;
-        font-size: 1.2rem;
-        font-weight: 400;
-        font-family: "Montserrat";
-        padding: 16px 32px;
-        border-radius: 50px;
-        border: 1px solid #222;
-        /* 트랜지션 : 속시이지(속성, 시간, 이징, 지연) */
-        transition: .5s;
-      }
-      /* 버튼 가상요소로 이미지 넣기 */
-      /* 앞은 ::before  뒤는 ::after */
-      .btn-view::after {
-        /* before, after 필수 속성 content '내용을 넣어주세요' */
-        content: url('./images/ico_more1.png');
-        padding-left: 20px;
-        vertical-align: 1px
-      }
-      .btn-view:hover {
-        background-color: #222;
-        color: #fff;
-         /* transition: .5s; all 생략해도 됨  all .5s; / 트랜지션 양방향은 원본에 설정함! / 호버에 넣으면 오버시에만 나옴. */
-      }
-      .btn-view:hover::after {
-        content: url('./images/ico_more2.png');
-      }
-/* 캐릭터 카드 박스 - 4열 줄바꿈 */
-      .character-list {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 20px; 
-        max-width: 1200px;
-        margin: 0 auto;
-        
-      }
-
-      .character-card {
-        width: calc(25% - 15px); /* calc(계산식) +,- 는 기호 앞뒤를 반드시 띄어서야함. *,/ 곱하기 나누기는 붙여써도 됨 */
-        box-sizing: border-box;
-        /* height: 285px; 높이값이 없으면 기본값 auto임.  의미는 내용물만큼 높이값이 생성됨.*/
-        border: 1px solid #e6e6e6;
-        /*box-shadow: 0 2px 8px 2px #0000000f;*/ /* inset(내부) hoff(X축) voff(Y축) blur(경계선 흐림) spread(그림자 크기) color(색)*/
-        border-radius: 20px;
-        /* display: flex;
-        flex-direction: column;
-        overflow: hidden; */
-        background: #fff;
-      }
-
-      .character-top {
-        /* 포지션을 준 이유 : 자식 요소 중 앱솔루트 기준 */
-        position: relative;
-        /* height: 204px; 내용물만큼 늘어나려면 높이값 주면 안됨.*/
-        /* display: flex   플렉스 모두 불필요;
-        gap: 4px;
-        justify-content: center;
-        align-items: center; */
-      }
-      /* 첫번째 이미지 셋팅 - 비율 크기 유지 역할 */
-      .character-top img:first-child{
-        width: 100%;
-      }
-      /* 두번째 이미지 */
-      .character-top img:last-child{
-        position: absolute;
-        left: 0;
-        width: 100%;
-        opacity: 0;
-        transition: opacity 0.4s;
-      }
-      /* 프롬프트 : character-top의 _ov.png이미지를 투명하게 하고 마우스 오버시 보이게 만들어. */
-      .character-card:hover .character-top img:last-child {
-        opacity: 1;
-      }
-
-      .character-bottom {
-        flex: 1 1 0;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        padding: 12px 8px;
-        /* 비율유지 설정하기 (높이값 불필요) */
-        aspect-ratio: 1 / 0.3;
-      }
-
-      .character-bottom h3 {
-        font-size: 2.4rem;
-        font-weight: 500;
-        font-family: "NanumBarunGothic";
-        color: #444;
-      }
-
-      .character-bottom h4 {
-        font-size: 1.2rem;
-        font-family: "Montserrat";
-        font-weight: 500;
-        color: #ccc;
-        text-transform: uppercase;
-      }
-      
-      .company-area {
-        background-color: #f5f5f5;
-      }
-      .card-list {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        max-width: 1200px;
-        margin: 0 auto;
-      }
-      /* 공통 모듈임(컴퍼니&리쿠르트) */
-      .card-part {
-        width: 400px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 20px;
-        text-align: center;
-      }
-      .card-title {
-        font-size: 2.4rem;
-        font-weight: 400;
-        color: #222;
-
-      }
-      .card-desc span {
-        display: block;
-        font-size: 1.8rem;
-        font-weight: 300;
-        color: #333;
-      }
-      .recruit-area {
-        background: url('./images/bg_recruit.png') no-repeat center 70px;
-      }
-      .place-area {
-        background: url('./images/bg_shop.jpg') no-repeat center ;
-        /* height: 30vh; */
-        padding-bottom: 210px !important;
-      }
-      .contactus-area {
-        background-color: #4a679e;
-        color: #fff;
-      }
-      .contact-box {
-        display: flex;
-        max-width: 1200px;
-        margin: 0 auto;
-        background: #fff;
-        border-radius: 20px;
-        height: 350px;
-        position: relative; /* 자식 이미지(absolute)의 기준 */
-      }
-      .contact-map,
-      .contact-info {
-        width: 50%;
-        height: 100%;
-      }
-      /* 박스 밖으로 이미지가 나올 수 있도록 overflow:hidden은 지도 쪽에만 적용 */
-      .contact-map {
-        position: relative; 
-        overflow: hidden;
-        border-radius: 20px 0 0 20px;
-      }
-      .map-pin {
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -100%);
-        pointer-events: none; /* 지도 드래그 클릭 방해 안 함 */
-      }
-      #kitty-car {
-        position: absolute;
-        /* right: 30px;
-        bottom: -54px; */
-        right: 0;
-        bottom:0;
-        transform: translate(-18%, 23%);
-      }
-      .contact-map iframe {
-        display: block;
-        width: 100%;
-        height: 100%;
-        border: 0;
-      }
-      .contact-info {
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-        gap: 8px;
-        padding: 50px 150px 50px 60px;
-        color: #333;
-        font-family: "Montserrat";
-        box-sizing: border-box;
-      }
-      .contact-info h3 {
-        font-size: 2.5rem;
-        font-weight:400;
-        /* font-family: "NanumBarunGothic"; */
-        color: #222;
-        /* margin-bottom: 14px; */
-      }
-      .contact-info h4 {
-        font-size: 1.2rem;
-        line-height: 1;
-        color: #aaa;
-        text-transform: uppercase;
-      }
-      .contact-info h4:nth-of-type(2) {
-        margin-bottom: 16px;
-      }
-      .contact-info h5 {
-        font-size: 1.4rem;
-        font-weight: 600;
-        color: #666;
-      }
-      .contact-info h5 span {
-        color: #4a679e;
-        font-style: italic;
-        font-weight: 700;
-      }
-      .footer-area {
-        background-color: #222;
-        padding: 50px;
-      }
-      .footer-inner {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        & img {
-          height: 13px;
-        }
-        & .btn-box.simple {
-          margin: 0;
-          & .btn-view {
-            border: 1px solid #fff;
-            color: #fff;
-          }
-        }
-      }
-    </style>    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css" />
   </head>
-  
+
   <body>
       <header class="header-area">
         <!-- 상단영역 -->
@@ -566,14 +17,18 @@
             <img src="./images/logo_2023.png" alt="산리오 코리아 로고" />
           </h1>
           <!-- 메뉴 리스트 -->
-          <nav class="header-menu">
-            <ul>
+          <nav>
+            <ul class="menu-list">
               <li><a href="#company">company</a></li>
               <li><a href="#character">character</a></li>
               <li><a href="#place">place</a></li>
               <li><a href="#recruit">recruit</a></li>
             </ul>
           </nav>
+          <!-- 햄버거 버튼 (1199px 이하에서만 보임) -->
+          <button type="button" class="menu-btn" aria-label="메뉴 열기" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
         </div>
       </header>
       
@@ -942,13 +397,119 @@
           </div>
         </div>
       </footer>
-    </main>
-    <!-- <script>
-      window.addEventListener("DOMContentLoaded", function () {
-        setTimeout(function () {
-          document.getElementById("mainVisualImg").classList.add("visible");
-        }, 180); // a slight delay feels smooth
-      });
-    </script> -->
+    <script>
+      console.log('안녕');
+
+      // document는 전체 문서객체(DOM-Document Object Model)
+      // 점(.)은 객체의 하위 속성으로 들어감
+      // 요소 선택법: querySelector(CSS선택자)
+      // -> 첫번째 만난 요소 하나만 가져옴
+      // ->참고로 여러 요소 선택은 querySelectorAll(CSS선택자)
+
+      //변수(저장주소)
+      let 나야나 = document.querySelector('.header-inner');
+      // 변수는 따옴표로 싸지 않는 문자다.
+      // 변수는 let으로 선언한다.
+      // 이퀄(=)은 오른쪽의 값이 왼쪽 변수에 할당되는 것
+      // 변수는 왜 쓰나? 재사용
+
+
+      // 아래의 코드가 바로 실행하지 않고 호출시에만 실행하도록 하려면? 함수안에 넣어준다
+      // 함수 이름을 호출할 때 실행됨
+
+      // 원래 함수
+      function 함수명(전달변수){코드}
+      // 화살표 함수가 유행~!
+      //let 함수담을변수 = (전달변수)=>{코드}//()=>붙여써도 됨
+
+      // const 는 상수 또는 함수를 담는 변수 선언
+      // 보안상 let보다 const를 함수담을 때 많이 씀.
+
+      const 나야나함수 = (색상)=>{
+        console.log('함수호출! 전달값은?', 색상);
+        나야나.style.backgroundColor = 색상; 
+        나야나.style.transition = '2s ease-in-out';  
+        // 회전은 로고가 하도록 변경
+        나야나.querySelector('.header-logo').style.rotate = '360deg'; 
+        나야나.querySelector('.header-logo').style.transition = '1s ease-in-out 2s';
+      };/////////// 나야나함수 /////////////
+
+      // 할당된 화살표함수는 반드시 함수 아래쪽에서 호출해야함
+      // 또는 이벤트 발생시엔 상관없음
+
+      // 함수는 호출시 함수명(전달값) -> 소괄호 필수
+      // 만약 전달변수가 있다면 값을 써서 보내야함.
+      // 나야나함수('lightgreen');
+
+      // 최종 요구사항
+      // -> 상단배너 클릭 시
+      // 상단 메뉴 배경색을 변경하고
+      // 상단 메뉴는 360도 회전함
+      // 트랜지션으로 애니메이션 2초간 되게함
+
+      // 대상선정:
+      // 1. 이벤트대상 : 상단배너 (.main-visual-img)
+      let 너를클릭해 = document.querySelector('.main-visual-img');
+      // 2. 변경대상 : 상단영역은 이미 위에서 선택
+      // 3. 이벤트 설정하기 : 클릭이벤트
+      // 클릭이벤트는 onclick 속성으로 세팅
+      // 클릭 시 함수호출은 바로 실행 안되게 화살표함수로 표시
+      너를클릭해.onclick = ()=>{
+        // 해당 요소에 클릭이벤트가 발생하면 이 구역을 실행함
+        나야나함수('lightgreen'); 
+      };//////  onclick 함수 ///////
+
+
+      // 상단 요소의 배경색 바꾸기
+      //나야나.style.backgroundColor = 'red'
+
+
+
+      console.log('나는 누구인가?',나야나)
+
+
+
+
+    //////// 햄버거 클릭 시 메뉴 보이기/숨기기  /////////
+    // 1.대상선정
+    // 1-1. 이벤트 대상 : 햄버거 버튼(.menu-btn)
+    let 햄버거 = document.querySelector('.menu-btn');
+
+    // 1-2. 변경대상 : 상단영역(.header-area)
+    let 상단박스 = document.querySelector('.header-area');
+
+
+    console.log('선택확인:', 햄버거, 상단박스);
+
+
+
+
+      // 햄버거 메뉴 열기/닫기
+      // const body = document.body;
+      // const menuBtn = document.querySelector(".menu-btn");
+      // function setMenu(open) {
+      //   body.classList.toggle("menu-open", open);n
+      //   menuBtn.setAttribute("aria-expanded", open);
+      //   menuBtn.setAttribute("aria-label", open ? "메뉴 닫기" : "메뉴 열기");
+      // }
+      // menuBtn.addEventListener("click", () =>
+      //   setMenu(!body.classList.contains("menu-open")),
+      // );
+      // // 메뉴 항목 클릭 시 닫기
+      // document
+      //   .querySelectorAll(".menu-list a")
+      //   .forEach((a) => a.addEventListener("click", () => setMenu(false)));
+      // // PC 폭으로 돌아오면 닫기
+      // window.addEventListener("resize", () => {
+      //   if (window.innerWidth > 1199) setMenu(false);
+      // });
+    </script>
+    <script>
+      // window.addEventListener("DOMContentLoaded", function () {
+      //   setTimeout(function () {
+      //     document.getElementById("mainVisualImg").classList.add("visible");
+      //   }, 180); // a slight delay feels smooth
+      // });
+    </script>
   </body>
 </html>
