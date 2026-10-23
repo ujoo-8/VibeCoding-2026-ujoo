@@ -478,6 +478,16 @@
     // 1-2. 변경대상 : 상단영역(.header-area)
     let 상단박스 = document.querySelector('.header-area');
 
+    // 2. 이벤트 함수 만들기
+    // 햄버거 클릭 시 상단박스 클래스 on넣기
+    햄버거.onclick = ()=>{
+      
+      상단박스.classList.toggle('on');
+      // classList 객체는 클래스를 넣고 빼는 기능을 가짐
+      // add(클래스명) - 클래스 넣기
+      // remove(클래스명) - 클래스 빼기
+      // toggle(클래스명) - 클래스 넣기/빼기 전환
+    }; /////////  클릭함수  //////////
 
     console.log('선택확인:', 햄버거, 상단박스);
 

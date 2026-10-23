@@ -591,13 +591,13 @@ nav a:hover {
   }
   .header-logo {
     position: relative;
-    z-index: 3; /* 메뉴 패널 위로 */
+    z-index: 4;
   }
  /* 햄버거 버튼 (우측, 너비 34px) */
  .menu-btn {
   display: block;
   position: relative;
-  z-index: 3; /* 메뉴패널 위에 버튼 표시 */
+  z-index: 3;
   width: 34px;
   height: 24px;
   padding: 0;
