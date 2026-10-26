@@ -5,9 +5,11 @@
     <title>산리오 코리아</title>
     <!-- 미디어쿼리를 위한 뷰포트 필수 !!! 줄여서 meta : vp-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./reset.css" />
-    <link rel="stylesheet" href="./common.css" />
     <link rel="stylesheet" href="./main.css" />
+    <script src="./common.js" defer></script>
+    <script src="./main.js" defer></script>
+    <!-- (((중요))) defer 속성을 써서 html이 모두 로딩 후 실행함. 
+     이것을 안할 경우 js파일내에 'DOMContentLoaded' 이벤트 구역을 설정하여야 html로딩 후 실행할 수 있다 -->
   </head>
 
   <body>
@@ -40,36 +42,10 @@
       <main class="main-area">
         <!-- 2-1. 배너영역 -->
         <section class="banner-area">
-          <!-- <div class="main-visual-box">
-           <img src=",/images/main_visual_pc_v1.png" alt="" id="mainVisualImg">
-             <picture>
-               태블릿/모바일: 1023px 이하 
-              <source
-                media="(max-width: 1023px)"
-                srcset="./images/main_visual_m_v1.png"
-              />
-               데스크탑 (기본) 
-              <img
-                src="./images/main_visual_pc_v1.png"
-                alt="메인 비주얼"
-                class="main-visual-img"
-                id="mainVisualImg"
-              />
-            </picture> 
-          </div>-->
           <div class="main-visual-box">
-            <img
-              src="./images/main_visual_pc_v1.png"
-              alt="메인 비주얼"
-              class="main-visual-img pc-only"
-              id="mainVisualImg"
-            />
+            <img src="./images/main_visual_pc_v1.png" alt="메인 비주얼" class="main-visual-img pc-only" id="mainVisualImg" />
             <!-- 모바일용 이미지 (736px 이하에서만 보임) -->
-            <img
-              src="./images/main_visual_m_v1.png"
-              alt="메인 비주얼"
-              class="main-visual-img m-only"
-              id="mainVisualImgM"
+            <img src="./images/main_visual_m_v1.png" alt="메인 비주얼" class="main-visual-img m-only" id="mainVisualImgM"
             />
           </div>
           <!-- SNS이동버튼 -->
@@ -434,7 +410,7 @@
           </div>
         </div>
       </footer>
-    <script src="./common.js"></script>
-    <script src="./main.js"></script>
+    <!-- <script src="./common.js"></script>
+    <script src="./main.js"></script> -->
   </body>
 </html>

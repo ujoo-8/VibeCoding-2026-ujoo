@@ -1,3 +1,8 @@
+@import url('./reset.css');
+@import url('./common.css');
+/* import의 장점은 한파일에서 모두 모아서 가져오므로 html파일에서 link를 최소화 할 수 있다.
+주의 : import는 항상 CSS문서 상단에 씀. */
+
 /* main.css : 메인 페이지 전용 영역(배너 · character · company · recruit · place · contact us) */
 /* 로드 순서: reset.css → common.css → main.css */
 .banner-area {
@@ -507,7 +512,10 @@
   .company-area .card-desc span {
     font-size: 1.6rem;
   } */
-
+  .place-area {
+    aspect-ratio: 1024 / 590;
+    padding: 4vw 3vw 3vw !important; 
+  }
   /* 9. recruit: 세로로 쌓고 중앙 정렬 */
   .recruit-area {
     background: url('images/tbg_recruit.png') no-repeat;
@@ -517,7 +525,7 @@
   .recruit-area .card-list {
     flex-direction: column;
     align-items: center;
-    gap: 40px;
+    gap: 30px;
   }
   .recruit-area .card-part {
     width: 100%;

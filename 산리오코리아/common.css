@@ -239,7 +239,17 @@ nav a:hover {
     padding-right: 14px;
   }
 
+/* 상단 고정으로 body에 패딩탑 필요 */
+body {
+  padding-top:80px;
+}
   /* 2. 헤더: 높이 100px + 회색 구분선, 햄버거 버튼 표시 */
+  .header-area {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+  }
   .header-inner {
     height: 80px;
     padding: 0 20px;
@@ -247,6 +257,9 @@ nav a:hover {
   .header-logo {
     position: relative;
     z-index: 4;
+  }
+  .header-logo img {
+    max-width: 90%;
   }
  /* 햄버거 버튼 (우측, 너비 34px) */
  .menu-btn {
@@ -397,16 +410,19 @@ nav a:hover {
   /* 1. 기본 글자 크기 87.5% */
   body {
     font-size: 87.5%;
+    padding-top: 50px;
   }
+  .header-inner {
+    height: 50px;
+  }
+  
 }
 /* ---------- 767px 이하 종료 ---------- */
 
 /* ---------- 736px 이하 시작 ---------- */
 @media screen and (max-width: 736px) {
   /* 2. 헤더 높이 50px, 햄버거 버튼 24px(선 3px), 메뉴 글자 28px */
-  .header-inner {
-    height: 50px;
-  }
+  
   .menu-btn {
     width: 24px;
     height: 18px;
