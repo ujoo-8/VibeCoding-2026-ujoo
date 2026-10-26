@@ -19,10 +19,23 @@
     transform 0.9s cubic-bezier(0.38, 1.02, 0.38, 1.06); */
   max-width: 100%;
   width: 984px;
+  /* 로딩 0.5초 후 위에서 내려오며 나타남 (delay 동안에도 시작 상태 유지: both) */
+  animation: visual-down .8s ease-out .5s both;
 }
-.main-visual-img.visible {
-  opacity: 1;
-  transform: translateY(0);
+@keyframes visual-down {
+  from {
+    opacity: 0;
+    transform: translateY(-20%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 모바일용 이미지는 기본적으로 숨김 */
+.main-visual-img.m-only {
+  display: none;
 }
 
 .scroll_btn {
@@ -425,7 +438,8 @@
 
   /* 9. recruit: 세로로 쌓고 중앙 정렬 */
   .recruit-area {
-    background-size: 90%;
+    background: url('images/tbg_recruit.png') no-repeat;
+    background-size: 100%;
     background-position: center 30px;
   }
   .recruit-area .card-list {
@@ -477,7 +491,8 @@
 @media screen and (max-width: 736px) {
   /* 3. SNS 아이콘: 위치를 화면 너비 기준(20vw), 크기 34px */
   .sns {
-    top: 20vw;
+    /* top: 20vw; */
+    display: none;
   }
   .sns img {
     width: 34px;
@@ -486,10 +501,17 @@
 
   /* 4. 메인 비주얼: 좌우 여백 20%, 스크롤 버튼 하단 20px */
   .banner-area {
-    padding: 12%;
+    padding: 12% 8% 12%;
   }
   .scroll_btn {
     bottom: 20px;
+  }
+  /* 메인 비주얼: PC 이미지 숨기고 모바일 이미지 표시 */
+  .main-visual-img.pc-only {
+    display: none;
+  }
+  .main-visual-img.m-only {
+    display: inline-block;
   }
   /* 6. character: 이름 영역 높이 축소 */
   .character-list {

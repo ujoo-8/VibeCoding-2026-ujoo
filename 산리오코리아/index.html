@@ -29,7 +29,9 @@
           </nav>
           <!-- 햄버거 버튼 (1199px 이하에서만 보임) -->
           <button type="button" class="menu-btn" aria-label="메뉴 열기" aria-expanded="false">
-          <span></span><span></span><span></span>
+          <span></span>
+          <span></span>
+          <span></span>
         </button>
         </div>
       </header>
@@ -38,30 +40,38 @@
       <main class="main-area">
         <!-- 2-1. 배너영역 -->
         <section class="banner-area">
-          <div class="main-visual-box">
-            <picture>
-              <!-- 태블릿/모바일: 1023px 이하 -->
+          <!-- <div class="main-visual-box">
+           <img src=",/images/main_visual_pc_v1.png" alt="" id="mainVisualImg">
+             <picture>
+               태블릿/모바일: 1023px 이하 
               <source
                 media="(max-width: 1023px)"
                 srcset="./images/main_visual_m_v1.png"
               />
-              <!-- 데스크탑 (기본) -->
+               데스크탑 (기본) 
               <img
                 src="./images/main_visual_pc_v1.png"
                 alt="메인 비주얼"
                 class="main-visual-img"
                 id="mainVisualImg"
               />
-            </picture>
-          </div>
-          <!-- <div class="main-visual-box">
+            </picture> 
+          </div>-->
+          <div class="main-visual-box">
             <img
               src="./images/main_visual_pc_v1.png"
               alt="메인 비주얼"
-              class="main-visual-img"
+              class="main-visual-img pc-only"
               id="mainVisualImg"
             />
-          </div> -->
+            <!-- 모바일용 이미지 (736px 이하에서만 보임) -->
+            <img
+              src="./images/main_visual_m_v1.png"
+              alt="메인 비주얼"
+              class="main-visual-img m-only"
+              id="mainVisualImgM"
+            />
+          </div>
           <!-- SNS이동버튼 -->
           <div class="sns"> <a href="https://www.instagram.com/sanrio_kr/" target="_blank"
               ><img src="./images/i_ins_pc_v3.png" alt="instargram"
