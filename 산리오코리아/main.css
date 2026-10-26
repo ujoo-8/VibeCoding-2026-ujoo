@@ -251,7 +251,9 @@
   background: url('./images/bg_recruit.png') no-repeat center 70px;
 }
 .place-area {
-  background: url('./images/bg_shop.jpg') no-repeat 0 / 100%;
+  /* 배경 이미지는 제거 → .place-slide 3개가 각각 배경을 가짐 */
+  position: relative;   /* 슬라이더(absolute)의 기준 */
+  overflow: hidden;     /* 박스 밖으로 나가는 슬라이드는 숨김 */
   /* height: 30vh; */
   /* aspect-trtio 속성 비율은 가로/세로 -> 높이값 없이 비율로 유지
   비율값은 이미지 가로, 세로 값을 써도된다.
@@ -266,6 +268,61 @@
   /* 더 강한 패딩 설정이 덮어쓰므로 !important로 가장 강하게 우선 순위로 높여줌(남발 하지말것) */
   padding: 4vw 3vw 3vw !important;
   /* vw단위는 뷰포트 단위로 보이는 화면 가로크기 기준 %크기임 */
+}
+
+/* ---------- place 슬라이더 ---------- */
+/* 슬라이더 박스: place-area와 정확히 같은 크기(꽉 채움), 맨 아래 레이어 */
+.place-slider {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+}
+/* 트랙: 슬라이드를 가로(flex)로 나열. JS가 translateX로 이동시킴 */
+.place-track {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  will-change: transform;
+}
+/* 슬라이드 1장 = place-area와 같은 크기 */
+.place-slide {
+  flex: 0 0 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+.place-slide1 { background-image: url('./images/bg_shop.jpg'); }
+.place-slide2 { background-image: url('./images/bg_shop2.jpg'); }
+.place-slide3 { background-image: url('./images/bg_shop3.jpg'); }
+
+/* 이미지가 밝거나 복잡해도 글자가 보이도록: 위쪽에 어두운 그라데이션 깔기 */
+.place-slider::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.55) 0%,
+    rgba(0, 0, 0, 0.3) 55%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  pointer-events: none;
+}
+
+/* 타이틀/버튼은 슬라이더보다 위 레이어 + 가독성 보정 */
+.place-area .tit-box {
+  position: relative;
+  z-index: 2;
+}
+.place-area .part-tit,
+.place-area .btn-view {
+  color: #fff;
+  /* text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6), 0 0 12px rgba(0, 0, 0, 0.35); */
+}
+.place-area .btn-view {
+  border-color: #fff; /* 테두리가 있는 버튼 스타일일 때도 흰색으로 */
 }
 .contactus-area {
   background-color: #4a679e;
@@ -471,10 +528,7 @@
     width: 60%;
     object-fit: contain;
   }
-  /* 10. place: 배경 cover */
-  .place-area {
-    background-size: cover;
-  }
+  /* 10. place: 슬라이드 배경은 기본값이 이미 cover 이므로 별도 규칙 불필요 */
 
   /* 11. contact us: 지도 위/정보 아래로 쌓기, 지도 높이 280px + 위쪽 모서리 20px */
   .contact-box {

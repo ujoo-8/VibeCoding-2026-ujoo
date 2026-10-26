@@ -69,6 +69,47 @@ if (나야나 && 너를클릭해) {
 //나야나.style.backgroundColor = 'red'
 
 
+// ===== place 영역 배경 슬라이더 (바닐라 JS) =====
+// 동작: 첫 이미지 표시 → 2초 대기 → 1초간 왼쪽으로 밀려나며 다음 이미지가 들어옴 → 반복
+// 마지막(3번째) 이미지 다음에는 복제된 1번째 이미지가 오른쪽에서 들어오고,
+// 이동이 끝나면 트랜지션 없이 진짜 1번째 위치로 순간 이동해서 끊김 없이 무한 반복함.
+const placeTrack = document.querySelector('.place-track');
+
+if (placeTrack) {
+  const WAIT_MS = 6000;  // 멈춰 있는 시간
+  const MOVE_MS = 1000;  // 이동 시간
+
+  // 무한 반복용: 첫 슬라이드를 복제해서 맨 뒤에 붙임
+  const slides = placeTrack.children;
+  const total = slides.length;              // 원본 슬라이드 수 (3)
+  placeTrack.appendChild(slides[0].cloneNode(true));
+
+  let index = 0;
+
+  const moveTo = (i, animate) => {
+    placeTrack.style.transition = animate ? `transform ${MOVE_MS}ms ease-in-out` : 'none';
+    placeTrack.style.transform = `translateX(-${i * 100}%)`;
+  };
+
+  const next = () => {
+    index++;
+    moveTo(index, true);
+
+    // 이동이 끝나면(1초 뒤) 처리
+    setTimeout(() => {
+      if (index === total) {
+        // 복제본(=1번째 이미지)까지 왔다면 진짜 1번째로 순간 복귀
+        index = 0;
+        moveTo(0, false);
+      }
+      setTimeout(next, WAIT_MS); // 다시 2초 대기 후 다음 이동
+    }, MOVE_MS);
+  };
+
+  moveTo(0, false);
+  setTimeout(next, WAIT_MS); // 처음엔 첫 이미지를 2초간 보여줌
+}
+
 // 메인 비주얼 등장 애니메이션 (사용 안 함)
 // window.addEventListener("DOMContentLoaded", function () {
 //   setTimeout(function () {

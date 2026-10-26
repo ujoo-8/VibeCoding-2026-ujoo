@@ -375,7 +375,16 @@
         </section>
         <!-- 2-5. 플레이스영역 -->
         <section class="place-area">
-          <div class="tit-box">
+          <!-- 배경 슬라이드 박스 (3장을 한 박스에 담음) : 타이틀/버튼보다 아래 레이어 -->
+          <div class="place-slider" aria-hidden="true">
+            <div class="place-track">
+              <div class="place-slide place-slide1"></div>
+              <div class="place-slide place-slide2"></div>
+              <div class="place-slide place-slide3"></div>
+              <!-- 무한 반복용 첫 슬라이드 복제본은 main.js 에서 자동 추가됨 -->
+            </div>
+          </div>
+          <div class="tit-box white">
             <h2 class="part-tit">place</h2>
             <div class="btn-box">
               <a href="#" class="btn-view">veiw more</a>
