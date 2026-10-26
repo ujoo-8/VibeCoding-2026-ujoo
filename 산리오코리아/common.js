@@ -22,6 +22,19 @@ if (햄버거 && 상단박스) {
   }; /////////  클릭함수  //////////
 
   console.log('선택확인:', 햄버거, 상단박스);
+
+  // 리사이즈 중에는 nav 트랜지션을 잠깐 꺼서, PC↔태블릿 전환 시
+  // 메뉴가 흐리게 나왔다 사라지는 현상을 막음 (메뉴는 클릭할 때만 열림)
+  let 리사이즈타이머;
+  window.addEventListener('resize', () => {
+    상단박스.classList.add('no-trans');
+    // PC 폭(1200px 이상)으로 돌아오면 열린 상태도 닫아줌
+    if (window.innerWidth > 1199) 상단박스.classList.remove('on');
+    clearTimeout(리사이즈타이머);
+    리사이즈타이머 = setTimeout(() => {
+      상단박스.classList.remove('no-trans');
+    }, 150);
+  });
 }
 
 // 햄버거 메뉴 열기/닫기

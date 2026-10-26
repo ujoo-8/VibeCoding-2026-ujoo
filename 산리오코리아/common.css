@@ -324,6 +324,11 @@ nav a:hover {
   /* 모바일용 메뉴를 위한 클래스 지정 : 트랜지션 넣기
   -> mob클래스를 자바스크립트에서 작동 시 넣어주면 된다 */
   
+  /* 화면 크기가 바뀌는 순간(리사이즈)에는 트랜지션을 끔
+     -> PC→태블릿 전환 시 메뉴가 흐리게 보였다 사라지는 현상 방지 (JS가 no-trans 클래스를 잠깐 붙임) */
+  .header-area.no-trans nav {
+    transition: none;
+  }
   .header-area.on nav {/* 트랜스폼 보이게 설정 */
     translate: 0;
     opacity: 1;
