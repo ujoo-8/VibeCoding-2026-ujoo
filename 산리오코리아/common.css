@@ -241,8 +241,8 @@ nav a:hover {
 
   /* 2. 헤더: 높이 100px + 회색 구분선, 햄버거 버튼 표시 */
   .header-inner {
-    height: 100px;
-    padding: 0 14px;
+    height: 80px;
+    padding: 0 20px;
   }
   .header-logo {
     position: relative;
