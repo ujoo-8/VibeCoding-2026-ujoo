@@ -1,0 +1,1995 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>한미그룹 2026년 하반기 공개채용</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800&family=Noto+Sans+KR:wght@500;700;800&display=swap"
+    rel="stylesheet" />
+  <style>
+    /* ===== Design Tokens / CSS변수 구역 ===== */
+    /*  :root{코드} 
+      1. 변수설정방법
+      --변수명 : 값;
+      변수명은 케밥케이스로 주로 씀
+      (케밥케이스란? 마이너스 기호로 연결된 변수법)
+      2. 변수 호출방법
+      var(변수명)
+      쓰고 싶은 곳에 값으로 변수를 사용함.
+    */
+    :root {
+      --red: #e60012;
+      --orange: #ff5d32;
+      --white: #ffffff;
+      --black: #000000;
+      --white-10: rgba(255, 255, 255, 0.1);
+      --white-50: rgba(255, 255, 255, 0.5);
+      --grad-cta: linear-gradient(90deg, #e60012 0%, #ff5d32 100%);
+      --font:
+        "Inter", "Noto Sans KR", "Pretendard", "Apple SD Gothic Neo",
+        "Malgun Gothic", sans-serif;
+      --container: 1440px;
+      --header-h: 100px;
+      --ease: 0.2s ease;
+    }
+
+    /* ===== Reset ===== */
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font);
+      color: var(--black);
+      background: var(--white);
+      word-break: keep-all;
+      overflow-wrap: break-word;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1,
+    h2,
+    p,
+    ul {
+      margin: 0;
+      padding: 0;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    button {
+      font-family: inherit;
+      cursor: pointer;
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      margin: -1px;
+      padding: 0;
+      overflow: hidden;
+      clip: rect(0 0 0 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    /* ===== Header ===== */
+    .header {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: var(--header-h);
+      z-index: 10;
+    }
+
+    .header__inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: var(--container);
+      height: 100%;
+      margin: 0 auto;
+      padding: 0 60px;
+    }
+
+    .logo {
+      display: block;
+      width: 182px;
+      height: 31px;
+    }
+
+    .logo img {
+      width: 182px;
+      height: 31px;
+    }
+
+    .gnb {
+      display: flex;
+      align-items: center;
+    }
+
+    .gnb__list {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+    }
+
+    .gnb__link {
+      display: block;
+      font-weight: 600;
+      font-size: 19.2px;
+      line-height: 20px;
+      letter-spacing: -0.4px;
+      color: var(--black);
+      transition: color var(--ease);
+    }
+
+    .gnb__link:hover,
+    .gnb__link:focus-visible {
+      color: var(--red);
+    }
+
+    .gnb__apply {
+      margin-left: 40px;
+    }
+
+    /* ===== Buttons (hover: 흰색 ↔ 빨강 반전) ===== */
+    .btn {
+      position: relative;
+      isolation: isolate;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid var(--red);
+      border-radius: 500px;
+      color: var(--white);
+      font-weight: 600;
+      white-space: nowrap;
+      overflow: hidden;
+      background-color: var(--white);
+      transition:
+        color var(--ease),
+        border-color var(--ease),
+        background-color var(--ease);
+    }
+
+    /* 배경 레이어: 그라데이션도 부드럽게 전환되도록 opacity 로 처리 */
+    .btn::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background: var(--red);
+      transition: opacity var(--ease);
+    }
+
+    .btn:hover,
+    .btn:focus-visible {
+      color: var(--red);
+    }
+
+    .btn:hover::before,
+    .btn:focus-visible::before {
+      opacity: 0;
+    }
+
+    .btn--sm {
+      gap: 10px;
+      height: 48px;
+      padding: 0 20px;
+      font-size: 17.4px;
+      letter-spacing: -0.36px;
+    }
+
+    .btn--sm .chevron {
+      width: 7px;
+      height: 12px;
+      flex: none;
+    }
+
+    .btn--sm .chevron path {
+      stroke: currentColor;
+      transition: stroke var(--ease);
+    }
+
+    .btn--lg {
+      width: 303px;
+      height: 72px;
+      font-size: 22.7px;
+      letter-spacing: -0.48px;
+      border-color: transparent;
+    }
+
+    .btn--lg::before {
+      background: var(--grad-cta);
+    }
+
+    .btn--lg:hover,
+    .btn--lg:focus-visible {
+      border-color: var(--red);
+    }
+
+    /* 모바일 전용 컨트롤 (데스크탑·태블릿에서는 숨김, 390px 이하에서 표시) */
+    .header__apply,
+    .gnb__toggle,
+    .gnb__close {
+      display: none;
+    }
+
+    /* ===== Main Visual ===== */
+    .mv {
+      position: relative;
+      height: 900px;
+      min-height: 720px;
+      overflow: hidden;
+      background: #ffe8e0 url("./images/mv_bg.png") center / cover no-repeat;
+    }
+
+    .mv__inner {
+      position: relative;
+      display: flex;
+      align-items: center;
+      max-width: var(--container);
+      height: 100%;
+      margin: 0 auto;
+    }
+
+    /* 좌측 텍스트 */
+    .mv__text {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 80px;
+      width: 560px;
+      margin-left: 100px;
+    }
+
+    .mv__info {
+      display: flex;
+      flex-direction: column;
+      gap: 31.9px;
+      width: 442px;
+    }
+
+    .mv__season {
+      font-weight: 700;
+      font-size: 31.1px;
+      line-height: 45px;
+      letter-spacing: -0.64px;
+    }
+
+    .mv__title {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .mv__title-em {
+      font-weight: 800;
+      font-size: 72.3px;
+      line-height: 76px;
+      letter-spacing: -1.76px;
+    }
+
+    .mv__title-sub {
+      font-weight: 800;
+      font-size: 45.8px;
+      line-height: 72px;
+      letter-spacing: -1.12px;
+    }
+
+    .mv__period {
+      font-weight: 500;
+      font-size: 19.2px;
+      line-height: 28px;
+      letter-spacing: -0.4px;
+    }
+
+    /* 우측 비주얼 (stage 기준 좌표) */
+    .mv__visual {
+      position: absolute;
+      top: 0;
+      left: 700px;
+      width: 740px;
+      height: 100%;
+      z-index: 1;
+    }
+
+    .mv__visual>* {
+      position: absolute;
+    }
+
+    .mv__glow {
+      left: 0;
+      top: 118px;
+      width: 663px;
+      height: 663px;
+      background: radial-gradient(70.71% 70.71% at 50% 50%,
+          rgba(255, 255, 255, 0.2) 0%,
+          rgba(255, 255, 255, 0) 100%);
+      border: 5px solid var(--white);
+      border-radius: 500px;
+      filter: blur(5px);
+    }
+
+    .mv__ring {
+      left: 55px;
+      top: 173px;
+      width: 553px;
+      height: 553px;
+      border: 1px solid var(--white-50);
+      border-radius: 500px;
+    }
+
+    .mv__micro {
+      left: 65.8px;
+      top: 151.7px;
+      width: 289.52px;
+      height: 221.76px;
+    }
+
+    .mv__char1 {
+      left: 115.1px;
+      top: 295.1px;
+      width: 253.44px;
+      height: 395.12px;
+    }
+
+    .mv__char2 {
+      left: 336.8px;
+      top: 293.4px;
+      width: 181.28px;
+      height: 381.04px;
+    }
+
+    .mv__char3 {
+      left: 39.4px;
+      top: 469.4px;
+      width: 216.48px;
+      height: 262.24px;
+    }
+
+    .mv__char4 {
+      left: 395.8px;
+      top: 490.5px;
+      width: 292.16px;
+      height: 206.8px;
+    }
+
+    /* 별 (CSS 4각 별) */
+    .star {
+      clip-path: polygon(50% 0,
+          62% 38%,
+          100% 50%,
+          62% 62%,
+          50% 100%,
+          38% 62%,
+          0 50%,
+          38% 38%);
+    }
+
+    .star--1 {
+      left: 221.6px;
+      top: 237px;
+      width: 17.6px;
+      height: 16.72px;
+      background: #9adcf7;
+    }
+
+    .star--2 {
+      left: 40px;
+      top: 469.4px;
+      width: 22.88px;
+      height: 23.76px;
+      background: #a56bff;
+    }
+
+    .star--3 {
+      left: 614.9px;
+      top: 474.6px;
+      width: 21.12px;
+      height: 21.12px;
+      background: #ffc933;
+    }
+
+    .star--3b {
+      left: 632.5px;
+      top: 432px;
+      width: 34.32px;
+      height: 35.2px;
+      background: #ffc933;
+    }
+
+    .star--4 {
+      left: 460.9px;
+      top: 249px;
+      width: 23.76px;
+      height: 24.64px;
+      background: #ff4b2b;
+    }
+
+    /* 스크롤 버튼 */
+    .scroll-btn {
+      position: absolute;
+      left: 50%;
+      bottom: 64px;
+      z-index: 3;
+      transform: translateX(-50%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 80px;
+      height: 80px;
+      padding: 0;
+      border: 0;
+      border-radius: 500px;
+      background: var(--white-10);
+      box-shadow:
+        inset 4px 4px 10px rgba(255, 255, 255, 0.4),
+        inset -4px -4px 10px rgba(0, 0, 0, 0.1);
+      -webkit-backdrop-filter: blur(5px);
+      backdrop-filter: blur(5px);
+      transition: background-color var(--ease);
+    }
+
+    .scroll-btn::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      background: linear-gradient(132.3deg,
+          rgba(255, 255, 255, 0.8) 12.7%,
+          rgba(255, 255, 255, 0) 86.3%);
+      opacity: 0.5;
+      pointer-events: none;
+    }
+
+    .scroll-btn:hover,
+    .scroll-btn:focus-visible {
+      background: rgba(230, 0, 18, 0.15);
+    }
+
+    .scroll-btn .chevron-down {
+      position: relative;
+      width: 40px;
+      height: 40px;
+    }
+
+    .scroll-btn .chevron-down::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 14px;
+      height: 14px;
+      border-right: 3px solid var(--white);
+      border-bottom: 3px solid var(--white);
+      transform: translate(-50%, -70%) rotate(45deg);
+    }
+
+    /* ===== Mirae Section (두 번째 섹션) =====
+       기준 시안: 데스크탑 1273×848 / 태블릿 1061×726 / 모바일 717×777
+       - --stage : 시안 폭(최대 1440px). 모든 크기를 이 값의 비율(%·calc)로 지정해 함께 축소·확대
+       - 위치는 % 좌표, 폰트는 stage 폭 비율 → 브레이크포인트 안에서 유동적으로 변함 */
+    .mirae {
+      --stage: min(100vw, var(--container));
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(180deg,
+          #ffffff 0%,
+          #fff4f0 35%,
+          #ffe8e0 100%);
+    }
+
+    .mirae__stage {
+      position: relative;
+      width: var(--stage);
+      aspect-ratio: 1273 / 848;
+      margin: 0 auto;
+    }
+
+    /* 타이틀 (데스크탑·모바일: 빨강→주황 그라데이션 / 태블릿: 검정 + 강조 빨강) */
+    .mirae__title {
+      position: absolute;
+      top: 17.5%;
+      left: 0;
+      right: 0;
+      z-index: 2;
+      text-align: center;
+      font-weight: 800;
+      font-size: calc(var(--stage) * 0.0500);
+      line-height: 1.3;
+      letter-spacing: -0.03em;
+      background: var(--grad-cta);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      color: transparent;
+    }
+
+    .mirae__em {
+      font-style: normal;
+    }
+
+    /* 장식 이미지 레이어 */
+    .mirae__visual {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+      /* background: linear-gradient(180deg, rgba(255, 93, 50, 0) 0%, rgba(255, 93, 50, 0.20) 100%); */
+    }
+
+    .mirae__art {
+      position: relative;
+      width: var(--stage);
+      height: 100%;
+      margin: 0 auto;
+    }
+
+    .mirae__art>img,
+    .mirae__visual>img {
+      position: absolute;
+      height: auto;
+    }
+
+    /* 데스크탑 (시안 1273×848 기준 %) */
+    /* 블러 구름 PNG 는 가장자리에 투명 여백이 있어 보이는 구름보다 이미지 박스를 크게 잡음 */
+    .mirae__cloud1 {
+      right: 3.8%;
+      top: 58.6%;
+      width: calc(var(--stage) * 0.16);
+    }
+
+    .mirae__cloud2 {
+      left: 0%;
+      top: 43.8%;
+      width: 11.2%;
+    }
+
+    .mirae__walking {
+      left: 50%;
+      bottom: -80px;
+      width: 100%;
+      translate: -50%;
+    }
+
+    .mirae__star1 {
+      left: 56.7%;
+      top: 37.7%;
+      width: 2.6%;
+    }
+
+    .mirae__star2 {
+      left: 37.9%;
+      top: 71.4%;
+      width: 2.9%;
+    }
+
+    /* 화면 가장자리에 걸쳐 잘린 구름: 넓은 화면에서도 뷰포트 끝에 붙도록 section 기준 */
+    .mirae__cloud3 {
+      right: 0;
+      top: 26.9%;
+      width: calc(var(--stage) * 0.24);
+    }
+
+    .mirae__cloud4 {
+      left: 20%;
+      top: 13%;
+      width: calc(var(--stage) * 0.3);
+    }
+
+
+    /* ===== History Section (세 번째 섹션 연혁) ===== */
+    .history {
+      position: relative;
+      padding: 100px 0 80px;
+      background: var(--white);
+      overflow: hidden;
+    }
+
+    .history__wrapper {
+      position: relative;
+      max-height: 65vh;
+      /* 화면의 약 2/3 수준만 초기 노출 */
+      overflow: hidden;
+      transition: max-height 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    /* 펼침 상태 */
+    .history__wrapper.is-expanded {
+      max-height: 5000px;
+      /* 모든 콘텐츠가 표시될 수 있는 충분한 크기 */
+    }
+
+    .history__inner {
+      position: relative;
+      max-width: var(--container);
+      margin: 0 auto;
+      padding: 0 60px;
+    }
+
+    /* 타이틀 & 53th 배지 */
+    .history__header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .history__title {
+      font-size: 32px;
+      font-weight: 800;
+      line-height: 1.4;
+      letter-spacing: -0.6px;
+      color: var(--black);
+      margin-bottom: 24px;
+    }
+
+    .history__badge-start {
+      display: inline-flex;
+      align-items: baseline;
+      position: relative;
+      color: var(--orange);
+      font-weight: 800;
+    }
+
+    .history__badge-start .num {
+      font-size: 110px;
+      line-height: 1;
+    }
+
+    .history__badge-start .unit {
+      font-size: 40px;
+      margin-left: 4px;
+    }
+
+    .history__sparkle {
+      position: absolute;
+      top: -10px;
+      right: -30px;
+      font-size: 24px;
+      color: #ffc933;
+    }
+
+    /* 타임라인 레이아웃 (데스크톱 2열 센터 라인) */
+    .history__timeline {
+      position: relative;
+      margin: 40px 0;
+    }
+
+    .history__line {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      width: 4px;
+      background: var(--orange);
+      transform: translateX(-50%);
+      z-index: 1;
+    }
+
+    .history__item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 120px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .history__item--left {
+      flex-direction: row;
+    }
+
+    .history__item--right {
+      flex-direction: row-reverse;
+    }
+
+    .history__content,
+    .history__media {
+      width: 44%;
+    }
+
+    .history__item-title {
+      font-size: 24px;
+      font-weight: 800;
+      color: var(--black);
+      margin-bottom: 20px;
+    }
+
+    .history__period {
+      display: block;
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--orange);
+      margin-bottom: 16px;
+    }
+
+    .history__list li {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 16px;
+      line-height: 1.8;
+      color: #444;
+      margin-bottom: 8px;
+    }
+
+    .history__list time {
+      font-weight: 700;
+      color: var(--orange);
+    }
+
+    .history__img {
+      width: 100%;
+      border-radius: 16px;
+      object-fit: cover;
+    }
+
+    /* 인라인 객체 에셋 */
+    .history__obj {
+      position: absolute;
+      pointer-events: none;
+    }
+
+    .history__obj--beaker {
+      width: 100px;
+      left: -120px;
+      bottom: -20px;
+    }
+
+    .history__obj--char {
+      width: 120px;
+      left: -140px;
+      bottom: -40px;
+    }
+
+    /* 배경 절대배치 이미지 */
+    .history__bg-assets .history__bg-obj {
+      position: absolute;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .history__bg-obj--micro {
+      right: 5%;
+      top: 25%;
+      width: 140px;
+    }
+
+    .history__bg-obj--mol {
+      right: 2%;
+      bottom: 15%;
+      width: 180px;
+    }
+
+    .history__bg-obj--blur1 {
+      left: 4%;
+      top: 18%;
+      width: 120px;
+    }
+
+    .history__bg-obj--blur2 {
+      right: 8%;
+      top: 45%;
+      width: 100px;
+    }
+
+    /* 푸터 배지 & 100th */
+    .history__footer {
+      text-align: center;
+      margin-top: 80px;
+    }
+
+    .history__badge-end {
+      display: inline-flex;
+      align-items: baseline;
+      color: var(--orange);
+      font-weight: 800;
+    }
+
+    .history__badge-end .num {
+      font-size: 130px;
+      line-height: 1;
+    }
+
+    .history__badge-end .unit {
+      font-size: 48px;
+    }
+
+    .history__footer-desc {
+      font-size: 22px;
+      font-weight: 700;
+      line-height: 1.5;
+      color: var(--black);
+      margin-top: 24px;
+    }
+
+    /* 하단 그라데이션 페이드 마스크 */
+    .history__fade-mask {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 220px;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.95) 70%, #ffffff 100%);
+      pointer-events: none;
+      transition: opacity 0.4s ease;
+      z-index: 5;
+    }
+
+    /* 펼친 상태에서는 그라데이션 마스크 숨김 */
+    .history__wrapper.is-expanded .history__fade-mask {
+      opacity: 0;
+    }
+
+    /* 아코디언 버튼 스타일 */
+    .history__action {
+      text-align: center;
+      margin-top: 24px;
+      position: relative;
+      z-index: 10;
+    }
+
+    .history__toggle-btn {
+      padding: 0 32px;
+      height: 52px;
+    }
+
+    .history__toggle-btn .chevron-toggle {
+      width: 12px;
+      height: 7px;
+      margin-left: 8px;
+      transition: transform var(--ease);
+    }
+
+    .history__wrapper.is-expanded+.history__action .chevron-toggle {
+      transform: rotate(180deg);
+    }
+
+
+    /* ===== Tablet (1024px 이하) ===== */
+    @media (max-width: 1024px) {
+      .history__inner {
+        padding: 0 40px;
+      }
+
+      .history__title {
+        font-size: 28px;
+      }
+
+      .history__badge-start .num {
+        font-size: 90px;
+      }
+
+      .history__badge-end .num {
+        font-size: 100px;
+      }
+
+      .history__content,
+      .history__media {
+        width: 46%;
+      }
+
+      .history__item-title {
+        font-size: 20px;
+      }
+
+      .history__period {
+        font-size: 24px;
+      }
+
+      .history__list li {
+        font-size: 14px;
+      }
+
+      .history__obj--beaker {
+        width: 70px;
+        left: -80px;
+      }
+
+      .history__obj--char {
+        width: 90px;
+        left: -100px;
+      }
+    }
+
+
+    /* ===== Mobile (768px 이하) ===== */
+    @media (max-width: 768px) {
+      .history {
+        padding: 60px 0 40px;
+      }
+
+      .history__inner {
+        padding: 0 20px;
+      }
+
+      .history__title {
+        font-size: 22px;
+      }
+
+      .history__badge-start .num {
+        font-size: 72px;
+      }
+
+      .history__badge-start .unit {
+        font-size: 28px;
+      }
+
+      /* 타임라인을 1열(Single Column)로 재배치 */
+      .history__line {
+        left: 16px;
+        transform: none;
+      }
+
+      .history__item,
+      .history__item--left,
+      .history__item--right {
+        flex-direction: column;
+        align-items: flex-start;
+        padding-left: 40px;
+        margin-bottom: 60px;
+      }
+
+      .history__content,
+      .history__media {
+        width: 100%;
+      }
+
+      .history__media {
+        margin-top: 16px;
+        order: 2;
+      }
+
+      .history__content {
+        order: 1;
+      }
+
+      .history__list li {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 2px;
+        margin-bottom: 12px;
+      }
+
+      .history__badge-end .num {
+        font-size: 80px;
+      }
+
+      .history__badge-end .unit {
+        font-size: 32px;
+      }
+
+      .history__footer-desc {
+        font-size: 16px;
+        word-break: keep-all;
+      }
+
+      .history__obj,
+      .history__bg-assets {
+        display: none;
+      }
+
+      /* 모바일 가독성을 위해 복잡한 에셋 숨김 */
+    }
+
+    /* ===== Tablet (1024px 이하) ===== */
+    @media (max-width: 1024px) {
+      .mirae__stage {
+        aspect-ratio: 1061 / 726;
+      }
+
+      .mirae__title {
+        top: 21%;
+        font-size: calc(var(--stage) * 0.0371);
+        background: none;
+        -webkit-text-fill-color: currentColor;
+        color: var(--black);
+      }
+
+      .mirae__em {
+        color: var(--red);
+        -webkit-text-fill-color: var(--red);
+      }
+
+      .mirae__cloud1 {
+        right: 21.8%;
+        top: 58.6%;
+        width: calc(var(--stage) * 0.16);
+      }
+
+      .mirae__cloud2 {
+        left: -0.1%;
+        top: 43.8%;
+        width: 15.2%;
+      }
+
+      .mirae__walking {
+        left: 7.1%;
+        bottom: 0;
+        width: 87.2%;
+      }
+
+      .mirae__star1 {
+        left: 56.7%;
+        top: 37.7%;
+        width: 2.6%;
+      }
+
+      .mirae__star2 {
+        left: 37.9%;
+        top: 71.4%;
+        width: 2.9%;
+      }
+
+      .mirae__cloud3 {
+        right: 0;
+        top: 26.9%;
+        width: calc(var(--stage) * 0.24);
+      }
+
+      .mirae__cloud4 {
+        left: 13%;
+        top: 13%;
+        width: calc(var(--stage) * 0.35);
+      }
+
+      /* .mirae__cloud1  { right: 3.8%; top: 58.6%; width: calc(var(--stage) * 0.3500);  }
+      .mirae__cloud2  { left: -0.6%; top: 50.9%; width: 22.9%; }
+      .mirae__walking    { left: 17%;   width: 66.2%; }
+      .mirae__star1   { left: 55%;   top: 54.5%; width: 1.9%; }
+      .mirae__star2   { left: 41%;   top: 79.5%; width: 2.2%; }
+      .mirae__cloud3 { top: 46.8%; width: calc(var(--stage) * 0.18); }
+      .mirae__cloud4 { top: 24.1%; width: calc(var(--stage) * 0.237); } */
+    }
+
+    /* ===== Mobile (768px 이하) ===== */
+    @media (max-width: 768px) {
+      .mirae__stage {
+        aspect-ratio: 717 / 777;
+      }
+
+      .mirae__title {
+        top: 14.8%;
+        font-size: calc(var(--stage) * 0.069);
+        background: var(--grad-cta);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        color: transparent;
+      }
+
+      .mirae__em {
+        color: inherit;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .mirae__cloud1 {
+        right: 6.8%;
+        top: 58.4%;
+        width: 33.9%;
+      }
+
+      .mirae__cloud2 {
+        left: -0.1%;
+        top: 50.9%;
+        width: 22.9%;
+      }
+
+      .mirae__walking {
+        left: 1%;
+        width: 100.6%;
+      }
+
+      .mirae__star1 {
+        left: 57.8%;
+        top: 55.7%;
+        width: 2.8%;
+      }
+
+      .mirae__star2 {
+        left: 37.4%;
+        top: 78.5%;
+        width: 3.1%;
+      }
+
+      .mirae__cloud3 {
+        top: 30.2%;
+        width: calc(var(--stage) * 0.361);
+      }
+
+      .mirae__cloud4 {
+        left: 13%;
+        top: 13%;
+        width: calc(var(--stage) * 0.35);
+      }
+    }
+
+    /* ===== Footer ===== */
+    .footer {
+      background: #f5f5f5;
+      border-top: 1px solid rgba(0, 0, 0, 0.08);
+    }
+
+    .footer__inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      max-width: var(--container);
+      margin: 0 auto;
+      padding: 48px 60px;
+    }
+
+    .footer__logo {
+      display: block;
+      width: 120px;
+      height: auto;
+    }
+
+    .footer__logo img {
+      width: 120px;
+      height: auto;
+    }
+
+    .footer__copy {
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 20px;
+      letter-spacing: -0.2px;
+      color: rgba(0, 0, 0, 0.6);
+    }
+
+    /* ===== Responsive (데스크톱 1440 기준 → 축소 대응) ===== */
+    @media (max-width: 1280px) {
+      .header__inner {
+        padding: 0 32px;
+      }
+
+      .footer__inner {
+        padding: 40px 32px;
+      }
+
+      .gnb__list {
+        gap: 24px;
+      }
+
+      .gnb__apply {
+        margin-left: 24px;
+      }
+
+      .mv__text {
+        margin-left: 48px;
+      }
+
+      .mv__visual {
+        transform: scale(0.85);
+        transform-origin: left center;
+        left: 52%;
+      }
+    }
+
+    /* ===== Desktop fluid scaling (1440px 기준 내부 레이아웃 비율 유지) ===== */
+    @media (min-width: 1025px) and (max-width: 1439px) {
+      .mv {
+        height: calc(900px * var(--mv-scale, 1));
+        min-height: 0;
+      }
+
+      .mv__inner {
+        width: 1440px;
+        max-width: none;
+        height: 900px;
+        position: absolute;
+        top: 0;
+        left: 50%;
+        margin: 0;
+        transform: translateX(-50%) scale(var(--mv-scale, 1));
+        transform-origin: top center;
+      }
+    }
+
+    /* ===== Tablet (1024px 이하) ===== */
+    @media (max-width: 1024px) {
+      :root {
+        --header-h: 96px;
+      }
+
+      /* 헤더: 로고·내비를 유동적으로 축소 */
+      .header__inner {
+        padding: 0 40px;
+      }
+
+      .logo,
+      .logo img {
+        width: clamp(110px, 14.6vw, 150px);
+        height: auto;
+      }
+
+      .gnb__list {
+        gap: clamp(14px, 2.9vw, 30px);
+      }
+
+      .gnb__link {
+        font-size: clamp(12px, 1.66vw, 17px);
+      }
+
+      .gnb__apply {
+        margin-left: clamp(12px, 2.1vw, 22px);
+      }
+
+      .btn--sm {
+        gap: 8px;
+        height: 44px;
+        padding: 0 clamp(12px, 2vw, 20px);
+        font-size: clamp(13px, 1.53vw, 15.7px);
+        letter-spacing: -0.33px;
+      }
+
+      /* 메인 비주얼: 텍스트 위 → 비주얼 아래 세로 배치 */
+      .mv {
+        height: auto;
+        min-height: 0;
+      }
+
+      .mv__inner {
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        height: auto;
+        padding: var(--header-h) 0 96px;
+      }
+
+      .mv__text {
+        width: auto;
+        margin: 0 40px;
+        gap: 40px;
+      }
+
+      .mv__info {
+        width: auto;
+        gap: 20px;
+      }
+
+      .mv__season {
+        font-size: 27px;
+        line-height: 42px;
+        letter-spacing: -0.56px;
+      }
+
+      .mv__title-em {
+        font-size: 57px;
+        line-height: 58px;
+        letter-spacing: -1.4px;
+      }
+
+      .mv__title-sub {
+        font-size: 34px;
+        line-height: 52px;
+        letter-spacing: -0.83px;
+      }
+
+      .btn--lg {
+        width: 298px;
+        height: 64px;
+        font-size: 20px;
+        letter-spacing: -0.42px;
+      }
+
+      /* 우측 절대좌표 스테이지(740px) → 박스 기준 % 좌표로 변환해 폭에 맞춰 함께 축소 */
+      .mv__visual {
+        position: relative;
+        top: auto;
+        left: auto;
+        width: min(500px, calc(100% - 40px));
+        height: auto;
+        aspect-ratio: 688 / 663;
+        margin: 32px auto 0;
+        transform: none;
+      }
+
+      .mv__glow {
+        left: 0;
+        top: 0;
+        width: 96.37%;
+        height: 100%;
+      }
+
+      .mv__ring {
+        left: 7.99%;
+        top: 8.3%;
+        width: 80.38%;
+        height: 83.41%;
+      }
+
+      .mv__micro {
+        left: 9.56%;
+        top: 5.08%;
+        width: 42.08%;
+        height: auto;
+      }
+
+      .mv__char1 {
+        left: 16.73%;
+        top: 26.71%;
+        width: 36.84%;
+        height: auto;
+      }
+
+      .mv__char2 {
+        left: 48.95%;
+        top: 26.46%;
+        width: 26.35%;
+        height: auto;
+      }
+
+      .mv__char3 {
+        left: 5.73%;
+        top: 53%;
+        width: 31.47%;
+        height: auto;
+      }
+
+      .mv__char4 {
+        left: 57.53%;
+        top: 56.18%;
+        width: 42.47%;
+        height: auto;
+      }
+
+      .star--1 {
+        left: 32.21%;
+        top: 17.95%;
+        width: 2.56%;
+        height: 2.52%;
+      }
+
+      .star--2 {
+        left: 5.81%;
+        top: 53%;
+        width: 3.33%;
+        height: 3.58%;
+      }
+
+      .star--3 {
+        left: 89.37%;
+        top: 53.78%;
+        width: 3.07%;
+        height: 3.19%;
+      }
+
+      .star--3b {
+        left: 91.93%;
+        top: 47.36%;
+        width: 4.99%;
+        height: 5.31%;
+      }
+
+      .star--4 {
+        left: 66.99%;
+        top: 19.76%;
+        width: 3.45%;
+        height: 3.72%;
+      }
+
+      .scroll-btn {
+        width: 56px;
+        height: 56px;
+        bottom: 24px;
+      }
+
+      .footer__inner {
+        padding: 40px;
+      }
+    }
+
+    /* ===== Mobile (390px 이하) ===== */
+    @media (max-width: 768px) {
+      :root {
+        --header-h: 62px;
+      }
+
+      html.menu-open,
+      html.menu-open body {
+        overflow: hidden;
+      }
+
+      /* 헤더: 로고 + 지원하기 + 햄버거 */
+      .header__inner {
+        padding: 0 20px;
+      }
+
+      .logo,
+      .logo img {
+        width: 127px;
+        height: auto;
+      }
+
+      .header__apply {
+        display: inline-flex;
+        margin-left: auto;
+        height: 28px;
+        padding: 0 8px;
+        font-size: 12px;
+        letter-spacing: -0.25px;
+      }
+
+      .gnb__toggle {
+        display: block;
+        flex: none;
+        width: 44px;
+        height: 44px;
+        margin: 0 -12px 0 0;
+        /* 아이콘(20px) 우측이 20px 여백선에 맞도록 */
+        padding: 0;
+        border: 0;
+        background:
+          linear-gradient(var(--black), var(--black)) 50% 14px / 20px 2px no-repeat,
+          linear-gradient(var(--black), var(--black)) 50% 21px / 20px 2px no-repeat,
+          linear-gradient(var(--black), var(--black)) 50% 28px / 20px 2px no-repeat;
+        -webkit-tap-highlight-color: transparent;
+      }
+
+      /* 전체 메뉴: 오른쪽에서 슬라이드 */
+      .gnb {
+        position: fixed;
+        inset: 0;
+        z-index: 20;
+        display: block;
+        padding: 112px 20px 0;
+        overflow-y: auto;
+        background: var(--white) url("./images/mo_menu_char.png") no-repeat right 16px bottom 16px / 153px auto;
+        transform: translateX(100%);
+        visibility: hidden;
+        transition:
+          transform 0.3s ease,
+          visibility 0s linear 0.3s;
+      }
+
+      .gnb.is-open {
+        transform: translateX(0);
+        visibility: visible;
+        transition-delay: 0s;
+      }
+
+      /* 메뉴 상단 로고 (헤더 로고가 패널에 가려지므로 동일 위치에 재현) */
+      .gnb::before {
+        content: "";
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        width: 127px;
+        height: 22px;
+        background: url("./images/logo.svg") no-repeat left center / contain;
+      }
+
+      .gnb__close {
+        position: absolute;
+        top: 9px;
+        right: 8px;
+        display: block;
+        width: 44px;
+        height: 44px;
+        padding: 0;
+        border: 0;
+        background: none;
+        -webkit-tap-highlight-color: transparent;
+      }
+
+      .gnb__close::before,
+      .gnb__close::after {
+        content: "";
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: 22px;
+        height: 2px;
+        background: var(--black);
+        transform: translate(-50%, -50%) rotate(45deg);
+      }
+
+      .gnb__close::after {
+        transform: translate(-50%, -50%) rotate(-45deg);
+      }
+
+      .gnb__list {
+        display: block;
+      }
+
+      .gnb__list li {
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+      }
+
+      .gnb__link {
+        display: flex;
+        align-items: center;
+        height: 63px;
+        font-size: 21px;
+      }
+
+      .gnb__apply {
+        display: flex;
+        width: 100%;
+        height: 52px;
+        margin: 44px 0 0;
+        font-size: 19px;
+        letter-spacing: -0.4px;
+      }
+
+      /* 메인 비주얼 */
+      .mv__inner {
+        padding: 100px 0 68px;
+      }
+
+      .mv__text {
+        margin: 0 20px;
+        gap: 48px;
+      }
+
+      .mv__info {
+        gap: 16px;
+      }
+
+      .mv__season {
+        font-size: 20px;
+        line-height: 30px;
+        letter-spacing: -0.42px;
+      }
+
+      .mv__title-em {
+        font-size: 56px;
+        line-height: 58px;
+        letter-spacing: -1.37px;
+      }
+
+      .mv__title-sub {
+        font-size: 35px;
+        line-height: 56px;
+        letter-spacing: -0.86px;
+      }
+
+      .mv__period {
+        font-size: 12.5px;
+        line-height: 20px;
+        letter-spacing: -0.26px;
+      }
+
+      .btn--lg {
+        width: 196px;
+        height: 48px;
+        font-size: 15px;
+        letter-spacing: -0.32px;
+      }
+
+      .scroll-btn {
+        width: 40px;
+        height: 40px;
+        bottom: 16px;
+      }
+
+      .scroll-btn .chevron-down {
+        width: 24px;
+        height: 24px;
+      }
+
+      .scroll-btn .chevron-down::after {
+        width: 9px;
+        height: 9px;
+        border-width: 2px;
+      }
+
+      .footer__inner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+        padding: 32px 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 사이트 헤더 -->
+  <header class="header">
+    <div class="header__inner">
+      <a class="logo" href="./" aria-label="한미그룹 홈">
+        <img src="./images/logo.svg" width="182" height="31" alt="Hanmi 한미그룹" />
+      </a>
+
+      <nav class="gnb" id="gnb" aria-label="주요 메뉴">
+        <button type="button" class="gnb__close" aria-label="메뉴 닫기"></button>
+        <ul class="gnb__list">
+          <li><a class="gnb__link" href="#jobs">직무소개</a></li>
+          <li>
+            <a class="gnb__link" href="#qualification">지원자격 및 접수방법</a>
+          </li>
+          <li><a class="gnb__link" href="#schedule">채용설명회 일정</a></li>
+        </ul>
+        <a class="btn btn--sm gnb__apply" href="#apply">
+          지원하기
+          <svg class="chevron" viewBox="0 0 7 12" fill="none" aria-hidden="true">
+            <path d="M1 1l5 5-5 5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </a>
+      </nav>
+
+      <!-- 모바일 전용: 헤더 지원하기 + 햄버거 버튼 -->
+      <a class="btn btn--sm header__apply" href="#apply">지원하기</a>
+      <button type="button" class="gnb__toggle" aria-label="메뉴 열기" aria-expanded="false" aria-controls="gnb"></button>
+    </div>
+  </header>
+
+  <!-- 본문 -->
+  <main>
+    <!-- 메인 비주얼 -->
+    <section class="mv" id="main_visual" aria-labelledby="mv-title">
+      <div class="mv__inner">
+        <div class="mv__text">
+          <header class="mv__info">
+            <p class="mv__season">2026년 하반기</p>
+            <h1 class="mv__title" id="mv-title">
+              <span class="mv__title-em">한미그룹</span>
+              <span class="mv__title-sub">공개채용</span>
+            </h1>
+            <p class="mv__period">
+              모집기간 : <time datetime="2026-09-28">2026.9.28(월)</time> ~
+              <time datetime="2026-10-18T23:59">2026.10.18(일) 23:59</time>까지
+            </p>
+          </header>
+          <a class="btn btn--lg" href="#jobs">모집직무 바로가기!</a>
+        </div>
+
+        <!-- 장식용 그래픽 (스크린리더 제외) -->
+        <div class="mv__visual" aria-hidden="true">
+          <div class="mv__glow"></div>
+          <div class="mv__ring"></div>
+
+          <img class="mv__micro" src="./images/mv_micro.png" alt="" />
+          <img class="mv__char1" src="./images/mv_char1.png" alt="" />
+          <img class="mv__char2" src="./images/mv_char2.png" alt="" />
+          <img class="mv__char3" src="./images/mv_char3.png" alt="" />
+          <img class="mv__char4" src="./images/mv_char4.png" alt="" />
+
+          <span class="star star--1"></span>
+          <span class="star star--2"></span>
+          <span class="star star--3"></span>
+          <span class="star star--3b"></span>
+          <span class="star star--4"></span>
+        </div>
+
+        <button type="button" class="scroll-btn" id="scrollBtn" aria-label="아래로 스크롤">
+          <span class="chevron-down"></span>
+        </button>
+      </div>
+    </section>
+
+    <!-- 두 번째 섹션: 새로운 미래 -->
+    <section class="mirae" id="mirae" aria-labelledby="mirae-title">
+      <div class="mirae__stage">
+        <h2 class="mirae__title" id="mirae-title">
+          <span class="mirae__em">새로운 미래</span>를 향해 나아갑니다
+        </h2>
+      </div>
+
+      <!-- 장식용 그래픽 (스크린리더 제외) -->
+      <div class="mirae__visual" aria-hidden="true">
+        <div class="mirae__art">
+          <img class="mirae__cloud1" src="./images/mirae_cloud1.png" alt="" />
+          
+          <img class="mirae__walking" src="./images/mirae_walking.png" alt="" />
+          <img class="mirae__star1" src="./images/mirae_star1.png" alt="" />
+          <img class="mirae__star2" src="./images/mirae_star2.png" alt="" />
+        </div>
+        <img class="mirae__cloud2" src="./images/mirae_cloud2.png" alt="" />
+        <img class="mirae__cloud3" src="./images/mirae_cloud3.png" alt="" />
+        <img class="mirae__cloud4" src="./images/mirae_cloud4.png" alt="" />
+      </div>
+    </section>
+
+    <!-- 세 번째 섹션: 한미그룹 연혁 (History) -->
+    <section class="history" id="history" aria-labelledby="history-title">
+      <!-- 접기/펼치기 제어 컨테이너 (기본 상태: 접힘) -->
+      <div class="history__wrapper" id="historyWrapper">
+        <div class="history__inner">
+          <!-- 헤더 타이틀 & 53th 상단 배지 -->
+          <header class="history__header">
+            <h2 class="history__title" id="history-title">
+              한미의 도전은 작은 가능성에서<br />시작되었습니다.
+            </h2>
+            <div class="history__badge-start">
+              <span class="num">53</span><span class="unit">th</span>
+              <span class="history__sparkle" aria-hidden="true">✦✦</span>
+            </div>
+          </header>
+
+          <!-- 타임라인 중앙선 & 연혁 리스트 -->
+          <div class="history__timeline">
+            <div class="history__line" aria-hidden="true"></div>
+
+            <!-- Block 1 (1973~2001) -->
+            <article class="history__item history__item--left">
+              <div class="history__content">
+                <h3 class="history__item-title">한계를 하나씩 넘을 때마다,</h3>
+                <ul class="history__list">
+                  <li><span class="text">중앙연구소 설립</span> <time>1973</time></li>
+                  <li><span class="text">영양제 '한미범독' 출시</span> <time>1981</time></li>
+                  <li><span class="text">국내 최초 제네릭 퍼스트제네릭 수출</span> <time>1989</time></li>
+                  <li><span class="text">마이크로에멀젼 기술 상용화</span> <time>1997</time></li>
+                </ul>
+                <img class="history__obj history__obj--beaker" src="./images/obj_beaker.png" alt="실험용 비커 에셋" />
+              </div>
+              <div class="history__media">
+                <span class="history__period">1973~2001</span>
+                <img class="history__img" src="./images/hmi_1973_2001.png" alt="1973~2001년 한미 제품군 이미지" />
+              </div>
+            </article>
+
+            <!-- Block 2 (2002~2010) -->
+            <article class="history__item history__item--right">
+              <div class="history__media">
+                <img class="history__img" src="./images/hmi_2002_2010.png" alt="2002~2010년 일출 이미지" />
+              </div>
+              <div class="history__content">
+                <span class="history__period">2002~2010</span>
+                <ul class="history__list">
+                  <li><time>2004</time> <span class="text">아모디핀 출시 (개량신약 신화)</span></li>
+                  <li><time>2005</time> <span class="text">팔탄 공장 cGMP 기준 스마트 공장 구축</span></li>
+                  <li><time>2009</time> <span class="text">아모잘탄 출시 (복합신약 대표주자)</span></li>
+                  <li><time>2010</time> <span class="text">지주회사 한미사이언스 출범</span></li>
+                </ul>
+              </div>
+            </article>
+
+            <!-- Block 3 (2011~2015) -->
+            <article class="history__item history__item--left">
+              <div class="history__content">
+                <h3 class="history__item-title">새로운 가능성이 현실이 되었어요.</h3>
+                <ul class="history__list">
+                  <li><span class="text">바이오플랫폼 기술 '랩스커버리' 적용</span> <time>2011</time></li>
+                  <li><span class="text">미국 스펙트럼사에 표적항암제 라이선스 아웃</span> <time>2012</time></li>
+                  <li><span class="text">다국적 제약사 베링거인겔하임에 기술수출</span> <time>2013</time></li>
+                  <li><span class="text">사노피·얀센 등 글로벌 대형 라이선스 계약</span> <time>2014</time></li>
+                  <li><span class="text">한국 제약 R&D 역사상 최대규모 성과</span> <time>2015</time></li>
+                </ul>
+              </div>
+              <div class="history__media">
+                <span class="history__period">2011~2015</span>
+                <img class="history__img" src="./images/hmi_2011_2015.png" alt="스펙트럼 파트너십 및 제약 에셋" />
+              </div>
+            </article>
+
+            <!-- Block 4 (2016~2020) -->
+            <article class="history__item history__item--right">
+              <div class="history__media">
+                <img class="history__img" src="./images/hmi_2016_2020.png" alt="ASCO 발표 및 의약품 패키지" />
+              </div>
+              <div class="history__content">
+                <span class="history__period">2016~2020</span>
+                <ul class="history__list">
+                  <li><time>2016</time> <span class="text">ASCO 등 글로벌 학회 다수 발표</span></li>
+                  <li><time>2017</time> <span class="text">평택 바이오플랜트 제2공장 준공</span></li>
+                  <li><time>2018</time> <span class="text">롤론티스·포지오티닙 글로벌 임상 3상 진행</span></li>
+                  <li><time>2020</time> <span class="text">MSD와 NASH 치료제 라이선스 계약</span></li>
+                </ul>
+              </div>
+            </article>
+
+            <!-- Block 5 (2021~2026) -->
+            <article class="history__item history__item--left">
+              <div class="history__content">
+                <h3 class="history__item-title">하지만 아직, 가야 할 길이 더 남아 있습니다.</h3>
+                <ul class="history__list">
+                  <li><span class="text">롤론티스 FDA 승인 신청 및 글로벌 상용화</span> <time>2021</time></li>
+                  <li><span class="text">한미약품 그룹 창립 50주년, 지속가능 R&D 선언</span> <time>2022</time></li>
+                  <li><span class="text">독자 개발 콤보 제품군 시장 점유율 1위</span> <time>2023</time></li>
+                  <li><span class="text">혁신신약 파이프라인 확장 (비만/대사/항암)</span> <time>2024</time></li>
+                  <li><span class="text">글로벌 톱티어 제약사 도약을 위한 스마트 인프라 완비</span> <time>2025</time></li>
+                  <li><span class="text">100년을 향한 새로운 미래 혁신 제약 비전 제시</span> <time>2026</time></li>
+                </ul>
+                <img class="history__obj history__obj--char" src="./images/mirae_walking.png" alt="한미 캐릭터 에셋" />
+              </div>
+              <div class="history__media">
+                <span class="history__period">2021~2026</span>
+                <img class="history__img" src="./images/hmi_2021_2026.png" alt="2021~2026 신약 제품 및 성과" />
+              </div>
+            </article>
+          </div>
+
+          <!-- 하단 100th 푸터 배지 & 메시지 -->
+          <footer class="history__footer">
+            <div class="history__badge-end">
+              <span class="num">100</span><span class="unit">th</span>
+            </div>
+            <p class="history__footer-desc">
+              수많은 도전이 오늘의 한미를 만들었습니다.<br />
+              이제 또 다른 가능성을 향해 당신과 함께 나아갑니다.
+            </p>
+          </footer>
+
+          <!-- 배경 장식 에셋 -->
+          <div class="history__bg-assets" aria-hidden="true">
+            <img class="history__bg-obj history__bg-obj--micro" src="./images/obj_microscope.png" alt="" />
+            <img class="history__bg-obj history__bg-obj--mol" src="./images/obj_mol_big.png" alt="" />
+            <img class="history__bg-obj history__bg-obj--blur1" src="./images/obj_mol_blur1.png" alt="" />
+            <img class="history__bg-obj history__bg-obj--blur2" src="./images/obj_mol_blur2.png" alt="" />
+          </div>
+        </div>
+
+        <!-- 하단 그라데이션 페이드 마스크 Layer -->
+        <div class="history__fade-mask" aria-hidden="true"></div>
+      </div>
+
+      <!-- 펼치기 / 접기 컨트롤 버튼 -->
+      <div class="history__action">
+        <button type="button" class="btn btn--sm history__toggle-btn" id="historyToggleBtn" aria-expanded="false"
+          aria-controls="historyWrapper">
+          <span class="btn-text">연혁 전체보기</span>
+          <svg class="chevron-toggle" viewBox="0 0 12 7" fill="none" aria-hidden="true">
+            <path d="M1 1l5 5 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round" />
+          </svg>
+        </button>
+      </div>
+    </section>
+
+
+
+
+
+
+
+
+  </main>
+
+  <!-- 사이트 푸터 -->
+  <footer class="footer">
+    <div class="footer__inner">
+      <a class="footer__logo" href="./" aria-label="한미그룹 홈">
+        <img src="./images/logo.svg" width="120" height="20" alt="Hanmi 한미그룹" />
+      </a>
+      <p class="footer__copy">
+        &copy; 2026 Hanmi Group. All rights reserved.
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var btn = document.getElementById("scrollBtn");
+      var mv = document.getElementById("main_visual");
+      if (btn && mv) {
+        btn.addEventListener("click", function () {
+          window.scrollTo({ top: mv.offsetHeight, behavior: "smooth" });
+        });
+      }
+    })();
+
+    /* 1440px 이하 데스크톱에서 메인 비주얼 내부 레이아웃을 비율대로 축소 */
+    (function () {
+      var root = document.documentElement;
+      var mv = document.getElementById("main_visual");
+
+      function updateVisualScale() {
+        var width = window.innerWidth;
+        if (width > 1024 && width < 1440) {
+          root.style.setProperty("--mv-scale", String(width / 1440));
+          if (mv) mv.style.height = (900 * width) / 1440 + "px";
+        } else {
+          root.style.removeProperty("--mv-scale");
+          if (mv) mv.style.removeProperty("height");
+        }
+      }
+
+      updateVisualScale();
+      window.addEventListener("resize", updateVisualScale);
+    })();
+
+    /* 모바일 햄버거 메뉴 */
+    (function () {
+      var toggle = document.querySelector(".gnb__toggle");
+      var menu = document.getElementById("gnb");
+      var close = menu && menu.querySelector(".gnb__close");
+      if (!toggle || !menu || !close) return;
+
+      var root = document.documentElement;
+      var mq = window.matchMedia("(max-width: 390px)");
+
+      function setOpen(open, restoreFocus) {
+        menu.classList.toggle("is-open", open);
+        root.classList.toggle("menu-open", open); // 배경 스크롤 잠금/해제
+        toggle.setAttribute("aria-expanded", String(open));
+        if (open) close.focus();
+        else if (restoreFocus) toggle.focus();
+      }
+
+      toggle.addEventListener("click", function () {
+        setOpen(true);
+      });
+      close.addEventListener("click", function () {
+        setOpen(false, true);
+      });
+
+      // 메뉴 링크 클릭 시 닫기
+      menu.addEventListener("click", function (e) {
+        if (e.target.closest("a")) setOpen(false);
+      });
+
+      // ESC 로 닫기
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape" && menu.classList.contains("is-open"))
+          setOpen(false, true);
+      });
+
+      // 모바일 구간을 벗어나면 상태 초기화(스크롤 잠금 잔존 방지)
+      function onChange(e) {
+        if (!e.matches) setOpen(false);
+      }
+      if (mq.addEventListener) mq.addEventListener("change", onChange);
+      else if (mq.addListener) mq.addListener(onChange);
+    })();
+
+
+
+
+
+    /* 연혁 섹션 2/3 펼치기 및 접기 아코디언 */
+    (function () {
+      var toggleBtn = document.getElementById("historyToggleBtn");
+      var wrapper = document.getElementById("historyWrapper");
+      if (!toggleBtn || !wrapper) return;
+
+      var btnText = toggleBtn.querySelector(".btn-text");
+
+      toggleBtn.addEventListener("click", function () {
+        var isExpanded = wrapper.classList.contains("is-expanded");
+
+        if (isExpanded) {
+          // 접기 동작
+          wrapper.classList.remove("is-expanded");
+          toggleBtn.setAttribute("aria-expanded", "false");
+          if (btnText) btnText.textContent = "연혁 전체보기";
+
+          // 접을 때 섹션 상단 위치로 부드럽게 스크롤 이동
+          var historySection = document.getElementById("history");
+          if (historySection) {
+            historySection.scrollIntoView({ behavior: "smooth" });
+          }
+        } else {
+          // 펼치기 동작
+          wrapper.classList.add("is-expanded");
+          toggleBtn.setAttribute("aria-expanded", "true");
+          if (btnText) btnText.textContent = "연혁 접기";
+        }
+      });
+    })();
+  </script>
+</body>
+
+</html>
