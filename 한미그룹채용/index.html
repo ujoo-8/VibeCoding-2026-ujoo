@@ -673,9 +673,9 @@
         width: calc(var(--stage) * 0.16);
       }
       .mirae__blur-s {
-        left: -0.8%;
-        top: 43.8%;
-        width: 15.2%;
+        left: 0;
+        top: 58%;
+        width: 11%;
       }
       .mirae__char {
         left: 7.1%;
@@ -699,8 +699,8 @@
         width: calc(var(--stage) * 0.24);
       }
       .mirae__cloud-l {
-        left: 0;
-        top: 13%;
+        left: 3%;
+        top: 19%;
         width: calc(var(--stage) * 0.3);
       }
 
@@ -1058,11 +1058,11 @@
       /* ===== Tablet (1024px 이하) ===== */
       @media (max-width: 1024px) {
         .mirae__stage {
-          aspect-ratio: 1061 / 726;
+          aspect-ratio: 1061 / 966;
         }
         .mirae__title {
-          top: 21%;
-          font-size: calc(var(--stage) * 0.0371);
+          top: 14%;
+          font-size: calc(var(--stage) * 0.0567);
           background: none;
           -webkit-text-fill-color: currentColor;
           color: var(--black);
@@ -1073,13 +1073,13 @@
         }
 
         .mirae__blur-l {
-          right: 21.8%;
-          top: 58.6%;
-          width: calc(var(--stage) * 0.16);
+          right: 20%;
+          top: 69%;
+          width: calc(var(--stage) * 0.12);
         }
         .mirae__blur-s {
-          left: -0.1%;
-          top: 43.8%;
+          left: 0;
+          top: 67%;
           width: 15.2%;
         }
         .mirae__char {
@@ -1099,13 +1099,13 @@
         }
         .mirae__cloud-r {
           right: 0;
-          top: 26.9%;
-          width: calc(var(--stage) * 0.24);
+          top: 50%;
+          width: calc(var(--stage) * 0.18);
         }
         .mirae__cloud-l {
           left: 13%;
-          top: 13%;
-          width: calc(var(--stage) * 0.35);
+          top: 42%;
+          width: calc(var(--stage) *  0.20);
         }
 
         /* .mirae__blur-l  { right: 3.8%; top: 58.6%; width: calc(var(--stage) * 0.3500);  }
@@ -1623,7 +1623,7 @@
         --his-row-gap: calc(32 * var(--u));
         --his-block-gap: calc(184 * var(--u));
         --his-end-gap: calc(220 * var(--u));
-        --his-end-sub: calc(18 * var(--u));
+        --his-end-sub: calc(20 * var(--u));
         --his-end-main: calc(38 * var(--u));
         --his-dot: calc(8 * var(--u));
         --his-ease: 0.6s cubic-bezier(0.4, 0, 0.2, 1);
@@ -1720,6 +1720,7 @@
         bottom: calc(-1 * var(--his-end-gap));
         width: var(--his-line);
         background: var(--his-orange);
+        top: -150px;
       }
 
       /* 블록: 텍스트열/미디어열 지그재그 (DOM 순서 고정, 배치는 grid-template-areas 로만 제어) */
@@ -1921,9 +1922,9 @@
       }
       .history-count--end {
         position: relative;
-        left: 50%;
+        left: 53%;
         translate: -50%;
-        margin-top: -50px;
+        margin-top: -60px;
       }
       .history-end-copy {
         position: relative;
@@ -1943,10 +1944,11 @@
       }
       .history-end-sub {
         margin: 0 0 calc(24 * var(--u));
+        font-family: "Pretendard", var(--font);
         font-size: var(--his-end-sub);
-        font-weight: 500;
-        line-height: 1.6;
-        letter-spacing: -0.03em;
+        font-weight: 400;
+        line-height: 1.4;
+        letter-spacing: -0.03px;
       }
       .history-end-main {
         margin: 0;
@@ -1963,8 +1965,8 @@
         z-index: 0;
       }
       .history-deco--cloud {
-        left: calc(-60 * var(--u));
-        top: calc(150 * var(--u));
+        left: calc(-140 * var(--u));
+        top: calc(70 * var(--u));
         width: calc(330 * var(--u));
         z-index: -1;
       }
@@ -1993,7 +1995,7 @@
         min-height: 64px;
         padding: 8px 16px;
         background: transparent;
-        color: #444;
+        color: #666;
         font-size: 16px;
         font-weight: 500;
         letter-spacing: -0.02em;
@@ -2009,7 +2011,7 @@
         transform: rotate(180deg);
       }
       .history-toggle:hover {
-        color: var(--red);
+        color: var(--black);
       }
 
       @media (prefers-reduced-motion: reduce) {
@@ -2157,7 +2159,7 @@
         --sub: calc(16.1 * var(--u));
         --sub-gap: calc(15 * var(--u));
         --list-top: calc(58 * var(--u));
-        --list-w: 100%;
+        --list-w: 96%;
         --col-gap: calc(40 * var(--u));
         --card-pad: calc(27.6 * var(--u));
         --card-r: calc(23 * var(--u));
@@ -2262,8 +2264,7 @@
         backdrop-filter: blur(calc(5 * var(--u)));
         border-radius: var(--card-r);
         border: 1px solid #fff;
-        box-shadow: 0 calc(4 * var(--u)) calc(20 * var(--u))
-          rgba(230, 110, 80, 0.08);
+        box-shadow: 0 calc(4 * var(--u)) calc(20 * var(--u)) rgb(137 59 39 / 20%);
         transition:
           transform var(--ease),
           box-shadow var(--ease);
@@ -2484,6 +2485,381 @@
         .jobs__arrow,
         .jobs__more,
         .jobs__more::before {
+          transition: none;
+        }
+      }
+
+      /* ===== News Section (다섯 번째 섹션 성장·혁신 소식) =====
+         기준 시안: 데스크탑 772×847 / 태블릿 549×764 / 모바일 377×757
+         - --s : 콘텐츠 폭 (데스크탑·태블릿 최대 1440px, 모바일 최대 480px)
+         - --u : --s 의 1/1000. 모든 크기를 "시안 폭 대비 ‰" 로 지정해 비례 축소·확대 */
+      .news {
+        --s: min(100vw, var(--container));
+        --u: calc(var(--s) / 1000);
+        --red-rgb: 230, 0, 18; /* --red(#e60012) 의 RGB: 그라데이션 투명도 조절용 */
+
+        /* Desktop 값 (시안 772px 기준 ‰) */
+        --pt: calc(66 * var(--u));
+        --pb: calc(135 * var(--u));
+        --title: calc(41.5 * var(--u));
+        --sub: calc(17 * var(--u));
+        --sub-gap: calc(13 * var(--u));
+        --card-top: calc(58 * var(--u));
+        --card-w: calc(918 * var(--u));
+        --card-r: calc(26 * var(--u));
+        --card-pt: calc(40 * var(--u));
+        --card-px: calc(39 * var(--u));
+        --card-pb: calc(45 * var(--u));
+        --b-fs: calc(16.4 * var(--u));
+        --b-lh: 1.45;
+        --b-py: calc(12.5 * var(--u));
+        --b-px: calc(19 * var(--u));
+        --b-r: calc(13 * var(--u));
+        --b-gap: calc(28.5 * var(--u));
+        --b-max: 100%;
+        --foot-fs: calc(12.3 * var(--u));
+        --foot-gap: calc(25 * var(--u));
+        --foot-c: #696969;
+        --dot-c: #686868;
+        --atom-w: calc(159 * var(--u));
+        --atom-r: calc(9 * var(--u));
+        --atom-t: calc(-86 * var(--u));
+        --chem-w: calc(250 * var(--u));
+        --chem-r: calc(-21 * var(--u));
+        --chem-t: calc(-55 * var(--u));
+        --mol-w: calc(137 * var(--u));
+        --mol-l: calc(-5 * var(--u));
+        --mol-t: calc(6 * var(--u));
+
+        position: relative;
+        overflow: hidden;
+        background: #fff5f1;
+      }
+
+      /* 배경 장식 ① 오른쪽 상단: 30vw 정사각형 · 중심→바깥 투명 원형 그라데이션 · 레드 10% · 20%씩 화면 밖으로 (화면에 약 60% 노출) */
+      .news::before {
+        content: "";
+        position: absolute;
+        top: -6vw;
+        right: -6vw;
+        z-index: 0;
+        width: 30vw;
+        aspect-ratio: 1 / 1;
+        background: radial-gradient(
+          circle closest-side,
+          rgba(var(--red-rgb), 0.1) 0%,
+          rgba(var(--red-rgb), 0) 100%
+        );
+        pointer-events: none;
+      }
+      /* 배경 장식 ② 왼쪽 하단: 20vw 정사각형 · 동일 형태 · 레드 20% */
+      .news::after {
+        content: "";
+        position: absolute;
+        bottom: -4vw;
+        left: -4vw;
+        z-index: 0;
+        width: 20vw;
+        aspect-ratio: 1 / 1;
+        background: radial-gradient(
+          circle closest-side,
+          rgba(var(--red-rgb), 0.2) 0%,
+          rgba(var(--red-rgb), 0) 100%
+        );
+        pointer-events: none;
+      }
+
+      .news__inner {
+        position: relative;
+        z-index: 1;
+        width: var(--s);
+        margin: 0 auto;
+        padding: var(--pt) 0 var(--pb);
+      }
+
+      /* 헤더 */
+      .news__header {
+        text-align: center;
+      }
+      .news__title {
+        font-family: "Pretendard", var(--font);
+        font-weight: 800;
+        font-size: var(--title);
+        line-height: 1.4;
+        letter-spacing: -0.03em;
+        color: var(--black);
+      }
+      .news__desc {
+        max-width: 86%;
+        margin: var(--sub-gap) auto 0;
+        font-family: "Pretendard", var(--font);
+        font-weight: 500;
+        font-size: var(--sub);
+        line-height: 1.5;
+        letter-spacing: -0.02em;
+        color: #222;
+      }
+
+      /* 카드(말풍선 컨테이너) */
+      .news__card {
+        position: relative;
+        width: var(--card-w);
+        margin: var(--card-top) auto 0;
+        padding: var(--card-pt) var(--card-px) var(--card-pb);
+        background: rgba(255, 255, 255, 0.20);
+        border: 1px solid rgba(255, 255, 255, 1);
+        border-radius: var(--card-r);
+        box-shadow: 0 calc(4 * var(--u)) calc(20 * var(--u)) rgb(137 59 39 / 20%);
+      }
+
+      /* 장식 이미지 (카드 기준 좌표) */
+      .news__deco {
+        position: absolute;
+        height: auto;
+        max-width: none;
+        pointer-events: none;
+      }
+      .news__deco--chem {
+        z-index: 1;
+        top: var(--chem-t);
+        right: var(--chem-r);
+        width: var(--chem-w);
+      }
+      .news__deco--atom {
+        z-index: 2;
+        top: var(--atom-t);
+        right: var(--atom-r);
+        width: var(--atom-w);
+      }
+      .news__deco--mol {
+        z-index: 2;
+        top: calc(100% + var(--mol-t));
+        left: var(--mol-l);
+        width: var(--mol-w);
+      }
+
+      /* 말풍선 목록 */
+      .news__list {
+        position: relative;
+        z-index: 3;
+        display: flex;
+        flex-direction: column;
+        gap: var(--b-gap);
+      }
+      .news__item {
+        display: flex;
+      }
+      .news__item--left {
+        justify-content: flex-start;
+      }
+      .news__item--right {
+        justify-content: flex-end;
+      }
+
+      /* 말풍선: 배경(SVG rect) + 꼬리(SVG) + 텍스트 */
+      .news__bubble {
+        position: relative;
+        display: block;
+        width: fit-content;
+        max-width: var(--b-max);
+        padding: var(--b-py) var(--b-px);
+        font-family: "Pretendard", var(--font);
+        font-weight: 500;
+        font-size: var(--b-fs);
+        line-height: var(--b-lh);
+        letter-spacing: -0.03em;
+        transition: transform var(--ease);
+      }
+      .news__bubble:hover,
+      .news__bubble:focus-visible {
+        transform: translateY(-3px);
+      }
+      .news__bubble:focus-visible {
+        outline: 2px solid var(--red);
+        outline-offset: 4px;
+      }
+      .news__bubble--orange {
+        --bg: var(--orange);
+        color: var(--white);
+      }
+      .news__bubble--white {
+        --bg: var(--white);
+        color: var(--orange);
+        filter: drop-shadow(0 calc(2 * var(--u)) calc(6 * var(--u)) rgba(230, 110, 80, 0.14));
+      }
+      .news__text {
+        position: relative;
+        z-index: 1;
+        display: block;
+      }
+
+      /* 본체: viewBox 없이 100% 로 늘려 모서리 반경(rx)이 왜곡되지 않게 함 */
+      .news__bg {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        overflow: visible;
+      }
+      .news__bg rect {
+        fill: var(--bg);
+        rx: var(--b-r);
+        ry: var(--b-r);
+      }
+      /* 꼬리: 한쪽 모서리를 직각으로 메우고 바깥쪽으로 뾰족하게 뻗는 SVG (viewBox 22×14 = 반경 14 기준) */
+      .news__tail {
+        position: absolute;
+        bottom: 0;
+        width: calc(var(--b-r) * 22 / 14);
+        height: var(--b-r);
+        overflow: visible;
+        pointer-events: none;
+      }
+      .news__tail rect,
+      .news__tail path {
+        fill: var(--bg);
+      }
+      .news__bubble--orange .news__tail {
+        left: calc(var(--b-r) * -8 / 14); /* 꼬리: 좌측 하단 */
+      }
+      .news__bubble--white .news__tail {
+        right: calc(var(--b-r) * -8 / 14); /* 꼬리: 우측 하단 */
+        transform: scaleX(-1);
+      }
+
+      /* 안내 문구 */
+      .news__note {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 0.6em;
+        margin-top: var(--foot-gap);
+        font-family: "Pretendard", var(--font);
+        font-weight: 500;
+        font-size: var(--foot-fs);
+        line-height: 1.4;
+        letter-spacing: -0.02em;
+        color: var(--foot-c);
+      }
+      .news__note::before {
+        content: "";
+        flex: none;
+        width: 0.34em;
+        height: 0.34em;
+        border-radius: 50%;
+        background: var(--dot-c);
+      }
+
+      /* ===== News: Tablet (1024px 이하, 시안 549px 기준) ===== */
+      @media (max-width: 1024px) {
+        .news {
+          --pt: calc(88 * var(--u));
+          --pb: calc(135 * var(--u));
+          --title: calc(37.5 * var(--u));
+          --sub: calc(18.5 * var(--u));
+          --sub-gap: calc(16 * var(--u));
+          --card-top: calc(75 * var(--u));
+          --card-w: calc(920 * var(--u));
+          --card-r: calc(33 * var(--u));
+          --card-pt: calc(64 * var(--u));
+          --card-px: calc(55 * var(--u));
+          --card-pb: calc(58 * var(--u));
+          --b-fs: calc(20.3 * var(--u));
+          --b-lh: 1.6;
+          --b-py: calc(18 * var(--u));
+          --b-px: calc(29 * var(--u));
+          --b-r: calc(18 * var(--u));
+          --b-gap: calc(40 * var(--u));
+          --foot-fs: calc(15.5 * var(--u));
+          --foot-gap: calc(36 * var(--u));
+          --foot-c: #444;
+          --dot-c: #444;
+          --atom-w: calc(137 * var(--u));
+          --atom-r: calc(13 * var(--u));
+          --atom-t: calc(-53 * var(--u));
+          --chem-w: calc(228 * var(--u));
+          --chem-r: calc(-4 * var(--u));
+          --chem-t: calc(-22 * var(--u));
+          --mol-w: calc(128 * var(--u));
+          --mol-l: calc(4 * var(--u));
+          --mol-t: calc(25 * var(--u));
+        }
+      }
+
+      /* ===== News: Mobile (768px 이하, 시안 377px 기준 / 콘텐츠 폭 최대 480px) ===== */
+      @media (max-width: 768px) {
+        .news {
+          --s: min(100vw, 480px);
+          --pt: calc(100 * var(--u));
+          --pb: calc(190 * var(--u));
+          --title: calc(58 * var(--u));
+          --sub: calc(34.5 * var(--u));
+          --sub-gap: calc(24 * var(--u));
+          --card-top: calc(85 * var(--u));
+          --card-w: calc(897 * var(--u));
+          --card-r: calc(40 * var(--u));
+          --card-pt: calc(42 * var(--u));
+          --card-px: calc(61 * var(--u));
+          --card-pb: calc(48 * var(--u));
+          --b-fs: calc(31.5 * var(--u));
+          --b-lh: 1.45;
+          --b-py: calc(24 * var(--u));
+          --b-px: calc(34 * var(--u));
+          --b-r: calc(34 * var(--u));
+          --b-gap: calc(32 * var(--u));
+          --b-max: 100%;
+          --foot-fs: calc(28 * var(--u));
+          --foot-gap: calc(42 * var(--u));
+          --foot-c: #555;
+          --dot-c: var(--red);
+          --atom-w: calc(146 * var(--u));
+          --atom-r: calc(58 * var(--u));
+          --atom-t: calc(-72 * var(--u));
+          --chem-w: calc(252 * var(--u));
+          --chem-r: 0px;
+          --chem-t: calc(-32 * var(--u));
+          --mol-w: calc(148 * var(--u));
+          --mol-l: calc(3 * var(--u));
+          --mol-t: calc(16 * var(--u));
+        }
+        .news__deco--chem {
+          z-index: 1;
+          top: var(--chem-t);
+          right: var(--chem-r);
+          width: var(--chem-w);
+        }
+        .news__deco--atom {
+          z-index: 2;
+          top: var(--atom-t);
+          right: var(--atom-r);
+          width: var(--atom-w);
+        }
+        .news__inner {
+          width: 90%;
+        }
+
+        .news__card {
+          width: 100%;
+        }
+        .news__desc {
+          line-height: 1.7;
+        }
+        .news__title {
+          line-height: 1.35;
+        }
+        /* 모바일: 모든 말풍선을 좌측 정렬, 꼬리 방향(주황=좌, 흰색=우)은 유지 */
+        .news__item--left,
+        .news__item--right {
+          justify-content: flex-start;
+        }
+        /* 말풍선을 카드 안쪽 폭 가득 채워 좌우 여백(--card-px)을 동일하게 */
+        .news__bubble {
+          width: 100%;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .news__bubble {
           transition: none;
         }
       }
@@ -3047,6 +3423,162 @@
             alt=""
             aria-hidden="true"
           />
+        </div>
+      </section>
+
+      <!-- 다섯 번째 섹션: 성장, 혁신 소식 (뉴스 말풍선) -->
+      <section class="news" id="news" aria-labelledby="news-title">
+        <div class="news__inner">
+          <header class="news__header">
+            <h2 class="news__title" id="news-title">
+              당신의 가능성,<br />한미그룹에서 더 크게 성장합니다
+            </h2>
+            <p class="news__desc">
+              연구와 혁신으로 성장하며 글로벌 제약/바이오 기업을 향해
+              나아갑니다.
+            </p>
+          </header>
+
+          <div class="news__card">
+            <!-- 장식용 그래픽 (스크린리더 제외) -->
+            <img
+              class="news__deco news__deco--chem"
+              src="./images/inno_chemical.png"
+              alt=""
+              aria-hidden="true"
+            />
+            <img
+              class="news__deco news__deco--atom"
+              src="./images/inno_molecule1.png"
+              alt=""
+              aria-hidden="true"
+            />
+            <img
+              class="news__deco news__deco--mol"
+              src="./images/inno_molecule2.png"
+              alt=""
+              aria-hidden="true"
+            />
+
+            <!-- 말풍선: 주황(꼬리 좌하단, 좌측 정렬) / 흰색(꼬리 우하단, 우측 정렬) 교차 -->
+            <ul class="news__list">
+              <li class="news__item news__item--left">
+                <a class="news__bubble news__bubble--orange" href="#news-1">
+                  <svg class="news__bg" aria-hidden="true">
+                    <rect width="100%" height="100%" rx="13" ry="13" />
+                  </svg>
+                  <svg class="news__tail" viewBox="0 0 22 14" aria-hidden="true">
+                    <rect x="8" y="0" width="14" height="14" />
+                    <path d="M9 3.5V14H1.8C.6 14 .2 12.9 1.1 12.3C5.2 9.8 8.2 7.2 9 3.5Z" />
+                  </svg>
+                  <span class="news__text"
+                    >한미약품, 상반기 누적 매출 8,602억원…2분기 영업이익 117%
+                    증가</span
+                  >
+                </a>
+              </li>
+
+              <li class="news__item news__item--right">
+                <a class="news__bubble news__bubble--white" href="#news-2">
+                  <svg class="news__bg" aria-hidden="true">
+                    <rect width="100%" height="100%" rx="13" ry="13" />
+                  </svg>
+                  <svg class="news__tail" viewBox="0 0 22 14" aria-hidden="true">
+                    <rect x="8" y="0" width="14" height="14" />
+                    <path d="M9 3.5V14H1.8C.6 14 .2 12.9 1.1 12.3C5.2 9.8 8.2 7.2 9 3.5Z" />
+                  </svg>
+                  <span class="news__text"
+                    >“사업형 지주사 경쟁력 입증”…한미사이언스, 2분기 영업이익
+                    71%↑<br />2분기 매출 3,679억원…상반기 누적 매출 7,216억원
+                    돌파</span
+                  >
+                </a>
+              </li>
+
+              <li class="news__item news__item--left">
+                <a class="news__bubble news__bubble--orange" href="#news-3">
+                  <svg class="news__bg" aria-hidden="true">
+                    <rect width="100%" height="100%" rx="13" ry="13" />
+                  </svg>
+                  <svg class="news__tail" viewBox="0 0 22 14" aria-hidden="true">
+                    <rect x="8" y="0" width="14" height="14" />
+                    <path d="M9 3.5V14H1.8C.6 14 .2 12.9 1.1 12.3C5.2 9.8 8.2 7.2 9 3.5Z" />
+                  </svg>
+                  <span class="news__text"
+                    >한미약품, 로슈 제넨텍에 비만신약 기술수출…최대 3조 2,000억
+                    규모</span
+                  >
+                </a>
+              </li>
+
+              <li class="news__item news__item--right">
+                <a class="news__bubble news__bubble--white" href="#news-4">
+                  <svg class="news__bg" aria-hidden="true">
+                    <rect width="100%" height="100%" rx="13" ry="13" />
+                  </svg>
+                  <svg class="news__tail" viewBox="0 0 22 14" aria-hidden="true">
+                    <rect x="8" y="0" width="14" height="14" />
+                    <path d="M9 3.5V14H1.8C.6 14 .2 12.9 1.1 12.3C5.2 9.8 8.2 7.2 9 3.5Z" />
+                  </svg>
+                  <span class="news__text"
+                    >“UCN2 이어 또…” 한미약품, 두 번째 근육 증가 비만신약
+                    공개</span
+                  >
+                </a>
+              </li>
+
+              <li class="news__item news__item--left">
+                <a class="news__bubble news__bubble--orange" href="#news-5">
+                  <svg class="news__bg" aria-hidden="true">
+                    <rect width="100%" height="100%" rx="13" ry="13" />
+                  </svg>
+                  <svg class="news__tail" viewBox="0 0 22 14" aria-hidden="true">
+                    <rect x="8" y="0" width="14" height="14" />
+                    <path d="M9 3.5V14H1.8C.6 14 .2 12.9 1.1 12.3C5.2 9.8 8.2 7.2 9 3.5Z" />
+                  </svg>
+                  <span class="news__text"
+                    >명품 반열 오른 한미 ‘로수젯’…압도적 데이터 경쟁력으로 시장
+                    석권<br />2년 연속 국내사 개발 전문의약품 시장 ‘1위’…올해
+                    상반기 누적 처방액도 선두</span
+                  >
+                </a>
+              </li>
+
+              <li class="news__item news__item--right">
+                <a class="news__bubble news__bubble--white" href="#news-6">
+                  <svg class="news__bg" aria-hidden="true">
+                    <rect width="100%" height="100%" rx="13" ry="13" />
+                  </svg>
+                  <svg class="news__tail" viewBox="0 0 22 14" aria-hidden="true">
+                    <rect x="8" y="0" width="14" height="14" />
+                    <path d="M9 3.5V14H1.8C.6 14 .2 12.9 1.1 12.3C5.2 9.8 8.2 7.2 9 3.5Z" />
+                  </svg>
+                  <span class="news__text"
+                    >“비만 넘어 항암으로 혁신 확장”…한미, AACR서 차세대 신약
+                    대거 공개</span
+                  >
+                </a>
+              </li>
+
+              <li class="news__item news__item--left">
+                <a class="news__bubble news__bubble--orange" href="#news-7">
+                  <svg class="news__bg" aria-hidden="true">
+                    <rect width="100%" height="100%" rx="13" ry="13" />
+                  </svg>
+                  <svg class="news__tail" viewBox="0 0 22 14" aria-hidden="true">
+                    <rect x="8" y="0" width="14" height="14" />
+                    <path d="M9 3.5V14H1.8C.6 14 .2 12.9 1.1 12.3C5.2 9.8 8.2 7.2 9 3.5Z" />
+                  </svg>
+                  <span class="news__text"
+                    >한미 완전두유·케어미, 영양에 ‘맛’까지 인정…국제 우수
+                    미각상 수상</span
+                  >
+                </a>
+              </li>
+            </ul>
+
+            <p class="news__note">말풍선을 클릭해서 기사를 확인해 보세요.</p>
+          </div>
         </div>
       </section>
     </main>
