@@ -73,6 +73,68 @@
     font-weight: 900;
     font-display: swap;
 }
+@font-face {
+    font-family: 'Pretendard';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Thin.woff2') format('woff2');
+    font-weight: 100;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Pretendard';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-ExtraLight.woff2') format('woff2');
+    font-weight: 200;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Pretendard';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Light.woff2') format('woff2');
+    font-weight: 300;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Pretendard';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Pretendard';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Medium.woff2') format('woff2');
+    font-weight: 500;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Pretendard';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-SemiBold.woff2') format('woff2');
+    font-weight: 600;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Pretendard';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Pretendard';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-ExtraBold.woff2') format('woff2');
+    font-weight: 800;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Pretendard';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Black.woff2') format('woff2');
+    font-weight: 900;
+    font-display: swap;
+}
       /* ===== Design Tokens / CSS변수 구역 ===== */
       /*  :root{코드} 
       1. 변수설정방법
@@ -1444,14 +1506,14 @@
         --his-orange: var(--orange);
         --his-pad-top: calc(150 * var(--u));
         --his-pad-x: calc(60 * var(--u));
-        --his-title: calc(48 * var(--u));
+        --his-title: calc(56 * var(--u));
         --his-title-gap: calc(74 * var(--u));
         --his-count: calc(280 * var(--u));
         --his-head-gap: calc(122 * var(--u));
         --his-axis: calc(98 * var(--u));
         --his-line: calc(24 * var(--u));
         --his-period: calc(40 * var(--u));
-        --his-lead: calc(28 * var(--u));
+        --his-lead: calc(32 * var(--u));
         --his-text: calc(16 * var(--u));
         --his-year: calc(24 * var(--u));
         --his-item-gap: calc(34 * var(--u));
@@ -1459,7 +1521,7 @@
         --his-block-gap: calc(184 * var(--u));
         --his-end-gap: calc(220 * var(--u));
         --his-end-sub: calc(18 * var(--u));
-        --his-end-main: calc(34 * var(--u));
+        --his-end-main: calc(38 * var(--u));
         --his-dot: calc(8 * var(--u));
         --his-ease: 0.6s cubic-bezier(0.4, 0, 0.2, 1);
         position: relative;
@@ -1499,10 +1561,10 @@
       .history-head { position: relative; isolation: isolate; text-align: center; margin-bottom: var(--his-head-gap); }
       .history-title {
         margin: 0 0 var(--his-title-gap);
+        font-family: "Pretendard", var(--font);
         font-size: var(--his-title);
         font-weight: 700;
-        line-height: 1.5;
-        letter-spacing: -0.03em;
+        line-height: 1.4;
       }
       .history-count {
         display: flex;
@@ -1550,11 +1612,11 @@
         grid-template-rows: auto 1fr;
       }
       .history-period { grid-area: period; margin: 0; font-size: var(--his-period); font-weight: 800; line-height: 1.2; letter-spacing: -0.02em; color: var(--his-orange); white-space: nowrap; }
-      .history-lead { grid-area: lead; margin: 0; font-size: var(--his-lead); font-weight: 700; line-height: 1.4; letter-spacing: -0.03em; }
+      .history-lead { grid-area: lead; margin: 0; font-family: "Pretendard", var(--font); font-size: var(--his-lead); font-weight: 700; line-height: 1.4; letter-spacing: -0.64px; }
       .history-list { grid-area: list; display: flex; flex-direction: column; gap: var(--his-item-gap); margin: 0; padding: 0; list-style: none; }
       .history-list li { display: flex; align-items: center; gap: calc(var(--his-year) * 1.2); }
-      .history-year { flex: none; width: calc(var(--his-year) * 2.4); font-size: var(--his-year); font-weight: 700; line-height: 1.4; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; white-space: nowrap;}
-      .history-text { font-size: var(--his-text); font-weight: 500; line-height: 1.5; letter-spacing: -0.03em; }
+      .history-year { flex: none; width: calc(var(--his-year) * 2.4); font-family: "Pretendard", var(--font);  font-size: var(--his-year); font-weight: 700; line-height: 1.4; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; white-space: nowrap;}
+      .history-text { font-family: "Pretendard", var(--font); font-size: var(--his-text); font-weight: 500; line-height: 1.5; letter-spacing: -0.03em; }
 
       /* 텍스트가 왼쪽: 축 쪽(오른쪽)으로 우측 정렬, 연도가 축에 가장 가깝게 */
       .history-block--text-left .history-lead { justify-self: end; text-align: right; }
@@ -1600,8 +1662,8 @@
 
       /* 엔딩: 100th + 마무리 카피 */
       .history-end { position: relative; isolation: isolate; margin-top: var(--his-end-gap); text-align: center; }
-      .history-count--end { position: relative; top: -56%; left: 50%; translate: -50%; }
-      .history-end-copy { position: relative; margin-top: calc(75 * var(--u)); padding-bottom: calc(40 * var(--u)); }
+      .history-count--end { position: relative; left: 50%; translate: -50%; margin-top: -50px; }
+      .history-end-copy { position: relative; margin-top: calc(130 * var(--u)); padding-bottom: calc(40 * var(--u)); }
       .history-end-copy::before {
         content: "";
         position: absolute;
@@ -1610,7 +1672,7 @@
         z-index: -1;
       }
       .history-end-sub { margin: 0 0 calc(24 * var(--u)); font-size: var(--his-end-sub); font-weight: 500; line-height: 1.6; letter-spacing: -0.03em; }
-      .history-end-main { margin: 0; font-size: var(--his-end-main); font-weight: 800; line-height: 1.95; letter-spacing: -0.04em; }
+      .history-end-main { margin: 0; font-family: "Pretendard", var(--font); font-size: var(--his-end-main); font-weight: 700; line-height: 1.5; letter-spacing: -0.02em; }
       .history-deco--char { left: calc(-11 * var(--u)); top: calc(-171 * var(--u)); width: calc(248 * var(--u)); z-index: 0; }
       .history-deco--cloud { left: calc(-60 * var(--u)); top: calc(150 * var(--u)); width: calc(330 * var(--u)); z-index: -1; }
 
@@ -1623,7 +1685,8 @@
         padding: calc(24 * var(--u)) 0 calc(120 * var(--u));
         transition: margin-top var(--his-ease);
       }
-      .history.is-collapsed .history-foot { margin-top: -110px; padding-top: 0; padding-bottom: 60px; }
+
+      .history.is-collapsed .history-foot {/* margin-top: -110px;*/padding-top: 0; padding-bottom: 60px; }
       .history-toggle {
         display: flex;
         flex-direction: column;
@@ -2069,7 +2132,7 @@
 
       // 히스토리 섹션: 펼치기/접기 (초기 상태 = 전체 높이의 2/3만 노출 + 하단 페이드아웃)
       (function () {
-        var COLLAPSE_RATIO = 2 / 3; // 접힘 시 노출 비율 (필요 시 여기만 조정)
+        var COLLAPSE_RATIO = 0.8 / 3; // 접힘 시 노출 비율 (필요 시 여기만 조정)
         var section = document.getElementById("history");
         if (!section) return;
         var body = document.getElementById("history-body");
