@@ -3753,6 +3753,11 @@
         color: #fff;
         font-size: 28px;
         line-height: 1;
+        transition: transform 300ms ease;
+      }
+
+      .tasks-modal__close:hover {
+        transform: rotate(90deg);
       }
 
       .tasks-modal__content {
@@ -4062,6 +4067,7 @@
       @media (prefers-reduced-motion: reduce) {
         .tasks__card,
         .tasks__tab,
+        .tasks-modal__close,
         .tasks__accordion-content,
         .tasks__accordion-content > .tasks__cards {
           transition: none;
