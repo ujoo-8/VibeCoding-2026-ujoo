@@ -3270,6 +3270,17 @@
         scrollbar-color: #ff6040 #ededed;
       }
 
+      .welfare__category + .welfare__category {
+        margin-top: 50px;
+      }
+
+      .welfare__error {
+        padding: 20px;
+        color: #b42318;
+        background: #fff4f2;
+        border-radius: 12px;
+      }
+
       .welfare__scroll::-webkit-scrollbar {
         width: 4px;
       }
@@ -3625,7 +3636,7 @@
       }
 
       .tasks__accordion-content > .tasks__cards {
-        padding: 10px 0 40px;
+        padding: 10px 40px 40px;
       }
 
       .tasks__group:last-child {
@@ -4872,330 +4883,14 @@
             <div
               class="welfare__scroll"
               aria-label="회사 복지 목록 스크롤 영역"
+              aria-busy="true"
               tabindex="0"
             >
-              <header class="welfare__lead">
-                <h3 class="welfare__lead-title">
-                  💗 오늘의 나도, 내일의 나도 든든하게!
-                </h3>
-                <p class="welfare__lead-desc">
-                  건강, 성장, 문화생활까지 알차게 챙겨드려요.
-                </p>
-              </header>
-              <ul class="welfare__list">
-                <li class="welfare__item">
-                  <article class="welfare__card">
-                    <div class="welfare__copy">
-                      <h4 class="welfare__card-title">건강 검진</h4>
-                      <p class="welfare__card-desc">
-                        건강한 하루가 오래 이어지도록, 정기적인 건강관리를
-                        지원해요.
-                      </p>
-                    </div>
-                    <img
-                      class="welfare__icon"
-                      src="./images/wf_ico1.png"
-                      alt="하트 달력 건강 검진 아이콘"
-                    />
-                  </article>
-                </li>
-                <li class="welfare__item">
-                  <article class="welfare__card">
-                    <div class="welfare__copy">
-                      <h4 class="welfare__card-title">기념일 축하 지원</h4>
-                      <p class="welfare__card-desc">
-                        소중한 기념일이 더 특별해지도록 한미가 함께 축하해요.
-                      </p>
-                    </div>
-                    <img
-                      class="welfare__icon"
-                      src="./images/wf_ico2.png"
-                      alt="케이크 기념일 축하 아이콘"
-                    />
-                  </article>
-                </li>
-                <li class="welfare__item">
-                  <article class="welfare__card">
-                    <div class="welfare__copy">
-                      <h4 class="welfare__card-title">본인주도 선택복지</h4>
-                      <p class="welfare__card-desc">
-                        나에게 필요한 복지를 내 취향과 생활에 맞게 선택할 수
-                        있어요.
-                      </p>
-                    </div>
-                    <img
-                      class="welfare__icon"
-                      src="./images/wf_ico3.png"
-                      alt="선택 복지 포인트 아이콘"
-                    />
-                  </article>
-                </li>
-                <li class="welfare__item">
-                  <article class="welfare__card">
-                    <div class="welfare__copy">
-                      <h4 class="welfare__card-title">장기 근속 포상</h4>
-                      <p class="welfare__card-desc">
-                        한미와 함께 걸어온 소중한 시간에 감사의 마음을 전해요.
-                      </p>
-                    </div>
-                    <img
-                      class="welfare__icon"
-                      src="./images/wf_ico4.png"
-                      alt="과녁을 맞힌 장기 근속 포상 아이콘"
-                    />
-                  </article>
-                </li>
-                <li class="welfare__item">
-                  <article class="welfare__card">
-                    <div class="welfare__copy">
-                      <h4 class="welfare__card-title">유연근무제</h4>
-                      <p class="welfare__card-desc">
-                        업무와 일상의 균형을 찾을 수 있도록 유연한 근무를
-                        지원해요.
-                      </p>
-                    </div>
-                    <img
-                      class="welfare__icon"
-                      src="./images/wf_ico5.png"
-                      alt="시계가 있는 유연근무제 아이콘"
-                    />
-                  </article>
-                </li>
-                <li class="welfare__item">
-                  <article class="welfare__card">
-                    <div class="welfare__copy">
-                      <h4 class="welfare__card-title">단체 상해 보험</h4>
-                      <p class="welfare__card-desc">
-                        예상하지 못한 순간에도 든든할 수 있도록 임직원을
-                        보호해요.
-                      </p>
-                    </div>
-                    <img
-                      class="welfare__icon"
-                      src="./images/wf_ico6.png"
-                      alt="보호 표시가 있는 단체 상해 보험 아이콘"
-                    />
-                  </article>
-                </li>
-                <li class="welfare__item">
-                  <article class="welfare__card">
-                    <div class="welfare__copy">
-                      <h4 class="welfare__card-title">직무 교육 지원</h4>
-                      <p class="welfare__card-desc">
-                        배우고 성장하는 즐거움이 계속되도록 역량 개발을
-                        지원해요.
-                      </p>
-                    </div>
-                    <img
-                      class="welfare__icon"
-                      src="./images/wf_ico7.png"
-                      alt="재생 버튼이 있는 직무 교육 아이콘"
-                    />
-                  </article>
-                </li>
-                <li class="welfare__item">
-                  <article class="welfare__card">
-                    <div class="welfare__copy">
-                      <h4 class="welfare__card-title">임직원 제휴 할인</h4>
-                      <p class="welfare__card-desc">
-                        다양한 제휴 혜택으로 일상 속 즐거움과 실속을 더해드려요.
-                      </p>
-                    </div>
-                    <img
-                      class="welfare__icon"
-                      src="./images/wf_ico8.png"
-                      alt="할인 표시가 있는 제휴 혜택 아이콘"
-                    />
-                  </article>
-                </li>
-                <li class="welfare__item">
-                  <article class="welfare__card">
-                    <div class="welfare__copy">
-                      <h4 class="welfare__card-title">문화 생활 지원</h4>
-                      <p class="welfare__card-desc">
-                        바쁜 일상에 기분 좋은 쉼표를 더할 수 있도록 문화활동을
-                        응원해요.
-                      </p>
-                    </div>
-                    <img
-                      class="welfare__icon"
-                      src="./images/wf_ico9.png"
-                      alt="곰 인형 문화 생활 지원 아이콘"
-                    />
-                  </article>
-                </li>
-                <li class="welfare__item">
-                  <article class="welfare__card">
-                    <div class="welfare__copy">
-                      <h4 class="welfare__card-title">구내식당</h4>
-                      <p class="welfare__card-desc">
-                        든든하고 맛있는 한 끼로 활기찬 하루를 채워드려요.
-                      </p>
-                    </div>
-                    <img
-                      class="welfare__icon"
-                      src="./images/wf_ico10.png"
-                      alt="숟가락과 포크 구내식당 아이콘"
-                    />
-                  </article>
-                </li>
-                <li class="welfare__item">
-                  <article class="welfare__card">
-                    <div class="welfare__copy">
-                      <h4 class="welfare__card-title">건강 검진</h4>
-                      <p class="welfare__card-desc">
-                        건강한 하루가 오래 이어지도록, 정기적인 건강관리를
-                        지원해요.
-                      </p>
-                    </div>
-                    <img
-                      class="welfare__icon"
-                      src="./images/wf_ico1.png"
-                      alt="하트 달력 건강 검진 아이콘"
-                    />
-                  </article>
-                </li>
-                <li class="welfare__item">
-                  <article class="welfare__card">
-                    <div class="welfare__copy">
-                      <h4 class="welfare__card-title">기념일 축하 지원</h4>
-                      <p class="welfare__card-desc">
-                        소중한 기념일이 더 특별해지도록 한미가 함께 축하해요.
-                      </p>
-                    </div>
-                    <img
-                      class="welfare__icon"
-                      src="./images/wf_ico2.png"
-                      alt="케이크 기념일 축하 아이콘"
-                    />
-                  </article>
-                </li>
-                <li class="welfare__item">
-                  <article class="welfare__card">
-                    <div class="welfare__copy">
-                      <h4 class="welfare__card-title">본인주도 선택복지</h4>
-                      <p class="welfare__card-desc">
-                        나에게 필요한 복지를 내 취향과 생활에 맞게 선택할 수
-                        있어요.
-                      </p>
-                    </div>
-                    <img
-                      class="welfare__icon"
-                      src="./images/wf_ico3.png"
-                      alt="선택 복지 포인트 아이콘"
-                    />
-                  </article>
-                </li>
-                <li class="welfare__item">
-                  <article class="welfare__card">
-                    <div class="welfare__copy">
-                      <h4 class="welfare__card-title">장기 근속 포상</h4>
-                      <p class="welfare__card-desc">
-                        한미와 함께 걸어온 소중한 시간에 감사의 마음을 전해요.
-                      </p>
-                    </div>
-                    <img
-                      class="welfare__icon"
-                      src="./images/wf_ico4.png"
-                      alt="과녁을 맞힌 장기 근속 포상 아이콘"
-                    />
-                  </article>
-                </li>
-                <li class="welfare__item">
-                  <article class="welfare__card">
-                    <div class="welfare__copy">
-                      <h4 class="welfare__card-title">유연근무제</h4>
-                      <p class="welfare__card-desc">
-                        업무와 일상의 균형을 찾을 수 있도록 유연한 근무를
-                        지원해요.
-                      </p>
-                    </div>
-                    <img
-                      class="welfare__icon"
-                      src="./images/wf_ico5.png"
-                      alt="시계가 있는 유연근무제 아이콘"
-                    />
-                  </article>
-                </li>
-                <li class="welfare__item">
-                  <article class="welfare__card">
-                    <div class="welfare__copy">
-                      <h4 class="welfare__card-title">단체 상해 보험</h4>
-                      <p class="welfare__card-desc">
-                        예상하지 못한 순간에도 든든할 수 있도록 임직원을
-                        보호해요.
-                      </p>
-                    </div>
-                    <img
-                      class="welfare__icon"
-                      src="./images/wf_ico6.png"
-                      alt="보호 표시가 있는 단체 상해 보험 아이콘"
-                    />
-                  </article>
-                </li>
-                <li class="welfare__item">
-                  <article class="welfare__card">
-                    <div class="welfare__copy">
-                      <h4 class="welfare__card-title">직무 교육 지원</h4>
-                      <p class="welfare__card-desc">
-                        배우고 성장하는 즐거움이 계속되도록 역량 개발을
-                        지원해요.
-                      </p>
-                    </div>
-                    <img
-                      class="welfare__icon"
-                      src="./images/wf_ico7.png"
-                      alt="재생 버튼이 있는 직무 교육 아이콘"
-                    />
-                  </article>
-                </li>
-                <li class="welfare__item">
-                  <article class="welfare__card">
-                    <div class="welfare__copy">
-                      <h4 class="welfare__card-title">임직원 제휴 할인</h4>
-                      <p class="welfare__card-desc">
-                        다양한 제휴 혜택으로 일상 속 즐거움과 실속을 더해드려요.
-                      </p>
-                    </div>
-                    <img
-                      class="welfare__icon"
-                      src="./images/wf_ico8.png"
-                      alt="할인 표시가 있는 제휴 혜택 아이콘"
-                    />
-                  </article>
-                </li>
-                <li class="welfare__item">
-                  <article class="welfare__card">
-                    <div class="welfare__copy">
-                      <h4 class="welfare__card-title">문화 생활 지원</h4>
-                      <p class="welfare__card-desc">
-                        바쁜 일상에 기분 좋은 쉼표를 더할 수 있도록 문화활동을
-                        응원해요.
-                      </p>
-                    </div>
-                    <img
-                      class="welfare__icon"
-                      src="./images/wf_ico9.png"
-                      alt="곰 인형 문화 생활 지원 아이콘"
-                    />
-                  </article>
-                </li>
-                <li class="welfare__item">
-                  <article class="welfare__card">
-                    <div class="welfare__copy">
-                      <h4 class="welfare__card-title">구내식당</h4>
-                      <p class="welfare__card-desc">
-                        든든하고 맛있는 한 끼로 활기찬 하루를 채워드려요.
-                      </p>
-                    </div>
-                    <img
-                      class="welfare__icon"
-                      src="./images/wf_ico10.png"
-                      alt="숟가락과 포크 구내식당 아이콘"
-                    />
-                  </article>
-                </li>
-              </ul>
+              <div
+                class="welfare__categories"
+                id="welfare-categories"
+              ></div>
+              <p class="welfare__error" id="welfare-error" role="alert" hidden></p>
             </div>
           </div>
         </div>
@@ -6338,6 +6033,122 @@
             window.scrollTo({ top: mv.offsetHeight, behavior: "smooth" });
           });
         }
+      })();
+
+      /* 회사 복지: benefits.json 데이터를 카테고리별 카드로 렌더링 */
+      (function () {
+        var welfareScroll = document.querySelector(".welfare__scroll");
+        var categoriesContainer = document.getElementById("welfare-categories");
+        var errorMessage = document.getElementById("welfare-error");
+        if (!welfareScroll || !categoriesContainer || !errorMessage) {
+          throw new Error("복지 목록을 표시할 영역을 찾을 수 없습니다.");
+        }
+
+        function requireText(value, fieldName) {
+          if (typeof value !== "string" || !value.trim()) {
+            throw new Error("복지 데이터의 " + fieldName + " 값이 올바르지 않습니다.");
+          }
+        }
+
+        fetch("./data/benefits.json")
+          .then(function (response) {
+            if (!response.ok) {
+              throw new Error("복지 데이터 요청에 실패했습니다: " + response.status);
+            }
+            return response.json();
+          })
+          .then(function (categories) {
+            if (!Array.isArray(categories)) {
+              throw new Error("복지 데이터는 카테고리 배열이어야 합니다.");
+            }
+
+            var fragment = document.createDocumentFragment();
+            categories.forEach(function (category, categoryIndex) {
+              if (!category || typeof category !== "object") {
+                throw new Error("복지 카테고리 데이터 형식이 올바르지 않습니다.");
+              }
+              requireText(category.category, "category");
+              requireText(category.category_description, "category_description");
+              if (!Array.isArray(category.items)) {
+                throw new Error("복지 카테고리의 items 값은 배열이어야 합니다.");
+              }
+
+              var section = document.createElement("section");
+              var headingId = "welfare-category-title-" + categoryIndex;
+              section.className = "welfare__category";
+              section.setAttribute("aria-labelledby", headingId);
+
+              var header = document.createElement("header");
+              header.className = "welfare__lead";
+
+              var heading = document.createElement("h3");
+              heading.className = "welfare__lead-title";
+              heading.id = headingId;
+              heading.textContent = category.category;
+              header.appendChild(heading);
+
+              var description = document.createElement("p");
+              description.className = "welfare__lead-desc";
+              description.textContent = category.category_description;
+              header.appendChild(description);
+              section.appendChild(header);
+
+              var list = document.createElement("ul");
+              list.className = "welfare__list";
+              category.items.forEach(function (item) {
+                if (!item || typeof item !== "object") {
+                  throw new Error("복지 항목 데이터 형식이 올바르지 않습니다.");
+                }
+                requireText(item.title, "items.title");
+                requireText(item.description, "items.description");
+
+                var listItem = document.createElement("li");
+                listItem.className = "welfare__item";
+
+                var card = document.createElement("article");
+                card.className = "welfare__card";
+
+                var copy = document.createElement("div");
+                copy.className = "welfare__copy";
+
+                var title = document.createElement("h4");
+                title.className = "welfare__card-title";
+                title.textContent = item.title;
+                copy.appendChild(title);
+
+                var detail = document.createElement("p");
+                detail.className = "welfare__card-desc";
+                detail.textContent = item.description;
+                copy.appendChild(detail);
+                card.appendChild(copy);
+
+                if (item.icon !== undefined) {
+                  requireText(item.icon, "items.icon");
+                  requireText(item.icon_alt, "items.icon_alt");
+                  var icon = document.createElement("img");
+                  icon.className = "welfare__icon";
+                  icon.src = item.icon;
+                  icon.alt = item.icon_alt;
+                  card.appendChild(icon);
+                }
+
+                listItem.appendChild(card);
+                list.appendChild(listItem);
+              });
+              section.appendChild(list);
+              fragment.appendChild(section);
+            });
+
+            categoriesContainer.appendChild(fragment);
+            welfareScroll.setAttribute("aria-busy", "false");
+          })
+          .catch(function (error) {
+            welfareScroll.setAttribute("aria-busy", "false");
+            errorMessage.hidden = false;
+            errorMessage.textContent =
+              "복지 데이터를 불러오지 못했습니다. 웹 서버로 페이지를 열고 data/benefits.json 파일을 확인해 주세요.";
+            console.error("복지 데이터 로딩에 실패했습니다.", error);
+          });
       })();
 
       /* 1440px 이하 데스크톱에서 메인 비주얼 내부 레이아웃을 비율대로 축소 */
