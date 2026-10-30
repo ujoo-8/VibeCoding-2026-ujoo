@@ -243,12 +243,31 @@
 
       /* ===== Header ===== */
       .header {
-        position: absolute;
+        position: fixed;
         top: 0;
         left: 0;
         right: 0;
         height: var(--header-h);
         z-index: 10;
+        background-color: transparent;
+        transform: translateY(0);
+        transition: transform 0.3s ease, background-color 0.3s ease;
+        will-change: transform;
+      }
+
+      .header.is-hidden {
+        transform: translateY(-100%);
+        background-color: transparent;
+      }
+
+      .header.is-visible {
+        transform: translateY(0);
+        background-color: #fff;
+      }
+
+      .header.is-menu-open {
+        transform: translateY(0);
+        background-color: #fff;
       }
 
       .header__inner {
@@ -903,7 +922,7 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        font-size: 16px;
+        font-size: 20px;
         line-height: 1.8;
         color: #444;
         margin-bottom: 8px;
@@ -1078,7 +1097,7 @@
         }
 
         .history__list li {
-          font-size: 14px;
+          font-size: 20px;
         }
 
         .history__obj--beaker {
@@ -1397,7 +1416,7 @@
         :root {
           --header-h: 96px;
         }
-        
+
         /* 헤더: 로고·내비를 유동적으로 축소 */
         .header__inner {
           padding: 0 40px;
@@ -1759,7 +1778,7 @@
         }
 
         .mv__period {
-          font-size: 13px;
+          font-size: 20px;
           line-height: 20px;
           letter-spacing: -0.26px;
         }
@@ -2366,7 +2385,7 @@
         }
 
         .history-block--text-right .history-period {
-          text-align: left;
+          text-align: center;
         }
 
         .history-block--text-left .history-period {
@@ -3241,7 +3260,7 @@
         display: flex;
         flex-direction: column;
         align-items: baseline;
-        gap: 12px;
+        gap: 4px;
         margin: 0 0 18px;
         font-family: "Pretendard", var(--font);
       }
@@ -3261,7 +3280,6 @@
         color: #444;
       }
 
-      
       .welfare__scroll {
         max-height: 494px;
         overflow-y: auto;
@@ -3284,7 +3302,7 @@
       .welfare__scroll::-webkit-scrollbar {
         width: 4px;
       }
-      
+
       .welfare__scroll::-webkit-scrollbar-track {
         border-radius: 999px;
         background: #ededed;
@@ -3390,7 +3408,7 @@
           font-size: 40px;
         }
         .welfare__desc {
-          font-size: 20px;
+          font-size: 13px;
         }
         .welfare__mascot {
           top: -105px;
@@ -3412,11 +3430,11 @@
         .welfare__list {
           grid-template-columns: minmax(0, 1fr);
           grid-auto-rows: 130px;
-          gap: 12px;
+          gap: 16px;
         }
 
         .welfare__card {
-          border-radius: 17px;
+          border-radius: 18px;
         }
 
         .welfare__icon {
@@ -3501,7 +3519,7 @@
           max-width: 230px;
           margin-top: 7px;
           line-height: 1.5;
-          font-size: 13px;
+          font-size: 20px;
         }
 
         .welfare__icon {
@@ -3540,7 +3558,8 @@
       .tasks__hero::before {
         position: absolute;
         inset: 0;
-        background: url("./images/tasks_bg_title.png") center top / 100% auto no-repeat;
+        background: url("./images/tasks_bg_title.png") center top / 100% auto
+          no-repeat;
         content: "";
         opacity: 0.13;
       }
@@ -3575,7 +3594,7 @@
 
       .tasks__description {
         margin-top: 12px;
-        font-size: 16px;
+        font-size: 20px;
         line-height: 1.6;
       }
 
@@ -3614,11 +3633,9 @@
         box-shadow: 0 4px 13px rgb(124 64 47 / 14%); */
         color: var(--tasks-accent);
         font-weight: 700;
-
-
-
         background-color: rgba(255, 93, 50, 0.05);
-    box-shadow: -4px -4px 10px 0 rgba(255, 255, 255, 0.35) inset, 4px 4px 10px 0 rgba(255, 161, 110, 0.10) inset, 6px 6px 12px 0 rgba(117, 40, 4, 0.10);
+        box-shadow: -4px -4px 10px 0 rgba(255, 255, 255, 0.35) inset, 4px 4px 10px 0 rgba(255, 161, 110, 0.10) inset, 6px 6px 12px 0 rgba(117, 40, 4, 0.10);
+
       }
 
       .tasks__panel[hidden] {
@@ -3855,7 +3872,7 @@
       .tasks-modal__list li {
         position: relative;
         padding-left: 15px;
-        font-size: 15px;
+        font-size: 20px;
         line-height: 1.6;
       }
 
@@ -3868,7 +3885,623 @@
         line-height: 1.25;
       }
 
+      /* Recruitment requirements and process */
+      .requirement {
+        padding: 88px 0 96px;
+        background: #fff;
+      }
+
+      .requirement__inner {
+        position: relative;
+        width: min(90%, 1128px);
+        margin: 0 auto;
+      }
+
+      .requirement__title {
+        max-width: 700px;
+        margin: 0 auto;
+        font-size: 36px;
+        font-weight: 800;
+        line-height: 1.4;
+        text-align: center;
+        letter-spacing: -0.04em;
+      }
+
+      .requirement__bulb {
+        position: absolute;
+        top: -18px;
+        right: 4%;
+        width: 100px;
+        height: 110px;
+        object-fit: contain;
+      }
+
+      .requirement__tabs {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 24px;
+        margin-top: 54px;
+        padding: 0 6px 24px;
+        border-bottom: 1px solid #dedede;
+      }
+
+      .requirement__tab {
+        min-height: 56px;
+        padding: 12px 20px;
+        border: 0;
+        border-radius: 14px;
+        background: transparent;
+        color: #777;
+        font: inherit;
+        font-size: 16px;
+        cursor: pointer;
+      }
+
+      .requirement__tab[aria-selected="true"] {
+        color: #ff6040;
+        font-weight: 700;
+        background: #fffaf8;
+        background-color: rgba(255, 93, 50, 0.05);
+        box-shadow: -4px -4px 10px 0 rgba(255, 255, 255, 0.35) inset, 4px 4px 10px 0 rgba(255, 161, 110, 0.10) inset, 6px 6px 12px 0 rgba(117, 40, 4, 0.10);
+      }
+
+      .requirement__panel[hidden] {
+        display: none;
+      }
+
+      .requirement__candidates {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        border-bottom: 1px solid #dedede;
+      }
+
+      .requirement__candidate {
+        display: flex;
+        min-height: 205px;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        padding: 28px 20px;
+        text-align: center;
+      }
+
+      .requirement__candidate + .requirement__candidate {
+        position: relative;
+      }
+
+      .requirement__candidate + .requirement__candidate::before {
+        position: absolute;
+        top: 24%;
+        bottom: 24%;
+        left: 0;
+        width: 1px;
+        background: #e5e5e5;
+        content: "";
+      }
+
+      .requirement__candidate-icon {
+        width: 68px;
+        height: 68px;
+        object-fit: contain;
+      }
+
+      .requirement__candidate-title {
+        font-size: 20px;
+        font-weight: 700;
+        line-height: 1.5;
+      }
+
+      .requirement__bullets {
+        display: grid;
+        gap: 12px;
+        width: fit-content;
+        margin: 0 auto;
+        padding: 34px 20px;
+        list-style: none;
+      }
+
+      .requirement__bullets li {
+        position: relative;
+        padding-left: 14px;
+        font-size: 14px;
+        line-height: 1.6;
+      }
+
+      .requirement__bullets li::before {
+        position: absolute;
+        left: 0;
+        color: #ff6040;
+        content: "•";
+        font-size: 18px;
+        line-height: 1.3;
+      }
+
+      .requirement__notice {
+        padding: 34px 20px;
+        border-top: 1px solid #dedede;
+        border-bottom: 1px solid #dedede;
+        color: #222;
+        font-size: 16px;
+        font-weight: 700;
+        line-height: 1.6;
+        text-align: center;
+      }
+
+      .requirement__notice strong {
+        color: #ff6040;
+      }
+
+      .exposition {
+        padding: 88px 0 96px;
+        background: #fff;
+      }
+
+      .exposition__inner {
+        width: min(92%, 1200px);
+        margin: 0 auto;
+      }
+
+      .exposition__intro {
+        display: grid;
+        grid-template-columns: 220px minmax(0, 1fr);
+        align-items: center;
+        gap: 32px;
+        min-height: 190px;
+      }
+
+      .exposition__character {
+        width: 220px;
+        height: 190px;
+        object-fit: contain;
+      }
+
+      .exposition__heading {
+        font-size: 38px;
+        font-weight: 800;
+        line-height: 1.35;
+        letter-spacing: -0.04em;
+      }
+
+      .exposition__description {
+        margin-top: 16px;
+        font-size: 16px;
+        line-height: 1.7;
+      }
+
+      .exposition__hint {
+        margin-top: 12px;
+        color: #555;
+        font-size: 20px;
+        line-height: 1.6;
+        text-align: center;
+      }
+
+      .exposition__hint::before {
+        margin-right: 8px;
+        color: #ff6040;
+        content: "•";
+      }
+
+      .exposition__tabs,
+      .exposition__regions {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 20px;
+      }
+
+      .exposition__tabs {
+        margin-top: 38px;
+        padding-bottom: 20px;
+      }
+
+      .exposition__tab,
+      .exposition__region {
+        min-height: 60px;
+        padding: 12px 20px;
+        border: 0;
+        border-radius: 14px;
+        background: transparent;
+        color: #777;
+        font: inherit;
+        font-size: 20px;
+        cursor: pointer;
+        transition:
+          color 0.3s ease,
+          background-color 0.3s ease,
+          box-shadow 0.3s ease,
+          transform 0.3s ease;
+      }
+
+      .exposition__tab[aria-selected="true"],
+      .exposition__region[aria-pressed="true"] {
+        color: #ff6040;
+        font-weight: 700;
+        background: #fffaf8;
+        box-shadow:
+          -4px -4px 10px 0 rgb(255 255 255 / 35%) inset,
+          4px 4px 10px 0 rgb(255 161 110 / 10%) inset,
+          6px 6px 12px 0 rgb(117 40 4 / 10%);
+      }
+
+      .exposition__panel[hidden],
+      .exposition__regions[hidden],
+      .exposition__schedule[hidden] {
+        display: none;
+      }
+
+      .exposition__regions {
+        grid-template-columns: repeat(6, minmax(0, 1fr));
+        gap: 8px;
+        margin: 20px 0;
+        padding: 8px;
+        border-radius: 14px;
+        background: #fffaf8;
+      }
+
+      .exposition__region {
+        min-height: 46px;
+        padding: 8px;
+        font-size: 20px;
+      }
+
+      .exposition__schedule {
+        display: grid;
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+        border-bottom: 1px solid #dedede;
+      }
+
+      .exposition__day {
+        min-height: 282px;
+        padding-bottom: 24px;
+        text-align: center;
+      }
+
+      .exposition__date {
+        position: relative;
+        display: flex;
+        width: 100%;
+        min-height: 54px;
+        align-items: center;
+        justify-content: center;
+        padding: 8px 4px;
+        margin: 0;
+        border-top: 1px solid #dedede;
+        border-bottom: 1px solid #dedede;
+        font-size: 20px;
+        font-weight: 500;
+        white-space: nowrap;
+      }
+
+      .exposition__day[aria-hidden="true"] .exposition__date {
+        border-top-color: #dedede;
+        border-bottom-color: #dedede;
+      }
+
+      .exposition__date::after {
+        position: absolute;
+        top: 50%;
+        right: 0;
+        width: 1px;
+        height: 17px;
+        transform: translateY(-50%);
+        background: #dedede;
+        content: "";
+      }
+
+      .exposition__day:nth-child(5n) .exposition__date {
+        border-right: 0;
+      }
+
+      .exposition__day:nth-child(5n) .exposition__date::after {
+        display: none;
+      }
+
+      .exposition__events {
+        position: relative;
+        display: flex;
+        min-height: 204px;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .exposition__event,
+      .exposition__event-label {
+        display: block;
+        padding: 12px 16px;
+        border: 0;
+        background: transparent;
+        color: #ff8068;
+        font: inherit;
+        font-size: 20px;
+        font-weight: 600;
+        line-height: 1.5;
+      }
+
+      #exposition-fair-schedule .exposition__event-label {
+        position: relative;
+      }
+
+      #exposition-fair-schedule
+        .exposition__event-label
+        + .exposition__event-label::before {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        width: 40px;
+        height: 1px;
+        transform: translateX(-50%);
+        background: #ffd7ce;
+        content: "";
+      }
+
+      .exposition__event {
+        cursor: pointer;
+        transition:
+          color 0.3s ease,
+          transform 0.3s ease;
+      }
+
+      .exposition__event[aria-pressed="true"] {
+        color: #e94f32;
+      }
+
+      .exposition__venue-card {
+        position: absolute;
+        z-index: 1;
+        top: 50%;
+        left: 50%;
+        display: flex;
+        width: min(100%, 218px);
+        min-height: 210px;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 14px;
+        padding: 18px 12px;
+        transform: translate(-50%, calc(-50% + 8px));
+        border-radius: 10px;
+        background: #fff7f4;
+        color: #111;
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transition:
+          opacity 0.3s ease,
+          transform 0.3s ease,
+          visibility 0s linear 0.3s;
+      }
+
+      .exposition__venue-card[hidden] {
+        display: flex;
+      }
+
+      .exposition__venue-card:not([hidden]) {
+        transform: translate(-50%, -50%);
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+        transition:
+          opacity 0.3s ease,
+          transform 0.3s ease,
+          visibility 0s;
+      }
+
+      .exposition__venue-item {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+      }
+
+      .exposition__venue-label {
+        color: #ff6040;
+        font-size: 20px;
+        font-weight: 600;
+      }
+
+      .exposition__venue-value {
+        font-size: 20px;
+        font-weight: 700;
+        line-height: 1.4;
+      }
+
+      .exposition__empty {
+        grid-column: 1 / -1;
+        padding: 72px 16px;
+        border-top: 1px solid #dedede;
+        border-bottom: 1px solid #dedede;
+        color: #777;
+        font-size: 20px;
+        line-height: 1.6;
+        text-align: center;
+      }
+
+      .exposition__schedule--empty .exposition__day {
+        min-height: 0;
+        padding: 0;
+      }
+
+      .exposition__schedule--empty .exposition__date {
+        min-height: 54px;
+      }
+
+      .exposition__schedule--empty .exposition__events {
+        min-height: 0;
+      }
+
+      .requirement__process-viewport {
+        width: 100%;
+        overflow: hidden;
+      }
+
+      .requirement__process-track {
+        width: 1128px;
+        transform: scale(var(--requirement-process-scale, 1));
+        transform-origin: top left;
+      }
+
+      .requirement__process-group {
+        padding: 42px 32px 38px;
+        border-bottom: 1px solid #dedede;
+      }
+
+      .requirement__process-title {
+        margin-bottom: 26px;
+        font-size: 13px;
+        font-weight: 700;
+      }
+
+      .requirement__steps {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+      }
+
+      .requirement__step {
+        display: flex;
+        min-width: 0;
+        flex: 1 1 0;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      .requirement__step-icon {
+        display: block;
+        width: 100px;
+        height: 100px;
+        object-fit: contain;
+      }
+
+      .requirement__step-title {
+        margin: 0;
+        font-size: 16px;
+        font-weight: 700;
+        white-space: nowrap;
+      }
+
+      .requirement__step-date {
+        margin-top: 4px;
+        color: #999;
+        font-size: 14px;
+        line-height: 1.45;
+        white-space: nowrap;
+      }
+
+      .requirement__step-arrow {
+        flex: 0 0 24px;
+        padding-top: 12px;
+        font-size: 22px;
+        line-height: 1;
+        text-align: center;
+      }
+
+      @media (min-width: 601px) and (max-width: 1024px) {
+        .requirement__step {
+          position: relative;
+        }
+
+        .requirement__step-arrow {
+          display: none;
+        }
+
+        .requirement__step:nth-of-type(1)::after,
+        .requirement__step:nth-of-type(2)::after,
+        .requirement__step:nth-of-type(3)::after,
+        .requirement__step:nth-of-type(5)::after,
+        .requirement__step:nth-of-type(6)::after {
+          position: absolute;
+          top: 20px;
+          right: -7px;
+          font-size: 18px;
+          line-height: 1;
+          content: "›";
+        }
+
+        .requirement__process-group:last-child
+          .requirement__step:last-of-type::after {
+          content: none;
+        }
+      }
+
+      .requirement__process-notes {
+        display: grid;
+        gap: 12px;
+        margin: 0;
+        padding: 54px 16%;
+        border-bottom: 1px solid #dedede;
+        list-style: none;
+      }
+
+      .requirement__process-notes li {
+        position: relative;
+        padding-left: 16px;
+        font-size: 14px;
+        line-height: 1.6;
+      }
+
+      .requirement__process-notes li::before {
+        position: absolute;
+        top: 0;
+        left: 0;
+        color: #ff6040;
+        content: "•";
+        font-size: 20px;
+        line-height: 1.25;
+      }
+
       @media (max-width: 1024px) {
+        .exposition {
+          padding: 72px 0 80px;
+        }
+
+        .exposition__intro {
+          display: block;
+          min-height: 0;
+          text-align: center;
+        }
+
+        .exposition__character {
+          display: none;
+        }
+
+        .exposition__heading {
+          font-size: 34px;
+        }
+
+        .exposition__description {
+          margin-top: 14px;
+        }
+
+        .exposition__tabs {
+          margin-top: 42px;
+        }
+
+        .requirement__process-track {
+          width: 100%;
+          transform: none;
+        }
+
+        .requirement__steps {
+          display: grid;
+          grid-template-columns: repeat(4, minmax(0, 1fr));
+          gap: 24px 12px;
+        }
+
+        .requirement__step-arrow {
+          display: none;
+        }
+
+        .requirement__step-title {
+          white-space: normal;
+        }
+
+        .requirement__step-icon {
+          width: 60px;
+          height: 60px;
+        }
+
         .tasks__hero {
           height: 420px;
         }
@@ -3937,10 +4570,211 @@
         .tasks-modal__body {
           padding: 0 0 60px;
         }
-        
+
+        .requirement {
+          padding: 70px 0 80px;
+        }
+
+        .requirement__title {
+          font-size: 32px;
+        }
+
+        .requirement__bulb {
+          right: 0;
+          width: 82px;
+          height: 90px;
+        }
+
+        .requirement__tabs {
+          gap: 12px;
+          margin-top: 44px;
+        }
+
+        .requirement__candidate {
+          min-height: 185px;
+        }
+
+        .requirement__process-group {
+          padding-right: 32px;
+          padding-left: 32px;
+        }
+
+        .requirement__process-notes {
+          gap: 10px;
+          padding: 38px 8%;
+        }
+
+        .requirement__process-notes li {
+          font-size: 13px;
+        }
       }
 
       @media (max-width: 600px) {
+        .exposition {
+          padding: 58px 0 64px;
+        }
+
+        .exposition__inner {
+          width: calc(100% - 40px);
+        }
+
+        .exposition__heading {
+          font-size: 23px;
+          line-height: 1.5;
+        }
+
+        .exposition__description {
+          margin-top: 10px;
+          font-size: 13px;
+          line-height: 1.65;
+        }
+
+        .exposition__hint {
+          max-width: 320px;
+          margin: 10px auto 0;
+          font-size: 11px;
+        }
+
+        .exposition__tabs {
+          gap: 4px;
+          margin-top: 30px;
+          padding-bottom: 14px;
+        }
+
+        .exposition__tab {
+          min-height: 48px;
+          padding: 8px 4px;
+          border-radius: 12px;
+          font-size: 20px;
+          white-space: nowrap;
+        }
+
+        .exposition__regions {
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+          gap: 4px;
+          margin: 12px 0;
+          padding: 5px;
+        }
+
+        .exposition__region {
+          min-height: 40px;
+          font-size: 20px;
+        }
+
+        .exposition__schedule {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .exposition__day {
+          min-height: 220px;
+          padding-bottom: 12px;
+        }
+
+        .exposition__date {
+          min-height: 42px;
+          padding: 6px 2px;
+          font-size: 20px;
+        }
+
+        .exposition__day:nth-child(2n) .exposition__date::after {
+          display: none;
+        }
+
+        .exposition__events {
+          min-height: 166px;
+        }
+
+        .exposition__event {
+          padding: 10px 3px;
+          font-size: 20px;
+        }
+
+        .exposition__venue-card {
+          min-height: 156px;
+          gap: 10px;
+          padding: 12px 6px;
+        }
+
+        .exposition__venue-label {
+          font-size: 20px;
+        }
+
+        .exposition__venue-value {
+          font-size: 20px;
+        }
+
+        .exposition__empty {
+          padding: 48px 12px;
+          font-size: 20px;
+        }
+
+        .requirement__steps {
+          grid-template-columns: repeat(4, minmax(0, 1fr));
+          gap: 30px 0;
+        }
+
+        .requirement__step-arrow {
+          display: none;
+        }
+
+        .requirement__step {
+          position: relative;
+        }
+
+        .requirement__process-group:first-child
+          .requirement__step:nth-of-type(-n + 3),
+        .requirement__process-group:last-child
+          .requirement__step:nth-of-type(-n + 3) {
+          grid-row: 1;
+        }
+
+        .requirement__process-group:first-child
+          .requirement__step:nth-of-type(n + 4),
+        .requirement__process-group:last-child
+          .requirement__step:nth-of-type(n + 4) {
+          grid-row: 2;
+        }
+
+        .requirement__process-group:first-child .requirement__step::after,
+        .requirement__process-group:last-child .requirement__step::after {
+          position: absolute;
+          top: 20px;
+          right: -5px;
+          font-size: 18px;
+          line-height: 1;
+          content: "›";
+        }
+
+        .requirement__process-group:first-child
+          .requirement__step:nth-of-type(3)::after,
+        .requirement__process-group:last-child
+          .requirement__step:nth-of-type(3)::after,
+        .requirement__process-group:first-child
+          .requirement__step:last-of-type::after,
+        .requirement__process-group:last-child
+          .requirement__step:last-of-type::after {
+          content: none;
+        }
+
+        .requirement__process-group {
+          padding: 30px 12px;
+        }
+
+        .requirement__process-title {
+          margin-bottom: 22px;
+          font-size: 18px;
+        }
+
+        .requirement__process-notes {
+          gap: 10px;
+          padding: 28px 8px;
+        }
+
+        .requirement__process-notes li {
+          padding-left: 14px;
+          font-size: 12px;
+        }
+
         .tasks {
           padding-bottom: 35px;
         }
@@ -3982,17 +4816,15 @@
 
         .tasks__tabs {
           justify-content: flex-start;
-          gap: 8px;
-          margin: 0 -20px;
           padding: 0 20px 20px;
           scroll-snap-type: x mandatory;
         }
 
         .tasks__tab {
           flex: 0 0 78px;
-          min-height: 62px;
-          padding: 12px 10px;
-          border-radius: 14px;
+          min-height: 60px;
+          padding: 0 24px;
+          border-radius: 15px;
           font-size: 14px;
           scroll-snap-align: start;
         }
@@ -4050,7 +4882,6 @@
           min-height: 0;
           padding-right: 30px;
           padding-left: 30px;
-    
         }
 
         .tasks-modal__header {
@@ -4086,6 +4917,79 @@
         .tasks-modal__list li {
           font-size: 14px;
         }
+
+        .requirement {
+          padding: 58px 0 64px;
+        }
+
+        .requirement__inner {
+          width: calc(100% - 40px);
+        }
+
+        .requirement__title {
+          max-width: 290px;
+          font-size: 26px;
+        }
+
+        .requirement__bulb {
+          display: none;
+        }
+
+        .requirement__tabs {
+          gap: 4px;
+          margin-top: 34px;
+          padding: 0 0 16px;
+        }
+
+        .requirement__tab {
+          min-height: 60px;
+          padding: 8px 4px;
+          border-radius: 12px;
+          font-size: 13px;
+          white-space: nowrap;
+        }
+
+        .requirement__candidate {
+          min-height: 180px;
+          gap: 10px;
+          padding: 22px 10px;
+        }
+
+        .requirement__candidates {
+          grid-template-columns: minmax(0, 1fr);
+        }
+
+        .requirement__candidate + .requirement__candidate {
+          border-top: 1px solid #e5e5e5;
+        }
+
+        .requirement__candidate + .requirement__candidate::before {
+          display: none;
+        }
+
+        .requirement__candidate-icon {
+          width: 60px;
+          height: 60px;
+        }
+
+        .requirement__candidate-title {
+          font-size: 17px;
+        }
+
+        .requirement__bullets {
+          gap: 10px;
+          padding: 26px 8px;
+        }
+
+        .requirement__bullets li {
+          font-size: 12px;
+        }
+
+        .requirement__notice {
+          padding: 28px 8px;
+          color: #555;
+          font-size: 14px;
+        }
       }
 
       @media (prefers-reduced-motion: reduce) {
@@ -4095,6 +4999,774 @@
         .tasks__accordion-content,
         .tasks__accordion-content > .tasks__cards {
           transition: none;
+        }
+      }
+
+      .con8 {
+        padding: 104px 0 112px;
+        overflow: hidden;
+        background: #fff;
+      }
+
+      .con8__inner,
+      .con9__inner {
+        width: min(1280px, calc(100% - 80px));
+        margin: 0 auto;
+      }
+
+      .con8__heading {
+        margin: 0;
+        color: #141414;
+        font-size: clamp(30px, 3.2vw, 44px);
+        font-weight: 800;
+        line-height: 1.35;
+        letter-spacing: -1.5px;
+        text-align: center;
+      }
+
+      .con8__description {
+        margin: 14px 0 0;
+        color: #555;
+        font-size: 18px;
+        line-height: 1.6;
+        text-align: center;
+      }
+
+      .con8__cards {
+        position: relative;
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        align-items: start;
+        gap: 32px;
+        margin-top: 56px;
+      }
+
+      .con8__character {
+        position: absolute;
+        z-index: 3;
+        top: -126px;
+        right: 0;
+        width: 96px;
+        height: auto;
+        pointer-events: none;
+      }
+
+      .con8__card {
+        min-width: 0;
+        overflow: visible;
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .con8__card:nth-child(2) {
+        margin-top: 0;
+      }
+
+      .con8__card:nth-child(1) {
+        margin-top: 60px;
+      }
+
+      .con8__card:nth-child(3) {
+        margin-top: 120px;
+      }
+
+      .con8__image-wrap {
+        position: relative;
+        display: block;
+        overflow: visible;
+        aspect-ratio: 0.78;
+        isolation: isolate;
+        border-radius: 22px;
+      }
+
+      .con8__image-wrap::before {
+        position: absolute;
+        z-index: -1;
+        inset: 0;
+        overflow: hidden;
+        border-radius: inherit;
+        background: #222;
+        content: "";
+      }
+
+      .con8__image {
+        display: block;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        border-radius: inherit;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+      }
+
+      .con8__card:hover .con8__image,
+      .con8__card:focus-visible .con8__image {
+        transform: scale(1.04);
+      }
+
+      .con8__image-copy {
+        display: none;
+      }
+
+      .con8__card-title {
+        position: relative;
+        display: block;
+        margin-top: 22px;
+        color: #1b1b1b;
+        font-size: 21px;
+        font-weight: 700;
+        line-height: 1.5;
+        letter-spacing: -0.5px;
+        text-align: center;
+      }
+
+      .con8__mark {
+        position: absolute;
+        z-index: 2;
+        display: block;
+        height: auto;
+        pointer-events: none;
+      }
+
+      .con8__mark--culture-arrow {
+        z-index: 3;
+        bottom: -28px;
+        left: 4%;
+        width: 58px;
+      }
+
+      .con8__mark--culture-star {
+        top: -50px;
+        right: -12px;
+        width: 55px;
+      }
+
+      .con8__mark--culture-underline {
+        bottom: -10px;
+        left: 28%;
+        width: 120px;
+      }
+
+      .con8__mark--job-arrow {
+        z-index: 3;
+        right: 2%;
+        bottom: -30px;
+        width: 50px;
+      }
+
+      .con8__mark--job-circle {
+        top: -4px;
+        left: 39%;
+        width: 88px;
+      }
+
+      .con8__mark--news-underline {
+        bottom: -8px;
+        left: 28%;
+        width: 108px;
+      }
+
+      .con9 {
+        position: relative;
+        min-height: 768px;
+        overflow: hidden;
+        isolation: isolate;
+        background: #e7f9fa url("./images/con9_bg.png") center / cover no-repeat;
+        text-align: center;
+        padding: 100px 0 120px;
+      }
+
+      .con9__inner {
+        position: relative;
+        z-index: 2;
+        /* padding-top: 42px; */
+        min-height: 76vh;
+      }
+
+      .con9__heading {
+        margin: 0;
+        color: #181818;
+        font-size: clamp(44px, 3.6vw, 60px);
+        font-weight: 800;
+        line-height: 1.4;
+        letter-spacing: -1px;
+      }
+
+      .con9__deadline {
+        margin: 8px 0 0;
+        color: #454545;
+        font-size: 16px;
+        line-height: 1.5;
+      }
+
+      .con9__countdown {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: clamp(16px, 2vw, 30px);
+        margin-top: 8px;
+      }
+
+      .con9__unit {
+        display: flex;
+        align-items: baseline;
+        gap: 4px;
+        min-width: 0;
+      }
+
+      .con9__number {
+        color: #f04a3a;
+        font-size: clamp(56px, 4.5vw, 72px);
+        font-weight: 800;
+        line-height: 1;
+        font-variant-numeric: tabular-nums;
+      }
+
+      .con9__label {
+        color: #333;
+        font-size: clamp(30px, 2.7vw, 44px);
+        font-weight: 700;
+      }
+
+      .con9__remaining {
+        color: #181818;
+        font-size: clamp(30px, 2.7vw, 44px);
+        font-weight: 700;
+      }
+
+      .con9__hint {
+        position: absolute;
+        z-index: 2;
+        right: 12px;
+        bottom: 40px;
+        left: 12px;
+        margin: 0;
+        color: #181818;
+        font-size: 18px;
+      }
+
+      .con9__hint span {
+        margin-right: 6px;
+        color: #f04a3a;
+        font-weight: 800;
+      }
+
+      .con9__apply {
+        position: absolute;
+        z-index: 3;
+        top: 70%;
+        left: 50%;
+        display: inline-flex;
+        width: 204px;
+        min-height: 74px;
+        align-items: center;
+        justify-content: space-between;
+        gap: 18px;
+        margin: 0;
+        padding: 0 20px;
+        transform: translate(-50%, -50%);
+        border: 1px solid rgba(255, 255, 255, 0.9);
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.72);
+        box-shadow: 0 8px 26px rgba(58, 112, 145, 0.12);
+        color: #f04a3a;
+        font-size: 20px;
+        font-weight: 700;
+        text-decoration: none;
+        backdrop-filter: blur(8px);
+        transition: background-color 0.3s ease, transform 0.3s ease;
+      }
+
+      .con9__apply:hover,
+      .con9__apply:focus-visible {
+        transform: translate(-50%, calc(-50% - 2px));
+        background: rgba(255, 255, 255, 0.88);
+        color: #d93d2f;
+      }
+
+      .con9__apply span {
+        display: inline-flex;
+        width: 36px;
+        height: 36px;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #ffae83, #f36b48);
+        color: #fff;
+        font-size: 24px;
+        line-height: 1;
+      }
+
+      .con9__earth,
+      .con9__cloud {
+        position: absolute;
+        z-index: 1;
+        height: auto;
+        pointer-events: none;
+      }
+
+      .con9__earth {
+        top: 42%;
+        left: 50%;
+        width: min(440px, 29vw);
+        transform: translateX(-50%);
+      }
+
+      .con9__cloud--left {
+        bottom: 0;
+        left: 0;
+        width: min(580px, 38vw);
+      }
+
+      .con9__cloud--right {
+        right: 0;
+        bottom: 0;
+        width: min(500px, 32vw);
+      }
+
+      .footer {
+        border-top: 0;
+        background: #fff;
+      }
+
+      .footer__inner {
+        justify-content: center;
+        padding: 48px 20px;
+      }
+
+      .footer__logo {
+        width: 182px;
+      }
+
+      .footer__logo img {
+        width: 100%;
+      }
+
+      .scroll-reveal {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+
+      .scroll-reveal.is-ready {
+        transition:
+          opacity 0.6s ease,
+          transform 0.6s cubic-bezier(0.2, 0.7, 0.2, 1);
+        transition-delay: var(--reveal-delay, 0ms);
+      }
+
+      .scroll-reveal.is-revealed {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .scroll-reveal,
+        .scroll-reveal.is-revealed {
+          opacity: 1;
+          transform: none;
+          transition: none;
+        }
+      }
+
+      @media (max-width: 1024px) {
+        .con8 {
+          padding: 80px 0 88px;
+        }
+
+        .con8__inner,
+        .con9__inner {
+          width: calc(100% - 64px);
+        }
+
+        .con8__cards {
+          gap: 20px;
+          margin-top: 44px;
+        }
+
+        .con8__image-wrap {
+          border-radius: 16px;
+        }
+
+        .con8__character {
+          top: -112px;
+          width: 82px;
+        }
+
+        .con8__card-title {
+          margin-top: 16px;
+          font-size: 17px;
+        }
+
+        .con9 {
+          min-height: 500px;
+        }
+
+        .con9__inner {
+          padding-top: 56px;
+        }
+
+        .con9__earth {
+          width: min(270px, 34vw);
+        }
+
+        .con9 {
+          min-height: max(620px, min(100svh, 768px));
+        }
+
+        .con9__inner {
+          width: calc(100% - 64px);
+          padding-top: clamp(96px, 17vh, 142px);
+        }
+
+        .con9__heading {
+          font-size: clamp(22px, 4.8vw, 40px);
+          line-height: 1.4;
+          letter-spacing: -0.8px;
+        }
+
+        .con9__countdown {
+          gap: clamp(4px, 1.8vw, 14px);
+          margin-top: 12px;
+          white-space: nowrap;
+        }
+
+        .con9__unit {
+          min-width: 0;
+          gap: 2px;
+        }
+
+        .con9__number {
+          font-size: clamp(27px, 4.8vw, 40px);
+        }
+
+        .con9__label,
+        .con9__remaining {
+          font-size: clamp(13px, 2vw, 18px);
+        }
+
+        .con9__earth {
+          top: 42%;
+          width: clamp(190px, 29vw, 270px);
+        }
+
+        .con9__apply {
+          position: absolute;
+          z-index: 3;
+          top: 59%;
+          left: 50%;
+          width: auto;
+          min-height: 52px;
+          gap: 12px;
+          margin: 0;
+          padding: 0 16px;
+          transform: translate(-50%, -50%);
+          border: 1px solid rgba(255, 255, 255, 0.9);
+          background: rgba(255, 255, 255, 0.72);
+          box-shadow: 0 6px 22px rgba(58, 112, 145, 0.12);
+          color: #f04a3a;
+          font-size: 16px;
+          backdrop-filter: blur(8px);
+        }
+
+        .con9__apply:hover,
+        .con9__apply:focus-visible {
+          transform: translate(-50%, calc(-50% - 2px));
+          background: rgba(255, 255, 255, 0.88);
+          color: #d93d2f;
+        }
+
+        .con9__apply span {
+          display: inline-flex;
+          width: 30px;
+          height: 30px;
+          align-items: center;
+          justify-content: center;
+          border-radius: 50%;
+          background: linear-gradient(135deg, #ffae83, #f36b48);
+          color: #fff;
+          font-size: 21px;
+          line-height: 1;
+        }
+
+        .con9__hint {
+          position: absolute;
+          z-index: 2;
+          right: 12px;
+          bottom: 13%;
+          left: 12px;
+          font-size: 14px;
+        }
+
+        .con9__cloud--left {
+          bottom: -2px;
+          width: min(280px, 34vw);
+        }
+
+        .con9__cloud--right {
+          bottom: -2px;
+          width: min(280px, 34vw);
+        }
+
+        .footer__inner {
+          flex-direction: row;
+          align-items: center;
+        }
+      }
+
+      @media (max-width: 600px) {
+        .con8 {
+          padding: 58px 0 64px;
+        }
+
+        .con8__inner,
+        .con9__inner {
+          width: calc(100% - 12px);
+        }
+
+        .con8__heading {
+          font-size: 25px;
+          letter-spacing: -0.8px;
+        }
+
+        .con8__description {
+          margin-top: 8px;
+          font-size: 14px;
+        }
+
+        .con8__cards {
+          position: relative;
+          grid-template-columns: minmax(0, 1fr);
+          gap: 20px;
+          margin-top: 28px;
+        }
+
+        .con8__character {
+          top: -88px;
+          width: 58px;
+        }
+
+        .con8__card:nth-child(2) {
+          margin-top: 0;
+        }
+
+        .con8__card:nth-child(1),
+        .con8__card:nth-child(3) {
+          margin-top: 0;
+        }
+
+        .con8__image-wrap {
+          overflow: hidden;
+          aspect-ratio: 1.55;
+          border-radius: 10px;
+        }
+
+        .con8__image-wrap::after {
+          position: absolute;
+          z-index: 1;
+          inset: 25% 0 0;
+          border-radius: inherit;
+          background: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.92));
+          content: "";
+        }
+
+        .con8__image-copy {
+          position: absolute;
+          z-index: 2;
+          right: 10px;
+          bottom: 18px;
+          left: 10px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          gap: 6px;
+          color: #fff;
+          text-align: center;
+        }
+
+        .con8__image-question {
+          font-size: 13px;
+          font-weight: 600;
+          line-height: 1.4;
+        }
+
+        .con8__image-link {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          gap: 7px;
+          font-size: 15px;
+          font-weight: 800;
+          line-height: 1.3;
+        }
+
+        .con8__arrow {
+          display: inline-flex;
+          width: 23px;
+          height: 23px;
+          align-items: center;
+          justify-content: center;
+          border-radius: 50%;
+          background: linear-gradient(135deg, #ffae83, #f36b48);
+          color: #fff;
+          font-size: 18px;
+          line-height: 1;
+        }
+
+        .con8__character,
+        .con8__mark {
+          display: none;
+        }
+
+        .con8__card-title {
+          display: none;
+        }
+
+        .con8__mark--culture-arrow {
+          bottom: -20px;
+          left: 5%;
+          width: 38px;
+        }
+
+        .con8__mark--culture-star {
+          top: -35px;
+          right: -6px;
+          width: 38px;
+        }
+
+        .con8__mark--culture-underline {
+          bottom: -7px;
+          left: 28%;
+          width: 92px;
+        }
+
+        .con8__mark--job-arrow {
+          right: 4%;
+          bottom: -20px;
+          width: 34px;
+        }
+
+        .con8__mark--job-circle {
+          top: -2px;
+          left: 39%;
+          width: 68px;
+        }
+
+        .con8__mark--news-underline {
+          bottom: -6px;
+          left: 28%;
+          width: 82px;
+        }
+
+        .con9 {
+          min-height: max(620px, min(100svh, 768px));
+          background-position: center;
+        }
+
+        .con9__inner {
+          width: calc(100% - 32px);
+          padding-top: clamp(96px, 17vh, 142px);
+        }
+
+        .con9__heading {
+          font-size: clamp(22px, 6vw, 30px);
+          line-height: 1.4;
+          letter-spacing: -0.8px;
+        }
+
+        .con9__countdown {
+          gap: clamp(4px, 1.8vw, 9px);
+          margin-top: 12px;
+          white-space: nowrap;
+        }
+
+        .con9__unit {
+          min-width: 0;
+          gap: 2px;
+        }
+
+        .con9__number {
+          font-size: clamp(27px, 7.5vw, 38px);
+        }
+
+        .con9__label {
+          font-size: clamp(13px, 3.8vw, 17px);
+        }
+
+        .con9__remaining {
+          font-size: clamp(13px, 3.8vw, 17px);
+        }
+
+        .con9__apply {
+          position: absolute;
+          z-index: 3;
+          top: 59%;
+          left: 50%;
+          min-height: 52px;
+          gap: 12px;
+          margin: 0;
+          padding: 0 16px;
+          transform: translate(-50%, -50%);
+          border: 1px solid rgba(255, 255, 255, 0.9);
+          background: rgba(255, 255, 255, 0.72);
+          box-shadow: 0 6px 22px rgba(58, 112, 145, 0.12);
+          color: #f04a3a;
+          font-size: 16px;
+          backdrop-filter: blur(8px);
+        }
+
+        .con9__apply:hover,
+        .con9__apply:focus-visible {
+          transform: translate(-50%, calc(-50% - 2px));
+          background: rgba(255, 255, 255, 0.88);
+          color: #d93d2f;
+        }
+
+        .con9__apply span {
+          display: inline-flex;
+          width: 30px;
+          height: 30px;
+          align-items: center;
+          justify-content: center;
+          border-radius: 50%;
+          background: linear-gradient(135deg, #ffae83, #f36b48);
+          color: #fff;
+          font-size: 21px;
+          line-height: 1;
+        }
+
+        .con9__hint {
+          position: absolute;
+          z-index: 2;
+          right: 12px;
+          bottom: 13%;
+          left: 12px;
+          font-size: 14px;
+        }
+
+        .con9__earth {
+          top: 42%;
+          width: clamp(210px, 58vw, 270px);
+        }
+
+        .con9__cloud--left {
+          bottom: -2px;
+          width: 38vw;
+        }
+
+        .con9__cloud--right {
+          bottom: -2px;
+          width: 34vw;
+        }
+
+        .footer__inner {
+          flex-direction: row;
+          align-items: center;
+          padding: 34px 20px;
+        }
+
+        .footer__logo {
+          width: 150px;
         }
       }
     </style>
@@ -4122,11 +5794,9 @@
           <ul class="gnb__list">
             <li><a class="gnb__link" href="#jobs">직무소개</a></li>
             <li>
-              <a class="gnb__link" href="#qualification"
-                >지원자격 및 접수방법</a
-              >
+              <a class="gnb__link" href="#requirement">지원자격 및 접수방법</a>
             </li>
-            <li><a class="gnb__link" href="#schedule">채용설명회 일정</a></li>
+            <li><a class="gnb__link" href="#exposition">채용설명회 일정</a></li>
           </ul>
           <a class="btn btn--sm gnb__apply" href="#apply">
             지원하기
@@ -4886,11 +6556,13 @@
               aria-busy="true"
               tabindex="0"
             >
-              <div
-                class="welfare__categories"
-                id="welfare-categories"
-              ></div>
-              <p class="welfare__error" id="welfare-error" role="alert" hidden></p>
+              <div class="welfare__categories" id="welfare-categories"></div>
+              <p
+                class="welfare__error"
+                id="welfare-error"
+                role="alert"
+                hidden
+              ></p>
             </div>
           </div>
         </div>
@@ -4921,1082 +6593,1143 @@
           </header>
 
           <div class="tasks__tabs" role="tablist" aria-label="직무 분야">
-            <button class="tasks__tab" id="tasks-tab-rnd" type="button" role="tab" aria-selected="true" aria-controls="tasks-panel-rnd" data-task-tab="rnd">R&amp;D</button>
-            <button class="tasks__tab" id="tasks-tab-prod" type="button" role="tab" aria-selected="false" aria-controls="tasks-panel-prod" data-task-tab="prod">생산/품질</button>
-            <button class="tasks__tab" id="tasks-tab-sales" type="button" role="tab" aria-selected="false" aria-controls="tasks-panel-sales" data-task-tab="sales">영업</button>
-            <button class="tasks__tab" id="tasks-tab-mps" type="button" role="tab" aria-selected="false" aria-controls="tasks-panel-mps" data-task-tab="mps">경영지원</button>
-            <button class="tasks__tab" id="tasks-tab-cl" type="button" role="tab" aria-selected="false" aria-controls="tasks-panel-cl" data-task-tab="cl">임상</button>
-            <button class="tasks__tab" id="tasks-tab-global" type="button" role="tab" aria-selected="false" aria-controls="tasks-panel-global" data-task-tab="global">글로벌</button>
-            <button class="tasks__tab" id="tasks-tab-healthcare" type="button" role="tab" aria-selected="false" aria-controls="tasks-panel-healthcare" data-task-tab="healthcare">헬스케어</button>
+            <button
+              class="tasks__tab"
+              id="tasks-tab-rnd"
+              type="button"
+              role="tab"
+              aria-selected="true"
+              aria-controls="tasks-panel-rnd"
+              data-task-tab="rnd"
+            >
+              R&amp;D
+            </button>
+            <button
+              class="tasks__tab"
+              id="tasks-tab-prod"
+              type="button"
+              role="tab"
+              aria-selected="false"
+              aria-controls="tasks-panel-prod"
+              data-task-tab="prod"
+            >
+              생산/품질
+            </button>
+            <button
+              class="tasks__tab"
+              id="tasks-tab-sales"
+              type="button"
+              role="tab"
+              aria-selected="false"
+              aria-controls="tasks-panel-sales"
+              data-task-tab="sales"
+            >
+              영업
+            </button>
+            <button
+              class="tasks__tab"
+              id="tasks-tab-mps"
+              type="button"
+              role="tab"
+              aria-selected="false"
+              aria-controls="tasks-panel-mps"
+              data-task-tab="mps"
+            >
+              경영지원
+            </button>
+            <button
+              class="tasks__tab"
+              id="tasks-tab-cl"
+              type="button"
+              role="tab"
+              aria-selected="false"
+              aria-controls="tasks-panel-cl"
+              data-task-tab="cl"
+            >
+              임상
+            </button>
+            <button
+              class="tasks__tab"
+              id="tasks-tab-global"
+              type="button"
+              role="tab"
+              aria-selected="false"
+              aria-controls="tasks-panel-global"
+              data-task-tab="global"
+            >
+              글로벌
+            </button>
+            <button
+              class="tasks__tab"
+              id="tasks-tab-healthcare"
+              type="button"
+              role="tab"
+              aria-selected="false"
+              aria-controls="tasks-panel-healthcare"
+              data-task-tab="healthcare"
+            >
+              헬스케어
+            </button>
           </div>
 
           <div class="tasks__panels"></div>
         </div>
 
         <script type="application/json" id="task-data">
-[
-    {
-        "category":  "rnd",
-        "details":  [
-                        {
-                            "location":  "연구센터 (경기도 동탄)",
-                            "count":  "6",
-                            "fields":  [
-                                           "NCE (New Chemical Entity)",
-                                           "QS\u0026F (Quality Science \u0026 Formulation)",
-                                           "MST (Manufacturing Science Technology)",
-                                           "TE (Toxicology Evaluation)",
-                                           "DST (Drug Science \u0026 Technology)",
-                                           "BSS (Biological \u0026 Structural Evaluation Science)"
-                                       ]
-                        },
-                        {
-                            "location":  "제제연구소 [의약혁신센터] (경기도 광교)",
-                            "count":  "1",
-                            "fields":  [
-                                           "신제형연구 (전문연구요원)"
-                                       ]
-                        }
-                    ]
-    },
-    {
-        "category":  "prod",
-        "details":  [
-                        {
-                            "location":  "팔탄제조센터 (경기도 화성)",
-                            "count":  "4",
-                            "fields":  [
-                                           "제조",
-                                           "포장",
-                                           "품질관리",
-                                           "기술지원"
-                                       ]
-                        },
-                        {
-                            "location":  "평택제조센터 (경기도 평택)",
-                            "count":  "2",
-                            "fields":  [
-                                           "DS생산 (학사)",
-                                           "DS생산 (전문학사)"
-                                       ]
-                        }
-                    ]
-    },
-    {
-        "category":  "sales",
-        "details":  [
-                        {
-                            "location":  "전국 (Mobile Office)",
-                            "count":  "1",
-                            "fields":  [
-                                           "제약영업"
-                                       ]
-                        },
-                        {
-                            "location":  "본사 (서울시 송파구)",
-                            "count":  "2",
-                            "fields":  [
-                                           "해외영업",
-                                           "IT솔루션영업"
-                                       ]
-                        }
-                    ]
-    },
-    {
-        "category":  "mps",
-        "details":  [
-                        {
-                            "location":  "본사 (서울시 송파구)",
-                            "count":  "5",
-                            "fields":  [
-                                           "구매",
-                                           "국내법무",
-                                           "특허",
-                                           "안전관리",
-                                           "인사총무"
-                                       ]
-                        }
-                    ]
-    },
-    {
-        "category":  "cl",
-        "details":  [
-                        {
-                            "location":  "본사 (서울시 송파구)",
-                            "count":  "4",
-                            "fields":  [
-                                           "Pipeline Valuation (신약가치평가)",
-                                           "Market Intelligence (신약개발 전략분석)",
-                                           "Data Management",
-                                           "Biostatistician"
-                                       ]
-                        }
-                    ]
-    },
-    {
-        "category":  "global",
-        "details":  [
-                        {
-                            "location":  "본사 (서울시 송파구)",
-                            "count":  "2",
-                            "fields":  [
-                                           "Global Regulatory Affairs",
-                                           "Licensing"
-                                       ]
-                        }
-                    ]
-    },
-    {
-        "category":  "healthcare",
-        "details":  [
-                        {
-                            "location":  "본사 (서울시 송파구)",
-                            "count":  "9",
-                            "fields":  [
-                                           "식품영업",
-                                           "식품커머스운영",
-                                           "화장품 커머스사업기획",
-                                           "화장품 상품기획",
-                                           "화장품 홈쇼핑영업/운영",
-                                           "화장품 국내영업",
-                                           "화장품 해외영업",
-                                           "화장품 글로벌마케팅",
-                                           "해외이커머스운영"
-                                       ]
-                        },
-                        {
-                            "location":  "서울/수도권/영남",
-                            "count":  "1",
-                            "fields":  [
-                                           "의료기기영업"
-                                       ]
-                        }
-                    ]
-    }
-]
+          [
+            {
+              "category": "rnd",
+              "details": [
+                {
+                  "location": "연구센터 (경기도 동탄)",
+                  "count": "6",
+                  "fields": [
+                    "NCE (New Chemical Entity)",
+                    "QS\u0026F (Quality Science \u0026 Formulation)",
+                    "MST (Manufacturing Science Technology)",
+                    "TE (Toxicology Evaluation)",
+                    "DST (Drug Science \u0026 Technology)",
+                    "BSS (Biological \u0026 Structural Evaluation Science)"
+                  ]
+                },
+                {
+                  "location": "제제연구소 [의약혁신센터] (경기도 광교)",
+                  "count": "1",
+                  "fields": ["신제형연구 (전문연구요원)"]
+                }
+              ]
+            },
+            {
+              "category": "prod",
+              "details": [
+                {
+                  "location": "팔탄제조센터 (경기도 화성)",
+                  "count": "4",
+                  "fields": ["제조", "포장", "품질관리", "기술지원"]
+                },
+                {
+                  "location": "평택제조센터 (경기도 평택)",
+                  "count": "2",
+                  "fields": ["DS생산 (학사)", "DS생산 (전문학사)"]
+                }
+              ]
+            },
+            {
+              "category": "sales",
+              "details": [
+                {
+                  "location": "전국 (Mobile Office)",
+                  "count": "1",
+                  "fields": ["제약영업"]
+                },
+                {
+                  "location": "본사 (서울시 송파구)",
+                  "count": "2",
+                  "fields": ["해외영업", "IT솔루션영업"]
+                }
+              ]
+            },
+            {
+              "category": "mps",
+              "details": [
+                {
+                  "location": "본사 (서울시 송파구)",
+                  "count": "5",
+                  "fields": ["구매", "국내법무", "특허", "안전관리", "인사총무"]
+                }
+              ]
+            },
+            {
+              "category": "cl",
+              "details": [
+                {
+                  "location": "본사 (서울시 송파구)",
+                  "count": "4",
+                  "fields": [
+                    "Pipeline Valuation (신약가치평가)",
+                    "Market Intelligence (신약개발 전략분석)",
+                    "Data Management",
+                    "Biostatistician"
+                  ]
+                }
+              ]
+            },
+            {
+              "category": "global",
+              "details": [
+                {
+                  "location": "본사 (서울시 송파구)",
+                  "count": "2",
+                  "fields": ["Global Regulatory Affairs", "Licensing"]
+                }
+              ]
+            },
+            {
+              "category": "healthcare",
+              "details": [
+                {
+                  "location": "본사 (서울시 송파구)",
+                  "count": "9",
+                  "fields": [
+                    "식품영업",
+                    "식품커머스운영",
+                    "화장품 커머스사업기획",
+                    "화장품 상품기획",
+                    "화장품 홈쇼핑영업/운영",
+                    "화장품 국내영업",
+                    "화장품 해외영업",
+                    "화장품 글로벌마케팅",
+                    "해외이커머스운영"
+                  ]
+                },
+                {
+                  "location": "서울/수도권/영남",
+                  "count": "1",
+                  "fields": ["의료기기영업"]
+                }
+              ]
+            }
+          ]
         </script>
 
         <script type="application/json" id="popup-data">
-[
-{
-"id": "popup-job-rnd-1",
-"title": "NCE (New Chemical Entity)",
-"department": "R&D",
-"location": "연구센터",
-"category": "*신입/경력",
-"image": "./images/tasks_rnd_bg.jpg",
-"job_description": [
-"저분자 기반 비만대사 신약 개발 연구",
-"약물설계, 유기화합물 합성 및 후보물질 탐색"
-],
-"qualifications": [
-"석사 이상 학력 소지자",
-"화학, 약학 등 관련 전공자",
-"의약 화학, 약리학 등 신약개발 연관분야 지식 보유자",
-"경력사원의 경우 관련 경력 2년 이상인 자"
-],
-"preferred": [
-"비만대사 관련 저분자 신약 연구 경험 보유자",
-"컴퓨터 모델링 및 AI 기반 신약 개발 경험 보유자",
-"해외 연구기관 및 제약회사 신약 개발 경험 보유자",
-"영어 능통자 (구술, 서술), 박사 학위 소지자"
-]
-},
-{
-"id": "popup-job-rnd-2",
-"title": "QS&F (Quality Science & Formulation)",
-"department": "R&D",
-"location": "연구센터",
-"category": "*신입/경력",
-"image": "./images/tasks_rnd_bg.jpg",
-"job_description": [
-"펩타이드 합성/정제/분석 업무",
-"AI 기반 펩타이드 신약 후보 물질 디자인 및 탐색 연구",
-"바이오의약품 특성 분석 및 제제 연구"
-],
-"qualifications": [
-"석사 이상 학력 소지자",
-"화학, 약학, 생명과학 등 관련 전공자",
-"펩타이드 합성/정제/분석 업무 경험 보유자",
-"경력사원의 경우 관련 경력 2년 이상인 자"
-],
-"preferred": [
-"AI 기반 펩타이드 약물 디자인 및 합성 전략 수립 경험 보유자",
-"해외 연구기관 및 제약회사 신약 개발 경험 보유자",
-"영어 능통자 (구술, 서술), 박사 학위 소지자"
-]
-},
-{
-"id": "popup-job-rnd-3",
-"title": "MST (Manufacturing Science Technology)",
-"department": "R&D",
-"location": "연구센터",
-"category": "*신입/경력",
-"image": "./images/tasks_rnd_bg.jpg",
-"job_description": [
-"바이오의약품 제조 공정 개발, 생산 및 분석 연구",
-"차세대 플랫폼 개발, 타겟 발굴 및 바이오의약품 연구"
-],
-"qualifications": [
-"석사 이상 학력 소지자",
-"면역학, 생명과학, 생화학, 단백질공학, 생물공학, 분자생물학, 구조생물학 등 관련 전공자",
-"바이오의약품 연구 또는 공정 개발 관련 경험 보유자",
-"경력사원의 경우 관련 경력 2년 이상인 자"
-],
-"preferred": [
-"대장균/동물 유래 단백질, 펩타이드 및 핵산 (DNA, RNA) 정제 제조 업무 경험 보유자",
-"ADC 및 바이오컨쥬게이션 (Bioconjugation) 연구 경험 보유자",
-"단백질, 펩타이드 구조 모델링 연구 경험 보유자",
-"바이오의약품 제조공정 개발 및 scale-up 경험 보유자",
-"영어 능통자 (구술, 서술), 박사 학위 소지자"
-]
-},
-{
-"id": "popup-job-rnd-4",
-"title": "TE (Toxicology Evaluation)",
-"department": "R&D",
-"location": "연구센터",
-"category": "*신입/경력",
-"image": "./images/tasks_rnd_bg.jpg",
-"job_description": [
-"해외 GLP 비임상 독성시험 관리",
-"내부 비임상 독성시험 수행",
-"보고서 및 IND 허가자료 작성",
-"파트너사 및 허가당국 보완 대응"
-],
-"qualifications": [
-"석사 이상 학력 소지자",
-"수의학, 약학, 독성학, 생명공학 등 관련 전공자",
-"경력사원의 경우 관련 경력 2년 이상인 자"
-],
-"preferred": [
-"ADC, TPD, CGT, mRNA 신약 개발 관련 GLP 독성시험 경험 보유자",
-"NAMs 기반 독성 연구 경험 보유자",
-"관련 전문 자격증 소지자"
-]
-},
-{
-"id": "popup-job-rnd-5",
-"title": "DST (Drug Science & Technology)",
-"department": "R&D",
-"location": "연구센터",
-"category": "*신입/경력",
-"image": "./images/tasks_rnd_bg.jpg",
-"job_description": [
-"신약 후보물질의 CMC 분석 연구",
-"시험법 개발 및 Qualification/Validation",
-"원료의약품 특성 분석, 안정성 시험 및 불순물 평가",
-"CMO 분석법 기술이전 및 지원",
-"분석 전략 수립 및 IND 제출 자료 작성 지원",
-"분석 데이터 검토 및 규제 대응 지원"
-],
-"qualifications": [
-"석사 이상 학력 소지자",
-"분석화학, 약학, 생명과학 등 관련 전공자",
-"크로마토그래피 활용 경험 보유자",
-"경력사원의 경우 관련 경력 2년 이상인 자"
-],
-"preferred": [
-"신약개발/의약품 CMC 연구 경험 보유자",
-"ADC, LNP 등 차세대 모달리티의 특성 분석 및 CMC 개발 경험 보유자",
-"영어 능통자 (구술, 서술)"
-]
-},
-{
-"id": "popup-job-rnd-6",
-"title": "BSS (Biological & Structural Evaluation Science)",
-"department": "R&D",
-"location": "연구센터",
-"category": "*신입/경력",
-"image": "./images/tasks_rnd_bg.jpg",
-"job_description": [
-"LC/QTOF MS 기반 합성/바이오의약품 및 신규 모달리티 구조 연구 및 특성 분석",
-"원료, 중간체 및 최종 물질 내 유연물질, 분해 산물의 구조 규명 및 발생 경로 연구",
-"대사체 및 생체 유래 분해 산물 구조 연구",
-"연구 결과 해석 및 보고서 작성"
-],
-"qualifications": [
-"석사 이상 학력 소지자",
-"분석화학, 생화학, 약학 등 관련 전공자",
-"LC/QTOF MS 기반 업무 경험 보유자",
-"경력사원의 경우 관련 경력 2년 이상인 자"
-],
-"preferred": [
-"영어 능통자 (구술, 서술)"
-]
-},
-{
-"id": "popup-job-rnd-7",
-"title": "신제형연구 (전문연구요원)",
-"department": "R&D",
-"location": "제제연구소 [의약혁신센터]",
-"category": "*신입",
-"image": "./images/tasks_rnd_bg.jpg",
-"job_description": [
-"신제품 개발전략 수립 및 처방설계 연구",
-"제형선정 연구 및 처방 안정성 연구",
-"신규 기술 특허 작성 및 출원"
-],
-"qualifications": [
-"석사 이상 학력 소지자",
-"약학, 화학, 생명공학, 고분자공학 등 관련 전공자"
-],
-"preferred": [
-"제형연구 경험 보유자",
-"약사 면허 소지자",
-"영어 능통자 (구술, 서술)"
-]
-},
-{
-"id": "popup-job-prod-1",
-"title": "제조",
-"department": "생산/품질",
-"location": "팔탄제조센터",
-"category": "*신입/경력",
-"image": "./images/quality_bg.jpg",
-"job_description": [
-"내용고형제 (칭량, 과립, 타정, 코팅, 인쇄·선별) 제조공정 수행",
-"제조설비 운전 및 공정 중 점검",
-"제조기록서 작성 및 GMP 문서관리",
-"공정 개선활동 및 생산성 향상 업무"
-],
-"qualifications": [
-"고등학교 졸업 이상 학력 소지자 (전공무관)",
-"주·야간 교대근무 가능자",
-"경력사원의 경우 관련 경력 3년 이상인 자"
-],
-"preferred": [
-"내용고형제 생산 업무 경험자",
-"GMP, 표준작업절차 (SOP) 기반 제조 현장 근무 경험 보유자",
-"제조설비 조작 및 유지관리 경험 보유자",
-"팀워크 및 원활한 의사소통 능력 보유자"
-]
-},
-{
-"id": "popup-job-prod-2",
-"title": "포장",
-"department": "생산/품질",
-"location": "팔탄제조센터",
-"category": "*신입/경력",
-"image": "./images/quality_bg.jpg",
-"job_description": [
-"병, PTP 포장, 검체 채취, 반제품/자재 이송"
-],
-"qualifications": [
-"고등학교 졸업 이상 학력 소지자 (전공무관)",
-"주·야간 교대근무 가능자",
-"경력사원의 경우 관련 경력 3년 이상인 자"
-],
-"preferred": [
-"포장 업무 경험 보유자"
-]
-},
-{
-"id": "popup-job-prod-3",
-"title": "품질관리",
-"department": "생산/품질",
-"location": "팔탄제조센터",
-"category": "*신입/경력",
-"image": "./images/quality_bg.jpg",
-"job_description": [
-"제품 출하 및 안정성 관련 품질관리 (기기분석, 이화학 시험)"
-],
-"qualifications": [
-"학사 이상 학력 소지자",
-"화학, 화학공학, 생물학, 생명공학 등 관련 전공자",
-"경력사원의 경우 관련 경력 3년 이상인 자"
-],
-"preferred": [
-"이화학, 기기분석 경험 보유자",
-"약사 면허 소지자",
-"영어 능통자 (구술, 서술)"
-]
-},
-{
-"id": "popup-job-prod-4",
-"title": "기술지원",
-"department": "생산/품질",
-"location": "팔탄제조센터",
-"category": "*신입/경력",
-"image": "./images/quality_bg.jpg",
-"job_description": [
-"생산설비 정비 및 점검 업무 수행",
-"신규 생산설비 구매 검토, 제작 관리 및 설치"
-],
-"qualifications": [
-"학사 이상 학력 소지자",
-"전기, 전자, 기계 등 관련 전공자",
-"경력사원의 경우 관련 경력 3년 이상인 자"
-],
-"preferred": [
-"제약 생산장비 제작 및 설치 관리, 유지보수 경험자",
-"기계/전기 기사 등 엔지니어링 관련 자격증 소지자"
-]
-},
-{
-"id": "popup-job-prod-5",
-"title": "DS생산 (학사)",
-"department": "생산/품질",
-"location": "평택제조센터",
-"category": "*신입",
-"image": "./images/quality_bg.jpg",
-"job_description": [
-"DS 제품 생산",
-"IPC 수행 및 장비 Qualification",
-"생산장비 운영 및 유지보수",
-"공정 개선 업무 수행",
-"GMP 문서 제/개정",
-"실사 및 감사 문서 대응"
-],
-"qualifications": [
-"학사 학력 소지자",
-"미생물학, 생물학 등 제약 관련 전공자"
-],
-"preferred": [
-"미생물·단백질 정제 관련 업무 경험 및 배경지식 보유자",
-"영어 능통자 (구술, 서술)"
-]
-},
-{
-"id": "popup-job-prod-6",
-"title": "DS생산 (전문학사)",
-"department": "생산/품질",
-"location": "평택제조센터",
-"category": "*신입",
-"image": "./images/quality_bg.jpg",
-"job_description": [
-"DS 제품 생산",
-"IPC 수행 및 장비 Qualification",
-"생산장비 운영 및 유지보수",
-"공정 개선 업무 수행"
-],
-"qualifications": [
-"전문학사 학력 소지자",
-"미생물학, 생물학 등 제약 관련 전공자"
-],
-"preferred": [
-"미생물·단백질 정제 관련 업무 경험 및 배경지식 보유자"
-]
-},
-{
-"id": "popup-job-sales-1",
-"title": "제약영업",
-"department": "영업",
-"location": "전국",
-"category": "*채용연계형 인턴",
-"image": "./images/sm_bg.jpg",
-"job_description": [
-"MR (병의원 영업)"
-],
-"qualifications": [
-"학사 이상 학력 소지자 (전공무관)"
-],
-"preferred": []
-},
-{
-"id": "popup-job-sales-2",
-"title": "해외영업",
-"department": "영업",
-"location": "본사",
-"category": "*신입",
-"image": "./images/sm_bg.jpg",
-"job_description": [
-"미주/유럽/중동/아프리카 권역 Account 발굴/관리",
-"의료장비(약품자동조제기/자동화장비) 및 약품(완제/원료) 수출",
-"시장 동향 분석 및 신규비즈니스 발굴/기획"
-],
-"qualifications": [
-"학사 이상 학력 소지자",
-"경영학, 국제통상학, 약학, 생명과학 등 상경, 자연계열 관련 전공자"
-],
-"preferred": [
-"해외 수출 업무 경험 보유자",
-"시장 데이터 분석 및 사업 전략 프레젠테이션 능력 우수자",
-"영어 능통자 (구술, 서술)"
-]
-},
-{
-"id": "popup-job-sales-3",
-"title": "IT솔루션영업",
-"department": "영업",
-"location": "본사",
-"category": "*경력",
-"image": "./images/sm_bg.jpg",
-"job_description": [
-"대외사업 영업전략 수립 및 사업개발 조직 리딩",
-"신규 고객 및 신규 사업기회 발굴",
-"제약/바이오 및 제조·물류 분야 전략고객 관리",
-"IT솔루션, 물류자동화 프로젝트 수주 총괄",
-"전략 파트너십 구축 및 사업 포트폴리오 확대"
-],
-"qualifications": [
-"학사 이상 학력 소지자 (전공무관)",
-"Enterprise 고객 또는 대형 프로젝트 제안·수주 경험 보유자",
-"영업전략 수립부터 신규고객 발굴, 제안, 계약체결까지 End-to-End 영업 경험 보유자",
-"매출 목표 달성 및 신규 사업기회 창출 경험 보유자",
-"영업조직 또는 프로젝트 리딩 경험 보유자",
-"관련 경력 10년 이상인 자 (IT솔루션, SI 또는 물류자동화 분야 영업)"
-],
-"preferred": [
-"MES, WMS, LIMS, RFID 등 제조·물류 IT솔루션 영업 경험 보유자",
-"스마트팩토리 또는 물류자동화 구축 사업 경험 보유자",
-"전략적 파트너십 발굴 및 사업 확대 경험 보유자",
-"제약·바이오 산업 대상 IT·SI 사업 경험 보유자",
-"제약·바이오 업계 주요 고객사 네트워크 보유자",
-"단일 프로젝트 10억원 이상 수주 실적 보유자"
-]
-},
-{
-"id": "popup-job-mps-1",
-"title": "구매",
-"department": "경영관리",
-"location": "본사",
-"category": "*경력",
-"image": "./images/mps_bg.jpg",
-"job_description": [
-"구매 전략 수립 및 조달 운영 관리",
-"원가 절감 및 비용 최적화 전략 수립 및 추진",
-"공급업체 관리 및 계약 협상"
-],
-"qualifications": [
-"학사 이상 학력 소지자 (전공무관)",
-"영어 능통자 (구술, 서술)",
-"관련 경력 3년 이상인 자"
-],
-"preferred": [
-"동종업계 개발구매 업무 경험 보유자",
-"구매/무역 관련 교육 이수 및 자격증 소지자",
-"MS Office 활용 능력 우수자",
-"제2외국어 능통자 (구술, 서술)"
-]
-},
-{
-"id": "popup-job-mps-2",
-"title": "국내법무",
-"department": "경영관리",
-"location": "본사",
-"category": "*경력",
-"image": "./images/mps_bg.jpg",
-"job_description": [
-"국내 사업 관련 계약 검토 및 자문",
-"분쟁, 소송 등 법적절차 대응",
-"신사업 관련 법령 규제 및 리스크 관리",
-"규제기관 조사 및 수사 대응",
-"임직원 법령 교육 및 법위반 리스크 최소화"
-],
-"qualifications": [
-"학사 이상 학력 소지자 (전공무관)",
-"한국 변호사 자격증 소지자",
-"관련 경력 1년 이상인 자"
-],
-"preferred": [
-"로펌, 사내 법무팀 근무 경험 보유자",
-"영어, 중국어 능통자 (구술, 서술)"
-]
-},
-{
-"id": "popup-job-mps-3",
-"title": "특허",
-"department": "경영관리",
-"location": "본사",
-"category": "*경력",
-"image": "./images/mps_bg.jpg",
-"job_description": [
-"한미약품 제품 개발 특허 조사 및 검토, FTO, 특허 전략 수립",
-"한미약품 제품 특허 심판 및 소송 등 분쟁 대응",
-"의약품 허가-특허연계제도 관련 업무",
-"Due Diligence, 라이센싱 관련 글로벌 파트너사 대응"
-],
-"qualifications": [
-"학사 이상 학력 소지자",
-"화학, 화학공학, 바이오, 약학 등 관련 전공자",
-"관련 경력 3년 이상인 자 (제약, 화학, 생명 분야)"
-],
-"preferred": [
-"제약회사, 바이오 또는 화학회사 특허팀 근무 경험 보유자",
-"특허사무소 근무 경험 보유자",
-"변리사 자격증 소지자",
-"영어 능통자 (구술, 서술)"
-]
-},
-{
-"id": "popup-job-mps-4",
-"title": "안전관리",
-"department": "경영관리",
-"location": "본사",
-"category": "*신입/경력",
-"image": "./images/mps_bg.jpg",
-"job_description": [
-"한미사이언스 안전관리 업무",
-"정기 안전점검 (월 점검, 제3자 안전진단, 자율점검) 및 정기 위험성 평가·조치계획 수립",
-"법정·자율 안전보건교육 및 ISO 45001 인증",
-"중대시민재해 관련 공중이용시설 관리 및 전 사업장 안전보건 모니터링",
-"기타 산업법 및 중처법 대응"
-],
-"qualifications": [
-"학사 이상 학력 소지자 (전공 무관)",
-"산업안전기사 또는 산업안전산업기사 자격증 소지자",
-"관련 경력 3년 이상인 자 (제조업)"
-],
-"preferred": [
-"산업안전공학, 안전공학 등 산업안전 관련 전공자",
-"산업안전기사 자격증 소지자",
-"제약산업 안전관리 업무 경험 보유자",
-"안전보건관리 체계 구축 및 산업재해 예방 업무 경험 보유자"
-]
-},
-{
-"id": "popup-job-mps-5",
-"title": "인사총무",
-"department": "경영관리",
-"location": "본사",
-"category": "*계약직 (전환형)",
-"image": "./images/mps_bg.jpg",
-"job_description": [
-"채용, 교육, 평가 등 인사업무 전반 운영 관리",
-"인사 제도 및 프로세스 관리",
-"복리후생 제도 기획·운영",
-"총무 및 업무환경 운영 관리"
-],
-"qualifications": [
-"학사 이상 학력 소지자 (전공무관)"
-],
-"preferred": [
-"MS Office 활용 능력 우수자",
-"영어 능통자 (구술, 서술)"
-]
-},
-{
-"id": "popup-job-cl-1",
-"title": "Pipeline Valuation (신약가치평가)",
-"department": "임상",
-"location": "본사",
-"category": "*경력",
-"image": "./images/cd_bg.jpg",
-"job_description": [
-"임상 성공 확률 및 시장 점유율 전망을 위한 약물 개발 현황, 차별화 요소, 시장성 등 평가",
-"자산의 경제성 및 사업가치 산출 (예: rNPV 모델링)",
-"산출된 가치평가 결과의 해석 (시나리오별 분석, 민감도 분석 등) 및 의사결정 지원",
-"신약개발 동향, 규제 변화 등에 따른 자산 가치 변화 모니터링"
-],
-"qualifications": [
-"학사 이상 학력 소지자",
-"약학, 화학, 생명공학, 생물학 등 관련 전공자",
-"관련 경력 3년 이상인 자 (개발, 기획, 전략, 임상PM 등 신약개발 분야)"
-],
-"preferred": [
-"사업개발, 시장 분석, 컨설팅, 투자 관련 분야 경험 보유자",
-"rNPV, 임상성공률, Peak Sales 추정 등 Valuation 방법론 관련 경험 보유자",
-"석사 이상 학위 소지자",
-"영어 능통자 (구술, 서술)"
-]
-},
-{
-"id": "popup-job-cl-2",
-"title": "Market Intelligence (신약개발 전략분석)",
-"department": "임상",
-"location": "본사",
-"category": "*신입/경력",
-"image": "./images/cd_bg.jpg",
-"job_description": [
-"국내외 제약/바이오 산업, 치료제 및 신약개발 동향 모니터링 및 분석",
-"주요 질환별 시장환경, 경쟁구도 및 경쟁 파이프라인 분석",
-"내부 개발 파이프라인의 경쟁력 및 개발 전략 수립을 위한 Market Intelligence 제공",
-"신규 기술, 외부 유망 자산 및 사업개발 기회에 대한 조사, 분석"
-],
-"qualifications": [
-"석사 이상 학력 소지자",
-"약학, 화학, 생명공학, 생물학 등 관련 전공자",
-"경력사원의 경우 관련 경력 3년 이상인 자"
-],
-"preferred": [
-"임상시험, 제약 바이오 산업시장, 경쟁정보 분석 경험 보유자",
-"박사 학위 소지자",
-"영어 능통자 (구술, 서술)"
-]
-},
-{
-"id": "popup-job-cl-3",
-"title": "Data Management",
-"department": "임상",
-"location": "본사",
-"category": "*신입/경력",
-"image": "./images/cd_bg.jpg",
-"job_description": [
-"임상시험 데이터 관리 업무 수행",
-"CRO Management"
-],
-"qualifications": [
-"학사 이상 학력 소지자",
-"통계학, 컴퓨터공학, 보건학, 간호학 등 관련 전공자",
-"경력사원의 경우 관련 경력 3년 이상인 자"
-],
-"preferred": [
-"제약회사 또는 CRO 근무 경험 보유자",
-"Medical Coding 관련 경험 보유자",
-"영어 문서 검토 및 작성 가능자",
-"SAS 또는 R 활용 가능자"
-]
-},
-{
-"id": "popup-job-cl-4",
-"title": "Biostatistician",
-"department": "임상",
-"location": "본사",
-"category": "*신입/경력",
-"image": "./images/cd_bg.jpg",
-"job_description": [
-"임상시험 디자인 및 통계 분석 계획 수립",
-"CRO 통계 업무 관리 및 임상시험 진행 관리",
-"임상시험 결과 분석",
-"데이터 표준화",
-"국내 외 규제기관, 시험기관, 연구기관 및 파트너사 대응"
-],
-"qualifications": [
-"석사 이상 학력 소지자",
-"의학통계학, 생물통계학, 통계학 등 관련 전공자",
-"통계 분석 소프트웨어 (SAS, R 등) 사용 가능자",
-"영어 능통자 (구술, 서술)",
-"경력사원의 경우 관련 경력 3년 이상인 자"
-],
-"preferred": [
-"제약회사/CRO 임상통계 업무 경험 보유자",
-"규제기관 대응 경험 보유자",
-"박사 학위 소지자"
-]
-},
-{
-"id": "popup-job-global-1",
-"title": "Global Regulatory Affairs",
-"department": "글로벌",
-"location": "본사",
-"category": "*신입/경력",
-"image": "./images/mps_bg.jpg",
-"job_description": [
-"신약 및 신제품 해외 시판 허가 신청 및 승인",
-"해외 임상시험 신청 및 승인",
-"허가 후 변경, 유지 관리 및 갱신",
-"임상시험 변경 및 유지 관리",
-"해외 허가 전략 수립"
-],
-"qualifications": [
-"학사 이상 학력 소지자",
-"약학, 화학, 생물학 등 자연계열, 이공계 관련 전공자",
-"영어 능통자 (구술, 서술)",
-"경력사원의 경우 관련 경력 3년 이상인 자"
-],
-"preferred": [
-"중국어, 일본어, 스페인어 등 제2외국어 능통자 (구술, 서술)"
-]
-},
-{
-"id": "popup-job-global-2",
-"title": "Licensing",
-"department": "글로벌",
-"location": "본사",
-"category": "*경력",
-"image": "./images/mps_bg.jpg",
-"job_description": [
-"한미약품 신약 파이프라인 라이선스 아웃",
-"Alliance Management",
-"기전/차별성/시장/가치 분석 기반 전략 수립",
-"딜 협상 및 계약서 작성/검토/체결",
-"파트너사 이슈/리스크 관리 및 계약상 의무 이행 관리"
-],
-"qualifications": [
-"학사 이상 학력 소지자",
-"약학, 화학, 생물학, 생명공학 등 관련 전공자",
-"영어 능통자 (구술, 서술)",
-"신약 라이선스 아웃 계약 체결 경험 보유자",
-"관련 경력 5년 이상인 자"
-],
-"preferred": [
-"신약 개발 관련 업무 경험 보유자",
-"항암제 연구 개발 및 Clinical Science 경험 보유자",
-"ICVS, KCVA 등 가치 평가 관련 자격증 소지자",
-"제2외국어 능통자 (구술, 서술)"
-]
-},
-{
-"id": "popup-job-healthcare-1",
-"title": "식품영업",
-"department": "헬스케어",
-"location": "본사",
-"category": "*경력",
-"image": "./images/sm_bg.jpg",
-"job_description": [
-"건강기능식품·케어푸드 특수유통 채널 영업 및 거래처 관리",
-"병원, 요양원, 실버타운, 복지시설 등 신규 거래처 발굴 및 운영",
-"폐쇄몰 온라인 채널 영업 및 매출 확대",
-"시장 및 경쟁사 분석을 통한 영업 전략 수립",
-"채널 맞춤형 상품 기획, 개발 및 소싱",
-"매출 관리, 실적 분석 및 영업 성과 개선"
-],
-"qualifications": [
-"학사 이상 학력 소지자 (전공무관)",
-"원활한 커뮤니케이션 및 거래처 관리 역량 보유자",
-"데이터 기반의 분석 및 문제 해결 능력 보유자",
-"관련 경력 5년 이상인 자 (B2B, 유통영업)"
-],
-"preferred": [
-"병원, 요양원, 실버산업 등 특수유통 채널 영업 경험 보유자",
-"건강기능식품, 식품, 케어푸드 관련 업계 근무 경험 보유자"
-]
-},
-{
-"id": "popup-job-healthcare-2",
-"title": "식품커머스운영",
-"department": "헬스케어",
-"location": "본사",
-"category": "*경력",
-"image": "./images/sm_bg.jpg",
-"job_description": [
-"디지털 광고 (Meta, Google, 네이버 등) 운영 및 성과 분석",
-"광고 효율 개선을 위한 퍼포먼스·세일즈 전략 수립",
-"광고 소재 A/B 테스트 및 데이터 기반 성과 개선",
-"마케팅 지표 관리 및 결과 리포트 작성",
-"온라인 배너, 커머스 콘텐츠 등 디자인 제작"
-],
-"qualifications": [
-"학사 이상 학력 소지자 (전공무관)",
-"퍼포먼스 마케팅 실무 경험 보유자",
-"데이터 분석 및 문제 해결 역량 보유자",
-"디자인 툴 (Photoshop, illustrator 등) 활용 가능자",
-"관련 경력 3년 이상인 자"
-],
-"preferred": [
-"GA4, Meta Ads, Google Ads 운영 경험 보유자",
-"영상 편집 및 콘텐츠 제작 경험 보유자",
-"자사몰 및 CRM 운영 경험 보유자"
-]
-},
-{
-"id": "popup-job-healthcare-3",
-"title": "화장품 커머스사업기획",
-"department": "헬스케어",
-"location": "본사",
-"category": "*경력",
-"image": "./images/sm_bg.jpg",
-"job_description": [
-"더마 코스메틱 브랜드 사업 및 커머스 전략 총괄",
-"온라인 채널 (자사몰, 네이버, 쿠팡, 올리브영 등) 매출 및 손익 관리",
-"신규 유통채널 발굴 및 파트너십 구축",
-"퍼포먼스 마케팅, CRM, 프로모션 등 성장 전략 수립 및 실행",
-"브랜드·상품 기획 조직과 협업하여 시장 경쟁력 강화",
-"조직 및 인력 운영, KPI 수립 및 성과 관리"
-],
-"qualifications": [
-"학사 이상 학력 소지자 (전공무관)",
-"조직 리딩 및 팀 매니지먼트 경험 보유자",
-"이커머스 및 디지털 마케팅 실무 경험 보유자",
-"채널 운영, 매출 관리 및 사업 전략 수립 경험 보유자",
-"관련 경력 10년 이상인 자 (화장품 또는 더마 코스메틱 분야)"
-],
-"preferred": [
-"자사몰 구축 및 성장 경험 보유자",
-"올리브영, 네이버, 쿠팡 등 주요 커머스 채널 운영 경험 보유자",
-"브랜드 론칭 또는 사업 성장 경험 보유자"
-]
-},
-{
-"id": "popup-job-healthcare-4",
-"title": "화장품 상품기획",
-"department": "헬스케어",
-"location": "본사",
-"category": "*경력",
-"image": "./images/sm_bg.jpg",
-"job_description": [
-"화장품 신상품 기획/개발/운영",
-"국내외 화장품 시장/소비자/트렌드 분석",
-"온오프라인 채널별 상품 기획 및 운영",
-"상품 프로모션 및 런칭 전략 지원"
-],
-"qualifications": [
-"학사 이상 학력 소지자 (전공무관)",
-"화장품 개발 프로세스에 대한 이해 보유자",
-"시장 및 소비자 트렌드 분석 역량 보유자",
-"관련 경력 7년 이상인 자"
-],
-"preferred": [
-"화학, 화장품학, 피부미용학 등 관련 전공자",
-"화장품 브랜드사 상품기획 경험 보유자",
-"브랜드 및 상품 런칭 경험 보유자",
-"SNS 및 디지털 마케팅 트렌드 이해도 보유자",
-"MS Office 활용 능력 우수자",
-"영어, 중국어 능통자 (구술, 서술)"
-]
-},
-{
-"id": "popup-job-healthcare-5",
-"title": "화장품 홈쇼핑영업/운영",
-"department": "헬스케어",
-"location": "본사",
-"category": "*경력",
-"image": "./images/sm_bg.jpg",
-"job_description": [
-"홈쇼핑 채널 영업 및 운영 관리",
-"방송 편성 및 프로모션 운영",
-"채널별 매출 분석 및 실적 관리",
-"벤더사 협업 및 채널 관계 관리"
-],
-"qualifications": [
-"학사 이상 학력 소지자 (전공무관)",
-"관련 경력 3년 이상인 자 (홈쇼핑 영업/운영)"
-],
-"preferred": [
-"브랜드 론칭 운영 경험 보유자",
-"GS·CJ·현대홈쇼핑 운영 경험 보유자"
-]
-},
-{
-"id": "popup-job-healthcare-6",
-"title": "화장품 국내영업",
-"department": "헬스케어",
-"location": "본사",
-"category": "*경력",
-"image": "./images/sm_bg.jpg",
-"job_description": [
-"국내 거래처 발굴 및 영업 관리",
-"국내 유통 채널 및 온/오프라인 입점 영업",
-"국내 시장/경쟁사 분석 및 영업 전략 수립",
-"영업 파트너사 및 MD 커뮤니케이션 관리",
-"견적·계약 협의, 납기 관리 및 유관부서 협업",
-"고객 대응 및 관리"
-],
-"qualifications": [
-"학사 이상 학력 소지자 (전공무관)",
-"관련 경력 4년 이상인 자 (화장품 B2B 국내영업)"
-],
-"preferred": [
-"국내 유통채널 및 바이어 네트워크 보유자",
-"데이터 분석 능력 우수자",
-"MS Office 활용 능력 우수자"
-]
-},
-{
-"id": "popup-job-healthcare-7",
-"title": "화장품 해외영업",
-"department": "헬스케어",
-"location": "본사",
-"category": "*경력",
-"image": "./images/sm_bg.jpg",
-"job_description": [
-"해외 (일본, 중국, 미주) 영업, 운영 및 실적 관리",
-"신규 해외 거래처 발굴 및 바이어 관리",
-"현지 유통채널 확대 및 영업관리",
-"시장 동향 분석 및 사업 기회 발굴"
-],
-"qualifications": [
-"학사 이상 학력 소지자 (전공무관)",
-"관련 경력 5년 이상인 자"
-],
-"preferred": [
-"화장품 B2B 해외영업 경험 보유자",
-"일본, 중국, 미주 유통 채널 및 바이어 네트워크 보유자",
-"데이터 분석 능력 우수자",
-"MS Office 활용 능력 우수자",
-"영어, 일본어 능통자 (구술, 서술)"
-]
-},
-{
-"id": "popup-job-healthcare-8",
-"title": "화장품 글로벌마케팅",
-"department": "헬스케어",
-"location": "본사",
-"category": "*경력",
-"image": "./images/sm_bg.jpg",
-"job_description": [
-"글로벌 SNS 채널 기획 및 운영",
-"인플루언서 협업 및 콘텐츠 운영",
-"해외 광고 및 디지털 캠페인 기획·운영",
-"글로벌 마케팅 성과 관리 및 분석"
-],
-"qualifications": [
-"학사 이상 학력 소지자 (전공무관)",
-"영어 능통자 (구술, 서술)",
-"글로벌 SNS 운영 경험 보유자",
-"관련 경력 3년 이상인 자"
-],
-"preferred": [
-"TikTok Ads·TikTok Shop 관련 업무 경험 보유자",
-"Amazon·Shopify 관련 업무 경험 보유자",
-"미국·일본·동남아 시장 관련 업무 경험 보유자",
-"뷰티 브랜드 글로벌 런칭 경험 보유자",
-"해외 인플루언서 네트워크 보유자"
-]
-},
-{
-"id": "popup-job-healthcare-9",
-"title": "해외이커머스운영",
-"department": "헬스케어",
-"location": "본사",
-"category": "*경력",
-"image": "./images/sm_bg.jpg",
-"job_description": [
-"Amazon 스토어 운영 및 관리",
-"상품 등록 및 운영 전략 수립",
-"PPC 광고 및 프로모션 기획·운영",
-"매출 분석 및 판매 성과 관리"
-],
-"qualifications": [
-"학사 이상 학력 소지자 (전공무관)",
-"Seller Central 또는 Vendor Central 활용 가능자",
-"관련 경력 3년 이상인 자"
-],
-"preferred": [
-"Amazon PPC 광고 운영 경험 보유자",
-"미국 시장 대상 이커머스 운영 경험 보유자",
-"Shopify 운영 경험 보유자",
-"뷰티 카테고리 운영 경험 보유자"
-]
-},
-{
-"id": "popup-job-healthcare-10",
-"title": "의료기기영업",
-"department": "헬스케어",
-"location": "서울/수도권/영남",
-"category": "*신입/경력",
-"image": "./images/sm_bg.jpg",
-"job_description": [
-"거래처 매출 및 고객 관리",
-"영업 전략 수립 및 운영",
-"거래처 내 신규 제품 코드인"
-],
-"qualifications": [
-"학사 이상 학력 소지자 (전공무관)",
-"경력사원의 경우 관련 경력 3년 이상인 자"
-],
-"preferred": [
-"생명공학, 생물학, 의공학 등 관련 전공자",
-"의료기기, 제약, 소모성 수술 재료 영업 경험 보유자"
-]
-}
-]
+          [
+            {
+              "id": "popup-job-rnd-1",
+              "title": "NCE (New Chemical Entity)",
+              "department": "R&D",
+              "location": "연구센터",
+              "category": "*신입/경력",
+              "image": "./images/tasks_rnd_bg.jpg",
+              "job_description": [
+                "저분자 기반 비만대사 신약 개발 연구",
+                "약물설계, 유기화합물 합성 및 후보물질 탐색"
+              ],
+              "qualifications": [
+                "석사 이상 학력 소지자",
+                "화학, 약학 등 관련 전공자",
+                "의약 화학, 약리학 등 신약개발 연관분야 지식 보유자",
+                "경력사원의 경우 관련 경력 2년 이상인 자"
+              ],
+              "preferred": [
+                "비만대사 관련 저분자 신약 연구 경험 보유자",
+                "컴퓨터 모델링 및 AI 기반 신약 개발 경험 보유자",
+                "해외 연구기관 및 제약회사 신약 개발 경험 보유자",
+                "영어 능통자 (구술, 서술), 박사 학위 소지자"
+              ]
+            },
+            {
+              "id": "popup-job-rnd-2",
+              "title": "QS&F (Quality Science & Formulation)",
+              "department": "R&D",
+              "location": "연구센터",
+              "category": "*신입/경력",
+              "image": "./images/tasks_rnd_bg.jpg",
+              "job_description": [
+                "펩타이드 합성/정제/분석 업무",
+                "AI 기반 펩타이드 신약 후보 물질 디자인 및 탐색 연구",
+                "바이오의약품 특성 분석 및 제제 연구"
+              ],
+              "qualifications": [
+                "석사 이상 학력 소지자",
+                "화학, 약학, 생명과학 등 관련 전공자",
+                "펩타이드 합성/정제/분석 업무 경험 보유자",
+                "경력사원의 경우 관련 경력 2년 이상인 자"
+              ],
+              "preferred": [
+                "AI 기반 펩타이드 약물 디자인 및 합성 전략 수립 경험 보유자",
+                "해외 연구기관 및 제약회사 신약 개발 경험 보유자",
+                "영어 능통자 (구술, 서술), 박사 학위 소지자"
+              ]
+            },
+            {
+              "id": "popup-job-rnd-3",
+              "title": "MST (Manufacturing Science Technology)",
+              "department": "R&D",
+              "location": "연구센터",
+              "category": "*신입/경력",
+              "image": "./images/tasks_rnd_bg.jpg",
+              "job_description": [
+                "바이오의약품 제조 공정 개발, 생산 및 분석 연구",
+                "차세대 플랫폼 개발, 타겟 발굴 및 바이오의약품 연구"
+              ],
+              "qualifications": [
+                "석사 이상 학력 소지자",
+                "면역학, 생명과학, 생화학, 단백질공학, 생물공학, 분자생물학, 구조생물학 등 관련 전공자",
+                "바이오의약품 연구 또는 공정 개발 관련 경험 보유자",
+                "경력사원의 경우 관련 경력 2년 이상인 자"
+              ],
+              "preferred": [
+                "대장균/동물 유래 단백질, 펩타이드 및 핵산 (DNA, RNA) 정제 제조 업무 경험 보유자",
+                "ADC 및 바이오컨쥬게이션 (Bioconjugation) 연구 경험 보유자",
+                "단백질, 펩타이드 구조 모델링 연구 경험 보유자",
+                "바이오의약품 제조공정 개발 및 scale-up 경험 보유자",
+                "영어 능통자 (구술, 서술), 박사 학위 소지자"
+              ]
+            },
+            {
+              "id": "popup-job-rnd-4",
+              "title": "TE (Toxicology Evaluation)",
+              "department": "R&D",
+              "location": "연구센터",
+              "category": "*신입/경력",
+              "image": "./images/tasks_rnd_bg.jpg",
+              "job_description": [
+                "해외 GLP 비임상 독성시험 관리",
+                "내부 비임상 독성시험 수행",
+                "보고서 및 IND 허가자료 작성",
+                "파트너사 및 허가당국 보완 대응"
+              ],
+              "qualifications": [
+                "석사 이상 학력 소지자",
+                "수의학, 약학, 독성학, 생명공학 등 관련 전공자",
+                "경력사원의 경우 관련 경력 2년 이상인 자"
+              ],
+              "preferred": [
+                "ADC, TPD, CGT, mRNA 신약 개발 관련 GLP 독성시험 경험 보유자",
+                "NAMs 기반 독성 연구 경험 보유자",
+                "관련 전문 자격증 소지자"
+              ]
+            },
+            {
+              "id": "popup-job-rnd-5",
+              "title": "DST (Drug Science & Technology)",
+              "department": "R&D",
+              "location": "연구센터",
+              "category": "*신입/경력",
+              "image": "./images/tasks_rnd_bg.jpg",
+              "job_description": [
+                "신약 후보물질의 CMC 분석 연구",
+                "시험법 개발 및 Qualification/Validation",
+                "원료의약품 특성 분석, 안정성 시험 및 불순물 평가",
+                "CMO 분석법 기술이전 및 지원",
+                "분석 전략 수립 및 IND 제출 자료 작성 지원",
+                "분석 데이터 검토 및 규제 대응 지원"
+              ],
+              "qualifications": [
+                "석사 이상 학력 소지자",
+                "분석화학, 약학, 생명과학 등 관련 전공자",
+                "크로마토그래피 활용 경험 보유자",
+                "경력사원의 경우 관련 경력 2년 이상인 자"
+              ],
+              "preferred": [
+                "신약개발/의약품 CMC 연구 경험 보유자",
+                "ADC, LNP 등 차세대 모달리티의 특성 분석 및 CMC 개발 경험 보유자",
+                "영어 능통자 (구술, 서술)"
+              ]
+            },
+            {
+              "id": "popup-job-rnd-6",
+              "title": "BSS (Biological & Structural Evaluation Science)",
+              "department": "R&D",
+              "location": "연구센터",
+              "category": "*신입/경력",
+              "image": "./images/tasks_rnd_bg.jpg",
+              "job_description": [
+                "LC/QTOF MS 기반 합성/바이오의약품 및 신규 모달리티 구조 연구 및 특성 분석",
+                "원료, 중간체 및 최종 물질 내 유연물질, 분해 산물의 구조 규명 및 발생 경로 연구",
+                "대사체 및 생체 유래 분해 산물 구조 연구",
+                "연구 결과 해석 및 보고서 작성"
+              ],
+              "qualifications": [
+                "석사 이상 학력 소지자",
+                "분석화학, 생화학, 약학 등 관련 전공자",
+                "LC/QTOF MS 기반 업무 경험 보유자",
+                "경력사원의 경우 관련 경력 2년 이상인 자"
+              ],
+              "preferred": ["영어 능통자 (구술, 서술)"]
+            },
+            {
+              "id": "popup-job-rnd-7",
+              "title": "신제형연구 (전문연구요원)",
+              "department": "R&D",
+              "location": "제제연구소 [의약혁신센터]",
+              "category": "*신입",
+              "image": "./images/tasks_rnd_bg.jpg",
+              "job_description": [
+                "신제품 개발전략 수립 및 처방설계 연구",
+                "제형선정 연구 및 처방 안정성 연구",
+                "신규 기술 특허 작성 및 출원"
+              ],
+              "qualifications": [
+                "석사 이상 학력 소지자",
+                "약학, 화학, 생명공학, 고분자공학 등 관련 전공자"
+              ],
+              "preferred": [
+                "제형연구 경험 보유자",
+                "약사 면허 소지자",
+                "영어 능통자 (구술, 서술)"
+              ]
+            },
+            {
+              "id": "popup-job-prod-1",
+              "title": "제조",
+              "department": "생산/품질",
+              "location": "팔탄제조센터",
+              "category": "*신입/경력",
+              "image": "./images/quality_bg.jpg",
+              "job_description": [
+                "내용고형제 (칭량, 과립, 타정, 코팅, 인쇄·선별) 제조공정 수행",
+                "제조설비 운전 및 공정 중 점검",
+                "제조기록서 작성 및 GMP 문서관리",
+                "공정 개선활동 및 생산성 향상 업무"
+              ],
+              "qualifications": [
+                "고등학교 졸업 이상 학력 소지자 (전공무관)",
+                "주·야간 교대근무 가능자",
+                "경력사원의 경우 관련 경력 3년 이상인 자"
+              ],
+              "preferred": [
+                "내용고형제 생산 업무 경험자",
+                "GMP, 표준작업절차 (SOP) 기반 제조 현장 근무 경험 보유자",
+                "제조설비 조작 및 유지관리 경험 보유자",
+                "팀워크 및 원활한 의사소통 능력 보유자"
+              ]
+            },
+            {
+              "id": "popup-job-prod-2",
+              "title": "포장",
+              "department": "생산/품질",
+              "location": "팔탄제조센터",
+              "category": "*신입/경력",
+              "image": "./images/quality_bg.jpg",
+              "job_description": ["병, PTP 포장, 검체 채취, 반제품/자재 이송"],
+              "qualifications": [
+                "고등학교 졸업 이상 학력 소지자 (전공무관)",
+                "주·야간 교대근무 가능자",
+                "경력사원의 경우 관련 경력 3년 이상인 자"
+              ],
+              "preferred": ["포장 업무 경험 보유자"]
+            },
+            {
+              "id": "popup-job-prod-3",
+              "title": "품질관리",
+              "department": "생산/품질",
+              "location": "팔탄제조센터",
+              "category": "*신입/경력",
+              "image": "./images/quality_bg.jpg",
+              "job_description": [
+                "제품 출하 및 안정성 관련 품질관리 (기기분석, 이화학 시험)"
+              ],
+              "qualifications": [
+                "학사 이상 학력 소지자",
+                "화학, 화학공학, 생물학, 생명공학 등 관련 전공자",
+                "경력사원의 경우 관련 경력 3년 이상인 자"
+              ],
+              "preferred": [
+                "이화학, 기기분석 경험 보유자",
+                "약사 면허 소지자",
+                "영어 능통자 (구술, 서술)"
+              ]
+            },
+            {
+              "id": "popup-job-prod-4",
+              "title": "기술지원",
+              "department": "생산/품질",
+              "location": "팔탄제조센터",
+              "category": "*신입/경력",
+              "image": "./images/quality_bg.jpg",
+              "job_description": [
+                "생산설비 정비 및 점검 업무 수행",
+                "신규 생산설비 구매 검토, 제작 관리 및 설치"
+              ],
+              "qualifications": [
+                "학사 이상 학력 소지자",
+                "전기, 전자, 기계 등 관련 전공자",
+                "경력사원의 경우 관련 경력 3년 이상인 자"
+              ],
+              "preferred": [
+                "제약 생산장비 제작 및 설치 관리, 유지보수 경험자",
+                "기계/전기 기사 등 엔지니어링 관련 자격증 소지자"
+              ]
+            },
+            {
+              "id": "popup-job-prod-5",
+              "title": "DS생산 (학사)",
+              "department": "생산/품질",
+              "location": "평택제조센터",
+              "category": "*신입",
+              "image": "./images/quality_bg.jpg",
+              "job_description": [
+                "DS 제품 생산",
+                "IPC 수행 및 장비 Qualification",
+                "생산장비 운영 및 유지보수",
+                "공정 개선 업무 수행",
+                "GMP 문서 제/개정",
+                "실사 및 감사 문서 대응"
+              ],
+              "qualifications": [
+                "학사 학력 소지자",
+                "미생물학, 생물학 등 제약 관련 전공자"
+              ],
+              "preferred": [
+                "미생물·단백질 정제 관련 업무 경험 및 배경지식 보유자",
+                "영어 능통자 (구술, 서술)"
+              ]
+            },
+            {
+              "id": "popup-job-prod-6",
+              "title": "DS생산 (전문학사)",
+              "department": "생산/품질",
+              "location": "평택제조센터",
+              "category": "*신입",
+              "image": "./images/quality_bg.jpg",
+              "job_description": [
+                "DS 제품 생산",
+                "IPC 수행 및 장비 Qualification",
+                "생산장비 운영 및 유지보수",
+                "공정 개선 업무 수행"
+              ],
+              "qualifications": [
+                "전문학사 학력 소지자",
+                "미생물학, 생물학 등 제약 관련 전공자"
+              ],
+              "preferred": [
+                "미생물·단백질 정제 관련 업무 경험 및 배경지식 보유자"
+              ]
+            },
+            {
+              "id": "popup-job-sales-1",
+              "title": "제약영업",
+              "department": "영업",
+              "location": "전국",
+              "category": "*채용연계형 인턴",
+              "image": "./images/sm_bg.jpg",
+              "job_description": ["MR (병의원 영업)"],
+              "qualifications": ["학사 이상 학력 소지자 (전공무관)"],
+              "preferred": []
+            },
+            {
+              "id": "popup-job-sales-2",
+              "title": "해외영업",
+              "department": "영업",
+              "location": "본사",
+              "category": "*신입",
+              "image": "./images/sm_bg.jpg",
+              "job_description": [
+                "미주/유럽/중동/아프리카 권역 Account 발굴/관리",
+                "의료장비(약품자동조제기/자동화장비) 및 약품(완제/원료) 수출",
+                "시장 동향 분석 및 신규비즈니스 발굴/기획"
+              ],
+              "qualifications": [
+                "학사 이상 학력 소지자",
+                "경영학, 국제통상학, 약학, 생명과학 등 상경, 자연계열 관련 전공자"
+              ],
+              "preferred": [
+                "해외 수출 업무 경험 보유자",
+                "시장 데이터 분석 및 사업 전략 프레젠테이션 능력 우수자",
+                "영어 능통자 (구술, 서술)"
+              ]
+            },
+            {
+              "id": "popup-job-sales-3",
+              "title": "IT솔루션영업",
+              "department": "영업",
+              "location": "본사",
+              "category": "*경력",
+              "image": "./images/sm_bg.jpg",
+              "job_description": [
+                "대외사업 영업전략 수립 및 사업개발 조직 리딩",
+                "신규 고객 및 신규 사업기회 발굴",
+                "제약/바이오 및 제조·물류 분야 전략고객 관리",
+                "IT솔루션, 물류자동화 프로젝트 수주 총괄",
+                "전략 파트너십 구축 및 사업 포트폴리오 확대"
+              ],
+              "qualifications": [
+                "학사 이상 학력 소지자 (전공무관)",
+                "Enterprise 고객 또는 대형 프로젝트 제안·수주 경험 보유자",
+                "영업전략 수립부터 신규고객 발굴, 제안, 계약체결까지 End-to-End 영업 경험 보유자",
+                "매출 목표 달성 및 신규 사업기회 창출 경험 보유자",
+                "영업조직 또는 프로젝트 리딩 경험 보유자",
+                "관련 경력 10년 이상인 자 (IT솔루션, SI 또는 물류자동화 분야 영업)"
+              ],
+              "preferred": [
+                "MES, WMS, LIMS, RFID 등 제조·물류 IT솔루션 영업 경험 보유자",
+                "스마트팩토리 또는 물류자동화 구축 사업 경험 보유자",
+                "전략적 파트너십 발굴 및 사업 확대 경험 보유자",
+                "제약·바이오 산업 대상 IT·SI 사업 경험 보유자",
+                "제약·바이오 업계 주요 고객사 네트워크 보유자",
+                "단일 프로젝트 10억원 이상 수주 실적 보유자"
+              ]
+            },
+            {
+              "id": "popup-job-mps-1",
+              "title": "구매",
+              "department": "경영관리",
+              "location": "본사",
+              "category": "*경력",
+              "image": "./images/mps_bg.jpg",
+              "job_description": [
+                "구매 전략 수립 및 조달 운영 관리",
+                "원가 절감 및 비용 최적화 전략 수립 및 추진",
+                "공급업체 관리 및 계약 협상"
+              ],
+              "qualifications": [
+                "학사 이상 학력 소지자 (전공무관)",
+                "영어 능통자 (구술, 서술)",
+                "관련 경력 3년 이상인 자"
+              ],
+              "preferred": [
+                "동종업계 개발구매 업무 경험 보유자",
+                "구매/무역 관련 교육 이수 및 자격증 소지자",
+                "MS Office 활용 능력 우수자",
+                "제2외국어 능통자 (구술, 서술)"
+              ]
+            },
+            {
+              "id": "popup-job-mps-2",
+              "title": "국내법무",
+              "department": "경영관리",
+              "location": "본사",
+              "category": "*경력",
+              "image": "./images/mps_bg.jpg",
+              "job_description": [
+                "국내 사업 관련 계약 검토 및 자문",
+                "분쟁, 소송 등 법적절차 대응",
+                "신사업 관련 법령 규제 및 리스크 관리",
+                "규제기관 조사 및 수사 대응",
+                "임직원 법령 교육 및 법위반 리스크 최소화"
+              ],
+              "qualifications": [
+                "학사 이상 학력 소지자 (전공무관)",
+                "한국 변호사 자격증 소지자",
+                "관련 경력 1년 이상인 자"
+              ],
+              "preferred": [
+                "로펌, 사내 법무팀 근무 경험 보유자",
+                "영어, 중국어 능통자 (구술, 서술)"
+              ]
+            },
+            {
+              "id": "popup-job-mps-3",
+              "title": "특허",
+              "department": "경영관리",
+              "location": "본사",
+              "category": "*경력",
+              "image": "./images/mps_bg.jpg",
+              "job_description": [
+                "한미약품 제품 개발 특허 조사 및 검토, FTO, 특허 전략 수립",
+                "한미약품 제품 특허 심판 및 소송 등 분쟁 대응",
+                "의약품 허가-특허연계제도 관련 업무",
+                "Due Diligence, 라이센싱 관련 글로벌 파트너사 대응"
+              ],
+              "qualifications": [
+                "학사 이상 학력 소지자",
+                "화학, 화학공학, 바이오, 약학 등 관련 전공자",
+                "관련 경력 3년 이상인 자 (제약, 화학, 생명 분야)"
+              ],
+              "preferred": [
+                "제약회사, 바이오 또는 화학회사 특허팀 근무 경험 보유자",
+                "특허사무소 근무 경험 보유자",
+                "변리사 자격증 소지자",
+                "영어 능통자 (구술, 서술)"
+              ]
+            },
+            {
+              "id": "popup-job-mps-4",
+              "title": "안전관리",
+              "department": "경영관리",
+              "location": "본사",
+              "category": "*신입/경력",
+              "image": "./images/mps_bg.jpg",
+              "job_description": [
+                "한미사이언스 안전관리 업무",
+                "정기 안전점검 (월 점검, 제3자 안전진단, 자율점검) 및 정기 위험성 평가·조치계획 수립",
+                "법정·자율 안전보건교육 및 ISO 45001 인증",
+                "중대시민재해 관련 공중이용시설 관리 및 전 사업장 안전보건 모니터링",
+                "기타 산업법 및 중처법 대응"
+              ],
+              "qualifications": [
+                "학사 이상 학력 소지자 (전공 무관)",
+                "산업안전기사 또는 산업안전산업기사 자격증 소지자",
+                "관련 경력 3년 이상인 자 (제조업)"
+              ],
+              "preferred": [
+                "산업안전공학, 안전공학 등 산업안전 관련 전공자",
+                "산업안전기사 자격증 소지자",
+                "제약산업 안전관리 업무 경험 보유자",
+                "안전보건관리 체계 구축 및 산업재해 예방 업무 경험 보유자"
+              ]
+            },
+            {
+              "id": "popup-job-mps-5",
+              "title": "인사총무",
+              "department": "경영관리",
+              "location": "본사",
+              "category": "*계약직 (전환형)",
+              "image": "./images/mps_bg.jpg",
+              "job_description": [
+                "채용, 교육, 평가 등 인사업무 전반 운영 관리",
+                "인사 제도 및 프로세스 관리",
+                "복리후생 제도 기획·운영",
+                "총무 및 업무환경 운영 관리"
+              ],
+              "qualifications": ["학사 이상 학력 소지자 (전공무관)"],
+              "preferred": [
+                "MS Office 활용 능력 우수자",
+                "영어 능통자 (구술, 서술)"
+              ]
+            },
+            {
+              "id": "popup-job-cl-1",
+              "title": "Pipeline Valuation (신약가치평가)",
+              "department": "임상",
+              "location": "본사",
+              "category": "*경력",
+              "image": "./images/cd_bg.jpg",
+              "job_description": [
+                "임상 성공 확률 및 시장 점유율 전망을 위한 약물 개발 현황, 차별화 요소, 시장성 등 평가",
+                "자산의 경제성 및 사업가치 산출 (예: rNPV 모델링)",
+                "산출된 가치평가 결과의 해석 (시나리오별 분석, 민감도 분석 등) 및 의사결정 지원",
+                "신약개발 동향, 규제 변화 등에 따른 자산 가치 변화 모니터링"
+              ],
+              "qualifications": [
+                "학사 이상 학력 소지자",
+                "약학, 화학, 생명공학, 생물학 등 관련 전공자",
+                "관련 경력 3년 이상인 자 (개발, 기획, 전략, 임상PM 등 신약개발 분야)"
+              ],
+              "preferred": [
+                "사업개발, 시장 분석, 컨설팅, 투자 관련 분야 경험 보유자",
+                "rNPV, 임상성공률, Peak Sales 추정 등 Valuation 방법론 관련 경험 보유자",
+                "석사 이상 학위 소지자",
+                "영어 능통자 (구술, 서술)"
+              ]
+            },
+            {
+              "id": "popup-job-cl-2",
+              "title": "Market Intelligence (신약개발 전략분석)",
+              "department": "임상",
+              "location": "본사",
+              "category": "*신입/경력",
+              "image": "./images/cd_bg.jpg",
+              "job_description": [
+                "국내외 제약/바이오 산업, 치료제 및 신약개발 동향 모니터링 및 분석",
+                "주요 질환별 시장환경, 경쟁구도 및 경쟁 파이프라인 분석",
+                "내부 개발 파이프라인의 경쟁력 및 개발 전략 수립을 위한 Market Intelligence 제공",
+                "신규 기술, 외부 유망 자산 및 사업개발 기회에 대한 조사, 분석"
+              ],
+              "qualifications": [
+                "석사 이상 학력 소지자",
+                "약학, 화학, 생명공학, 생물학 등 관련 전공자",
+                "경력사원의 경우 관련 경력 3년 이상인 자"
+              ],
+              "preferred": [
+                "임상시험, 제약 바이오 산업시장, 경쟁정보 분석 경험 보유자",
+                "박사 학위 소지자",
+                "영어 능통자 (구술, 서술)"
+              ]
+            },
+            {
+              "id": "popup-job-cl-3",
+              "title": "Data Management",
+              "department": "임상",
+              "location": "본사",
+              "category": "*신입/경력",
+              "image": "./images/cd_bg.jpg",
+              "job_description": [
+                "임상시험 데이터 관리 업무 수행",
+                "CRO Management"
+              ],
+              "qualifications": [
+                "학사 이상 학력 소지자",
+                "통계학, 컴퓨터공학, 보건학, 간호학 등 관련 전공자",
+                "경력사원의 경우 관련 경력 3년 이상인 자"
+              ],
+              "preferred": [
+                "제약회사 또는 CRO 근무 경험 보유자",
+                "Medical Coding 관련 경험 보유자",
+                "영어 문서 검토 및 작성 가능자",
+                "SAS 또는 R 활용 가능자"
+              ]
+            },
+            {
+              "id": "popup-job-cl-4",
+              "title": "Biostatistician",
+              "department": "임상",
+              "location": "본사",
+              "category": "*신입/경력",
+              "image": "./images/cd_bg.jpg",
+              "job_description": [
+                "임상시험 디자인 및 통계 분석 계획 수립",
+                "CRO 통계 업무 관리 및 임상시험 진행 관리",
+                "임상시험 결과 분석",
+                "데이터 표준화",
+                "국내 외 규제기관, 시험기관, 연구기관 및 파트너사 대응"
+              ],
+              "qualifications": [
+                "석사 이상 학력 소지자",
+                "의학통계학, 생물통계학, 통계학 등 관련 전공자",
+                "통계 분석 소프트웨어 (SAS, R 등) 사용 가능자",
+                "영어 능통자 (구술, 서술)",
+                "경력사원의 경우 관련 경력 3년 이상인 자"
+              ],
+              "preferred": [
+                "제약회사/CRO 임상통계 업무 경험 보유자",
+                "규제기관 대응 경험 보유자",
+                "박사 학위 소지자"
+              ]
+            },
+            {
+              "id": "popup-job-global-1",
+              "title": "Global Regulatory Affairs",
+              "department": "글로벌",
+              "location": "본사",
+              "category": "*신입/경력",
+              "image": "./images/mps_bg.jpg",
+              "job_description": [
+                "신약 및 신제품 해외 시판 허가 신청 및 승인",
+                "해외 임상시험 신청 및 승인",
+                "허가 후 변경, 유지 관리 및 갱신",
+                "임상시험 변경 및 유지 관리",
+                "해외 허가 전략 수립"
+              ],
+              "qualifications": [
+                "학사 이상 학력 소지자",
+                "약학, 화학, 생물학 등 자연계열, 이공계 관련 전공자",
+                "영어 능통자 (구술, 서술)",
+                "경력사원의 경우 관련 경력 3년 이상인 자"
+              ],
+              "preferred": [
+                "중국어, 일본어, 스페인어 등 제2외국어 능통자 (구술, 서술)"
+              ]
+            },
+            {
+              "id": "popup-job-global-2",
+              "title": "Licensing",
+              "department": "글로벌",
+              "location": "본사",
+              "category": "*경력",
+              "image": "./images/mps_bg.jpg",
+              "job_description": [
+                "한미약품 신약 파이프라인 라이선스 아웃",
+                "Alliance Management",
+                "기전/차별성/시장/가치 분석 기반 전략 수립",
+                "딜 협상 및 계약서 작성/검토/체결",
+                "파트너사 이슈/리스크 관리 및 계약상 의무 이행 관리"
+              ],
+              "qualifications": [
+                "학사 이상 학력 소지자",
+                "약학, 화학, 생물학, 생명공학 등 관련 전공자",
+                "영어 능통자 (구술, 서술)",
+                "신약 라이선스 아웃 계약 체결 경험 보유자",
+                "관련 경력 5년 이상인 자"
+              ],
+              "preferred": [
+                "신약 개발 관련 업무 경험 보유자",
+                "항암제 연구 개발 및 Clinical Science 경험 보유자",
+                "ICVS, KCVA 등 가치 평가 관련 자격증 소지자",
+                "제2외국어 능통자 (구술, 서술)"
+              ]
+            },
+            {
+              "id": "popup-job-healthcare-1",
+              "title": "식품영업",
+              "department": "헬스케어",
+              "location": "본사",
+              "category": "*경력",
+              "image": "./images/sm_bg.jpg",
+              "job_description": [
+                "건강기능식품·케어푸드 특수유통 채널 영업 및 거래처 관리",
+                "병원, 요양원, 실버타운, 복지시설 등 신규 거래처 발굴 및 운영",
+                "폐쇄몰 온라인 채널 영업 및 매출 확대",
+                "시장 및 경쟁사 분석을 통한 영업 전략 수립",
+                "채널 맞춤형 상품 기획, 개발 및 소싱",
+                "매출 관리, 실적 분석 및 영업 성과 개선"
+              ],
+              "qualifications": [
+                "학사 이상 학력 소지자 (전공무관)",
+                "원활한 커뮤니케이션 및 거래처 관리 역량 보유자",
+                "데이터 기반의 분석 및 문제 해결 능력 보유자",
+                "관련 경력 5년 이상인 자 (B2B, 유통영업)"
+              ],
+              "preferred": [
+                "병원, 요양원, 실버산업 등 특수유통 채널 영업 경험 보유자",
+                "건강기능식품, 식품, 케어푸드 관련 업계 근무 경험 보유자"
+              ]
+            },
+            {
+              "id": "popup-job-healthcare-2",
+              "title": "식품커머스운영",
+              "department": "헬스케어",
+              "location": "본사",
+              "category": "*경력",
+              "image": "./images/sm_bg.jpg",
+              "job_description": [
+                "디지털 광고 (Meta, Google, 네이버 등) 운영 및 성과 분석",
+                "광고 효율 개선을 위한 퍼포먼스·세일즈 전략 수립",
+                "광고 소재 A/B 테스트 및 데이터 기반 성과 개선",
+                "마케팅 지표 관리 및 결과 리포트 작성",
+                "온라인 배너, 커머스 콘텐츠 등 디자인 제작"
+              ],
+              "qualifications": [
+                "학사 이상 학력 소지자 (전공무관)",
+                "퍼포먼스 마케팅 실무 경험 보유자",
+                "데이터 분석 및 문제 해결 역량 보유자",
+                "디자인 툴 (Photoshop, illustrator 등) 활용 가능자",
+                "관련 경력 3년 이상인 자"
+              ],
+              "preferred": [
+                "GA4, Meta Ads, Google Ads 운영 경험 보유자",
+                "영상 편집 및 콘텐츠 제작 경험 보유자",
+                "자사몰 및 CRM 운영 경험 보유자"
+              ]
+            },
+            {
+              "id": "popup-job-healthcare-3",
+              "title": "화장품 커머스사업기획",
+              "department": "헬스케어",
+              "location": "본사",
+              "category": "*경력",
+              "image": "./images/sm_bg.jpg",
+              "job_description": [
+                "더마 코스메틱 브랜드 사업 및 커머스 전략 총괄",
+                "온라인 채널 (자사몰, 네이버, 쿠팡, 올리브영 등) 매출 및 손익 관리",
+                "신규 유통채널 발굴 및 파트너십 구축",
+                "퍼포먼스 마케팅, CRM, 프로모션 등 성장 전략 수립 및 실행",
+                "브랜드·상품 기획 조직과 협업하여 시장 경쟁력 강화",
+                "조직 및 인력 운영, KPI 수립 및 성과 관리"
+              ],
+              "qualifications": [
+                "학사 이상 학력 소지자 (전공무관)",
+                "조직 리딩 및 팀 매니지먼트 경험 보유자",
+                "이커머스 및 디지털 마케팅 실무 경험 보유자",
+                "채널 운영, 매출 관리 및 사업 전략 수립 경험 보유자",
+                "관련 경력 10년 이상인 자 (화장품 또는 더마 코스메틱 분야)"
+              ],
+              "preferred": [
+                "자사몰 구축 및 성장 경험 보유자",
+                "올리브영, 네이버, 쿠팡 등 주요 커머스 채널 운영 경험 보유자",
+                "브랜드 론칭 또는 사업 성장 경험 보유자"
+              ]
+            },
+            {
+              "id": "popup-job-healthcare-4",
+              "title": "화장품 상품기획",
+              "department": "헬스케어",
+              "location": "본사",
+              "category": "*경력",
+              "image": "./images/sm_bg.jpg",
+              "job_description": [
+                "화장품 신상품 기획/개발/운영",
+                "국내외 화장품 시장/소비자/트렌드 분석",
+                "온오프라인 채널별 상품 기획 및 운영",
+                "상품 프로모션 및 런칭 전략 지원"
+              ],
+              "qualifications": [
+                "학사 이상 학력 소지자 (전공무관)",
+                "화장품 개발 프로세스에 대한 이해 보유자",
+                "시장 및 소비자 트렌드 분석 역량 보유자",
+                "관련 경력 7년 이상인 자"
+              ],
+              "preferred": [
+                "화학, 화장품학, 피부미용학 등 관련 전공자",
+                "화장품 브랜드사 상품기획 경험 보유자",
+                "브랜드 및 상품 런칭 경험 보유자",
+                "SNS 및 디지털 마케팅 트렌드 이해도 보유자",
+                "MS Office 활용 능력 우수자",
+                "영어, 중국어 능통자 (구술, 서술)"
+              ]
+            },
+            {
+              "id": "popup-job-healthcare-5",
+              "title": "화장품 홈쇼핑영업/운영",
+              "department": "헬스케어",
+              "location": "본사",
+              "category": "*경력",
+              "image": "./images/sm_bg.jpg",
+              "job_description": [
+                "홈쇼핑 채널 영업 및 운영 관리",
+                "방송 편성 및 프로모션 운영",
+                "채널별 매출 분석 및 실적 관리",
+                "벤더사 협업 및 채널 관계 관리"
+              ],
+              "qualifications": [
+                "학사 이상 학력 소지자 (전공무관)",
+                "관련 경력 3년 이상인 자 (홈쇼핑 영업/운영)"
+              ],
+              "preferred": [
+                "브랜드 론칭 운영 경험 보유자",
+                "GS·CJ·현대홈쇼핑 운영 경험 보유자"
+              ]
+            },
+            {
+              "id": "popup-job-healthcare-6",
+              "title": "화장품 국내영업",
+              "department": "헬스케어",
+              "location": "본사",
+              "category": "*경력",
+              "image": "./images/sm_bg.jpg",
+              "job_description": [
+                "국내 거래처 발굴 및 영업 관리",
+                "국내 유통 채널 및 온/오프라인 입점 영업",
+                "국내 시장/경쟁사 분석 및 영업 전략 수립",
+                "영업 파트너사 및 MD 커뮤니케이션 관리",
+                "견적·계약 협의, 납기 관리 및 유관부서 협업",
+                "고객 대응 및 관리"
+              ],
+              "qualifications": [
+                "학사 이상 학력 소지자 (전공무관)",
+                "관련 경력 4년 이상인 자 (화장품 B2B 국내영업)"
+              ],
+              "preferred": [
+                "국내 유통채널 및 바이어 네트워크 보유자",
+                "데이터 분석 능력 우수자",
+                "MS Office 활용 능력 우수자"
+              ]
+            },
+            {
+              "id": "popup-job-healthcare-7",
+              "title": "화장품 해외영업",
+              "department": "헬스케어",
+              "location": "본사",
+              "category": "*경력",
+              "image": "./images/sm_bg.jpg",
+              "job_description": [
+                "해외 (일본, 중국, 미주) 영업, 운영 및 실적 관리",
+                "신규 해외 거래처 발굴 및 바이어 관리",
+                "현지 유통채널 확대 및 영업관리",
+                "시장 동향 분석 및 사업 기회 발굴"
+              ],
+              "qualifications": [
+                "학사 이상 학력 소지자 (전공무관)",
+                "관련 경력 5년 이상인 자"
+              ],
+              "preferred": [
+                "화장품 B2B 해외영업 경험 보유자",
+                "일본, 중국, 미주 유통 채널 및 바이어 네트워크 보유자",
+                "데이터 분석 능력 우수자",
+                "MS Office 활용 능력 우수자",
+                "영어, 일본어 능통자 (구술, 서술)"
+              ]
+            },
+            {
+              "id": "popup-job-healthcare-8",
+              "title": "화장품 글로벌마케팅",
+              "department": "헬스케어",
+              "location": "본사",
+              "category": "*경력",
+              "image": "./images/sm_bg.jpg",
+              "job_description": [
+                "글로벌 SNS 채널 기획 및 운영",
+                "인플루언서 협업 및 콘텐츠 운영",
+                "해외 광고 및 디지털 캠페인 기획·운영",
+                "글로벌 마케팅 성과 관리 및 분석"
+              ],
+              "qualifications": [
+                "학사 이상 학력 소지자 (전공무관)",
+                "영어 능통자 (구술, 서술)",
+                "글로벌 SNS 운영 경험 보유자",
+                "관련 경력 3년 이상인 자"
+              ],
+              "preferred": [
+                "TikTok Ads·TikTok Shop 관련 업무 경험 보유자",
+                "Amazon·Shopify 관련 업무 경험 보유자",
+                "미국·일본·동남아 시장 관련 업무 경험 보유자",
+                "뷰티 브랜드 글로벌 런칭 경험 보유자",
+                "해외 인플루언서 네트워크 보유자"
+              ]
+            },
+            {
+              "id": "popup-job-healthcare-9",
+              "title": "해외이커머스운영",
+              "department": "헬스케어",
+              "location": "본사",
+              "category": "*경력",
+              "image": "./images/sm_bg.jpg",
+              "job_description": [
+                "Amazon 스토어 운영 및 관리",
+                "상품 등록 및 운영 전략 수립",
+                "PPC 광고 및 프로모션 기획·운영",
+                "매출 분석 및 판매 성과 관리"
+              ],
+              "qualifications": [
+                "학사 이상 학력 소지자 (전공무관)",
+                "Seller Central 또는 Vendor Central 활용 가능자",
+                "관련 경력 3년 이상인 자"
+              ],
+              "preferred": [
+                "Amazon PPC 광고 운영 경험 보유자",
+                "미국 시장 대상 이커머스 운영 경험 보유자",
+                "Shopify 운영 경험 보유자",
+                "뷰티 카테고리 운영 경험 보유자"
+              ]
+            },
+            {
+              "id": "popup-job-healthcare-10",
+              "title": "의료기기영업",
+              "department": "헬스케어",
+              "location": "서울/수도권/영남",
+              "category": "*신입/경력",
+              "image": "./images/sm_bg.jpg",
+              "job_description": [
+                "거래처 매출 및 고객 관리",
+                "영업 전략 수립 및 운영",
+                "거래처 내 신규 제품 코드인"
+              ],
+              "qualifications": [
+                "학사 이상 학력 소지자 (전공무관)",
+                "경력사원의 경우 관련 경력 3년 이상인 자"
+              ],
+              "preferred": [
+                "생명공학, 생물학, 의공학 등 관련 전공자",
+                "의료기기, 제약, 소모성 수술 재료 영업 경험 보유자"
+              ]
+            }
+          ]
         </script>
 
         <div class="tasks-modal" id="tasks-modal" hidden>
-          <section class="tasks-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="tasks-modal-title">
+          <section
+            class="tasks-modal__dialog"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="tasks-modal-title"
+          >
             <div class="tasks-modal__visual" aria-hidden="true"></div>
-            <button class="tasks-modal__close" type="button" aria-label="상세 창 닫기">×</button>
+            <button
+              class="tasks-modal__close"
+              type="button"
+              aria-label="상세 창 닫기"
+            >
+              ×
+            </button>
             <div class="tasks-modal__content">
               <header class="tasks-modal__header">
                 <div class="tasks-modal__heading">
                   <h3 class="tasks-modal__title" id="tasks-modal-title"></h3>
-                  <span class="tasks-modal__category" id="tasks-modal-category"></span>
-                  <span class="tasks-modal__location" id="tasks-modal-location"></span>
+                  <span
+                    class="tasks-modal__category"
+                    id="tasks-modal-category"
+                  ></span>
+                  <span
+                    class="tasks-modal__location"
+                    id="tasks-modal-location"
+                  ></span>
                 </div>
-                <p class="tasks-modal__employment" id="tasks-modal-employment"></p>
+                <p
+                  class="tasks-modal__employment"
+                  id="tasks-modal-employment"
+                ></p>
               </header>
               <div class="tasks-modal__body" id="tasks-modal-body">
                 <section class="tasks-modal__section">
                   <h4>직무내용</h4>
-                  <ul class="tasks-modal__list" id="tasks-modal-description"></ul>
+                  <ul
+                    class="tasks-modal__list"
+                    id="tasks-modal-description"
+                  ></ul>
                 </section>
                 <section class="tasks-modal__section">
                   <h4>지원 자격</h4>
-                  <ul class="tasks-modal__list" id="tasks-modal-qualifications"></ul>
+                  <ul
+                    class="tasks-modal__list"
+                    id="tasks-modal-qualifications"
+                  ></ul>
                 </section>
-                <section class="tasks-modal__section" id="tasks-modal-preferred-section">
+                <section
+                  class="tasks-modal__section"
+                  id="tasks-modal-preferred-section"
+                >
                   <h4>우대사항</h4>
                   <ul class="tasks-modal__list" id="tasks-modal-preferred"></ul>
                 </section>
@@ -6004,6 +7737,561 @@
             </div>
           </section>
         </div>
+      </section>
+
+      <section
+        class="requirement"
+        id="requirement"
+        aria-labelledby="requirement-title"
+      >
+        <div class="requirement__inner">
+          <h2 class="requirement__title" id="requirement-title">
+            한미그룹과 함께하는 문은<br />활짝 열려 있습니다
+          </h2>
+          <img
+            class="requirement__bulb"
+            src="./images/require_bulb.png"
+            alt=""
+          />
+
+          <div class="requirement__tabs" role="tablist" aria-label="지원 안내">
+            <button
+              class="requirement__tab"
+              id="requirement-tab-qualification"
+              type="button"
+              role="tab"
+              aria-selected="true"
+              aria-controls="requirement-panel-qualification"
+              tabindex="0"
+            >
+              지원자격
+            </button>
+            <button
+              class="requirement__tab"
+              id="requirement-tab-process"
+              type="button"
+              role="tab"
+              aria-selected="false"
+              aria-controls="requirement-panel-process"
+              tabindex="-1"
+            >
+              전형절차 및 접수방법
+            </button>
+          </div>
+
+          <div
+            class="requirement__panel"
+            id="requirement-panel-qualification"
+            role="tabpanel"
+            aria-labelledby="requirement-tab-qualification"
+          >
+            <div class="requirement__candidates">
+              <article class="requirement__candidate">
+                <img
+                  class="requirement__candidate-icon"
+                  src="./images/require_ico_calendar_3d.png"
+                  alt=""
+                />
+                <h3 class="requirement__candidate-title">
+                  27년 1월 입사가 가능한 자
+                </h3>
+              </article>
+              <article class="requirement__candidate">
+                <img
+                  class="requirement__candidate-icon"
+                  src="./images/require_ico_gradcap_3d.png"
+                  alt=""
+                />
+                <h3 class="requirement__candidate-title">
+                  기졸업자 또는 27년 2월 졸업 예정자
+                </h3>
+              </article>
+            </div>
+
+            <ul class="requirement__bullets">
+              <li>남성의 경우 병역을 마쳤거나 면제인 분</li>
+              <li>해외여행 (또는 해외 출장)에 결격사유가 없는 분</li>
+              <li>취업보호대상자는 관련 법령에 의거하여 우대</li>
+            </ul>
+
+            <p class="requirement__notice">
+              모집 직무별로 지원자격이 상이하오니 반드시
+              <strong>채용 공고</strong>를 확인해 주시기 바랍니다.
+            </p>
+          </div>
+
+          <div
+            class="requirement__panel"
+            id="requirement-panel-process"
+            role="tabpanel"
+            aria-labelledby="requirement-tab-process"
+            hidden
+          >
+            <div class="requirement__process-viewport">
+              <div class="requirement__process-track">
+                <section class="requirement__process-group">
+                  <h3 class="requirement__process-title">영업직군</h3>
+                  <div class="requirement__steps">
+                    <div class="requirement__step">
+                      <img
+                        class="requirement__step-icon"
+                        src="./images/ico_step_apply.png"
+                        alt=""
+                      />
+                      <h4 class="requirement__step-title">지원접수</h4>
+                      <p class="requirement__step-date">9.28~10.18</p>
+                    </div>
+                    <span class="requirement__step-arrow" aria-hidden="true"
+                      >›</span
+                    >
+                    <div class="requirement__step">
+                      <img
+                        class="requirement__step-icon"
+                        src="./images/ico_step_doc.png"
+                        alt=""
+                      />
+                      <h4 class="requirement__step-title">서류전형</h4>
+                      <p class="requirement__step-date">10.19~10.20</p>
+                    </div>
+                    <span class="requirement__step-arrow" aria-hidden="true"
+                      >›</span
+                    >
+                    <div class="requirement__step">
+                      <img
+                        class="requirement__step-icon"
+                        src="./images/ico_step_ai.png"
+                        alt=""
+                      />
+                      <h4 class="requirement__step-title">AI역량검사</h4>
+                      <p class="requirement__step-date">10.21~10.25</p>
+                    </div>
+                    <span class="requirement__step-arrow" aria-hidden="true"
+                      >›</span
+                    >
+                    <div class="requirement__step">
+                      <img
+                        class="requirement__step-icon"
+                        src="./images/ico_step_interview1.png"
+                        alt=""
+                      />
+                      <h4 class="requirement__step-title">1차면접</h4>
+                      <p class="requirement__step-date">11월 중</p>
+                    </div>
+                    <span class="requirement__step-arrow" aria-hidden="true"
+                      >›</span
+                    >
+                    <div class="requirement__step">
+                      <img
+                        class="requirement__step-icon"
+                        src="./images/ico_step_field.png"
+                        alt=""
+                      />
+                      <h4 class="requirement__step-title">현장체험</h4>
+                      <p class="requirement__step-date">12월 초</p>
+                    </div>
+                    <span class="requirement__step-arrow" aria-hidden="true"
+                      >›</span
+                    >
+                    <div class="requirement__step">
+                      <img
+                        class="requirement__step-icon"
+                        src="./images/ico_step_interview2.png"
+                        alt=""
+                      />
+                      <h4 class="requirement__step-title">2차면접</h4>
+                      <p class="requirement__step-date">12월 중</p>
+                    </div>
+                    <span class="requirement__step-arrow" aria-hidden="true"
+                      >›</span
+                    >
+                    <div class="requirement__step">
+                      <img
+                        class="requirement__step-icon"
+                        src="./images/ico_step_edu.png"
+                        alt=""
+                      />
+                      <h4 class="requirement__step-title">교육전형</h4>
+                      <p class="requirement__step-date">27.1.4~</p>
+                    </div>
+                  </div>
+                </section>
+
+                <section class="requirement__process-group">
+                  <h3 class="requirement__process-title">영업 외 전직군</h3>
+                  <div class="requirement__steps">
+                    <div class="requirement__step">
+                      <img
+                        class="requirement__step-icon"
+                        src="./images/ico_step_apply.png"
+                        alt=""
+                      />
+                      <h4 class="requirement__step-title">지원접수</h4>
+                      <p class="requirement__step-date">9.28~10.18</p>
+                    </div>
+                    <span class="requirement__step-arrow" aria-hidden="true"
+                      >›</span
+                    >
+                    <div class="requirement__step">
+                      <img
+                        class="requirement__step-icon"
+                        src="./images/ico_step_doc.png"
+                        alt=""
+                      />
+                      <h4 class="requirement__step-title">서류전형</h4>
+                      <p class="requirement__step-date">10.19~10.20</p>
+                    </div>
+                    <span class="requirement__step-arrow" aria-hidden="true"
+                      >›</span
+                    >
+                    <div class="requirement__step">
+                      <img
+                        class="requirement__step-icon"
+                        src="./images/ico_step_ai.png"
+                        alt=""
+                      />
+                      <h4 class="requirement__step-title">AI역량검사</h4>
+                      <p class="requirement__step-date">10.21~10.25</p>
+                    </div>
+                    <span class="requirement__step-arrow" aria-hidden="true"
+                      >›</span
+                    >
+                    <div class="requirement__step">
+                      <img
+                        class="requirement__step-icon"
+                        src="./images/ico_step_interview1.png"
+                        alt=""
+                      />
+                      <h4 class="requirement__step-title">1차면접</h4>
+                      <p class="requirement__step-date">11월 중</p>
+                    </div>
+                    <span class="requirement__step-arrow" aria-hidden="true"
+                      >›</span
+                    >
+                    <div class="requirement__step">
+                      <img
+                        class="requirement__step-icon"
+                        src="./images/ico_step_interview2.png"
+                        alt=""
+                      />
+                      <h4 class="requirement__step-title">2차면접</h4>
+                      <p class="requirement__step-date">12월 중</p>
+                    </div>
+                    <span class="requirement__step-arrow" aria-hidden="true"
+                      >›</span
+                    >
+                    <div class="requirement__step">
+                      <img
+                        class="requirement__step-icon"
+                        src="./images/ico_step_join.png"
+                        alt=""
+                      />
+                      <h4 class="requirement__step-title">입사</h4>
+                      <p class="requirement__step-date">
+                        27.1.4<br />(경력직 협의 가능)
+                      </p>
+                    </div>
+                  </div>
+                </section>
+              </div>
+            </div>
+            <ul class="requirement__process-notes">
+              <li>
+                상기 일정은 상황에 따라 변경될 수 있으며 각 전형별 상세 일정은
+                대상자에 한해 개별 안내 예정입니다
+              </li>
+              <li>
+                입사지원서에 허위 기재가 있거나 제출서류가 허위로 판명되는 경우,
+                또는 입사 이후 자격 미확보 및 상실하는 경우는 입사가 취소될 수
+                있습니다.
+              </li>
+              <li>지원서 제출 후에는 수정이 절대 불가하오니, 주의하시기 바랍니다.</li>
+              <li>
+                전형단계별 결과는 E-Mail 및 SMS를 통하여 안내하오니 E-Mail 주소 및
+                휴대전화 번호를 정확히 기재해주시기 바랍니다.
+              </li>
+              <li>
+                입사 후 3개월간 수습기간이 적용되며, 수습 기간 중 성적이
+                불량하거나 직무 수행 능력이 부족하다고 판단되는 경우 입사가
+                취소될 수 있습니다.
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section
+        class="exposition"
+        id="exposition"
+        aria-labelledby="exposition-title"
+      >
+        <div class="exposition__inner">
+          <header class="exposition__intro">
+            <img
+              class="exposition__character"
+              src="./images/expo_char.png"
+              alt="학교 박람회를 찾아가는 보라색 한미 캐릭터"
+            />
+            <div class="exposition__copy">
+              <h2 class="exposition__heading" id="exposition-title">
+                Hanmi 박람회/캠퍼스로 출발!
+              </h2>
+              <p class="exposition__description">
+                한미그룹이 여러분을 만나러 박람회와 캠퍼스로 찾아갑니다.<br />
+                우리가 어디서 만날지 궁금하다면 아래 지역에서 찾아보세요!
+              </p>
+              <p class="exposition__hint">
+                학교명/장소를 클릭하거나 터치하면 세부장소를 확인할 수 있습니다.
+              </p>
+            </div>
+          </header>
+
+          <div class="exposition__tabs" role="tablist" aria-label="방문 일정 종류">
+            <button
+              class="exposition__tab"
+              id="exposition-tab-fair"
+              type="button"
+              role="tab"
+              aria-selected="true"
+              aria-controls="exposition-panel-fair"
+              tabindex="0"
+            >
+              박람회
+            </button>
+            <button
+              class="exposition__tab"
+              id="exposition-tab-campus"
+              type="button"
+              role="tab"
+              aria-selected="false"
+              aria-controls="exposition-panel-campus"
+              tabindex="-1"
+            >
+              캠퍼스
+            </button>
+          </div>
+
+          <div
+            class="exposition__panel"
+            id="exposition-panel-fair"
+            role="tabpanel"
+            aria-labelledby="exposition-tab-fair"
+          >
+            <div
+              class="exposition__schedule"
+              id="exposition-fair-schedule"
+              aria-label="박람회 일정"
+              aria-live="polite"
+            ></div>
+          </div>
+
+          <div
+            class="exposition__panel"
+            id="exposition-panel-campus"
+            role="tabpanel"
+            aria-labelledby="exposition-tab-campus"
+            hidden
+          >
+            <div
+              class="exposition__regions"
+              id="exposition-regions"
+              role="group"
+              aria-label="캠퍼스 방문 지역"
+              hidden
+            ></div>
+            <div
+              class="exposition__schedule"
+              id="exposition-campus-schedule"
+              aria-label="캠퍼스 방문 일정"
+              aria-live="polite"
+            ></div>
+          </div>
+          <p
+            class="exposition__empty"
+            id="exposition-error"
+            role="alert"
+            hidden
+          ></p>
+        </div>
+      </section>
+
+      <section class="con8" aria-labelledby="con8-heading">
+        <div class="con8__inner">
+          <h2 class="con8__heading" id="con8-heading">
+            한미그룹을 더 알아볼 수 있는 링크
+          </h2>
+          <p class="con8__description">
+            한미그룹과 함께할 여러분을 위한 정보를 확인해 보세요.
+          </p>
+          <div class="con8__cards">
+            <img
+              class="con8__character"
+              src="./images/con8_char.png"
+              alt=""
+              aria-hidden="true"
+              loading="lazy"
+            />
+            <a class="con8__card" href="#welfare">
+              <span class="con8__image-wrap">
+                <img
+                  class="con8__image"
+                  src="./images/con8_img1.jpg"
+                  alt=""
+                  loading="lazy"
+                />
+                <span class="con8__image-copy">
+                  <span class="con8__image-question">
+                    한미그룹의 문화와 복지가 궁금하다면?
+                  </span>
+                  <span class="con8__image-link">
+                    한미그룹 YouTube
+                    <span class="con8__arrow" aria-hidden="true">›</span>
+                  </span>
+                </span>
+                <img
+                  class="con8__mark con8__mark--culture-arrow"
+                  src="./images/con8_Image.png"
+                  alt=""
+                  aria-hidden="true"
+                />
+              </span>
+              <span class="con8__card-title">
+                한미그룹의 <span>문화와 복지</span>가 궁금하다면?
+                <img
+                  class="con8__mark con8__mark--culture-star"
+                  src="./images/con8_Image-2.png"
+                  alt=""
+                  aria-hidden="true"
+                />
+                <img
+                  class="con8__mark con8__mark--culture-underline"
+                  src="./images/con8_Image-1.png"
+                  alt=""
+                  aria-hidden="true"
+                />
+              </span>
+            </a>
+            <a class="con8__card" href="#jobs">
+              <span class="con8__image-wrap">
+                <img
+                  class="con8__image"
+                  src="./images/con8_img2.jpg"
+                  alt=""
+                  loading="lazy"
+                />
+                <span class="con8__image-copy">
+                  <span class="con8__image-question">
+                    한미그룹의 직무가 궁금하다면?
+                  </span>
+                  <span class="con8__image-link">
+                    한미그룹 직무 소개 페이지
+                    <span class="con8__arrow" aria-hidden="true">›</span>
+                  </span>
+                </span>
+                <img
+                  class="con8__mark con8__mark--job-arrow"
+                  src="./images/con8_Image-4.png"
+                  alt=""
+                  aria-hidden="true"
+                />
+              </span>
+              <span class="con8__card-title">
+                한미그룹의 <span>직무가</span> 궁금하다면?
+                <img
+                  class="con8__mark con8__mark--job-circle"
+                  src="./images/con8_Image-3.png"
+                  alt=""
+                  aria-hidden="true"
+                />
+              </span>
+            </a>
+            <a class="con8__card" href="#requirement">
+              <span class="con8__image-wrap">
+                <img
+                  class="con8__image"
+                  src="./images/con8_img3.jpg"
+                  alt=""
+                  loading="lazy"
+                />
+                <span class="con8__image-copy">
+                  <span class="con8__image-question">
+                    한미그룹의 채용소식을 빠르게 받고 싶다면?
+                  </span>
+                  <span class="con8__image-link">
+                    한미그룹 채용 홈페이지
+                    <span class="con8__arrow" aria-hidden="true">›</span>
+                  </span>
+                </span>
+              </span>
+              <span class="con8__card-title">
+                한미그룹의 <span>채용소식</span>을 빠르게 받고 싶다면?
+                <img
+                  class="con8__mark con8__mark--news-underline"
+                  src="./images/con8_Image-5.png"
+                  alt=""
+                  aria-hidden="true"
+                />
+              </span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section class="con9" aria-labelledby="con9-heading">
+        <div class="con9__inner">
+          <h2 class="con9__heading" id="con9-heading">
+            당신에게 딱 맞는 자리를 찾으러 출발!
+          </h2>
+          <div
+            class="con9__countdown"
+            id="con9-countdown"
+            role="timer"
+            aria-label="지원 마감까지 남은 시간"
+          >
+            <span class="con9__unit">
+              <span class="con9__number" data-countdown="days">00</span>
+              <span class="con9__label">일</span>
+            </span>
+            <span class="con9__unit">
+              <span class="con9__number" data-countdown="hours">00</span>
+              <span class="con9__label">시간</span>
+            </span>
+            <span class="con9__unit">
+              <span class="con9__number" data-countdown="minutes">00</span>
+              <span class="con9__label">분</span>
+            </span>
+            <span class="con9__unit">
+              <span class="con9__number" data-countdown="seconds">00</span>
+              <span class="con9__label">초</span>
+            </span>
+            <span class="con9__remaining">남았어요</span>
+          </div>
+        </div>
+        <p class="con9__hint" id="con9-status">
+          <span aria-hidden="true">·</span>
+          아이콘을 클릭해서 지원해주세요!
+        </p>
+        <a class="con9__apply" href="#requirement" aria-label="지원하기">
+          지원하기
+          <span aria-hidden="true">→</span>
+        </a>
+        <img
+          class="con9__earth"
+          src="./images/con9_earth.png"
+          alt=""
+          loading="lazy"
+        />
+        <img
+          class="con9__cloud con9__cloud--left"
+          src="./images/con9_cloud_l.png"
+          alt=""
+          loading="lazy"
+        />
+        <img
+          class="con9__cloud con9__cloud--right"
+          src="./images/con9_cloud_r.png"
+          alt=""
+          loading="lazy"
+        />
       </section>
     </main>
 
@@ -6013,14 +8301,11 @@
         <a class="footer__logo" href="./" aria-label="한미그룹 홈">
           <img
             src="./images/logo.svg"
-            width="120"
-            height="20"
+            width="182"
+            height="31"
             alt="Hanmi 한미그룹"
           />
         </a>
-        <p class="footer__copy">
-          &copy; 2026 Hanmi Group. All rights reserved.
-        </p>
       </div>
     </footer>
 
@@ -6035,6 +8320,592 @@
         }
       })();
 
+      (function () {
+        var countdown = document.getElementById("con9-countdown");
+        if (!countdown) return;
+
+        var deadline = new Date("2026-10-18T23:59:00+09:00").getTime();
+        var units = {
+          days: countdown.querySelector('[data-countdown="days"]'),
+          hours: countdown.querySelector('[data-countdown="hours"]'),
+          minutes: countdown.querySelector('[data-countdown="minutes"]'),
+          seconds: countdown.querySelector('[data-countdown="seconds"]'),
+        };
+        if (Object.keys(units).some(function (key) {
+          return !units[key];
+        })) {
+          throw new Error("지원 마감 카운트다운 영역을 찾을 수 없습니다.");
+        }
+
+        function updateCountdown() {
+          var remaining = deadline - Date.now();
+          if (remaining <= 0) {
+            Object.keys(units).forEach(function (key) {
+              units[key].textContent = "00";
+            });
+            return false;
+          }
+
+          var totalSeconds = Math.floor(remaining / 1000);
+          var values = {
+            days: Math.floor(totalSeconds / 86400),
+            hours: Math.floor((totalSeconds % 86400) / 3600),
+            minutes: Math.floor((totalSeconds % 3600) / 60),
+            seconds: totalSeconds % 60,
+          };
+          Object.keys(values).forEach(function (key) {
+            units[key].textContent = String(values[key]).padStart(2, "0");
+          });
+          return true;
+        }
+
+        if (updateCountdown()) {
+          var countdownInterval = window.setInterval(function () {
+            if (!updateCountdown()) window.clearInterval(countdownInterval);
+          }, 1000);
+        }
+      })();
+
+      (function () {
+        var tabs = Array.prototype.slice.call(
+          document.querySelectorAll(".requirement__tab"),
+        );
+        var panels = tabs.map(function (tab) {
+          return document.getElementById(tab.getAttribute("aria-controls"));
+        });
+        var processViewport = document.querySelector(
+          ".requirement__process-viewport",
+        );
+        var processTrack = document.querySelector(
+          ".requirement__process-track",
+        );
+        if (
+          !tabs.length ||
+          panels.some(function (panel) {
+            return !panel;
+          }) ||
+          !processViewport ||
+          !processTrack
+        ) {
+          throw new Error("지원자격 및 전형절차 영역을 찾을 수 없습니다.");
+        }
+
+        function fitProcessTrack() {
+          if (window.innerWidth <= 1024) {
+            processTrack.style.removeProperty("--requirement-process-scale");
+            processViewport.style.height = "auto";
+            return;
+          }
+          var scale = Math.min(1, processViewport.clientWidth / 1128);
+          processTrack.style.setProperty(
+            "--requirement-process-scale",
+            String(scale),
+          );
+          processViewport.style.height =
+            processTrack.offsetHeight * scale + "px";
+        }
+
+        function selectTab(selectedIndex, moveFocus) {
+          tabs.forEach(function (tab, index) {
+            var selected = index === selectedIndex;
+            tab.setAttribute("aria-selected", String(selected));
+            tab.tabIndex = selected ? 0 : -1;
+            panels[index].hidden = !selected;
+          });
+          if (moveFocus) tabs[selectedIndex].focus();
+          if (selectedIndex === 1) fitProcessTrack();
+        }
+
+        tabs.forEach(function (tab, index) {
+          tab.addEventListener("click", function () {
+            selectTab(index, false);
+          });
+          tab.addEventListener("keydown", function (event) {
+            var nextIndex = index;
+            if (event.key === "ArrowRight") {
+              nextIndex = (index + 1) % tabs.length;
+            } else if (event.key === "ArrowLeft") {
+              nextIndex = (index - 1 + tabs.length) % tabs.length;
+            } else if (event.key === "Home") {
+              nextIndex = 0;
+            } else if (event.key === "End") {
+              nextIndex = tabs.length - 1;
+            } else {
+              return;
+            }
+            event.preventDefault();
+            selectTab(nextIndex, true);
+          });
+        });
+
+        window.addEventListener("resize", fitProcessTrack);
+      })();
+
+      (function () {
+        var tabs = Array.prototype.slice.call(
+          document.querySelectorAll(".exposition__tab"),
+        );
+        var panels = tabs.map(function (tab) {
+          return document.getElementById(tab.getAttribute("aria-controls"));
+        });
+        var regionsContainer = document.getElementById("exposition-regions");
+        var fairSchedule = document.getElementById("exposition-fair-schedule");
+        var campusSchedule = document.getElementById(
+          "exposition-campus-schedule",
+        );
+        var errorMessage = document.getElementById("exposition-error");
+        if (
+          !tabs.length ||
+          panels.some(function (panel) {
+            return !panel;
+          }) ||
+          !regionsContainer ||
+          !fairSchedule ||
+          !campusSchedule ||
+          !errorMessage
+        ) {
+          throw new Error("박람회 및 캠퍼스 일정 영역을 찾을 수 없습니다.");
+        }
+
+        function showError(error) {
+          errorMessage.hidden = false;
+          errorMessage.textContent =
+            "일정 데이터를 불러오지 못했습니다. data/exposition.json 및 data/campus_schedule.json 파일을 확인해 주세요.";
+          console.error("박람회 및 캠퍼스 일정 로딩에 실패했습니다.", error);
+        }
+
+        function renderSchedule(container, days, emptyMessage, interactive) {
+          if (!Array.isArray(days)) {
+            throw new Error("일정은 날짜 배열이어야 합니다.");
+          }
+          container.replaceChildren();
+          container.classList.toggle(
+            "exposition__schedule--empty",
+            days.length === 0,
+          );
+
+          if (days.length === 0) {
+            var emptyFragment = document.createDocumentFragment();
+            for (var index = 0; index < 5; index += 1) {
+              var emptyDay = document.createElement("div");
+              emptyDay.className = "exposition__day";
+              emptyDay.setAttribute("aria-hidden", "true");
+              var emptyDate = document.createElement("h3");
+              emptyDate.className = "exposition__date";
+              var emptyEvents = document.createElement("div");
+              emptyEvents.className = "exposition__events";
+              emptyDay.appendChild(emptyDate);
+              emptyDay.appendChild(emptyEvents);
+              emptyFragment.appendChild(emptyDay);
+            }
+            var empty = document.createElement("p");
+            empty.className = "exposition__empty";
+            empty.textContent =
+              emptyMessage ||
+              "해당 지역의 캠퍼스 방문 일정은 추후 안내 예정입니다.";
+            emptyFragment.appendChild(empty);
+            container.appendChild(emptyFragment);
+            return;
+          }
+
+          var fragment = document.createDocumentFragment();
+          days.forEach(function (day) {
+            if (
+              !day ||
+              typeof day !== "object" ||
+              typeof day.date !== "string" ||
+              !Array.isArray(day.events)
+            ) {
+              throw new Error("일정 날짜 데이터 형식이 올바르지 않습니다.");
+            }
+
+            var dayElement = document.createElement("div");
+            dayElement.className = "exposition__day";
+            var date = document.createElement("h3");
+            date.className = "exposition__date";
+            date.textContent = day.date;
+            dayElement.appendChild(date);
+            if (!day.date) {
+              dayElement.setAttribute("aria-hidden", "true");
+            }
+
+            var events = document.createElement("div");
+            events.className = "exposition__events";
+            day.events.forEach(function (eventData) {
+              if (
+                typeof eventData !== "string" &&
+                (!eventData || typeof eventData !== "object")
+              ) {
+                throw new Error("일정 장소 데이터 형식이 올바르지 않습니다.");
+              }
+              var eventName =
+                typeof eventData === "string" ? eventData : eventData.name;
+              if (typeof eventName !== "string" || !eventName.trim()) {
+                throw new Error("일정 장소 이름이 올바르지 않습니다.");
+              }
+              if (
+                typeof eventData === "object" &&
+                ["location", "time"].some(function (key) {
+                  return (
+                    eventData[key] !== undefined &&
+                    (typeof eventData[key] !== "string" ||
+                      !eventData[key].trim())
+                  );
+                })
+              ) {
+                throw new Error("일정의 장소 또는 시간 정보가 올바르지 않습니다.");
+              }
+
+              if (!interactive) {
+                var eventLabel = document.createElement("span");
+                eventLabel.className = "exposition__event-label";
+                eventLabel.textContent = eventName;
+                events.appendChild(eventLabel);
+                return;
+              }
+
+              var eventButton = document.createElement("button");
+              eventButton.className = "exposition__event";
+              eventButton.type = "button";
+              eventButton.textContent = eventName;
+              eventButton.setAttribute("aria-pressed", "false");
+
+              var venueCard = document.createElement("div");
+              venueCard.className = "exposition__venue-card";
+              venueCard.hidden = true;
+              venueCard.setAttribute(
+                "aria-label",
+                eventName + " 방문 장소 및 시간",
+              );
+              [
+                {
+                  label: "⚑ 장소",
+                  value:
+                    typeof eventData === "object" && eventData.location
+                      ? eventData.location
+                      : "추후 안내",
+                },
+                {
+                  label: "◷ 시간",
+                  value:
+                    typeof eventData === "object" && eventData.time
+                      ? eventData.time
+                      : "추후 안내",
+                },
+              ].forEach(function (item) {
+                var detailItem = document.createElement("div");
+                detailItem.className = "exposition__venue-item";
+                var label = document.createElement("span");
+                label.className = "exposition__venue-label";
+                label.textContent = item.label;
+                var value = document.createElement("span");
+                value.className = "exposition__venue-value";
+                value.textContent = item.value;
+                detailItem.appendChild(label);
+                detailItem.appendChild(value);
+                venueCard.appendChild(detailItem);
+              });
+
+              eventButton.addEventListener("click", function () {
+                var shouldOpen = venueCard.hidden;
+                document
+                  .querySelectorAll(".exposition__venue-card")
+                  .forEach(function (card) {
+                    card.hidden = true;
+                  });
+                document
+                  .querySelectorAll(".exposition__event[aria-pressed='true']")
+                  .forEach(function (selected) {
+                    selected.setAttribute("aria-pressed", "false");
+                  });
+                venueCard.hidden = !shouldOpen;
+                eventButton.setAttribute("aria-pressed", String(shouldOpen));
+              });
+              events.appendChild(venueCard);
+              events.appendChild(eventButton);
+            });
+            dayElement.appendChild(events);
+            fragment.appendChild(dayElement);
+          });
+          container.appendChild(fragment);
+        }
+
+        function closeVenueCards() {
+          document
+            .querySelectorAll(".exposition__venue-card")
+            .forEach(function (card) {
+              card.hidden = true;
+            });
+          document
+            .querySelectorAll(".exposition__event[aria-pressed='true']")
+            .forEach(function (selected) {
+              selected.setAttribute("aria-pressed", "false");
+            });
+        }
+
+        function selectTab(selectedIndex, moveFocus) {
+          tabs.forEach(function (tab, index) {
+            var selected = index === selectedIndex;
+            tab.setAttribute("aria-selected", String(selected));
+            tab.tabIndex = selected ? 0 : -1;
+            panels[index].hidden = !selected;
+          });
+          regionsContainer.hidden = selectedIndex !== 1;
+          closeVenueCards();
+          if (moveFocus) tabs[selectedIndex].focus();
+        }
+
+        function selectRegion(region, button) {
+          regionsContainer
+            .querySelectorAll(".exposition__region")
+            .forEach(function (regionButton) {
+              regionButton.setAttribute(
+                "aria-pressed",
+                String(regionButton === button),
+              );
+            });
+          closeVenueCards();
+          renderSchedule(
+            campusSchedule,
+            region.schedule,
+            region.name + " 지역의 캠퍼스 방문 일정은 추후 안내 예정입니다.",
+            true,
+          );
+        }
+
+        tabs.forEach(function (tab, index) {
+          tab.addEventListener("click", function () {
+            selectTab(index, false);
+          });
+          tab.addEventListener("keydown", function (event) {
+            var nextIndex = index;
+            if (event.key === "ArrowRight") {
+              nextIndex = (index + 1) % tabs.length;
+            } else if (event.key === "ArrowLeft") {
+              nextIndex = (index - 1 + tabs.length) % tabs.length;
+            } else {
+              return;
+            }
+            event.preventDefault();
+            selectTab(nextIndex, true);
+          });
+        });
+
+        document.addEventListener("click", function (event) {
+          if (
+            !event.target ||
+            typeof event.target.closest !== "function" ||
+            !event.target.closest(
+              ".exposition__venue-card, .exposition__event",
+            )
+          ) {
+            closeVenueCards();
+          }
+        });
+
+        Promise.all([
+          fetch("./data/exposition.json"),
+          fetch("./data/campus_schedule.json"),
+        ])
+          .then(function (responses) {
+            return Promise.all(
+              responses.map(function (response) {
+                if (!response.ok) {
+                  throw new Error(
+                    "일정 데이터 요청에 실패했습니다: " + response.status,
+                  );
+                }
+                return response.json();
+              }),
+            );
+          })
+          .then(function (datasets) {
+            var data = datasets[0];
+            var campusScheduleData = datasets[1];
+            if (
+              !data ||
+              !Array.isArray(data.exhibition) ||
+              !Array.isArray(data.regions) ||
+              !data.regions.length ||
+              data.regions.some(function (region) {
+                return (
+                  !region ||
+                  typeof region.name !== "string" ||
+                  !region.name.trim()
+                );
+              })
+            ) {
+              throw new Error("박람회 및 지역 일정 데이터 형식이 올바르지 않습니다.");
+            }
+            if (
+              !campusScheduleData ||
+              typeof campusScheduleData !== "object" ||
+              Array.isArray(campusScheduleData)
+            ) {
+              throw new Error("캠퍼스 일정 데이터는 지역별 객체여야 합니다.");
+            }
+            renderSchedule(fairSchedule, data.exhibition, "", false);
+
+            var campusRegions = data.regions.map(function (region) {
+              return { name: region.name, schedule: [] };
+            });
+            var campusRegionMap = new Map();
+            campusRegions.forEach(function (region) {
+              campusRegionMap.set(region.name, region);
+            });
+            var campusDays = new Map();
+            Object.keys(campusScheduleData).forEach(function (regionName) {
+              var records = campusScheduleData[regionName];
+              if (!Array.isArray(records)) {
+                throw new Error(regionName + " 캠퍼스 일정은 배열이어야 합니다.");
+              }
+              var region = campusRegionMap.get(regionName);
+              if (!region) {
+                region = { name: regionName, schedule: [] };
+                campusRegionMap.set(region.name, region);
+                campusRegions.push(region);
+              }
+              records.forEach(function (record) {
+                if (
+                  !record ||
+                  typeof record !== "object" ||
+                  typeof record.date !== "string" ||
+                  !record.date.trim() ||
+                  typeof record.university !== "string" ||
+                  !record.university.trim() ||
+                  ["place", "time"].some(function (key) {
+                    return (
+                      record[key] !== undefined &&
+                      (typeof record[key] !== "string" || !record[key].trim())
+                    );
+                  })
+                ) {
+                  throw new Error(
+                    regionName +
+                      " 캠퍼스 일정의 날짜, 학교, 장소 또는 시간 정보가 올바르지 않습니다.",
+                  );
+                }
+
+                var regionDayMap = campusDays.get(region.name);
+                if (!regionDayMap) {
+                  regionDayMap = new Map();
+                  campusDays.set(region.name, regionDayMap);
+                }
+                var day = regionDayMap.get(record.date);
+                if (!day) {
+                  day = { date: record.date, events: [] };
+                  regionDayMap.set(record.date, day);
+                  region.schedule.push(day);
+                }
+                var event = { name: record.university };
+                if (record.place) event.location = record.place;
+                if (record.time) event.time = record.time;
+                day.events.push(event);
+              });
+            });
+            campusRegions.forEach(function (region) {
+              region.schedule.sort(function (left, right) {
+                var leftDate = left.date.match(/^(\d+)월\s*(\d+)일/);
+                var rightDate = right.date.match(/^(\d+)월\s*(\d+)일/);
+                if (!leftDate || !rightDate) {
+                  throw new Error("캠퍼스 일정 날짜 형식이 올바르지 않습니다.");
+                }
+                return (
+                  Number(leftDate[1]) - Number(rightDate[1]) ||
+                  Number(leftDate[2]) - Number(rightDate[2])
+                );
+              });
+              if (!region.schedule.length) return;
+
+              var scheduledDays = new Map(
+                region.schedule.map(function (day) {
+                  return [day.date, day];
+                }),
+              );
+              var lastDate = region.schedule[
+                region.schedule.length - 1
+              ].date.match(/^(\d+)월\s*(\d+)일/);
+              var firstDate = region.schedule[0].date.match(
+                /^(\d+)월\s*(\d+)일/,
+              );
+              var firstScheduledDate = Date.UTC(
+                2026,
+                Number(firstDate[1]) - 1,
+                Number(firstDate[2]),
+              );
+              var lastScheduledDate = Date.UTC(
+                2026,
+                Number(lastDate[1]) - 1,
+                Number(lastDate[2]),
+              );
+              var weekdays = ["일", "월", "화", "수", "목", "금", "토"];
+              var calendarDays = [];
+              var firstWeekday = new Date(firstScheduledDate).getUTCDay();
+              var weekStart =
+                firstScheduledDate -
+                ((firstWeekday + 6) % 7) * 24 * 60 * 60 * 1000;
+              var lastWeekday = new Date(lastScheduledDate).getUTCDay();
+              var lastWeekStart =
+                lastScheduledDate -
+                ((lastWeekday + 6) % 7) * 24 * 60 * 60 * 1000;
+
+              for (
+                var weekTimestamp = weekStart;
+                weekTimestamp <= lastWeekStart;
+                weekTimestamp += 7 * 24 * 60 * 60 * 1000
+              ) {
+                var weekDays = [];
+                var weekHasEvents = false;
+                for (var dayIndex = 0; dayIndex < 5; dayIndex += 1) {
+                  var dayTimestamp =
+                    weekTimestamp + dayIndex * 24 * 60 * 60 * 1000;
+                  var calendarDate = new Date(dayTimestamp);
+                  var month = calendarDate.getUTCMonth() + 1;
+                  var dateNumber = calendarDate.getUTCDate();
+                  var dateLabel =
+                    month +
+                    "월 " +
+                    dateNumber +
+                    "일 (" +
+                    weekdays[calendarDate.getUTCDay()] +
+                    ")";
+                  var scheduledDay = scheduledDays.get(dateLabel);
+                  var isOutsideScheduleRange =
+                    dayTimestamp < firstScheduledDate ||
+                    dayTimestamp > lastScheduledDate;
+                  var weekDay = isOutsideScheduleRange
+                    ? { date: "", events: [] }
+                    : scheduledDay || { date: dateLabel, events: [] };
+                  weekDays.push(weekDay);
+                  if (scheduledDay && scheduledDay.events.length) {
+                    weekHasEvents = true;
+                  }
+                }
+                if (weekHasEvents) {
+                  calendarDays.push.apply(calendarDays, weekDays);
+                }
+              }
+              region.schedule = calendarDays;
+            });
+
+            var fragment = document.createDocumentFragment();
+            campusRegions.forEach(function (region, index) {
+              var button = document.createElement("button");
+              button.className = "exposition__region";
+              button.type = "button";
+              button.textContent = region.name;
+              button.setAttribute("aria-pressed", String(index === 0));
+              button.addEventListener("click", function () {
+                selectRegion(region, button);
+              });
+              fragment.appendChild(button);
+            });
+            regionsContainer.appendChild(fragment);
+            selectRegion(campusRegions[0], regionsContainer.firstElementChild);
+          })
+          .catch(showError);
+      })();
+
       /* 회사 복지: benefits.json 데이터를 카테고리별 카드로 렌더링 */
       (function () {
         var welfareScroll = document.querySelector(".welfare__scroll");
@@ -6046,14 +8917,18 @@
 
         function requireText(value, fieldName) {
           if (typeof value !== "string" || !value.trim()) {
-            throw new Error("복지 데이터의 " + fieldName + " 값이 올바르지 않습니다.");
+            throw new Error(
+              "복지 데이터의 " + fieldName + " 값이 올바르지 않습니다.",
+            );
           }
         }
 
         fetch("./data/benefits.json")
           .then(function (response) {
             if (!response.ok) {
-              throw new Error("복지 데이터 요청에 실패했습니다: " + response.status);
+              throw new Error(
+                "복지 데이터 요청에 실패했습니다: " + response.status,
+              );
             }
             return response.json();
           })
@@ -6065,12 +8940,19 @@
             var fragment = document.createDocumentFragment();
             categories.forEach(function (category, categoryIndex) {
               if (!category || typeof category !== "object") {
-                throw new Error("복지 카테고리 데이터 형식이 올바르지 않습니다.");
+                throw new Error(
+                  "복지 카테고리 데이터 형식이 올바르지 않습니다.",
+                );
               }
               requireText(category.category, "category");
-              requireText(category.category_description, "category_description");
+              requireText(
+                category.category_description,
+                "category_description",
+              );
               if (!Array.isArray(category.items)) {
-                throw new Error("복지 카테고리의 items 값은 배열이어야 합니다.");
+                throw new Error(
+                  "복지 카테고리의 items 값은 배열이어야 합니다.",
+                );
               }
 
               var section = document.createElement("section");
@@ -6176,6 +9058,11 @@
         var toggle = document.querySelector(".gnb__toggle");
         var menu = document.getElementById("gnb");
         var close = menu && menu.querySelector(".gnb__close");
+        var header = document.querySelector(".header");
+        if (!header) {
+          throw new Error("고정 헤더를 찾을 수 없습니다.");
+        }
+
         if (!toggle || !menu || !close) return;
 
         var root = document.documentElement;
@@ -6184,6 +9071,11 @@
         function setOpen(open, restoreFocus) {
           menu.classList.toggle("is-open", open);
           root.classList.toggle("menu-open", open); // 배경 스크롤 잠금/해제
+          header.classList.toggle("is-menu-open", open);
+          if (open) {
+            header.classList.remove("is-hidden");
+            header.classList.add("is-visible");
+          }
           toggle.setAttribute("aria-expanded", String(open));
           if (open) close.focus();
           else if (restoreFocus) toggle.focus();
@@ -6300,7 +9192,9 @@
         var popupDataElement = document.getElementById("popup-data");
         var panelsContainer = document.querySelector(".tasks__panels");
         if (!taskDataElement || !popupDataElement || !panelsContainer) {
-          throw new Error("직무 데이터, 팝업 데이터 또는 직무 패널을 찾을 수 없습니다.");
+          throw new Error(
+            "직무 데이터, 팝업 데이터 또는 직무 패널을 찾을 수 없습니다.",
+          );
         }
 
         var taskData = JSON.parse(taskDataElement.textContent);
@@ -6427,7 +9321,9 @@
 
         popupData.forEach(function (item) {
           if (!taskTitles[item.title]) {
-            throw new Error("직무 카드 데이터를 찾을 수 없습니다: " + item.title);
+            throw new Error(
+              "직무 카드 데이터를 찾을 수 없습니다: " + item.title,
+            );
           }
         });
 
@@ -6516,26 +9412,33 @@
             content.appendChild(cards);
           }
 
-          group.querySelector("summary").addEventListener("click", function (event) {
-            event.preventDefault();
-            var state = accordionStates.get(group);
-            var open = state && state.targetOpen !== null
-              ? !state.targetOpen
-              : !group.open;
-
-            if (open) {
-              document.querySelectorAll(".tasks__group[open]").forEach(function (other) {
-                if (other !== group) animateGroup(other, false);
-              });
-            }
-            animateGroup(group, open);
-          });
-
-          group.querySelector("summary").addEventListener("keydown", function (event) {
-            if (event.key === "Enter" || event.key === " ") {
+          group
+            .querySelector("summary")
+            .addEventListener("click", function (event) {
               event.preventDefault();
-              group.querySelector("summary").click();
-            }
+              var state = accordionStates.get(group);
+              var open =
+                state && state.targetOpen !== null
+                  ? !state.targetOpen
+                  : !group.open;
+
+              if (open) {
+                document
+                  .querySelectorAll(".tasks__group[open]")
+                  .forEach(function (other) {
+                    if (other !== group) animateGroup(other, false);
+                  });
+              }
+              animateGroup(group, open);
+            });
+
+          group
+            .querySelector("summary")
+            .addEventListener("keydown", function (event) {
+              if (event.key === "Enter" || event.key === " ") {
+                event.preventDefault();
+                group.querySelector("summary").click();
+              }
             });
         });
 
@@ -6570,8 +9473,7 @@
           var data = popupDataByTitle[card.dataset.taskRole];
           if (!data) {
             throw new Error(
-              "직무 팝업 데이터를 찾을 수 없습니다: " +
-                card.dataset.taskRole,
+              "직무 팝업 데이터를 찾을 수 없습니다: " + card.dataset.taskRole,
             );
           }
 
@@ -6603,7 +9505,10 @@
               );
             };
             image.src = data.image;
-          } else if (imageLoaders[data.image].complete && imageLoaders[data.image].naturalWidth) {
+          } else if (
+            imageLoaders[data.image].complete &&
+            imageLoaders[data.image].naturalWidth
+          ) {
             visual.style.backgroundImage =
               "url(" + JSON.stringify(imageLoaders[data.image].src) + ")";
           }
@@ -6673,6 +9578,189 @@
             }
           }
         });
+      })();
+    </script>
+    <script>
+      (function () {
+        var header = document.querySelector(".header");
+        var menu = document.getElementById("gnb");
+        if (!header) {
+          throw new Error("고정 헤더를 찾을 수 없습니다.");
+        }
+
+        var previousScrollY = Math.max(0, window.scrollY);
+        var accumulatedScrollDelta = 0;
+        var scrollDirection = 0;
+        var scrollThreshold = 6;
+
+        function updateHeaderVisibility() {
+          var currentScrollY = Math.max(0, window.scrollY);
+          var scrollDelta = currentScrollY - previousScrollY;
+          var nextDirection = Math.sign(scrollDelta);
+          var menuOpen = menu && menu.classList.contains("is-open");
+
+          if (currentScrollY === 0) {
+            accumulatedScrollDelta = 0;
+            scrollDirection = 0;
+            header.classList.remove("is-hidden");
+            header.classList.add("is-visible");
+          } else if (menuOpen) {
+            accumulatedScrollDelta = 0;
+            scrollDirection = 0;
+            header.classList.remove("is-hidden");
+            header.classList.add("is-menu-open");
+          } else if (nextDirection !== 0) {
+            if (nextDirection !== scrollDirection) {
+              accumulatedScrollDelta = 0;
+              scrollDirection = nextDirection;
+            }
+            accumulatedScrollDelta += scrollDelta;
+
+            if (accumulatedScrollDelta > scrollThreshold) {
+              header.classList.add("is-hidden");
+              header.classList.remove("is-visible", "is-menu-open");
+              accumulatedScrollDelta = 0;
+            } else if (accumulatedScrollDelta < -scrollThreshold) {
+              header.classList.remove("is-hidden", "is-menu-open");
+              header.classList.add("is-visible");
+              accumulatedScrollDelta = 0;
+            }
+          }
+
+          previousScrollY = currentScrollY;
+        }
+
+        window.addEventListener(
+          "scroll",
+          updateHeaderVisibility,
+          { passive: true },
+        );
+        updateHeaderVisibility();
+      })();
+
+      (function () {
+        var revealTargets = [
+          "#mirae .mirae__title",
+          "#history .history-head",
+          "#history .history-block",
+          "#jobs .jobs__header",
+          "#jobs .jobs__item",
+          "#jobs .jobs__more",
+          "#news .news__header",
+          "#news .news__item",
+          "#welfare .welfare__header",
+          "#welfare .welfare__item",
+          "#tasks .tasks__intro",
+          "#tasks .tasks__tab",
+          "#tasks .tasks__card",
+          "#requirement .requirement__title",
+          "#requirement .requirement__tabs",
+          "#requirement .requirement__candidate",
+          "#requirement .requirement__bullets li",
+          "#requirement .requirement__notice",
+          "#requirement .requirement__process-group",
+          "#exposition .exposition__intro",
+          "#exposition .exposition__tab",
+          "#exposition .exposition__region",
+          "#exposition .exposition__day",
+        ];
+        var delayByParent = new Map();
+        var targetSelector = revealTargets.join(", ");
+        var observer =
+          "IntersectionObserver" in window
+            ? new IntersectionObserver(
+                function (entries) {
+                  entries.forEach(function (entry) {
+                    entry.target.classList.toggle(
+                      "is-revealed",
+                      entry.isIntersecting,
+                    );
+                  });
+                },
+                {
+                  root: null,
+                  rootMargin: "-20% 0px -20% 0px",
+                  threshold: 0,
+                },
+              )
+            : null;
+
+        function prepareTargets(newTargets) {
+          newTargets = newTargets.filter(function (target) {
+            return !target.classList.contains("scroll-reveal");
+          });
+          if (!newTargets.length) return;
+
+          newTargets.forEach(function (target) {
+            var parent = target.parentElement;
+            var delay = delayByParent.get(parent) || 0;
+            target.style.setProperty("--reveal-delay", delay + "ms");
+            delayByParent.set(parent, Math.min(delay + 70, 350));
+            target.classList.add("scroll-reveal");
+          });
+
+          if (observer) {
+            document.documentElement.offsetHeight;
+            newTargets.forEach(function (target) {
+              target.classList.add("is-ready");
+              observer.observe(target);
+            });
+          } else {
+            newTargets.forEach(function (target) {
+              target.classList.add("is-revealed", "is-ready");
+            });
+          }
+        }
+
+        prepareTargets(
+          Array.prototype.slice.call(
+            document.querySelectorAll(targetSelector),
+          ),
+        );
+
+        var exposition = document.querySelector("#exposition");
+        if (observer && exposition) {
+          var targetChanges = new MutationObserver(function (mutations) {
+            var addedTargets = [];
+            mutations.forEach(function (mutation) {
+              Array.prototype.forEach.call(
+                mutation.removedNodes,
+                function (node) {
+                  if (node.nodeType !== 1) return;
+                  var removedTargets = [];
+                  if (node.matches(".scroll-reveal")) {
+                    removedTargets.push(node);
+                  }
+                  removedTargets = removedTargets.concat(
+                    Array.prototype.slice.call(
+                      node.querySelectorAll(".scroll-reveal"),
+                    ),
+                  );
+                  removedTargets.forEach(function (target) {
+                    if (!target.isConnected) observer.unobserve(target);
+                  });
+                },
+              );
+              Array.prototype.forEach.call(
+                mutation.addedNodes,
+                function (node) {
+                  if (node.nodeType !== 1) return;
+                  if (node.matches(targetSelector)) addedTargets.push(node);
+                  addedTargets = addedTargets.concat(
+                    Array.prototype.slice.call(
+                      node.querySelectorAll(targetSelector),
+                    ),
+                  );
+                },
+              );
+            });
+            prepareTargets(addedTargets);
+          });
+          targetChanges.observe(exposition, {
+            childList: true,
+            subtree: true,
+          });
+        }
       })();
     </script>
   </body>
