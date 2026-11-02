@@ -10,6 +10,7 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800&family=Noto+Sans+KR:wght@500;700;800&display=swap"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="./data/hanmi-eye-tracking/player.css" />
     <style>
       @font-face {
         font-family: "Escoredream";
@@ -241,6 +242,66 @@
         border: 0;
       }
 
+      /* 요소에 클래스를 추가해 적용하며, 각 애니메이션은 3초 주기로 무한 반복 */
+      .updown {
+        animation: updown 3s ease-in-out infinite;
+      }
+
+      /* 요소 너비의 10% 범위에서 좌우로 이동 */
+      .leftright {
+        animation: leftright 3s ease-in-out infinite;
+      }
+
+      /* 원래 크기에서 90%까지 축소한 뒤 110%까지 확대 */
+      .bigsmall {
+        animation: bigsmall 3s ease-in-out infinite;
+      }
+
+      /* 요소 높이의 10%만큼 위아래로 이동 */
+      @keyframes updown {
+        0%,
+        100% {
+          transform: translateY(-10%);
+        }
+
+        50% {
+          transform: translateY(10%);
+        }
+      }
+
+      /* 요소 너비의 10%만큼 좌우로 이동 */
+      @keyframes leftright {
+        0%,
+        100% {
+          transform: translateX(-10%);
+        }
+
+        50% {
+          transform: translateX(10%);
+        }
+      }
+
+      /* 기준 크기(100%)에서 90%와 110% 사이로 확대·축소 */
+      @keyframes bigsmall {
+        0%,
+        100% {
+          transform: scale(0.9);
+        }
+
+        50% {
+          transform: scale(1.1);
+        }
+      }
+
+      /* 사용자가 움직임 감소를 요청한 경우 반복 애니메이션 비활성화 */
+      @media (prefers-reduced-motion: reduce) {
+        .updown,
+        .leftright,
+        .bigsmall {
+          animation: none;
+        }
+      }
+
       /* ===== Header ===== */
       .header {
         position: fixed;
@@ -251,7 +312,9 @@
         z-index: 10;
         background-color: transparent;
         transform: translateY(0);
-        transition: transform 0.3s ease, background-color 0.3s ease;
+        transition:
+          transform 0.3s ease,
+          background-color 0.3s ease;
         will-change: transform;
       }
 
@@ -336,6 +399,7 @@
         font-weight: 600;
         white-space: nowrap;
         overflow: hidden;
+        border: 2px solid var(--red);
         background-color: var(--white);
         transition:
           color var(--ease),
@@ -356,6 +420,10 @@
       .btn:hover,
       .btn:focus-visible {
         color: var(--red);
+        border: 2px solid var(--red);
+        transition:
+          color var(--ease),
+          border-color var(--ease);
       }
 
       .btn:hover::before,
@@ -552,6 +620,27 @@
         height: 235px;
       }
 
+      /* Hero 캐릭터가 차례로 움직이도록 시작 시점을 분산 */
+      .mv__micro.updown {
+        animation-delay: 0s;
+      }
+
+      .mv__char1.updown {
+        animation-delay: 0.3s;
+      }
+
+      .mv__char2.updown {
+        animation-delay: 0.6s;
+      }
+
+      .mv__char3.updown {
+        animation-delay: 0.9s;
+      }
+
+      .mv__char4.updown {
+        animation-delay: 1.2s;
+      }
+
       /* 별 (CSS 4각 별) */
       .star {
         clip-path: polygon(
@@ -673,6 +762,7 @@
        - 위치는 % 좌표, 폰트는 stage 폭 비율 → 브레이크포인트 안에서 유동적으로 변함 */
       .mirae {
         --stage: min(100vw, var(--container));
+        height: 100vh;
         position: relative;
         overflow: hidden;
         background: linear-gradient(
@@ -706,7 +796,7 @@
       /* 타이틀 (데스크탑·모바일: 빨강→주황 그라데이션 / 태블릿: 검정 + 강조 빨강) */
       .mirae__title {
         position: absolute;
-        top: 21.5%;
+        top: 12%;
         left: 0;
         right: 0;
         z-index: 2;
@@ -763,10 +853,14 @@
         width: 11%;
       }
 
-      .mirae__char {
+      .mirae__art .mirae__walker {
+        position: absolute;
         left: 7.1%;
         bottom: 0;
         width: 90%;
+        max-width: none;
+        margin: 0;
+        pointer-events: auto;
       }
 
       .mirae__star1 {
@@ -1221,7 +1315,7 @@
           width: 15.2%;
         }
 
-        .mirae__char {
+        .mirae__art .mirae__walker {
           left: 7.1%;
           bottom: 0;
           width: 87.2%;
@@ -1298,7 +1392,7 @@
           width: 19%;
         }
 
-        .mirae__char {
+        .mirae__art .mirae__walker {
           left: 1%;
           width: 100.6%;
         }
@@ -3576,7 +3670,7 @@
       .tasks__inner {
         position: relative;
         width: min(92%, 1320px);
-        margin: -1px auto 0;
+        margin: 100px auto 0;
       }
 
       .tasks__intro {
@@ -3634,8 +3728,10 @@
         color: var(--tasks-accent);
         font-weight: 700;
         background-color: rgba(255, 93, 50, 0.05);
-        box-shadow: -4px -4px 10px 0 rgba(255, 255, 255, 0.35) inset, 4px 4px 10px 0 rgba(255, 161, 110, 0.10) inset, 6px 6px 12px 0 rgba(117, 40, 4, 0.10);
-
+        box-shadow:
+          -4px -4px 10px 0 rgba(255, 255, 255, 0.35) inset,
+          4px 4px 10px 0 rgba(255, 161, 110, 0.1) inset,
+          6px 6px 12px 0 rgba(117, 40, 4, 0.1);
       }
 
       .tasks__panel[hidden] {
@@ -3900,7 +3996,7 @@
       .requirement__title {
         max-width: 700px;
         margin: 0 auto;
-        font-size: 36px;
+        font-size: 57px;
         font-weight: 800;
         line-height: 1.4;
         text-align: center;
@@ -3933,7 +4029,7 @@
         background: transparent;
         color: #777;
         font: inherit;
-        font-size: 16px;
+        font-size: 22px;
         cursor: pointer;
       }
 
@@ -3942,7 +4038,10 @@
         font-weight: 700;
         background: #fffaf8;
         background-color: rgba(255, 93, 50, 0.05);
-        box-shadow: -4px -4px 10px 0 rgba(255, 255, 255, 0.35) inset, 4px 4px 10px 0 rgba(255, 161, 110, 0.10) inset, 6px 6px 12px 0 rgba(117, 40, 4, 0.10);
+        box-shadow:
+          -4px -4px 10px 0 rgba(255, 255, 255, 0.35) inset,
+          4px 4px 10px 0 rgba(255, 161, 110, 0.1) inset,
+          6px 6px 12px 0 rgba(117, 40, 4, 0.1);
       }
 
       .requirement__panel[hidden] {
@@ -4030,6 +4129,7 @@
 
       .requirement__notice strong {
         color: #ff6040;
+        font-weight: 700;
       }
 
       .exposition {
@@ -4050,25 +4150,23 @@
         width: 100%;
         min-height: 190px;
         text-align: center;
-        border:1px solid;
         position: relative;
       }
-      .exposition__intro .obj{
+      .exposition__intro .obj {
         position: absolute;
         top: -50%;
-        left: 0%;
+        left: -16%;
         width: 347px;
         height: 302px;
-        border: 1px solid #ff6040;
       }
       .exposition__character {
         width: 100%;
-        height:100%;
+        height: 100%;
         /* object-fit: contain; */
       }
 
       .exposition__heading {
-        font-size: 38px;
+        font-size: 57px;
         font-weight: 800;
         line-height: 1.35;
         letter-spacing: -0.04em;
@@ -4076,14 +4174,14 @@
 
       .exposition__description {
         margin-top: 16px;
-        font-size: 16px;
-        line-height: 1.7;
+        font-size: 24px;
+        line-height: 1.4;
       }
 
       .exposition__hint {
         margin-top: 12px;
         color: #555;
-        font-size: 20px;
+        font-size: 16px;
         line-height: 1.6;
         text-align: center;
       }
@@ -4115,7 +4213,7 @@
         background: transparent;
         color: #777;
         font: inherit;
-        font-size: 20px;
+        font-size: 22px;
         cursor: pointer;
         transition:
           color 0.3s ease,
@@ -4483,12 +4581,30 @@
 
         .exposition__description {
           margin-top: 14px;
+          font-size: 20px;
         }
 
         .exposition__tabs {
           margin-top: 42px;
         }
-
+        .exposition__tab,
+        .exposition__region {
+          font-size: 18px;
+        }
+        .exposition__day {
+          min-height: auto;
+          padding-bottom: 16px;
+        }
+        .exposition__date {
+          font-size: 15px;
+        }
+        .exposition__events {
+          min-height: 160px;
+        }
+        .exposition__event,
+        .exposition__event-label {
+          font-size: 15px;
+        }
         .requirement__process-track {
           width: 100%;
           transform: none;
@@ -5028,7 +5144,7 @@
       .con8__heading {
         margin: 0;
         color: #141414;
-        font-size: clamp(30px, 3.2vw, 44px);
+        font-size: clamp(30px, 3.62vw, 44px);
         font-weight: 800;
         line-height: 1.35;
         letter-spacing: -1.5px;
@@ -5285,7 +5401,9 @@
         font-weight: 700;
         text-decoration: none;
         backdrop-filter: blur(8px);
-        transition: background-color 0.3s ease, transform 0.3s ease;
+        transition:
+          background-color 0.3s ease,
+          transform 0.3s ease;
       }
 
       .con9__apply:hover,
@@ -5380,6 +5498,12 @@
       }
 
       @media (max-width: 1024px) {
+        .requirement__bullets li {
+          font-size: 16px;
+        }
+        .requirement__notice {
+          font-size: 19px;
+        }
         .con8 {
           padding: 80px 0 88px;
         }
@@ -5862,25 +5986,25 @@
 
           <!-- 장식용 그래픽 (스크린리더 제외) -->
           <div class="mv__visual" aria-hidden="true">
-            <div class="mv__glow"></div>
+            <div class="mv__glow bigsmall"></div>
             <div class="mv__ring"></div>
 
-            <img class="mv__micro" src="./images/mv_micro.png" alt="" />
-            <img class="mv__char1" src="./images/mv_char1.png" alt="" />
-            <img class="mv__char2" src="./images/mv_char2.png" alt="" />
-            <img class="mv__char3" src="./images/mv_char3.png" alt="" />
-            <img class="mv__char4" src="./images/mv_char4.png" alt="" />
+            <img class="mv__micro updown" src="./images/mv_micro.png" alt="" />
+            <img class="mv__char1 updown" src="./images/mv_char1.png" alt="" />
+            <img class="mv__char2 updown" src="./images/mv_char2.png" alt="" />
+            <img class="mv__char3 updown" src="./images/mv_char3.png" alt="" />
+            <img class="mv__char4 updown" src="./images/mv_char4.png" alt="" />
 
-            <span class="star star--1"></span>
-            <span class="star star--2"></span>
-            <span class="star star--3"></span>
-            <span class="star star--3b"></span>
-            <span class="star star--4"></span>
+            <span class="star star--1 updown"></span>
+            <span class="star star--2 updown"></span>
+            <span class="star star--3 updown"></span>
+            <span class="star star--3b updown"></span>
+            <span class="star star--4 updown"></span>
           </div>
 
           <button
             type="button"
-            class="scroll-btn"
+            class="scroll-btn updown"
             id="scrollBtn"
             aria-label="아래로 스크롤"
           >
@@ -5898,10 +6022,18 @@
         </div>
 
         <!-- 장식용 그래픽 (스크린리더 제외) -->
-        <div class="mirae__visual" aria-hidden="true">
+        <div class="mirae__visual">
           <div class="mirae__art">
             <img class="mirae__blur-l" src="./images/mirae_cloud1.png" alt="" />
-            <img class="mirae__char" src="./images/mirae_walking.png" alt="" />
+            <div class="mirae__walker hanmi-walker" data-hanmi-walker>
+              <canvas
+                width="1920"
+                height="1080"
+                role="img"
+                aria-label="마우스를 바라보며 걷는 캐릭터"
+              ></canvas>
+              <span data-status role="status">이미지 준비 중</span>
+            </div>
             <img class="mirae__star1" src="./images/mirae_star1.png" alt="" />
             <img class="mirae__star2" src="./images/mirae_star2.png" alt="" />
             <img
@@ -5914,6 +6046,8 @@
           <img class="mirae__cloud-r" src="./images/mirae_cloud3.png" alt="" />
         </div>
       </section>
+      <script src="./data/hanmi-eye-tracking/metadata.js"></script>
+      <script src="./data/hanmi-eye-tracking/player.js"></script>
 
       <!-- 한미의 도전 히스토리 섹션 (53th → 100th) -->
       <section
@@ -5972,7 +6106,7 @@
                   />
                 </figure>
                 <img
-                  class="history-deco history-deco--beaker"
+                  class="history-deco history-deco--beaker updown"
                   src="./images/obj_beaker.png"
                   alt="분홍색 액체가 담긴 실험용 비커"
                 />
@@ -6020,7 +6154,7 @@
                   alt="흐릿하게 번진 푸른 분자 구조"
                 />
                 <img
-                  class="history-deco history-deco--microscope"
+                  class="history-deco history-deco--microscope updown"
                   src="./images/obj_microscope.png"
                   alt="파란색 현미경"
                 />
@@ -6171,7 +6305,7 @@
                   />
                 </figure>
                 <img
-                  class="history-deco history-deco--mol-big"
+                  class="history-deco history-deco--mol-big updown"
                   src="./images/obj_mol_big.png"
                   alt="유리 질감의 큰 분자 구조 모형"
                 />
@@ -6331,13 +6465,13 @@
         <!-- 장식용 그래픽 (스크린리더 제외) -->
         <div class="jobs__bg__obj">
           <img
-            class="jobs__deco jobs__deco--char"
+            class="jobs__deco jobs__deco--char updown"
             src="./images/con3_char.png"
             alt=""
             aria-hidden="true"
           />
           <img
-            class="jobs__deco jobs__deco--bottle"
+            class="jobs__deco jobs__deco--bottle updown"
             src="./images/con3_bottle.png"
             alt=""
             aria-hidden="true"
@@ -6367,13 +6501,13 @@
               aria-hidden="true"
             />
             <img
-              class="news__deco news__deco--atom"
+              class="news__deco news__deco--atom bigsmall"
               src="./images/inno_molecule1.png"
               alt=""
               aria-hidden="true"
             />
             <img
-              class="news__deco news__deco--mol"
+              class="news__deco news__deco--mol updown"
               src="./images/inno_molecule2.png"
               alt=""
               aria-hidden="true"
@@ -6554,7 +6688,7 @@
               건강부터 성장, 휴식까지 알차게 준비한 복지를 소개할게요.
             </p>
             <img
-              class="welfare__mascot"
+              class="welfare__mascot updown"
               src="./images/con5_char.png"
               alt="세면 도구를 들고 있는 주황색 한미 캐릭터"
             />
@@ -8015,10 +8149,12 @@
                 또는 입사 이후 자격 미확보 및 상실하는 경우는 입사가 취소될 수
                 있습니다.
               </li>
-              <li>지원서 제출 후에는 수정이 절대 불가하오니, 주의하시기 바랍니다.</li>
               <li>
-                전형단계별 결과는 E-Mail 및 SMS를 통하여 안내하오니 E-Mail 주소 및
-                휴대전화 번호를 정확히 기재해주시기 바랍니다.
+                지원서 제출 후에는 수정이 절대 불가하오니, 주의하시기 바랍니다.
+              </li>
+              <li>
+                전형단계별 결과는 E-Mail 및 SMS를 통하여 안내하오니 E-Mail 주소
+                및 휴대전화 번호를 정확히 기재해주시기 바랍니다.
               </li>
               <li>
                 입사 후 3개월간 수습기간이 적용되며, 수습 기간 중 성적이
@@ -8039,10 +8175,10 @@
           <header class="exposition__intro">
             <div class="obj">
               <img
-              class="exposition__character"
-              src="./images/expo_char.png"
-              alt="학교 박람회를 찾아가는 보라색 한미 캐릭터"
-            />
+                class="exposition__character updown"
+                src="./images/expo_char.png"
+                alt="학교 박람회를 찾아가는 보라색 한미 캐릭터"
+              />
             </div>
             <div class="exposition__copy">
               <h2 class="exposition__heading" id="exposition-title">
@@ -8058,7 +8194,11 @@
             </div>
           </header>
 
-          <div class="exposition__tabs" role="tablist" aria-label="방문 일정 종류">
+          <div
+            class="exposition__tabs"
+            role="tablist"
+            aria-label="방문 일정 종류"
+          >
             <button
               class="exposition__tab"
               id="exposition-tab-fair"
@@ -8137,7 +8277,7 @@
           </p>
           <div class="con8__cards">
             <img
-              class="con8__character"
+              class="con8__character updown"
               src="./images/con8_char.png"
               alt=""
               aria-hidden="true"
@@ -8344,9 +8484,11 @@
           minutes: countdown.querySelector('[data-countdown="minutes"]'),
           seconds: countdown.querySelector('[data-countdown="seconds"]'),
         };
-        if (Object.keys(units).some(function (key) {
-          return !units[key];
-        })) {
+        if (
+          Object.keys(units).some(function (key) {
+            return !units[key];
+          })
+        ) {
           throw new Error("지원 마감 카운트다운 영역을 찾을 수 없습니다.");
         }
 
@@ -8566,7 +8708,9 @@
                   );
                 })
               ) {
-                throw new Error("일정의 장소 또는 시간 정보가 올바르지 않습니다.");
+                throw new Error(
+                  "일정의 장소 또는 시간 정보가 올바르지 않습니다.",
+                );
               }
 
               if (!interactive) {
@@ -8708,9 +8852,7 @@
           if (
             !event.target ||
             typeof event.target.closest !== "function" ||
-            !event.target.closest(
-              ".exposition__venue-card, .exposition__event",
-            )
+            !event.target.closest(".exposition__venue-card, .exposition__event")
           ) {
             closeVenueCards();
           }
@@ -8748,7 +8890,9 @@
                 );
               })
             ) {
-              throw new Error("박람회 및 지역 일정 데이터 형식이 올바르지 않습니다.");
+              throw new Error(
+                "박람회 및 지역 일정 데이터 형식이 올바르지 않습니다.",
+              );
             }
             if (
               !campusScheduleData ||
@@ -8770,7 +8914,9 @@
             Object.keys(campusScheduleData).forEach(function (regionName) {
               var records = campusScheduleData[regionName];
               if (!Array.isArray(records)) {
-                throw new Error(regionName + " 캠퍼스 일정은 배열이어야 합니다.");
+                throw new Error(
+                  regionName + " 캠퍼스 일정은 배열이어야 합니다.",
+                );
               }
               var region = campusRegionMap.get(regionName);
               if (!region) {
@@ -8835,12 +8981,12 @@
                   return [day.date, day];
                 }),
               );
-              var lastDate = region.schedule[
-                region.schedule.length - 1
-              ].date.match(/^(\d+)월\s*(\d+)일/);
-              var firstDate = region.schedule[0].date.match(
-                /^(\d+)월\s*(\d+)일/,
-              );
+              var lastDate =
+                region.schedule[region.schedule.length - 1].date.match(
+                  /^(\d+)월\s*(\d+)일/,
+                );
+              var firstDate =
+                region.schedule[0].date.match(/^(\d+)월\s*(\d+)일/);
               var firstScheduledDate = Date.UTC(
                 2026,
                 Number(firstDate[1]) - 1,
@@ -9087,7 +9233,6 @@
           header.classList.toggle("is-menu-open", open);
           if (open) {
             header.classList.remove("is-hidden");
-            header.classList.add("is-visible");
           }
           toggle.setAttribute("aria-expanded", String(open));
           if (open) close.focus();
@@ -9615,8 +9760,7 @@
           if (currentScrollY === 0) {
             accumulatedScrollDelta = 0;
             scrollDirection = 0;
-            header.classList.remove("is-hidden");
-            header.classList.add("is-visible");
+            header.classList.remove("is-hidden", "is-visible");
           } else if (menuOpen) {
             accumulatedScrollDelta = 0;
             scrollDirection = 0;
@@ -9643,11 +9787,9 @@
           previousScrollY = currentScrollY;
         }
 
-        window.addEventListener(
-          "scroll",
-          updateHeaderVisibility,
-          { passive: true },
-        );
+        window.addEventListener("scroll", updateHeaderVisibility, {
+          passive: true,
+        });
         updateHeaderVisibility();
       })();
 
@@ -9726,9 +9868,7 @@
         }
 
         prepareTargets(
-          Array.prototype.slice.call(
-            document.querySelectorAll(targetSelector),
-          ),
+          Array.prototype.slice.call(document.querySelectorAll(targetSelector)),
         );
 
         var exposition = document.querySelector("#exposition");
@@ -9775,6 +9915,58 @@
           });
         }
       })();
+    </script>
+    <!-- Code injected by live-server -->
+    <script>
+      // <![CDATA[  <-- For SVG support
+      if ("WebSocket" in window) {
+        (function () {
+          function refreshCSS() {
+            var sheets = [].slice.call(document.getElementsByTagName("link"));
+            var head = document.getElementsByTagName("head")[0];
+            for (var i = 0; i < sheets.length; ++i) {
+              var elem = sheets[i];
+              var parent = elem.parentElement || head;
+              parent.removeChild(elem);
+              var rel = elem.rel;
+              if (
+                (elem.href && typeof rel != "string") ||
+                rel.length == 0 ||
+                rel.toLowerCase() == "stylesheet"
+              ) {
+                var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, "");
+                elem.href =
+                  url +
+                  (url.indexOf("?") >= 0 ? "&" : "?") +
+                  "_cacheOverride=" +
+                  new Date().valueOf();
+              }
+              parent.appendChild(elem);
+            }
+          }
+          var protocol =
+            window.location.protocol === "http:" ? "ws://" : "wss://";
+          var address =
+            protocol + window.location.host + window.location.pathname + "/ws";
+          var socket = new WebSocket(address);
+          socket.onmessage = function (msg) {
+            if (msg.data == "reload") window.location.reload();
+            else if (msg.data == "refreshcss") refreshCSS();
+          };
+          if (
+            sessionStorage &&
+            !sessionStorage.getItem("IsThisFirstTime_Log_From_LiveServer")
+          ) {
+            console.log("Live reload enabled.");
+            sessionStorage.setItem("IsThisFirstTime_Log_From_LiveServer", true);
+          }
+        })();
+      } else {
+        console.error(
+          "Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.",
+        );
+      }
+      // ]]>
     </script>
   </body>
 </html>
