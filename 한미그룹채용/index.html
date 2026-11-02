@@ -3568,7 +3568,7 @@
         position: absolute;
         bottom: 0;
         left: 50%;
-        width: min(660px, 56vw);
+        width: min(1171px, 56vw);
         max-width: none;
         transform: translateX(-50%);
       }
@@ -3580,13 +3580,13 @@
       }
 
       .tasks__intro {
-        padding: 78px 0 34px;
+        padding: 80px 0;
         text-align: center;
       }
 
       .tasks__title {
         font-family: "Pretendard", var(--font);
-        font-size: clamp(30px, 3vw, 42px);
+        font-size: clamp(30px, 3vw, 57px);
         font-weight: 800;
         line-height: 1.35;
         letter-spacing: -0.04em;
@@ -3594,7 +3594,7 @@
 
       .tasks__description {
         margin-top: 12px;
-        font-size: 20px;
+        font-size: 24px;
         line-height: 1.6;
       }
 
@@ -4043,17 +4043,28 @@
       }
 
       .exposition__intro {
-        display: grid;
-        grid-template-columns: 220px minmax(0, 1fr);
+        /* display: grid;
+        grid-template-columns: 347px minmax(0, 1fr);
         align-items: center;
-        gap: 32px;
+        gap: 32px; */
+        width: 100%;
         min-height: 190px;
+        text-align: center;
+        border:1px solid;
+        position: relative;
       }
-
+      .exposition__intro .obj{
+        position: absolute;
+        top: -50%;
+        left: 0%;
+        width: 347px;
+        height: 302px;
+        border: 1px solid #ff6040;
+      }
       .exposition__character {
-        width: 220px;
-        height: 190px;
-        object-fit: contain;
+        width: 100%;
+        height:100%;
+        /* object-fit: contain; */
       }
 
       .exposition__heading {
@@ -5044,9 +5055,9 @@
       .con8__character {
         position: absolute;
         z-index: 3;
-        top: -126px;
+        top: -286px;
         right: 0;
-        width: 96px;
+        width: 187px;
         height: auto;
         pointer-events: none;
       }
@@ -8026,11 +8037,13 @@
       >
         <div class="exposition__inner">
           <header class="exposition__intro">
-            <img
+            <div class="obj">
+              <img
               class="exposition__character"
               src="./images/expo_char.png"
               alt="학교 박람회를 찾아가는 보라색 한미 캐릭터"
             />
+            </div>
             <div class="exposition__copy">
               <h2 class="exposition__heading" id="exposition-title">
                 Hanmi 박람회/캠퍼스로 출발!
