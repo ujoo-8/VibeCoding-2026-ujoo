@@ -1,0 +1,236 @@
+[
+  {
+    "title": "NCE (New Chemical Entity)",
+    "category": "R&D",
+    "location": "연구센터",
+    "employmentType": "*신입/경력",
+    "image": "/img/rnd_bg.jpg",
+    "jobDescription": [
+      "저분자 기반 비만대사 신약 개발 연구",
+      "약물설계, 유기화합물 합성 및 후보물질 탐색"
+    ],
+    "requirements": [
+      "석사 이상 학력 소지자",
+      "화학, 약학 등 관련 전공자",
+      "의약 화학, 약리학 등 신약개발 연관분야 지식 보유자",
+      "경력사원의 경우 관련 경력 2년 이상인 자"
+    ],
+    "preferences": [
+      "비만대사 관련 저분자 신약 연구 경험 보유자",
+      "컴퓨터 모델링 및 AI 기반 신약 개발 경험 보유자",
+      "해외 연구기관 및 제약회사 신약 개발 경험 보유자",
+      "영어 능통자 (구술, 서술), 박사 학위 소지자"
+    ]
+  },
+  {
+    "title": "QS&F (Quality Science & Formulation)",
+    "category": "R&D",
+    "location": "연구센터",
+    "employmentType": "*신입/경력",
+    "image": "/img/rnd_bg.jpg",
+    "jobDescription": [
+      "펩타이드 합성/정제/분석 업무",
+      "AI 기반 펩타이드 신약 후보 물질 디자인 및 탐색 연구",
+      "바이오의약품 특성 분석 및 제제 연구"
+    ],
+    "requirements": [
+      "석사 이상 학력 소지자",
+      "화학, 약학, 생명과학 등 관련 전공자",
+      "펩타이드 합성/정제/분석 업무 경험 보유자",
+      "경력사원의 경우 관련 경력 2년 이상인 자"
+    ],
+    "preferences": [
+      "AI 기반 펩타이드 약물 디자인 및 합성 전략 수립 경험 보유자",
+      "해외 연구기관 및 제약회사 신약 개발 경험 보유자",
+      "영어 능통자 (구술, 서술), 박사 학위 소지자"
+    ]
+  },
+  {
+    "title": "MST (Manufacturing Science Technology)",
+    "category": "R&D",
+    "location": "연구센터",
+    "employmentType": "*신입/경력",
+    "image": "/img/rnd_bg.jpg",
+    "jobDescription": [
+      "바이오의약품 제조 공정 개발, 생산 및 분석 연구",
+      "차세대 플랫폼 개발, 타겟 발굴 및 바이오의약품 연구"
+    ],
+    "requirements": [
+      "석사 이상 학력 소지자",
+      "면역학, 생명과학, 생화학, 단백질공학, 생물공학, 분자생물학, 구조생물학 등 관련 전공자",
+      "바이오의약품 연구 또는 공정 개발 관련 경험 보유자",
+      "경력사원의 경우 관련 경력 2년 이상인 자"
+    ],
+    "preferences": [
+      "대장균/동물 유래 단백질, 펩타이드 및 핵산 (DNA, RNA) 정제 제조 업무 경험 보유자",
+      "ADC 및 바이오컨쥬게이션 (Bioconjugation) 연구 경험 보유자",
+      "단백질, 펩타이드 구조 모델링 연구 경험 보유자",
+      "바이오의약품 제조공정 개발 및 scale-up 경험 보유자",
+      "영어 능통자 (구술, 서술), 박사 학위 소지자"
+    ]
+  },
+  {
+    "title": "TE (Toxicology Evaluation)",
+    "category": "R&D",
+    "location": "연구센터",
+    "employmentType": "*신입/경력",
+    "image": "/img/rnd_bg.jpg",
+    "jobDescription": [
+      "해외 GLP 비임상 독성시험 관리",
+      "내부 비임상 독성시험 수행",
+      "보고서 및 IND 허가자료 작성",
+      "파트너사 및 허가당국 보완 대응"
+    ],
+    "requirements": [
+      "석사 이상 학력 소지자",
+      "수의학, 약학, 독성학, 생명공학 등 관련 전공자",
+      "경력사원의 경우 관련 경력 2년 이상인 자"
+    ],
+    "preferences": [
+      "ADC, TPD, CGT, mRNA 신약 개발 관련 GLP 독성시험 경험 보유자",
+      "NAMs 기반 독성 연구 경험 보유자",
+      "관련 전문 자격증 소지자"
+    ]
+  },
+  {
+    "title": "DST (Drug Science & Technology)",
+    "category": "R&D",
+    "location": "연구센터",
+    "employmentType": "*신입/경력",
+    "image": "/img/rnd_bg.jpg",
+    "jobDescription": [
+      "신약 후보물질의 CMC 분석 연구",
+      "시험법 개발 및 Qualification/Validation",
+      "원료의약품 특성 분석, 안정성 시험 및 불순물 평가",
+      "CMO 분석법 기술이전 및 지원",
+      "분석 전략 수립 및 IND 제출 자료 작성 지원",
+      "분석 데이터 검토 및 규제 대응 지원"
+    ],
+    "requirements": [
+      "석사 이상 학력 소지자",
+      "분석화학, 약학, 생명과학 등 관련 전공자",
+      "크로마토그래피 활용 경험 보유자",
+      "경력사원의 경우 관련 경력 2년 이상인 자"
+    ],
+    "preferences": [
+      "신약개발/의약품 CMC 연구 경험 보유자",
+      "ADC, LNP 등 차세대 모달리티의 특성 분석 및 CMC 개발 경험 보유자",
+      "영어 능통자 (구술, 서술)"
+    ]
+  },
+  {
+    "title": "BSS (Biological & Structural Evaluation Science)",
+    "category": "R&D",
+    "location": "연구센터",
+    "employmentType": "*신입/경력",
+    "image": "/img/rnd_bg.jpg",
+    "jobDescription": [
+      "LC/QTOF MS 기반 합성/바이오의약품 및 신규 모달리티 구조 연구 및 특성 분석",
+      "원료, 중간체 및 최종 물질 내 유연물질, 분해 산물의 구조 규명 및 발생 경로 연구",
+      "대사체 및 생체 유래 분해 산물 구조 연구",
+      "연구 결과 해석 및 보고서 작성"
+    ],
+    "requirements": [
+      "석사 이상 학력 소지자",
+      "분석화학, 생화학, 약학 등 관련 전공자",
+      "LC/QTOF MS 기반 업무 경험 보유자",
+      "경력사원의 경우 관련 경력 2년 이상인 자"
+    ],
+    "preferences": [
+      "영어 능통자 (구술, 서술)"
+    ]
+  },
+  {
+    "title": "신제형연구 (전문연구요원)",
+    "category": "R&D",
+    "location": "제제연구소 [의약혁신센터]",
+    "employmentType": "*신입",
+    "image": "/img/rnd_bg.jpg",
+    "jobDescription": [
+      "신제품 개발전략 수립 및 처방설계 연구",
+      "제형선정 연구 및 처방 안정성 연구",
+      "신규 기술 특허 작성 및 출원"
+    ],
+    "requirements": [
+      "석사 이상 학력 소지자",
+      "약학, 화학, 생명공학, 고분자공학 등 관련 전공자"
+    ],
+    "preferences": [
+      "제형연구 경험 보유자",
+      "약사 면허 소지자",
+      "영어 능통자 (구술, 서술)"
+    ]
+  },
+  {
+    "title": "제조",
+    "category": "생산/품질",
+    "location": "팔탄제조센터",
+    "employmentType": "*신입/경력",
+    "image": "/img/quality_bg.jpg",
+    "jobDescription": [
+      "내용고형제 (칭량, 과립, 타정, 코팅, 인쇄·선별) 제조공정 수행",
+      "제조설비 운전 및 공정 중 점검",
+      "제조기록서 작성 및 GMP 문서관리",
+      "공정 개선활동 및 생산성 향상 업무"
+    ],
+    "requirements": [
+      "고등학교 졸업 이상 학력 소지자 (전공무관)",
+      "주·야간 교대근무 가능자",
+      "경력사원의 경우 관련 경력 3년 이상인 자"
+    ],
+    "preferences": [
+      "내용고형제 생산 업무 경험자",
+      "GMP, 표준작업절차 (SOP) 기반 제조 현장 근무 경험 보유자",
+      "제조설비 조작 및 유지관리 경험 보유자",
+      "팀워크 및 원활한 의사소통 능력 보유자"
+    ]
+  },
+  {
+    "title": "포장",
+    "category": "생산/품질",
+    "location": "팔탄제조센터",
+    "employmentType": "*신입/경력",
+    "image": "/img/quality_bg.jpg",
+    "jobDescription": [
+      "병, PTP 포장, 검체 채취, 반제품/자재 이송"
+    ],
+    "requirements": [
+      "고등학교 졸업 이상 학력 소지자 (전공무관)",
+      "주·야간 교대근무 가능자",
+      "경력사원의 경우 관련 경력 3년 이상인 자"
+    ],
+    "preferences": [
+      "포장 업무 경험 보유자"
+    ]
+  },
+  {
+    "title": "품질관리",
+    "category": "생산/품질",
+    "location": "팔탄제조센터",
+    "employmentType": "*신입/경력",
+    "image": "/img/quality_bg.jpg",
+    "jobDescription": [
+      "제품 출하 및 안정성 관련 품질관리 (기기분석, 이화학 시험)"
+    ],
+    "requirements": [
+      "학사 이상 학력 소지자",
+      "화학, 화학공학, 생물학, 생명공학 등 관련 전공자",
+      "경력사원의 경우 관련 경력 3년 이상인 자"
+    ],
+    "preferences": [
+      "이화학, 기기분석 경험 보유자",
+      "약사 면허 소지자",
+      "영어 능통자 (구술, 서술)"
+    ]
+  },
+  {
+    "title": "기술지원",
+    "category": "생산/품질",
+    "location": "팔탄제조센터",
+    "employmentType": "*신입/경력",
+    "image": "/img/quality_bg.jpg",
+    "jobDescription": [
+      "생산설비 정비 및 점검 업무 수행",
+      "신규 생산설비 구매 검토, 제작 관리 및 설치"
+    ],
+  

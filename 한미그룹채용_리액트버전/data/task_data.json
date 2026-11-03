@@ -1,0 +1,55 @@
+[
+  {
+    "id": "job-panel rnd on",
+    "title": "R&D",
+    "items": [
+      "연구센터 (경기도 동탄) - NCE, QS&F, MST, TE, DST, BSS",
+      "제제연구소 (경기도 광교) - 신제형연구 (전문연구요원)"
+    ]
+  },
+  {
+    "id": "job-panel prod",
+    "title": "Production",
+    "items": [
+      "팔탄제조센터 (경기도 화성) - 제조, 포장, 품질관리, 기술지원",
+      "평택제조센터 (경기도 평택) - DS생산 (학사/전문학사)"
+    ]
+  },
+  {
+    "id": "job-panel sales",
+    "title": "Sales",
+    "items": [
+      "전국 (Mobile Office) - 제약영업",
+      "본사 (서울시 송파구) - 해외영업, IT솔루션영업"
+    ]
+  },
+  {
+    "id": "job-panel mps",
+    "title": "Management Support",
+    "items": [
+      "본사 (서울시 송파구) - 구매, 국내법무, 특허, 안전관리, 인사총무"
+    ]
+  },
+  {
+    "id": "job-panel cl",
+    "title": "Clinical",
+    "items": [
+      "본사 (서울시 송파구) - 신약가치평가, 전략분석, Data Management, Biostatistician"
+    ]
+  },
+  {
+    "id": "job-panel global",
+    "title": "Global",
+    "items": [
+      "본사 (서울시 송파구) - Global Regulatory Affairs, Licensing"
+    ]
+  },
+  {
+    "id": "job-panel healthcare",
+    "title": "Healthcare",
+    "items": [
+      "본사 (서울시 송파구) - 식품영업/커머스, 화장품 기획/영업/마케팅, 해외이커머스",
+      "서울/수도권/영남 - 의료기기영업"
+    ]
+  }
+]
